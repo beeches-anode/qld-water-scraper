@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-import plotly.graph_objects as go
 
 # --- Configuration ---
 st.set_page_config(
@@ -11,142 +10,208 @@ st.set_page_config(
 )
 
 # --- Data Connection ---
-# TODO: REPLACE THIS URL with your raw GitHub URL!
-# 1. Go to your GitHub repo -> Click 'qld_water_allocations.csv'
-# 2. Click the 'Raw' button (top right of the file view)
-# 3. Copy that URL and paste it below.
-GITHUB_CSV_URL = "https://github.com/beeches-anode/qld-water-scraper/blob/main/qld_water_allocations.csv" 
-LOCAL_CSV_FILE = "qld_water_allocations.csv"
+# Ensure these match your GitHub Raw URLs exactly
+GITHUB_ALLOCATIONS_URL = "https://raw.githubusercontent.com/beeches-anode/qld-water-scraper/main/qld_water_allocations.csv"
+GITHUB_PLANS_URL = "https://raw.githubusercontent.com/beeches-anode/qld-water-scraper/main/qld_water_plans.csv"
 
-@st.cache_data(ttl=3600) # Cache data for 1 hour so it doesn't reload constantly
+# Local fallbacks for testing
+LOCAL_ALLOCATIONS_FILE = "qld_water_allocations.csv"
+LOCAL_PLANS_FILE = "qld_water_plans.csv"
+
+@st.cache_data(ttl=3600)
 def load_data():
+    data_source = "GitHub (Live)"
+    
+    # Load Allocations Data
     try:
-        # First try loading from GitHub (Live Data)
-        df = pd.read_csv(GITHUB_CSV_URL)
-        source = "GitHub (Live)"
-    except Exception:
+        df_alloc = pd.read_csv(GITHUB_ALLOCATIONS_URL)
+    except:
         try:
-            # Fallback to local file if offline
-            df = pd.read_csv(LOCAL_CSV_FILE)
-            source = "Local File"
+            df_alloc = pd.read_csv(LOCAL_ALLOCATIONS_FILE)
+            data_source = "Local File"
         except FileNotFoundError:
-            return None, "No data found"
+            df_alloc = None
 
-    # Data Cleaning for Display
-    # Fill NaNs with 0 for calculation
-    df.fillna(0, inplace=True)
-    return df, source
+    # Load Plans Data
+    try:
+        df_plans = pd.read_csv(GITHUB_PLANS_URL)
+    except:
+        try:
+            df_plans = pd.read_csv(LOCAL_PLANS_FILE)
+        except FileNotFoundError:
+            df_plans = None
+
+    # Cleanup Allocations Data
+    if df_alloc is not None:
+        df_alloc.fillna(0, inplace=True)
+        
+        # Rename 'Water Plan' to 'Water Area' if the scraper output still has the old name
+        if 'Water Plan' in df_alloc.columns and 'Water Area' not in df_alloc.columns:
+             df_alloc.rename(columns={'Water Plan': 'Water Area'}, inplace=True)
+             
+        # Ensure Scheme column exists
+        if 'Scheme' not in df_alloc.columns:
+             df_alloc['Scheme'] = 'Unknown'
+
+    # Cleanup Plans Data
+    if df_plans is not None:
+        df_plans.fillna("Unknown", inplace=True)
+
+    return df_alloc, df_plans, data_source
 
 # --- Load Data ---
-df_raw, data_source = load_data()
+df_alloc, df_plans, source = load_data()
 
-# --- Sidebar Filters ---
-st.sidebar.title("💧 Filters")
+# --- Sidebar ---
+st.sidebar.title("💧 Navigation")
+view_mode = st.sidebar.radio("Select View", ["🌊 Water Markets (Allocations)", "📜 Water Plans (Status)"])
 
-if df_raw is not None:
-    # 1. Water Plan Filter
-    plans = sorted(df_raw['Water Plan'].unique())
-    selected_plans = st.sidebar.multiselect("Select Water Plan", plans, default=plans)
+st.sidebar.markdown("---")
+
+# ==========================================
+# VIEW 1: MARKET ALLOCATIONS
+# ==========================================
+if view_mode == "🌊 Water Markets (Allocations)" and df_alloc is not None:
+    # --- Market Filters ---
+    st.sidebar.header("Market Filters")
     
-    # Filter dataframe based on Plan selection
-    df_filtered = df_raw[df_raw['Water Plan'].isin(selected_plans)]
+    # 1. Water Area Filter
+    # Robust check for the column name
+    area_col = 'Water Area' if 'Water Area' in df_alloc.columns else 'Water Plan'
+    
+    areas = sorted(df_alloc[area_col].unique())
+    selected_areas = st.sidebar.multiselect("Select Water Area", areas, default=areas[:3]) 
+    
+    # Filter Data
+    if selected_areas:
+        df_filtered = df_alloc[df_alloc[area_col].isin(selected_areas)]
+    else:
+        df_filtered = df_alloc
 
-    # 2. Scheme Filter (Dynamic based on Plan)
+    # 2. Scheme Filter
     schemes = sorted(df_filtered['Scheme'].unique())
     selected_schemes = st.sidebar.multiselect("Select Scheme", schemes, default=schemes)
     
-    # Filter dataframe based on Scheme selection
-    df_filtered = df_filtered[df_filtered['Scheme'].isin(selected_schemes)]
+    if selected_schemes:
+        df_filtered = df_filtered[df_filtered['Scheme'].isin(selected_schemes)]
 
     # 3. Priority Filter
-    priorities = sorted(df_filtered['Priority Group'].unique())
-    selected_priorities = st.sidebar.multiselect("Priority Group", priorities, default=priorities)
-    
-    # Final Filter
-    df_final = df_filtered[df_filtered['Priority Group'].isin(selected_priorities)]
-    
-    # --- Main Dashboard ---
-    st.title("Queensland Water Markets Dashboard")
-    st.caption(f"Data Source: {data_source} | Total Records: {len(df_final)}")
-    st.markdown("---")
+    if 'Priority Group' in df_filtered.columns:
+        priorities = sorted(df_filtered['Priority Group'].unique())
+        selected_priorities = st.sidebar.multiselect("Priority Group", priorities, default=priorities)
+        
+        if selected_priorities:
+            df_filtered = df_filtered[df_filtered['Priority Group'].isin(selected_priorities)]
 
-    # KPI Metrics
-    col1, col2, col3, col4 = st.columns(4)
-    
-    total_vol = df_final['Current Volume (ML)'].sum()
-    total_cap = df_final['Maximum Volume (ML)'].sum()
-    total_headroom = df_final['Trading Headroom (ML)'].sum()
+    # --- Main Dashboard Content ---
+    st.title("Water Allocations & Trading")
+    st.caption(f"Source: {source} | Showing {len(df_filtered)} records")
+
+    # KPIs
+    col1, col2, col3 = st.columns(3)
+    total_vol = df_filtered['Current Volume (ML)'].sum()
+    total_cap = df_filtered['Maximum Volume (ML)'].sum()
     
     with col1:
-        st.metric("Total Water Allocated", f"{total_vol:,.0f} ML")
+        st.metric("Current Volume Allocated", f"{total_vol:,.0f} ML")
     with col2:
-        st.metric("Total Zone Capacity", f"{total_cap:,.0f} ML")
+        st.metric("Total Max Capacity", f"{total_cap:,.0f} ML")
     with col3:
-        # Calculate % Full (avoid divide by zero)
-        pct_full = (total_vol / total_cap * 100) if total_cap > 0 else 0
-        st.metric("Overall Usage", f"{pct_full:.1f}%")
-    with col4:
-        st.metric("Total Trading Headroom", f"{total_headroom:,.0f} ML", help="Available space remaining in zones (Max - Current)")
+        headroom = df_filtered['Trading Headroom (ML)'].sum()
+        st.metric("Total Trading Headroom", f"{headroom:,.0f} ML", help="Space available for trading IN to zones")
 
-    # Tabs for different views
-    tab1, tab2, tab3 = st.tabs(["📊 Trading Analysis", "🌍 Sunburst Overview", "📋 Raw Data"])
+    tab1, tab2 = st.tabs(["📊 Charts", "📋 Data Table"])
 
     with tab1:
-        st.subheader("Zone Availability & Headroom")
-        st.markdown("This chart shows the **Current Volume** (Blue) vs **Available Headroom** (Green). Green bars indicate zones where you can likely trade water *into*.")
+        st.subheader("Volume by Zone")
         
-        # Stacked Bar Chart: Current vs Headroom
-        # We need to melt the dataframe to stack the bars correctly
-        df_melt = df_final.melt(
-            id_vars=['Zone/Location', 'Scheme', 'Priority Group'], 
-            value_vars=['Current Volume (ML)', 'Trading Headroom (ML)'],
-            var_name='Type', value_name='Volume'
-        )
-        
-        fig_bar = px.bar(
-            df_melt, 
-            x="Zone/Location", 
-            y="Volume", 
-            color="Type",
-            hover_data=['Scheme', 'Priority Group'],
-            color_discrete_map={'Current Volume (ML)': '#1f77b4', 'Trading Headroom (ML)': '#2ca02c'},
-            title="Zone Capacity: Used vs. Available",
-            height=600
-        )
-        st.plotly_chart(fig_bar, use_container_width=True)
+        if not df_filtered.empty:
+            # Stacked Bar: Current vs Headroom
+            df_melt = df_filtered.melt(
+                id_vars=['Zone/Location', 'Scheme', 'Priority Group'], 
+                value_vars=['Current Volume (ML)', 'Trading Headroom (ML)'],
+                var_name='Metric', value_name='Volume'
+            )
+            
+            fig = px.bar(
+                df_melt, 
+                x="Zone/Location", 
+                y="Volume", 
+                color="Metric",
+                title="Water Availability by Zone",
+                color_discrete_map={'Current Volume (ML)': '#1f77b4', 'Trading Headroom (ML)': '#2ca02c'},
+                height=600
+            )
+            # Use 'width' argument to prevent future warnings, or fallback to standard
+            try:
+                st.plotly_chart(fig, use_container_width=True)
+            except TypeError:
+                st.plotly_chart(fig)
+        else:
+            st.warning("No data available for selected filters.")
 
     with tab2:
-        st.subheader("Water Distribution Hierarchy")
-        st.markdown("Click on the rings to drill down from **Plan** -> **Scheme** -> **Zone**.")
+        # Styling columns for better readability
+        format_dict = {
+            "Current Volume (ML)": "{:,.0f}",
+            "Maximum Volume (ML)": "{:,.0f}", 
+            "Trading Headroom (ML)": "{:,.0f}",
+            "Minimum Volume (ML)": "{:,.0f}"
+        }
         
-        # Sunburst Chart
-        fig_sun = px.sunburst(
-            df_final, 
-            path=['Water Plan', 'Scheme', 'Zone/Location'], 
-            values='Current Volume (ML)',
-            color='Current Volume (ML)',
-            color_continuous_scale='Blues',
-            height=700
-        )
-        st.plotly_chart(fig_sun, use_container_width=True)
+        if not df_filtered.empty:
+            try:
+                # Try to apply green gradient to Headroom column
+                st.dataframe(
+                    df_filtered.style.format(format_dict).background_gradient(subset=['Trading Headroom (ML)'], cmap="Greens"),
+                    use_container_width=True
+                )
+            except ImportError:
+                # Fallback if matplotlib is missing
+                st.dataframe(df_filtered, use_container_width=True)
+            except KeyError:
+                 # Fallback if column doesn't exist
+                st.dataframe(df_filtered, use_container_width=True)
 
-    with tab3:
-        st.subheader("Detailed Data Table")
-        
-        # Styling the dataframe
-        st.dataframe(
-            df_final.style.format({
-                "Current Volume (ML)": "{:,.0f}",
-                "Maximum Volume (ML)": "{:,.0f}",
-                "Trading Headroom (ML)": "{:,.0f}",
-                "Minimum Volume (ML)": "{:,.0f}",
-            }).background_gradient(subset=['Trading Headroom (ML)'], cmap="Greens"),
-            use_container_width=True
-        )
+# ==========================================
+# VIEW 2: WATER PLANS
+# ==========================================
+elif view_mode == "📜 Water Plans (Status)" and df_plans is not None:
+    st.title("Queensland Water Plans Status")
+    st.markdown("Overview of the strategic water plans, their expiry dates, and review status.")
+    
+    # Metrics
+    total_plans = len(df_plans)
+    # Handle string matching safely
+    expiring_soon = 0
+    if 'Estimated Expiry' in df_plans.columns:
+        expiring_soon = len(df_plans[df_plans['Estimated Expiry'].astype(str).str.contains('2025|2026', na=False)])
+    
+    m1, m2 = st.columns(2)
+    m1.metric("Total Water Plans", total_plans)
+    m2.metric("Expiring 2025-26", expiring_soon, delta_color="inverse")
 
+    # Search
+    search = st.text_input("Search Plans", placeholder="Type plan name (e.g. 'Fitzroy')...")
+    if search:
+        df_plans = df_plans[df_plans['Plan Name'].str.contains(search, case=False, na=False)]
+
+    # Display Cards
+    for index, row in df_plans.iterrows():
+        with st.expander(f"📘 {row.get('Plan Name', 'Unknown Plan')}"):
+            st.markdown(f"**Estimated Expiry:** {row.get('Estimated Expiry', 'Unknown')}")
+            st.info(f"**Status Summary:**\n\n{row.get('Status Summary', 'No status available.')}")
+            if 'URL' in row:
+                st.markdown(f"[Read more on Business Queensland]({row['URL']})")
+
+# ==========================================
+# ERROR HANDLING
+# ==========================================
 else:
-    st.error("Data could not be loaded. Please check:")
-    st.code(f"1. Does the file '{LOCAL_CSV_FILE}' exist locally?\n2. Is the GITHUB_CSV_URL correct?\n3. Did the scraper run successfully?")
-    if st.button("Reload Data"):
+    st.error("Data files not found. Please run the GitHub Action scraper first!")
+    st.write("The dashboard is looking for:")
+    st.code(f"1. {GITHUB_ALLOCATIONS_URL}\n2. {GITHUB_PLANS_URL}")
+    
+    if st.button("Retry Load"):
         st.cache_data.clear()
-        st.experimental_rerun()
+        st.rerun()

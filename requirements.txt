@@ -1,7 +1,5 @@
-.github/workflows/weekly_scrape.yml   <-- The automation instruction
-dashboard.py                          <-- The visual app code
-scrape_water_allocations.py           <-- The data gathering engine
-qld_water_allocations.csv             <-- The data (generated automatically)
-requirements.txt                      <-- List of all libraries needed
-
-Once `dashboard.py` is in the root and `requirements.txt` is updated, you can go to [share.streamlit.io](https://share.streamlit.io/), connect your GitHub account, select this repository, and your dashboard will go live!
+requests
+beautifulsoup4
+pandas
+streamlit
+plotly

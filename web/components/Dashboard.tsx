@@ -375,18 +375,37 @@ function ScansView({ scans }: { scans: ScanData[] }) {
              </button>
              
              {expandedId === scan.id && scan.contentHtml && (
-               <div className="p-6 pt-0 border-t border-gray-100">
-                 <article 
-                   className="prose prose-slate max-w-none mt-6
-                     prose-headings:font-bold prose-headings:text-gray-900 
-                     prose-h2:text-xl prose-h2:mb-4 prose-h2:border-b prose-h2:pb-2
-                     prose-h3:text-lg prose-h3:mt-6 prose-h3:mb-2 prose-h3:text-blue-800
-                     prose-p:text-gray-600 prose-p:leading-relaxed
-                     prose-li:text-gray-600
-                     prose-strong:text-gray-900 prose-strong:font-semibold
-                     prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline
-                     prose-blockquote:border-l-4 prose-blockquote:border-gray-200 prose-blockquote:pl-4 prose-blockquote:italic"
-                   dangerouslySetInnerHTML={{ __html: scan.contentHtml }} 
+               <div className="bg-gray-50/50 p-8 border-t border-gray-200">
+                 <article
+                   className="prose prose-slate max-w-none
+                     prose-headings:font-bold prose-headings:tracking-tight
+
+                     prose-h2:text-2xl prose-h2:mt-8 prose-h2:mb-6 prose-h2:pb-3
+                     prose-h2:border-b-2 prose-h2:border-gray-300 prose-h2:text-gray-900
+                     prose-h2:first:mt-0
+
+                     prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4 prose-h3:text-blue-900
+                     prose-h3:bg-blue-50 prose-h3:px-4 prose-h3:py-2 prose-h3:rounded-lg
+                     prose-h3:border-l-4 prose-h3:border-blue-500
+
+                     prose-p:text-base prose-p:text-gray-700 prose-p:leading-relaxed prose-p:mb-4
+
+                     prose-ul:my-6 prose-ul:space-y-6
+                     prose-li:text-gray-700 prose-li:leading-relaxed
+                     prose-li:bg-white prose-li:p-4 prose-li:rounded-lg
+                     prose-li:border prose-li:border-gray-200 prose-li:shadow-sm
+
+                     prose-strong:text-gray-900 prose-strong:font-semibold prose-strong:text-sm
+
+                     prose-a:text-blue-600 prose-a:font-medium prose-a:no-underline
+                     hover:prose-a:underline hover:prose-a:text-blue-800
+
+                     prose-blockquote:border-l-4 prose-blockquote:border-purple-400
+                     prose-blockquote:bg-purple-50 prose-blockquote:pl-6 prose-blockquote:pr-4
+                     prose-blockquote:py-4 prose-blockquote:italic prose-blockquote:rounded-r-lg
+
+                     prose-hr:my-8 prose-hr:border-gray-300"
+                   dangerouslySetInnerHTML={{ __html: scan.contentHtml }}
                  />
                </div>
              )}

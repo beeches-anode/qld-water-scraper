@@ -67,17 +67,58 @@ def scrape_plan_details(plan_info):
             if len(status_text) > 300:
                 status_text = status_text[:300] + "..."
 
-    # 2. Look for "Expiry" keywords in the text
+    # 2. Look for "Expiry" keywords and extract full dates
     expiry_year = "Unknown"
-    body_text = soup.get_text().lower()
+    body_text = soup.get_text()
+    body_text_lower = body_text.lower()
     
-    # Simple regex to find years near "expiry" or "expires"
-    # This is rough but often effective for summary data
-    if "expiry" in body_text or "expire" in body_text:
-        # Check common years
-        for year in range(2024, 2035):
-            if str(year) in status_text: # Prioritize the status section
-                expiry_year = str(year)
+    # Month names for date parsing (case-insensitive matching)
+    months = ['january', 'february', 'march', 'april', 'may', 'june',
+              'july', 'august', 'september', 'october', 'november', 'december']
+    
+    # Pattern 1: Look for "expiry date...until [date]" or "in place until [date]"
+    # Matches patterns like "until 19 April 2027" or "expiry date...until 19 April 2027"
+    expiry_patterns = [
+        r'expiry\s+date[^.]*?until\s+(\d{1,2})\s+(' + '|'.join(months) + r')\s+(\d{4})',
+        r'in\s+place\s+until\s+(\d{1,2})\s+(' + '|'.join(months) + r')\s+(\d{4})',
+        r'expires?\s+(\d{1,2})\s+(' + '|'.join(months) + r')\s+(\d{4})',
+        r'expiry\s+date[^.]*?(\d{1,2})\s+(' + '|'.join(months) + r')\s+(\d{4})',
+        r'until\s+(\d{1,2})\s+(' + '|'.join(months) + r')\s+(\d{4})',
+    ]
+    
+    found_date = None
+    if "expiry" in body_text_lower or "expire" in body_text_lower:
+        # Search in original body_text with case-insensitive matching
+        for pattern in expiry_patterns:
+            matches = re.finditer(pattern, body_text, re.IGNORECASE)
+            for match in matches:
+                day, month, year = match.groups()
+                year_int = int(year)
+                # Only accept reasonable future years (2024-2040)
+                if 2024 <= year_int <= 2040:
+                    found_date = (day, month, year)
+                    expiry_year = year
+                    break
+            if found_date:
+                break
+    
+    # Pattern 2: Fallback - look for years near expiry keywords in full text
+    # This handles cases where dates aren't in standard format
+    if expiry_year == "Unknown" and ("expiry" in body_text_lower or "expire" in body_text_lower):
+        # Find context around expiry keywords (up to 200 chars before/after)
+        expiry_contexts = []
+        for match in re.finditer(r'expir(?:y|ies|ed|ing)', body_text_lower):
+            start = max(0, match.start() - 200)
+            end = min(len(body_text), match.end() + 200)
+            expiry_contexts.append(body_text[start:end])
+        
+        # Look for years in these contexts
+        for context in expiry_contexts:
+            for year in range(2024, 2041):
+                if str(year) in context:
+                    expiry_year = str(year)
+                    break
+            if expiry_year != "Unknown":
                 break
     
     plan_info['Status Summary'] = status_text

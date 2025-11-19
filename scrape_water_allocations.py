@@ -28,9 +28,25 @@ def get_scheme_links():
     content_div = soup.find('div', id='content') or soup.find('body')
     current_plan = "Unknown Plan"
     
+    # Headers to explicitly IGNORE because they look like plans but aren't
+    IGNORE_HEADERS = [
+        "Water supply schemes and water management areas",
+        "Water markets",
+        "Current locations",
+        "Contact us",
+        "Site information",
+        "Search"
+    ]
+
     for element in content_div.find_all(['h2', 'h3', 'h4', 'a']):
         if element.name in ['h2', 'h3', 'h4']:
             text = element.get_text(strip=True)
+            
+            # Check if this header is in our ignore list
+            if any(ignored.lower() in text.lower() for ignored in IGNORE_HEADERS):
+                continue
+
+            # We only care about headers that look like Water Plans
             if "Water" in text or "Basin" in text or "Plan" in text:
                 clean_plan = text.replace(' water plan area', '').replace(' water plan', '').strip()
                 current_plan = clean_plan
@@ -41,15 +57,17 @@ def get_scheme_links():
             
             if href and ('current-locations' in href) and href != BASE_URL:
                 full_url = urljoin(BASE_URL, href)
-                # We grab the link, but we will fix the name in the detailed scrape function
                 if text and len(text) > 3 and "read about" not in text.lower():
                     schemes.append({
                         "Water Plan": current_plan,
-                        "Scheme Name": text, # Temporary name, will be updated
+                        "Scheme Name": text,
                         "URL": full_url
                     })
     
     unique_schemes = list({v['URL']: v for v in schemes}.values())
+    # Filter out any that still got assigned to the bad header if it slipped through
+    unique_schemes = [s for s in unique_schemes if "Water supply schemes" not in s['Water Plan']]
+    
     print(f"Found {len(unique_schemes)} unique schemes to scrape.")
     return unique_schemes
 
@@ -74,20 +92,16 @@ def scrape_scheme_details(scheme_info):
 
     soup = BeautifulSoup(response.content, "html.parser")
     
-    # --- FIX: Get the REAL Scheme Name from the Page Title ---
-    # The index link text is often generic ("Current location..."). 
-    # The H1 on the destination page usually contains the full, correct name.
+    # Get the REAL Scheme Name from the Page Title
     h1_tag = soup.find('h1')
-    real_scheme_name = scheme_info['Scheme Name'] # Default fallback
+    real_scheme_name = scheme_info['Scheme Name']
     
     if h1_tag:
         h1_text = h1_tag.get_text(strip=True)
-        # Clean up the title to extract just the scheme name
-        # e.g. "Current location of water allocations in the Burdekin Haughton Water Supply Scheme" -> "Burdekin Haughton Water Supply Scheme"
+        # Clean up the title
         clean_name = h1_text.replace("Current location of water allocations in the ", "")
         clean_name = clean_name.replace("Current location of water allocations in ", "")
         real_scheme_name = clean_name.strip()
-        print(f"    Identified Scheme: {real_scheme_name}")
 
     tables = soup.find_all("table")
     rows_data = []
@@ -133,7 +147,7 @@ def scrape_scheme_details(scheme_info):
 
             rows_data.append({
                 "Water Plan": scheme_info['Water Plan'],
-                "Scheme": real_scheme_name, # Use the fixed name
+                "Scheme": real_scheme_name,
                 "Priority Group": priority,
                 "Zone/Location": location,
                 "Current Volume (ML)": current_vol,

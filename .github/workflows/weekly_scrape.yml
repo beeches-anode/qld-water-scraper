@@ -1,11 +1,8 @@
 name: Weekly Water Scraper
 
-# Trigger the workflow on a schedule
 on:
   schedule:
-    # Runs at 08:00 UTC every Monday
-    - cron: '0 8 * * 1'
-  # Allows you to run it manually from the Actions tab for testing
+    - cron: '0 8 * * 1' # Mondays at 8am UTC
   workflow_dispatch:
 
 permissions:
@@ -27,15 +24,25 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install requests pandas beautifulsoup4
+          pip install -r requirements.txt
 
-      - name: Run Scraper Script
-        run: python scrape_water_allocations.py
+      - name: Run Scrapers
+        run: |
+          python scrape_water_allocations.py
+          python scrape_water_plans.py
 
       - name: Commit and Push Data
-        # This step checks if the CSV changed. If yes, it commits the new file back to your repo.
         run: |
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
-          git add qld_water_allocations.csv
+          git add qld_water_allocations.csv qld_water_plans.csv
+          # Only commit if files changed
           git diff --quiet && git diff --staged --quiet || (git commit -m "Update water data $(date +'%Y-%m-%d')" && git push)
+
+
+### **Summary of Tasks**
+1.  **Create** the new file `scrape_water_plans.py` in GitHub.
+2.  **Update** the existing `scrape_water_allocations.py` with the code above.
+3.  **Update** the `.github/workflows/weekly_scrape.yml` file to run both.
+4.  **Run** the workflow manually one time to generate both CSVs.
+5.  **Update** your `dashboard.py` (I can provide the code for the updated dashboard once you have the two CSVs ready!).

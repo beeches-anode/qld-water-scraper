@@ -14,7 +14,6 @@ HEADERS = {
 }
 
 def clean_text(text):
-    """Normalize text by removing extra spaces and newlines."""
     if not text: return ""
     return " ".join(text.split())
 
@@ -33,24 +32,18 @@ def get_scheme_links():
     content_div = soup.find('div', id='content') or soup.find('body')
     current_plan = "Unknown Plan"
     
-    # 1. Improved Blocklist (Lower case for easier matching)
     IGNORE_PHRASES = [
-        "water supply schemes", 
-        "management areas",
-        "water markets",
-        "current locations",
-        "contact us"
+        "water supply schemes", "management areas", "water markets",
+        "current locations", "contact us", "search"
     ]
 
     for element in content_div.find_all(['h2', 'h3', 'h4', 'a']):
         if element.name in ['h2', 'h3', 'h4']:
             text = clean_text(element.get_text(strip=True))
             
-            # 2. Skip headers that contain ignored phrases
             if any(phrase in text.lower() for phrase in IGNORE_PHRASES):
                 continue
 
-            # Capture valid Water Plans
             if "Water" in text or "Basin" in text or "Plan" in text:
                 clean_plan = text.replace(' water plan area', '').replace(' water plan', '').strip()
                 current_plan = clean_plan
@@ -61,8 +54,6 @@ def get_scheme_links():
             
             if href and ('current-locations' in href) and href != BASE_URL:
                 full_url = urljoin(BASE_URL, href)
-                
-                # Basic filter for navigation links
                 if text and len(text) > 3 and "read about" not in text.lower():
                     schemes.append({
                         "Water Plan": current_plan,
@@ -70,13 +61,9 @@ def get_scheme_links():
                         "URL": full_url
                     })
     
-    # Remove duplicates
     unique_schemes = list({v['URL']: v for v in schemes}.values())
-    
-    # 3. Final Safety Filter: Remove any schemes that accidentally got assigned to the "header" plan
-    # If the logic failed and 'Water supply schemes' became the plan name, filter those out.
+    # Filter out any that accidentally got assigned to the generic header
     final_schemes = [s for s in unique_schemes if "water supply schemes" not in s['Water Plan'].lower()]
-
     print(f"Found {len(final_schemes)} unique schemes to scrape.")
     return final_schemes
 
@@ -90,7 +77,7 @@ def clean_number(text):
 
 def scrape_scheme_details(scheme_info):
     url = scheme_info['URL']
-    print(f"  Scraping: {scheme_info['Scheme Name']}...")
+    # print(f"  Scraping: {scheme_info['Scheme Name']}...")
     
     try:
         response = requests.get(url, headers=HEADERS)
@@ -100,40 +87,60 @@ def scrape_scheme_details(scheme_info):
 
     soup = BeautifulSoup(response.content, "html.parser")
     
-    # --- STRATEGY FOR SCHEME NAME ---
-    # 1. Try the Page Title (H1)
+    # 1. Get Real Scheme Name from H1
     h1_tag = soup.find('h1')
     real_name = scheme_info['Scheme Name']
-    
     if h1_tag:
         h1_text = h1_tag.get_text(strip=True)
-        # Clean common prefixes
         clean = h1_text.replace("Current location of water allocations in the ", "")
         clean = clean.replace("Current location of water allocations in ", "")
         real_name = clean.strip()
     
-    # 2. Backup: Use the URL Slug if the name is still "Current location..."
-    # Example URL: .../current-locations/mareeba-dimbulah
+    # Backup if name is still generic
     if "current location" in real_name.lower():
-        slug = url.rstrip('/').split('/')[-1] # gets 'mareeba-dimbulah'
-        real_name = slug.replace('-', ' ').title() # becomes 'Mareeba Dimbulah'
+        slug = url.rstrip('/').split('/')[-1]
+        real_name = slug.replace('-', ' ').title()
 
     tables = soup.find_all("table")
     rows_data = []
 
     for table in tables:
-        priority = "General/Unspecified"
-        prev = table.find_previous(['h2', 'h3', 'h4', 'h5', 'p'])
-        if prev:
-            header_text = prev.get_text(strip=True)
-            if "High" in header_text: priority = "High Priority"
-            elif "Medium" in header_text: priority = "Medium Priority"
-            elif "Unsupplemented" in header_text: priority = "Unsupplemented"
+        # --- PRIORITY DETECTION STRATEGY ---
+        # Look at the 3 preceding elements. Usually the Priority is in a Heading tag right above.
+        priority = "Unspecified"
         
+        # We scan previous siblings/elements to find context
+        prev_elements = table.find_all_previous(['h2', 'h3', 'h4', 'h5', 'strong', 'p'], limit=3)
+        
+        for prev in prev_elements:
+            txt = prev.get_text(strip=True).lower()
+            
+            # If we hit a "Nominal Volumes" header, keep going up one more step
+            if "nominal volumes" in txt: continue
+            
+            # Keywords
+            if "high" in txt:
+                priority = "High Priority"
+                if "a1" in txt: priority = "High-A1 Priority"
+                if "a2" in txt: priority = "High-A2 Priority"
+                break
+            if "medium" in txt:
+                priority = "Medium Priority"
+                if "a1" in txt: priority = "Medium-A1 Priority"
+                break
+            if "unsupplemented" in txt:
+                priority = "Unsupplemented"
+                break
+        
+        # Fallback: Check if the scheme name itself implies type
+        if priority == "Unspecified" and "unsupplemented" in real_name.lower():
+            priority = "Unsupplemented"
+
+        # --- Table Parsing ---
         headers = [th.get_text(strip=True).lower() for th in table.find_all('th')]
         
         try:
-            loc_idx = next(i for i, h in enumerate(headers) if 'location' in h or 'zone' in h or 'sub-area' in h)
+            loc_idx = next(i for i, h in enumerate(headers) if any(x in h for x in ['location', 'zone', 'sub-area']))
             curr_vol_idx = next(i for i, h in enumerate(headers) if 'current' in h)
             # Optional columns
             min_vol_idx = next((i for i, h in enumerate(headers) if 'minimum' in h), None)
@@ -159,7 +166,7 @@ def scrape_scheme_details(scheme_info):
 
             rows_data.append({
                 "Water Plan": scheme_info['Water Plan'],
-                "Scheme": real_name, # The fixed name
+                "Scheme": real_name,
                 "Priority Group": priority,
                 "Zone/Location": location,
                 "Current Volume (ML)": current_vol,
@@ -173,30 +180,21 @@ def scrape_scheme_details(scheme_info):
     return rows_data
 
 def main():
-    print("--- Starting Queensland Water Allocation Scraper (v2.0) ---")
+    print("--- Starting Water Allocation Scraper ---")
     schemes = get_scheme_links()
     
-    if not schemes:
-        print("No schemes found.")
-        return
-
     all_data = []
     for i, scheme in enumerate(schemes):
-        # print(f"Processing {i+1}/{len(schemes)}: {scheme['Scheme Name']}")
+        print(f"[{i+1}/{len(schemes)}] {scheme['Scheme Name']}")
         scheme_data = scrape_scheme_details(scheme)
         all_data.extend(scheme_data)
-        time.sleep(1) 
+        time.sleep(0.5) # Be polite
 
     if all_data:
         df = pd.DataFrame(all_data)
-        # Remove rows where Plan name is invalid (extra safety)
-        df = df[~df['Water Plan'].str.contains("Water supply schemes", case=False, na=False)]
-        
         df = df.sort_values(by=['Water Plan', 'Scheme', 'Priority Group', 'Zone/Location'])
-        
-        filename = "qld_water_allocations.csv"
-        df.to_csv(filename, index=False)
-        print(f"\nSuccess! Scraped {len(df)} rows.")
+        df.to_csv("qld_water_allocations.csv", index=False)
+        print(f"\nSuccess! Saved {len(df)} allocation records.")
     else:
         print("\nNo data extracted.")
 

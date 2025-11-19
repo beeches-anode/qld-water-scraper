@@ -1,8 +1,20 @@
-import { fetchWaterAllocations } from '@/lib/data';
+import { fetchWaterAllocations, fetchWaterPlans } from '@/lib/data';
+import { getSortedScansData, getScanData } from '@/lib/scans';
 import Dashboard from '@/components/Dashboard';
 
 export default async function Home() {
-  const data = await fetchWaterAllocations();
+  const [allocations, plans] = await Promise.all([
+    fetchWaterAllocations(),
+    fetchWaterPlans()
+  ]);
+  
+  const scansList = getSortedScansData();
+  
+  // Pre-fetch content for all scans (since it's a small blog)
+  // In a larger app, you'd fetch content on demand via API or separate page
+  const scansWithContent = await Promise.all(
+    scansList.map(scan => getScanData(scan.id))
+  );
 
   return (
     <main className="min-h-screen bg-gray-50/50">
@@ -18,8 +30,12 @@ export default async function Home() {
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <Dashboard initialData={data} />
-        </div>
-      </main>
+        <Dashboard 
+          initialAllocations={allocations} 
+          initialPlans={plans}
+          scans={scansWithContent}
+        />
+      </div>
+    </main>
   );
 }

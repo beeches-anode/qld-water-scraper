@@ -1,0 +1,41 @@
+name: Weekly Water Scraper
+
+# Trigger the workflow on a schedule
+on:
+  schedule:
+    # Runs at 08:00 UTC every Monday
+    - cron: '0 8 * * 1'
+  # Allows you to run it manually from the Actions tab for testing
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  scrape-and-update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests pandas beautifulsoup4
+
+      - name: Run Scraper Script
+        run: python scrape_water_allocations.py
+
+      - name: Commit and Push Data
+        # This step checks if the CSV changed. If yes, it commits the new file back to your repo.
+        run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+          git add qld_water_allocations.csv
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update water data $(date +'%Y-%m-%d')" && git push)

@@ -8,16 +8,12 @@ from urllib.parse import urljoin
 # --- Configuration ---
 BASE_URL = "https://www.business.qld.gov.au/industries/mining-energy-water/water/water-markets/current-locations"
 
-# Headers to mimic a real browser
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
     "Accept-Language": "en-US,en;q=0.9"
 }
 
 def get_scheme_links():
-    """
-    Scrapes the main index page to dynamically find all water schemes and their URLs.
-    """
     print(f"Fetching index page: {BASE_URL}")
     try:
         response = requests.get(BASE_URL, headers=HEADERS)
@@ -45,10 +41,11 @@ def get_scheme_links():
             
             if href and ('current-locations' in href) and href != BASE_URL:
                 full_url = urljoin(BASE_URL, href)
+                # We grab the link, but we will fix the name in the detailed scrape function
                 if text and len(text) > 3 and "read about" not in text.lower():
                     schemes.append({
                         "Water Plan": current_plan,
-                        "Scheme Name": text,
+                        "Scheme Name": text, # Temporary name, will be updated
                         "URL": full_url
                     })
     
@@ -57,9 +54,7 @@ def get_scheme_links():
     return unique_schemes
 
 def clean_number(text):
-    """Converts string numbers to float, handling empty/invalid inputs safely."""
-    if not text:
-        return 0.0
+    if not text: return 0.0
     clean_text = re.sub(r'[^\d.]', '', text)
     try:
         return float(clean_text)
@@ -68,16 +63,32 @@ def clean_number(text):
 
 def scrape_scheme_details(scheme_info):
     url = scheme_info['URL']
-    print(f"  Scraping: {scheme_info['Scheme Name']}...")
+    print(f"  Scraping URL: {url}...")
     
     try:
         response = requests.get(url, headers=HEADERS)
         response.raise_for_status()
     except Exception as e:
-        print(f"    Failed to load {url}: {e}")
+        print(f"    Failed to load: {e}")
         return []
 
     soup = BeautifulSoup(response.content, "html.parser")
+    
+    # --- FIX: Get the REAL Scheme Name from the Page Title ---
+    # The index link text is often generic ("Current location..."). 
+    # The H1 on the destination page usually contains the full, correct name.
+    h1_tag = soup.find('h1')
+    real_scheme_name = scheme_info['Scheme Name'] # Default fallback
+    
+    if h1_tag:
+        h1_text = h1_tag.get_text(strip=True)
+        # Clean up the title to extract just the scheme name
+        # e.g. "Current location of water allocations in the Burdekin Haughton Water Supply Scheme" -> "Burdekin Haughton Water Supply Scheme"
+        clean_name = h1_text.replace("Current location of water allocations in the ", "")
+        clean_name = clean_name.replace("Current location of water allocations in ", "")
+        real_scheme_name = clean_name.strip()
+        print(f"    Identified Scheme: {real_scheme_name}")
+
     tables = soup.find_all("table")
     rows_data = []
     
@@ -86,7 +97,6 @@ def scrape_scheme_details(scheme_info):
         return []
 
     for table in tables:
-        # Context: Try to find Priority Group in previous headers
         priority = "General/Unspecified"
         prev_element = table.find_previous(['h2', 'h3', 'h4', 'h5', 'p'])
         if prev_element:
@@ -95,34 +105,26 @@ def scrape_scheme_details(scheme_info):
             elif "Medium" in header_text: priority = "Medium Priority"
             elif "Unsupplemented" in header_text: priority = "Unsupplemented"
         
-        # Parse Headers
         headers = [th.get_text(strip=True).lower() for th in table.find_all('th')]
         
         try:
             loc_idx = next(i for i, h in enumerate(headers) if 'location' in h or 'zone' in h or 'sub-area' in h)
             curr_vol_idx = next(i for i, h in enumerate(headers) if 'current' in h)
-            
-            # Optional columns
             min_vol_idx = next((i for i, h in enumerate(headers) if 'minimum' in h), None)
             max_vol_idx = next((i for i, h in enumerate(headers) if 'maximum' in h), None)
             proj_vol_idx = next((i for i, h in enumerate(headers) if 'projected' in h), None)
         except StopIteration:
-            continue # Skip unrelated tables
+            continue 
 
-        # Parse Rows
         for row in table.find_all('tr')[1:]:
             cols = row.find_all(['td', 'th'])
             col_texts = [ele.get_text(strip=True) for ele in cols]
             
-            # --- FIX: ROBUST SAFETY CHECK ---
-            # Ensure the row is long enough for the required columns
             if len(col_texts) <= max(loc_idx, curr_vol_idx):
                 continue
             
             location = col_texts[loc_idx]
             current_vol = clean_number(col_texts[curr_vol_idx])
-            
-            # Safely access optional columns (check index length first)
             min_vol = clean_number(col_texts[min_vol_idx]) if min_vol_idx is not None and len(col_texts) > min_vol_idx else 0.0
             max_vol = clean_number(col_texts[max_vol_idx]) if max_vol_idx is not None and len(col_texts) > max_vol_idx else 0.0
             proj_vol = clean_number(col_texts[proj_vol_idx]) if proj_vol_idx is not None and len(col_texts) > proj_vol_idx else 0.0
@@ -131,7 +133,7 @@ def scrape_scheme_details(scheme_info):
 
             rows_data.append({
                 "Water Plan": scheme_info['Water Plan'],
-                "Scheme": scheme_info['Scheme Name'],
+                "Scheme": real_scheme_name, # Use the fixed name
                 "Priority Group": priority,
                 "Zone/Location": location,
                 "Current Volume (ML)": current_vol,
@@ -155,8 +157,6 @@ def main():
 
     all_data = []
     for i, scheme in enumerate(schemes):
-        # Simple progress indicator
-        # print(f"Processing {i+1}/{len(schemes)}: {scheme['Scheme Name']}")
         scheme_data = scrape_scheme_details(scheme)
         all_data.extend(scheme_data)
         time.sleep(1) 

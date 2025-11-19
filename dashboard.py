@@ -11,8 +11,8 @@ st.set_page_config(
 
 # --- Data Connection ---
 # Ensure these match your GitHub Raw URLs exactly
-GITHUB_ALLOCATIONS_URL = "https://raw.githubusercontent.com/beeches-anode/qld-water-scraper/main/qld_water_allocations.csv"
-GITHUB_PLANS_URL = "https://raw.githubusercontent.com/beeches-anode/qld-water-scraper/main/qld_water_plans.csv"
+GITHUB_ALLOCATIONS_URL = "https://github.com/beeches-anode/qld-water-scraper/blob/main/qld_water_allocations.csv"
+GITHUB_PLANS_URL = "https://github.com/beeches-anode/qld-water-scraper/blob/main/qld_water_plans.csv"
 
 # Local fallbacks for testing
 LOCAL_ALLOCATIONS_FILE = "qld_water_allocations.csv"

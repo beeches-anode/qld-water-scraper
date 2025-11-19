@@ -13,6 +13,10 @@ HEADERS = {
     "Accept-Language": "en-US,en;q=0.9"
 }
 
+def clean_text(text):
+    if not text: return ""
+    return " ".join(text.split())
+
 def clean_number(text):
     if not text: return 0.0
     clean_text = re.sub(r'[^\d.]', '', text)
@@ -21,111 +25,132 @@ def clean_number(text):
     except ValueError:
         return 0.0
 
-def get_schemes_hierarchy():
-    """
-    Parses the index page using DOM traversal to capture:
-    Water Area -> Scheme -> Type (Link)
-    """
-    print(f"Fetching index page: {BASE_URL}")
+def get_scheme_links():
+    print(f"🔍 Fetching index page: {BASE_URL}")
     try:
         response = requests.get(BASE_URL, headers=HEADERS)
         response.raise_for_status()
     except Exception as e:
-        print(f"Error: {e}")
+        print(f"❌ Error fetching index: {e}")
         return []
 
     soup = BeautifulSoup(response.content, "html.parser")
+    schemes = []
+    
     content_div = soup.find('div', id='content') or soup.find('body')
+    current_area = "Unknown Area"
     
-    schemes_list = []
+    # Blocklist: Headers to IGNORE so we don't accidentally label things as "Water"
+    IGNORE_HEADERS = [
+        "water supply schemes", 
+        "water management areas", 
+        "water markets",
+        "current locations", 
+        "contact us", 
+        "search",
+        "water", 
+        "menu"
+    ]
+
+    print("👉 Scanning page structure...")
     
-    # Find all links that look like data links
-    links = content_div.find_all('a', href=True)
-    
-    for a in links:
-        href = a['href']
-        link_text = a.get_text(strip=True)
+    # Iterate through elements to find Headers (Areas) and Links (Schemes)
+    for element in content_div.find_all(['h2', 'h3', 'h4', 'span', 'a']):
         
-        # Filter for relevant links
-        if 'current-locations' in href and href != BASE_URL and "read about" not in link_text.lower():
-            
-            # 1. Determine Type (Supplemented vs Unsupplemented)
-            # Usually contained in the brackets of the link text
-            scheme_type = "Unknown"
-            if "(supplemented)" in link_text.lower():
-                scheme_type = "Supplemented"
-            elif "(unsupplemented)" in link_text.lower():
-                scheme_type = "Unsupplemented"
-            
-            # 2. Determine Scheme Name (The parent list item text)
-            # The structure is usually: <li> Scheme Name <ul> <li> <a>Link</a> ...
-            # We look up to the parent <li> of the link's <ul> container
-            scheme_name = "Unknown Scheme"
-            
-            # Traverse up to find the list item containing this link
-            parent_li = a.find_parent('li')
-            if parent_li:
-                # Try to find the parent of this LI (the UL), and then THAT UL's parent (the Scheme LI)
-                parent_ul = parent_li.find_parent('ul')
-                if parent_ul:
-                    scheme_li = parent_ul.find_parent('li')
-                    if scheme_li:
-                        # Get text of scheme_li but exclude children text
-                        scheme_name = scheme_li.find(text=True, recursive=False).strip()
-            
-            # Fallback: If traversal failed (flat structure), use the link text itself or look for previous sibling
-            if scheme_name == "Unknown Scheme" or len(scheme_name) < 3:
-                 # Try cleaning the link text "Current location (supplemented)" -> ""
-                 # This implies the scheme name might be missing or implicit
-                 slug = href.rstrip('/').split('/')[-1]
-                 scheme_name = slug.replace('-', ' ').title()
+        # If it's a Header, update the "Current Area"
+        is_header = False
+        if element.name in ['h2', 'h3', 'h4']:
+            is_header = True
+        elif element.name == 'span' and 'heading-text' in element.get('class', []):
+            is_header = True
 
-            # 3. Determine Water Area (The preceding Header)
-            # Look up from the link to find the nearest preceding H2, H3, or H4
-            water_area = "Unknown Area"
-            header = a.find_previous(['h2', 'h3', 'h4'])
-            if header:
-                water_area = header.get_text(strip=True)
-                # Cleanup common suffixes
-                water_area = water_area.replace(" water plan area", "").replace(" water plan", "").strip()
-
-            # Blocklist check for Area
-            if "Water supply schemes" in water_area:
-                # This is the main page title, keep looking up?
-                # For now, we accept it might be loose, but usually specific headers exist.
-                pass
-
-            schemes_list.append({
-                "Water Area": water_area,
-                "Scheme": scheme_name,
-                "Type": scheme_type,
-                "URL": urljoin(BASE_URL, href)
-            })
+        if is_header:
+            text = clean_text(element.get_text(strip=True))
             
-    print(f"Found {len(schemes_list)} datasets.")
-    return schemes_list
+            # Skip empty or ignored headers
+            if not text or any(phrase in text.lower() for phrase in IGNORE_HEADERS):
+                continue
+            
+            # Skip extremely short headers (likely navigation noise)
+            if len(text) < 4: 
+                continue
+
+            # If we found a valid-looking header, update our tracker
+            # e.g. "Burnett Basin water plan area" -> "Burnett Basin"
+            clean_area = text.replace(' water plan area', '').replace(' water plan', '').replace(' Water Management Protocol', '').strip()
+            current_area = clean_area
+            # print(f"   Found Area Header: {current_area}")
+        
+        # If it's a Link, check if it's a scheme
+        elif element.name == 'a':
+            href = element.get('href')
+            text = clean_text(element.get_text(strip=True))
+            
+            if href and ('current-locations' in href) and href != BASE_URL:
+                full_url = urljoin(BASE_URL, href)
+                
+                # Basic filter to ignore sidebar links
+                if text and len(text) > 3 and "read about" not in text.lower():
+                    
+                    # Determine Type from link text
+                    scheme_type = "Unknown"
+                    if "(supplemented)" in text.lower():
+                        scheme_type = "Supplemented"
+                    elif "(unsupplemented)" in text.lower():
+                        scheme_type = "Unsupplemented"
+
+                    schemes.append({
+                        "Water Area": current_area,
+                        "Scheme Name": text, 
+                        "Type": scheme_type,
+                        "URL": full_url
+                    })
+    
+    # Remove duplicates
+    unique_schemes = list({v['URL']: v for v in schemes}.values())
+    print(f"✅ Found {len(unique_schemes)} unique schemes.")
+    return unique_schemes
 
 def scrape_scheme_details(scheme_info):
     url = scheme_info['URL']
-    # print(f"  Scraping: {scheme_info['Scheme']} ({scheme_info['Type']})...")
     
     try:
         response = requests.get(url, headers=HEADERS)
         response.raise_for_status()
-    except Exception:
+    except Exception as e:
+        print(f"❌ Failed to load {scheme_info['Scheme Name']}: {e}")
         return []
 
     soup = BeautifulSoup(response.content, "html.parser")
+    
+    # 1. Get Real Scheme Name from Page Title (H1)
+    # This fixes the "Current location..." generic name issue
+    h1_tag = soup.find('h1')
+    real_name = scheme_info['Scheme Name']
+    
+    if h1_tag:
+        h1_text = clean_text(h1_tag.get_text(strip=True))
+        # Remove common prefixes
+        clean = h1_text.replace("Current location of water allocations in the ", "")
+        clean = clean.replace("Current location of water allocations in ", "")
+        real_name = clean.strip()
+    
+    # Fallback: use URL slug if name is still generic
+    if "current location" in real_name.lower():
+        slug = url.rstrip('/').split('/')[-1]
+        real_name = slug.replace('-', ' ').title()
+
     tables = soup.find_all("table")
     rows_data = []
 
     for table in tables:
-        # Priority Detection
+        # 2. Priority Detection
         priority = "Unspecified"
-        prev_elements = table.find_all_previous(['h2', 'h3', 'h4', 'h5', 'strong', 'p'], limit=4)
+        # Look at previous headings/paragraphs
+        prev_elements = table.find_all_previous(['h2', 'h3', 'h4', 'h5', 'strong', 'p'], limit=5)
         
         for prev in prev_elements:
-            txt = prev.get_text(strip=True).lower()
+            txt = clean_text(prev.get_text(strip=True)).lower()
             if "nominal volumes" in txt: continue
             
             if "high" in txt:
@@ -142,69 +167,72 @@ def scrape_scheme_details(scheme_info):
         if priority == "Unspecified" and scheme_info['Type'] == "Unsupplemented":
             priority = "Unsupplemented"
 
-        # Table Parsing
+        # 3. Table Parsing
         headers = [th.get_text(strip=True).lower() for th in table.find_all('th')]
         
         try:
+            # Find column indexes
             loc_idx = next(i for i, h in enumerate(headers) if any(x in h for x in ['location', 'zone', 'sub-area']))
             curr_vol_idx = next(i for i, h in enumerate(headers) if 'current' in h)
-            min_vol_idx = next((i for i, h in enumerate(headers) if 'minimum' in h), None)
+            # Optional columns
             max_vol_idx = next((i for i, h in enumerate(headers) if 'maximum' in h), None)
-            proj_vol_idx = next((i for i, h in enumerate(headers) if 'projected' in h), None)
         except StopIteration:
-            continue 
+            continue # Skip tables that aren't allocation data
 
+        # Read Rows
         for row in table.find_all('tr')[1:]:
             cols = row.find_all(['td', 'th'])
-            col_texts = [ele.get_text(strip=True) for ele in cols]
+            col_texts = [clean_text(ele.get_text(strip=True)) for ele in cols]
             
             if len(col_texts) <= max(loc_idx, curr_vol_idx): continue
             
             location = col_texts[loc_idx]
             current_vol = clean_number(col_texts[curr_vol_idx])
-            min_vol = clean_number(col_texts[min_vol_idx]) if min_vol_idx is not None and len(col_texts) > min_vol_idx else 0.0
             max_vol = clean_number(col_texts[max_vol_idx]) if max_vol_idx is not None and len(col_texts) > max_vol_idx else 0.0
-            proj_vol = clean_number(col_texts[proj_vol_idx]) if proj_vol_idx is not None and len(col_texts) > proj_vol_idx else 0.0
-            
             headroom = max_vol - current_vol if max_vol > 0 else 0.0
 
             rows_data.append({
                 "Water Area": scheme_info['Water Area'],
-                "Scheme": scheme_info['Scheme'],
+                "Scheme": real_name,
                 "Type": scheme_info['Type'],
                 "Priority Group": priority,
                 "Zone/Location": location,
                 "Current Volume (ML)": current_vol,
                 "Maximum Volume (ML)": max_vol,
-                "Trading Headroom (ML)": headroom,
-                "Projected Volume (ML)": proj_vol,
-                "Minimum Volume (ML)": min_vol,
-                "Source URL": url
+                "Trading Headroom (ML)": headroom
             })
             
     return rows_data
 
 def main():
-    print("--- Starting Water Allocation Scraper (v4.0) ---")
-    schemes = get_schemes_hierarchy()
+    print("--- Starting Local Scraper ---")
+    start_time = time.time()
+    schemes = get_scheme_links()
     
     all_data = []
+    print(f"\nProcessing {len(schemes)} schemes...")
+    
     for i, scheme in enumerate(schemes):
-        print(f"[{i+1}/{len(schemes)}] {scheme['Water Area']} -> {scheme['Scheme']}")
+        # Print progress so you know it's working
+        print(f"[{i+1}/{len(schemes)}] {scheme['Water Area']} -> {scheme['Scheme Name']}")
+        
         scheme_data = scrape_scheme_details(scheme)
         all_data.extend(scheme_data)
-        time.sleep(0.5)
+        
+        # Be polite to the server
+        time.sleep(0.2) 
 
     if all_data:
         df = pd.DataFrame(all_data)
-        # Filter out invalid areas if any remain
-        df = df[~df['Water Area'].str.contains("Water supply schemes", case=False, na=False)]
         
-        df = df.sort_values(by=['Water Area', 'Scheme', 'Type', 'Priority Group', 'Zone/Location'])
+        # Filter out rows where "Water Area" is clearly wrong/generic
+        df = df[~df['Water Area'].isin(["Water", "Water markets", "Current locations"])]
+        
         df.to_csv("qld_water_allocations.csv", index=False)
-        print(f"\nSuccess! Saved {len(df)} allocation records.")
+        print(f"\n✅ Success! Saved {len(df)} records to 'qld_water_allocations.csv'")
+        print(f"⏱️ Total time: {round(time.time() - start_time, 2)}s")
     else:
-        print("\nNo data extracted.")
+        print("\n❌ No data extracted.")
 
 if __name__ == "__main__":
     main()

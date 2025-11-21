@@ -1,9 +1,22 @@
 ---
 date: 2025-06-14
-title: Water review should consider Cape trading potential: RDA Tropical North chair
+title: Water review should consider Cape trading potential - RDA Tropical North chair
 source: Cape York Weekly
 url: https://capeyorkweekly.com.au/water-review-should-consider-cape-trading-potential-rda-tropical-north-chair/16157/
-tags: ["water-trading", "water-policy", "RDA Tropical North", "Cape York", "Mitchell Water Plan", "GABORA", "Lakeland Irrigation Area", "Palmer River", "regional-development", "Queensland Government", "Far North Queensland"]
+tags:
+  [
+    "water-trading",
+    "water-policy",
+    "RDA Tropical North",
+    "Cape York",
+    "Mitchell Water Plan",
+    "GABORA",
+    "Lakeland Irrigation Area",
+    "Palmer River",
+    "regional-development",
+    "Queensland Government",
+    "Far North Queensland",
+  ]
 implications: Indirect policy and competitive implications for Sunwater. The advocacy for water trading mechanisms in Far North Queensland and the Mitchell catchment represents potential precedent-setting policy that could influence water allocation and trading frameworks across Sunwater's operational areas. The proposed Lakeland Irrigation Area Scheme (296GL dam on Palmer River) demonstrates growing regional water infrastructure investment that could create competitive dynamics or partnership opportunities. While Cape York is not core Sunwater territory, the water plan review processes (GABORA and Mitchell) establish regulatory approaches that may later apply to Sunwater schemes. The emphasis on "water literacy, governance improvements, and infrastructure investment" aligns with Sunwater's strategic priorities, suggesting potential collaboration opportunities in regional water development. Sunwater should monitor these reviews as they may influence Queensland's broader water policy framework affecting irrigation pricing, allocation mechanisms, and infrastructure investment models.
 ---
 

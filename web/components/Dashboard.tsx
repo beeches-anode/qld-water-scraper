@@ -819,24 +819,6 @@ function ArticlesView({ articles }: { articles: ArticleData[] }) {
                 </div>
               </div>
 
-              {/* Implications Callout */}
-              <div className="bg-gradient-to-br from-amber-50 via-orange-50 to-amber-100 border-l-4 border-amber-500 rounded-2xl p-6 mb-6 shadow-sm">
-                <div className="flex items-start gap-3">
-                  <div className="p-2 bg-white rounded-xl shadow-sm">
-                    <Info className="w-5 h-5 text-amber-600" />
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-base font-bold text-amber-900 mb-2 flex items-center gap-2">
-                      Implications for Sunwater
-                      <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-amber-200 text-amber-800">
-                        Analysis
-                      </span>
-                    </h4>
-                    <p className="text-sm text-amber-900 leading-relaxed">{article.implications}</p>
-                  </div>
-                </div>
-              </div>
-
               {/* Summary (if content exists) */}
               {article.contentHtml && (
                 <div className="prose prose-sm max-w-none text-gray-700 prose-headings:text-gray-900 prose-a:text-indigo-600 hover:prose-a:text-indigo-700">

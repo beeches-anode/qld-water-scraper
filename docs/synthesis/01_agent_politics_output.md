@@ -28,3 +28,5 @@
 
 *Status: No significant **new** parliamentary debates or explosive political media releases specific to QLD water were detected in this sweep. The political cycle appears to be in a quiet period regarding water, or dominated by other issues.*
 
+
+

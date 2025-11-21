@@ -3,6 +3,7 @@
 import { useState, useMemo } from 'react';
 import { WaterAllocation, WaterPlan } from '@/lib/data';
 import { ScanData } from '@/lib/scans';
+import { ArticleData } from '@/lib/articles';
 import { 
   BarChart, 
   Bar, 
@@ -13,63 +14,81 @@ import {
   Legend, 
   ResponsiveContainer 
 } from 'recharts';
-import { Filter, Droplets, ArrowRightLeft, Info, Calendar, FileText, ExternalLink, Newspaper, ChevronDown, ChevronUp, Search, ArrowUpDown } from 'lucide-react';
+import { Filter, Droplets, ArrowRightLeft, Info, Calendar, FileText, ExternalLink, Newspaper, ChevronDown, ChevronUp, Search, ArrowUpDown, BookOpen } from 'lucide-react';
 import clsx from 'clsx';
 
 interface DashboardProps {
   initialAllocations: WaterAllocation[];
   initialPlans: WaterPlan[];
   scans: ScanData[];
+  articles: ArticleData[];
 }
 
-type Tab = 'allocations' | 'plans' | 'scans';
+type Tab = 'allocations' | 'plans' | 'scans' | 'articles';
 
-export default function Dashboard({ initialAllocations, initialPlans, scans }: DashboardProps) {
+export default function Dashboard({ initialAllocations, initialPlans, scans, articles }: DashboardProps) {
   const [activeTab, setActiveTab] = useState<Tab>('allocations');
 
   return (
     <div className="space-y-4 md:space-y-6">
       {/* Tabs */}
-      <div className="border-b border-gray-200 overflow-x-auto">
-        <nav className="-mb-px flex space-x-4 md:space-x-8 min-w-max md:min-w-0" aria-label="Tabs">
+      <div className="bg-linear-to-br from-white to-gray-50 p-2 rounded-2xl shadow-lg border border-gray-200/50 overflow-x-auto">
+        <nav className="flex space-x-2 min-w-max" aria-label="Tabs">
           <button
             onClick={() => setActiveTab('allocations')}
             className={clsx(
+              'whitespace-nowrap py-3 px-4 md:px-6 rounded-xl font-semibold text-sm flex items-center gap-2 transition-all duration-300',
+              'shadow-sm hover:shadow-md transform hover:-translate-y-0.5',
               activeTab === 'allocations'
-                ? 'border-blue-500 text-blue-600'
-                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300',
-              'whitespace-nowrap py-3 md:py-4 px-2 md:px-1 border-b-2 font-medium text-xs md:text-sm flex items-center gap-1.5 md:gap-2'
+                ? 'bg-linear-to-r from-blue-500 to-cyan-600 text-white shadow-lg shadow-blue-500/30'
+                : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
             )}
           >
-            <Droplets className="w-3.5 h-3.5 md:w-4 md:h-4" />
+            <Droplets className="w-4 h-4" />
             <span className="hidden sm:inline">Allocations & Trading</span>
             <span className="sm:hidden">Allocations</span>
           </button>
           <button
             onClick={() => setActiveTab('plans')}
             className={clsx(
+              'whitespace-nowrap py-3 px-4 md:px-6 rounded-xl font-semibold text-sm flex items-center gap-2 transition-all duration-300',
+              'shadow-sm hover:shadow-md transform hover:-translate-y-0.5',
               activeTab === 'plans'
-                ? 'border-blue-500 text-blue-600'
-                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300',
-              'whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm flex items-center gap-2'
+                ? 'bg-linear-to-r from-blue-500 to-cyan-600 text-white shadow-lg shadow-blue-500/30'
+                : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
             )}
           >
-            <FileText className="w-3.5 h-3.5 md:w-4 md:h-4" />
+            <FileText className="w-4 h-4" />
             <span className="hidden sm:inline">Water Plans</span>
             <span className="sm:hidden">Plans</span>
           </button>
           <button
             onClick={() => setActiveTab('scans')}
             className={clsx(
+              'whitespace-nowrap py-3 px-4 md:px-6 rounded-xl font-semibold text-sm flex items-center gap-2 transition-all duration-300',
+              'shadow-sm hover:shadow-md transform hover:-translate-y-0.5',
               activeTab === 'scans'
-                ? 'border-blue-500 text-blue-600'
-                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300',
-              'whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm flex items-center gap-2'
+                ? 'bg-linear-to-r from-purple-500 to-pink-600 text-white shadow-lg shadow-purple-500/30'
+                : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
             )}
           >
-            <Newspaper className="w-3.5 h-3.5 md:w-4 md:h-4" />
+            <Newspaper className="w-4 h-4" />
             <span className="hidden sm:inline">Media Scans</span>
             <span className="sm:hidden">Scans</span>
+          </button>
+          <button
+            onClick={() => setActiveTab('articles')}
+            className={clsx(
+              'whitespace-nowrap py-3 px-4 md:px-6 rounded-xl font-semibold text-sm flex items-center gap-2 transition-all duration-300',
+              'shadow-sm hover:shadow-md transform hover:-translate-y-0.5',
+              activeTab === 'articles'
+                ? 'bg-linear-to-r from-indigo-500 to-purple-600 text-white shadow-lg shadow-indigo-500/30'
+                : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
+            )}
+          >
+            <BookOpen className="w-4 h-4" />
+            <span className="hidden sm:inline">Media Articles</span>
+            <span className="sm:hidden">Articles</span>
           </button>
         </nav>
       </div>
@@ -79,8 +98,10 @@ export default function Dashboard({ initialAllocations, initialPlans, scans }: D
         <AllocationsView data={initialAllocations} />
       ) : activeTab === 'plans' ? (
         <PlansView data={initialPlans} />
-      ) : (
+      ) : activeTab === 'scans' ? (
         <ScansView scans={scans} />
+      ) : (
+        <ArticlesView articles={articles} />
       )}
     </div>
   );
@@ -140,16 +161,18 @@ function AllocationsView({ data }: { data: WaterAllocation[] }) {
   return (
     <div className="space-y-6 md:space-y-8">
       {/* Filters */}
-      <div className="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-gray-100">
-        <div className="flex items-center gap-2 mb-3 md:mb-4 text-gray-500">
-          <Filter className="w-4 h-4 md:w-5 md:h-5" />
-          <span className="font-medium text-sm md:text-base">Filters</span>
+      <div className="bg-linear-to-br from-white to-blue-50 p-6 rounded-2xl shadow-lg border border-gray-200/50 backdrop-blur-sm">
+        <div className="flex items-center gap-3 mb-5 text-blue-700">
+          <div className="p-2 bg-blue-100 rounded-xl">
+            <Filter className="w-5 h-5" />
+          </div>
+          <span className="font-bold text-base">Filter Data</span>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Water Area</label>
-            <select 
-              className="w-full rounded-lg border-gray-300 border p-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+            <label className="block text-sm font-semibold text-gray-700 mb-2">Water Area</label>
+            <select
+              className="w-full rounded-xl border-2 border-gray-200 p-3 text-sm focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all duration-200 hover:border-gray-300 shadow-sm bg-white"
               value={selectedArea}
               onChange={(e) => {
                 setSelectedArea(e.target.value);
@@ -162,9 +185,9 @@ function AllocationsView({ data }: { data: WaterAllocation[] }) {
             </select>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Scheme</label>
-            <select 
-              className="w-full rounded-lg border-gray-300 border p-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+            <label className="block text-sm font-semibold text-gray-700 mb-2">Scheme</label>
+            <select
+              className="w-full rounded-xl border-2 border-gray-200 p-3 text-sm focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all duration-200 hover:border-gray-300 shadow-sm bg-white"
               value={selectedScheme}
               onChange={(e) => setSelectedScheme(e.target.value)}
             >
@@ -329,16 +352,16 @@ function PlansView({ data }: { data: WaterPlan[] }) {
       </div>
 
       {/* Search and Sort Controls */}
-      <div className="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-gray-100">
-        <div className="flex flex-col md:flex-row gap-4">
+      <div className="bg-linear-to-br from-white to-blue-50 p-6 rounded-2xl shadow-lg border border-gray-200/50 backdrop-blur-sm">
+        <div className="flex flex-col md:flex-row gap-6">
           {/* Search Input */}
           <div className="flex-1">
-            <label htmlFor="plan-search" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="plan-search" className="block text-sm font-semibold text-gray-700 mb-3">
               Search Plans
             </label>
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Search className="h-5 w-5 text-gray-400" />
+            <div className="relative group">
+              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                <Search className="h-5 w-5 text-gray-400 group-focus-within:text-blue-500 transition-colors" />
               </div>
               <input
                 id="plan-search"
@@ -346,26 +369,28 @@ function PlansView({ data }: { data: WaterPlan[] }) {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search by name, status, or expiry year..."
-                className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg
-                         focus:ring-2 focus:ring-blue-500 focus:border-blue-500
-                         text-sm placeholder-gray-400"
+                className="block w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-xl
+                         focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500
+                         text-sm placeholder-gray-400 transition-all duration-200
+                         hover:border-gray-300 shadow-sm bg-white"
               />
             </div>
           </div>
 
           {/* Sort Buttons */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 mb-3">
               Sort By
             </label>
             <div className="flex gap-2">
               <button
                 onClick={() => setSortBy('expiry')}
                 className={clsx(
-                  "flex items-center gap-2 px-4 py-2 rounded-lg border font-medium text-sm transition-colors",
+                  "flex items-center gap-2 px-4 py-3 rounded-xl font-semibold text-sm transition-all duration-200",
+                  "shadow-sm hover:shadow-md transform hover:-translate-y-0.5",
                   sortBy === 'expiry'
-                    ? "bg-blue-50 border-blue-500 text-blue-700"
-                    : "bg-white border-gray-300 text-gray-700 hover:bg-gray-50"
+                    ? "bg-linear-to-r from-blue-500 to-cyan-600 text-white shadow-lg shadow-blue-500/30"
+                    : "bg-white border-2 border-gray-200 text-gray-700 hover:border-blue-300 hover:bg-blue-50"
                 )}
               >
                 <Calendar className="w-4 h-4" />
@@ -374,10 +399,11 @@ function PlansView({ data }: { data: WaterPlan[] }) {
               <button
                 onClick={() => setSortBy('name')}
                 className={clsx(
-                  "flex items-center gap-2 px-4 py-2 rounded-lg border font-medium text-sm transition-colors",
+                  "flex items-center gap-2 px-4 py-3 rounded-xl font-semibold text-sm transition-all duration-200",
+                  "shadow-sm hover:shadow-md transform hover:-translate-y-0.5",
                   sortBy === 'name'
-                    ? "bg-blue-50 border-blue-500 text-blue-700"
-                    : "bg-white border-gray-300 text-gray-700 hover:bg-gray-50"
+                    ? "bg-linear-to-r from-blue-500 to-cyan-600 text-white shadow-lg shadow-blue-500/30"
+                    : "bg-white border-2 border-gray-200 text-gray-700 hover:border-blue-300 hover:bg-blue-50"
                 )}
               >
                 <ArrowUpDown className="w-4 h-4" />
@@ -389,8 +415,13 @@ function PlansView({ data }: { data: WaterPlan[] }) {
 
         {/* Search Results Count */}
         {searchQuery && (
-          <div className="mt-4 text-sm text-gray-600">
-            Found <span className="font-semibold">{filteredAndSortedData.length}</span> plan{filteredAndSortedData.length !== 1 ? 's' : ''} matching "{searchQuery}"
+          <div className="mt-4 pt-4 border-t border-gray-200">
+            <div className="flex items-center gap-2 text-sm">
+              <div className="h-2 w-2 rounded-full bg-blue-500 animate-pulse"></div>
+              <span className="text-gray-600">
+                Found <span className="font-bold text-blue-600">{filteredAndSortedData.length}</span> plan{filteredAndSortedData.length !== 1 ? 's' : ''} matching "{searchQuery}"
+              </span>
+            </div>
           </div>
         )}
       </div>
@@ -399,35 +430,43 @@ function PlansView({ data }: { data: WaterPlan[] }) {
       <div className="grid grid-cols-1 gap-6">
         {filteredAndSortedData.length > 0 ? (
           filteredAndSortedData.map((plan, i) => (
-          <div key={i} className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-            <div className="flex flex-col md:flex-row justify-between gap-4 mb-4">
-              <div>
-                <h3 className="text-lg font-bold text-gray-900">{plan['Plan Name']}</h3>
+          <div key={i} className="group bg-white p-8 rounded-2xl shadow-md border border-gray-200/50 hover:shadow-2xl hover:border-blue-200 transition-all duration-300 hover:-translate-y-1">
+            <div className="flex flex-col md:flex-row justify-between gap-4 mb-6">
+              <div className="flex-1">
+                <h3 className="text-xl font-bold mb-3 bg-linear-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">{plan['Plan Name']}</h3>
                 <span className={clsx(
-                  "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium mt-2",
-                  ['2024', '2025'].some(y => String(plan['Estimated Expiry']).includes(y)) 
-                    ? "bg-red-100 text-red-800"
-                    : "bg-green-100 text-green-800"
+                  "inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold shadow-sm",
+                  ['2024', '2025'].some(y => String(plan['Estimated Expiry']).includes(y))
+                    ? "bg-linear-to-r from-red-500 to-orange-600 text-white shadow-red-500/30"
+                    : "bg-linear-to-r from-green-500 to-emerald-600 text-white shadow-green-500/30"
                 )}>
+                  <Calendar className="w-3.5 h-3.5" />
                   Expires: {plan['Estimated Expiry']}
                 </span>
               </div>
               {plan.URL && (
-                <a 
-                  href={plan.URL} 
-                  target="_blank" 
+                <a
+                  href={plan.URL}
+                  target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-800 font-medium"
+                  className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-800 font-semibold transition-all duration-200 hover:gap-3 group/link"
                 >
                   View on Business QLD
-                  <ExternalLink className="w-4 h-4" />
+                  <ExternalLink className="w-4 h-4 transform group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
                 </a>
               )}
             </div>
-            
-            <div className="bg-gray-50 rounded-lg p-4 text-sm text-gray-700 leading-relaxed">
-               <p className="font-semibold text-gray-900 mb-1">Status Update:</p>
-               {plan['Status Summary']}
+
+            <div className="bg-linear-to-br from-blue-50 via-cyan-50 to-blue-100 border-l-4 border-blue-500 rounded-2xl p-6 shadow-sm">
+              <div className="flex items-start gap-3">
+                <div className="p-2 bg-white rounded-xl shadow-sm">
+                  <Info className="w-5 h-5 text-blue-600" />
+                </div>
+                <div className="flex-1">
+                  <p className="font-bold text-blue-900 mb-2 text-sm">Status Update</p>
+                  <p className="text-sm text-blue-900 leading-relaxed">{plan['Status Summary']}</p>
+                </div>
+              </div>
             </div>
           </div>
           ))
@@ -462,35 +501,38 @@ function ScansView({ scans }: { scans: ScanData[] }) {
   return (
     <div className="space-y-8">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <Card 
-          title="Latest Scan" 
+        <Card
+          title="Latest Scan"
           value={scans[0]?.date || "N/A"}
           icon={<Newspaper className="w-6 h-6 text-purple-500" />}
           subtext={scans[0]?.title || "No scans available"}
         />
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-6">
         {scans.map((scan) => (
-          <div key={scan.id} className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-             <button 
+          <div key={scan.id} className="group bg-white rounded-2xl shadow-md border border-gray-200/50 overflow-hidden hover:shadow-2xl hover:border-purple-200 transition-all duration-300">
+             <button
               onClick={() => setExpandedId(expandedId === scan.id ? null : scan.id)}
-              className="w-full flex items-center justify-between p-6 text-left hover:bg-gray-50 transition-colors"
+              className="w-full flex items-center justify-between p-8 text-left hover:bg-linear-to-r hover:from-purple-50/50 hover:to-pink-50/50 transition-all duration-200"
              >
-                <div>
-                  <div className="flex items-center gap-3 mb-1">
-                    <span className="text-sm font-medium text-purple-600 bg-purple-50 px-2 py-1 rounded-md">
+                <div className="flex-1">
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold bg-linear-to-r from-purple-500 to-pink-600 text-white shadow-lg shadow-purple-500/30">
+                      <Calendar className="w-3.5 h-3.5" />
                       {scan.date}
                     </span>
                   </div>
-                  <h3 className="text-lg font-bold text-gray-900">{scan.title}</h3>
-                  <p className="text-sm text-gray-500 mt-1">{scan.description}</p>
+                  <h3 className="text-xl font-bold mb-2 bg-linear-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">{scan.title}</h3>
+                  <p className="text-sm text-gray-600 leading-relaxed">{scan.description}</p>
                 </div>
-                {expandedId === scan.id ? (
-                  <ChevronUp className="w-5 h-5 text-gray-400" />
-                ) : (
-                  <ChevronDown className="w-5 h-5 text-gray-400" />
-                )}
+                <div className="ml-4 p-3 bg-linear-to-br from-purple-100 to-pink-100 rounded-2xl group-hover:scale-110 transition-transform duration-200">
+                  {expandedId === scan.id ? (
+                    <ChevronUp className="w-6 h-6 text-purple-600" />
+                  ) : (
+                    <ChevronDown className="w-6 h-6 text-purple-600" />
+                  )}
+                </div>
              </button>
              
              {expandedId === scan.id && scan.contentHtml && (
@@ -550,20 +592,252 @@ function ScansView({ scans }: { scans: ScanData[] }) {
   );
 }
 
+function ArticlesView({ articles }: { articles: ArticleData[] }) {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedTag, setSelectedTag] = useState<string>("All");
+
+  // Get all unique tags from articles
+  const allTags = useMemo(() => {
+    const tagSet = new Set<string>();
+    articles.forEach(article => {
+      article.tags.forEach(tag => tagSet.add(tag));
+    });
+    return ["All", ...Array.from(tagSet).sort()];
+  }, [articles]);
+
+  // Filter articles
+  const filteredArticles = useMemo(() => {
+    return articles.filter(article => {
+      // Tag filter
+      if (selectedTag !== "All" && !article.tags.includes(selectedTag)) {
+        return false;
+      }
+
+      // Search filter
+      if (searchQuery.trim()) {
+        const query = searchQuery.toLowerCase();
+        return (
+          article.title.toLowerCase().includes(query) ||
+          article.source.toLowerCase().includes(query) ||
+          article.implications.toLowerCase().includes(query) ||
+          article.tags.some(tag => tag.toLowerCase().includes(query))
+        );
+      }
+
+      return true;
+    });
+  }, [articles, searchQuery, selectedTag]);
+
+  return (
+    <div className="space-y-6 md:space-y-8">
+      {/* KPIs */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <Card
+          title="Total Articles"
+          value={articles.length.toString()}
+          icon={<BookOpen className="w-6 h-6 text-indigo-500" />}
+          subtext="Media articles tracked"
+        />
+        <Card
+          title="Latest Article"
+          value={articles[0]?.date || "N/A"}
+          icon={<Calendar className="w-6 h-6 text-blue-500" />}
+          subtext={articles[0]?.source || "No articles yet"}
+        />
+        <Card
+          title="Sources"
+          value={new Set(articles.map(a => a.source)).size.toString()}
+          icon={<Newspaper className="w-6 h-6 text-purple-500" />}
+          subtext="Unique media sources"
+        />
+      </div>
+
+      {/* Search and Filter Controls */}
+      <div className="bg-linear-to-br from-white to-gray-50 p-6 rounded-2xl shadow-lg border border-gray-200/50 backdrop-blur-sm">
+        <div className="flex flex-col gap-6">
+          {/* Search Input */}
+          <div className="flex-1">
+            <label htmlFor="article-search" className="block text-sm font-semibold text-gray-700 mb-3">
+              Search Articles
+            </label>
+            <div className="relative group">
+              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                <Search className="h-5 w-5 text-gray-400 group-focus-within:text-indigo-500 transition-colors" />
+              </div>
+              <input
+                id="article-search"
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search by title, source, tags, or implications..."
+                className="block w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-xl
+                         focus:ring-4 focus:ring-indigo-500/20 focus:border-indigo-500
+                         text-sm placeholder-gray-400 transition-all duration-200
+                         hover:border-gray-300 shadow-sm"
+              />
+            </div>
+          </div>
+
+          {/* Tag Filter Buttons */}
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-3">
+              Filter by Tag
+            </label>
+            <div className="relative">
+              <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
+                {allTags.map(tag => (
+                  <button
+                    key={tag}
+                    onClick={() => setSelectedTag(tag)}
+                    className={clsx(
+                      "px-4 py-2 rounded-full font-medium text-xs transition-all duration-200 whitespace-nowrap shrink-0",
+                      "shadow-sm hover:shadow-md transform hover:-translate-y-0.5",
+                      selectedTag === tag
+                        ? "bg-linear-to-r from-indigo-500 to-purple-600 text-white border-0 shadow-lg shadow-indigo-500/30"
+                        : "bg-white border-2 border-gray-200 text-gray-700 hover:border-indigo-300 hover:bg-indigo-50"
+                    )}
+                  >
+                    {tag}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Search Results Count */}
+        {(searchQuery || selectedTag !== "All") && (
+          <div className="mt-4 pt-4 border-t border-gray-200">
+            <div className="flex items-center gap-2 text-sm">
+              <div className="h-2 w-2 rounded-full bg-indigo-500 animate-pulse"></div>
+              <span className="text-gray-600">
+                Found <span className="font-bold text-indigo-600">{filteredArticles.length}</span> article{filteredArticles.length !== 1 ? 's' : ''}
+                {searchQuery && ` matching "${searchQuery}"`}
+                {selectedTag !== "All" && ` with tag "${selectedTag}"`}
+              </span>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Articles Grid */}
+      <div className="grid grid-cols-1 gap-8">
+        {filteredArticles.length > 0 ? (
+          filteredArticles.map((article) => (
+            <div key={article.id} className="group bg-white p-8 rounded-2xl shadow-md border border-gray-200/50 hover:shadow-2xl hover:border-indigo-200 transition-all duration-300 hover:-translate-y-1">
+              {/* Header */}
+              <div className="flex flex-col gap-4 mb-6">
+                <div className="flex-1">
+                  <div className="flex items-center gap-3 mb-3 flex-wrap">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-linear-to-r from-gray-100 to-gray-200 text-gray-700">
+                      <Calendar className="w-3 h-3" />
+                      {article.date}
+                    </span>
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-linear-to-r from-indigo-100 to-purple-100 text-indigo-700">
+                      <Newspaper className="w-3 h-3" />
+                      {article.source}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2 mb-4 flex-wrap">
+                    {article.tags.map(tag => (
+                      <span
+                        key={tag}
+                        className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-linear-to-r from-blue-50 to-indigo-50 text-indigo-700 border border-indigo-200 hover:from-indigo-500 hover:to-purple-600 hover:text-white cursor-pointer transition-all duration-200 hover:shadow-md hover:scale-105"
+                        onClick={() => setSelectedTag(tag)}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <a
+                    href={article.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-2xl font-bold text-gray-900 hover:text-indigo-600 transition-colors inline-flex items-center gap-3 group/link"
+                  >
+                    <span className="bg-linear-to-r from-gray-900 to-gray-700 group-hover/link:from-indigo-600 group-hover/link:to-purple-600 bg-clip-text text-transparent">
+                      {article.title}
+                    </span>
+                    <ExternalLink className="w-5 h-5 text-gray-400 group-hover/link:text-indigo-600 transform group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-all" />
+                  </a>
+                </div>
+              </div>
+
+              {/* Implications Callout */}
+              <div className="bg-linear-to-br from-amber-50 via-orange-50 to-amber-100 border-l-4 border-amber-500 rounded-2xl p-6 mb-6 shadow-sm">
+                <div className="flex items-start gap-3">
+                  <div className="p-2 bg-white rounded-xl shadow-sm">
+                    <Info className="w-5 h-5 text-amber-600" />
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="text-base font-bold text-amber-900 mb-2 flex items-center gap-2">
+                      Implications for Sunwater
+                      <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-amber-200 text-amber-800">
+                        Analysis
+                      </span>
+                    </h4>
+                    <p className="text-sm text-amber-900 leading-relaxed">{article.implications}</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Summary (if content exists) */}
+              {article.contentHtml && (
+                <div className="prose prose-sm max-w-none text-gray-700 prose-headings:text-gray-900 prose-a:text-indigo-600 hover:prose-a:text-indigo-700">
+                  <div dangerouslySetInnerHTML={{ __html: article.contentHtml }} />
+                </div>
+              )}
+            </div>
+          ))
+        ) : (
+          <div className="text-center py-12 bg-white rounded-xl border border-gray-100">
+            <BookOpen className="w-12 h-12 text-gray-300 mx-auto mb-4" />
+            <h3 className="text-lg font-medium text-gray-900">
+              {articles.length === 0 ? "No Articles Yet" : "No articles found"}
+            </h3>
+            <p className="text-gray-500 mt-2">
+              {articles.length === 0
+                ? "Add article markdown files to content/articles to see them here."
+                : searchQuery || selectedTag !== "All"
+                ? "Try adjusting your search or filter criteria."
+                : "No articles available."
+              }
+            </p>
+            {(searchQuery || selectedTag !== "All") && (
+              <button
+                onClick={() => {
+                  setSearchQuery("");
+                  setSelectedTag("All");
+                }}
+                className="mt-4 text-blue-600 hover:text-blue-800 font-medium text-sm"
+              >
+                Clear filters
+              </button>
+            )}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 function Card({ title, value, icon, subtext }: any) {
   return (
-    <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col">
-      <div className="flex items-start justify-between mb-4">
-        <div>
-          <p className="text-sm font-medium text-gray-500">{title}</p>
-          <h4 className="text-2xl font-bold text-gray-900 mt-1">{value}</h4>
+    <div className="group relative bg-linear-to-br from-white via-gray-50 to-white p-6 rounded-2xl shadow-lg border border-gray-200/50 hover:shadow-2xl hover:border-indigo-200 transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+      {/* Background gradient overlay on hover */}
+      <div className="absolute inset-0 bg-linear-to-br from-indigo-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+      <div className="relative flex items-start justify-between mb-4">
+        <div className="flex-1">
+          <p className="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-2">{title}</p>
+          <h4 className="text-3xl font-bold bg-linear-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">{value}</h4>
         </div>
-        <div className="p-2 bg-gray-50 rounded-lg">
+        <div className="p-3 bg-linear-to-br from-indigo-50 to-purple-50 rounded-2xl shadow-sm group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
           {icon}
         </div>
       </div>
-      <div className="mt-auto">
-        <p className="text-xs text-gray-500">{subtext}</p>
+      <div className="relative mt-auto">
+        <p className="text-xs text-gray-600 leading-relaxed">{subtext}</p>
       </div>
     </div>
   );

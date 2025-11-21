@@ -1,0 +1,14 @@
+---
+date: 2025-10-29
+title: Paradise Dam Improvement Project - Construction Assurer Tender
+source: CWC Tenders
+url: https://www.cwctenders.com/tender-detail/121152692-paradise-dam-improvement-project-construction-assurer
+tags: ["Paradise Dam", "infrastructure", "dam-construction", "RCC", "tender", "construction-assurance", "Sunwater", "quality-assurance", "Bundaberg"]
+implications: Critical quality assurance procurement for Sunwater's flagship infrastructure project. This tender signals Sunwater is progressing toward major construction phase of the Paradise Dam replacement following early works approval in June 2025. The construction assurer will provide independent technical inspections and risk-based monitoring - essential given the original dam's catastrophic RCC concrete quality failures that necessitated this $1B+ rebuild. This role is crucial for protecting Sunwater's reputation after the initial construction failures and ensuring delivery standards for RCC and conventionally vibrated concrete work. The December 2025 closing date aligns with the early 2026 detailed business case completion timeline, positioning Sunwater to commence major construction once government approval is secured. Success of this assurance function will be vital for stakeholder confidence in what is Sunwater's largest and most scrutinized infrastructure project.
+---
+
+## Summary
+
+Sunwater has issued a tender seeking qualified organizations to provide construction assurance services for the Paradise Dam Improvement Project. Released on October 29, 2025 with a closing date of December 8, 2025, the open market Request For Offer invites local, national, and international bidders to deliver technical inspections, risk-based monitoring, and construction delivery assurance across the project. Successful applicants must demonstrate proven experience within the past decade in bulk water infrastructure projects and specifically in dam construction using Roller Compacted Concrete (RCC) and Conventionally Vibrated Concrete technologies.
+
+This tender represents a critical procurement step as Sunwater moves toward the major construction phase of replacing Paradise Dam's failed wall. The original 52-metre-high RCC gravity dam, constructed 2003-2005, suffered catastrophic concrete quality issues with far higher clay content than standard RCC dams and poor lift joint quality that made repairs unfeasible. Following Queensland Government approval of early works in June 2025, Sunwater has appointed the Paradise Alliance with GHD as design partner and CPB Contractors/Georgiou Group as construction partners, with the detailed business case expected for government decision in early 2026. The construction assurer will provide independent oversight of what is Sunwater's largest and most scrutinized infrastructure project, ensuring quality standards are maintained throughout the rebuild of this critical Bundaberg region water supply asset.

@@ -1,0 +1,107 @@
+# Water Scraper Project - Cursor Rules
+
+## Project Context
+
+This project is a Water Industry Dashboard for tracking media articles and developments related to Sunwater, Queensland's largest bulk water supplier.
+
+**Sunwater Key Facts:**
+- Queensland's largest bulk water supplier (40% of QLD's commercial water)
+- Infrastructure: 19 dams, 65 weirs/barrages, 1,951km pipelines, 595km channels
+- Customers: 5,000+ across agriculture (primary), urban, and industrial sectors
+- Major projects: Paradise Dam Improvement Project ($4.4B), RAB pricing review
+- Strategic priorities: Dam safety, water allocation, pricing, customer relations, environmental stewardship
+
+## Adding Media Articles Workflow
+
+When the user asks to add a media article to the database, follow this workflow:
+
+### Critical Requirements
+
+**DO NOT HALLUCINATE:**
+- Only use information you can verify from the article source
+- If a source is paywalled or inaccessible, explicitly state what information is missing
+- Search for alternative sources if primary URL is blocked
+- If you cannot find sufficient information, tell the user rather than making up content
+- Mark articles as "PAYWALLED" in the summary if content cannot be accessed
+
+### Process
+
+1. **Fetch Article Content**
+   - Use WebFetch to retrieve the article
+   - If blocked, search for the article using WebSearch with identifying information
+   - Try alternative sources or cached versions
+   - Document any access limitations
+
+2. **Extract Metadata** (all must be accurate, not guessed)
+   - Title: Exact headline from source
+   - Source: Publication name
+   - Date: Publication date in YYYY-MM-DD format
+   - URL: Original article URL
+
+3. **Write Summary**
+   - 2-3 well-structured paragraphs
+   - Include key facts, quotes, and context
+   - Focus on concrete information, not speculation
+   - Cite specific numbers, dates, and stakeholder names
+   - Maintain objective tone
+
+4. **Analyze Sunwater Implications**
+
+   Write 3-5 sentences describing **specific, concrete implications**:
+   - Operational impacts (service delivery, infrastructure management)
+   - Financial impacts (revenue, costs, investment requirements)
+   - Regulatory/policy impacts (compliance, pricing, allocation)
+   - Customer relations impacts (satisfaction, demand patterns)
+   - Reputational impacts (political scrutiny, public perception)
+   - Strategic positioning (competitive advantage, risk exposure)
+
+   **Be specific:** Instead of "This affects Sunwater's operations," write "This rebate scheme creates customer relations challenges as irrigators must pay full price upfront and claim rebates through QRIDA separately, potentially impacting water demand patterns."
+
+5. **Generate Tags**
+   - Project names: "Paradise Dam", "Fitzroy to Gladstone Pipeline" (if applicable)
+   - Organizations: "Sunwater", "QRIDA", "QCA", "Seqwater", "Queensland Government", "Crisafulli Government"
+   - Topics: "water-policy", "irrigation", "pricing", "infrastructure", "dam-construction"
+   - Locations: "Bundaberg", "Gladstone", "Queensland" (if relevant)
+
+6. **Create Markdown File**
+
+   **Filename:** `web/content/articles/YYYY-MM-DD-slug.md`
+
+   **Structure:**
+   ```markdown
+   ---
+   date: YYYY-MM-DD
+   title: Exact Article Title
+   source: Publication Name
+   url: https://article-url.com
+   tags: ["Tag1", "Tag2", "topic-tag", "location-tag"]
+   implications: 3-5 sentences describing specific, concrete impacts for Sunwater. Include operational, financial, customer relations, regulatory, or reputational implications with specific details. Reference Sunwater's infrastructure scale (19 dams, 65 weirs, 5000+ customers) when relevant. Explain how this affects their strategic priorities, project delivery, or stakeholder relationships.
+   ---
+
+   ## Summary
+
+   First paragraph covering the main story, key facts, and primary stakeholders.
+
+   Second paragraph providing additional context, quotes, timeline, or detailed implications.
+
+   Third paragraph (if needed) for additional background or broader context.
+   ```
+
+### Quality Checks
+
+Before creating the file, verify:
+- [ ] All required metadata fields are present and accurate
+- [ ] Summary is 2-3 paragraphs, fact-based, and well-structured
+- [ ] Implications are specific and actionable (not generic)
+- [ ] Tags include mix of proper nouns and topic tags
+- [ ] Filename follows YYYY-MM-DD-slug.md format
+- [ ] No hallucinated information or speculation presented as fact
+- [ ] Any access limitations or uncertainties are clearly noted
+
+## General Project Rules
+
+- Reference the full workflow documentation at `/docs/workflow-add-media-article.md`
+- Previous articles in `web/content/articles/` provide format examples
+- The dashboard uses Next.js - no build step required, articles appear automatically
+- Maintain professional, objective tone in all content
+- Base all Sunwater implications on verified facts from key documents (annual reports, government statements, QCA reviews)

@@ -4,6 +4,7 @@ import { useState, useMemo } from 'react';
 import { WaterAllocation, WaterPlan } from '@/lib/data';
 import { ScanData } from '@/lib/scans';
 import { ArticleData } from '@/lib/articles';
+import { ProjectData } from '@/lib/projects';
 import { 
   BarChart, 
   Bar, 
@@ -14,7 +15,7 @@ import {
   Legend, 
   ResponsiveContainer 
 } from 'recharts';
-import { Filter, Droplets, ArrowRightLeft, Info, Calendar, FileText, ExternalLink, Newspaper, ChevronDown, ChevronUp, Search, ArrowUpDown, BookOpen } from 'lucide-react';
+import { Filter, Droplets, ArrowRightLeft, Info, Calendar, FileText, ExternalLink, Newspaper, ChevronDown, ChevronUp, Search, ArrowUpDown, BookOpen, Building2 } from 'lucide-react';
 import clsx from 'clsx';
 
 interface DashboardProps {
@@ -22,11 +23,12 @@ interface DashboardProps {
   initialPlans: WaterPlan[];
   scans: ScanData[];
   articles: ArticleData[];
+  projects: ProjectData[];
 }
 
-type Tab = 'allocations' | 'plans' | 'scans' | 'articles';
+type Tab = 'allocations' | 'plans' | 'scans' | 'articles' | 'projects';
 
-export default function Dashboard({ initialAllocations, initialPlans, scans, articles }: DashboardProps) {
+export default function Dashboard({ initialAllocations, initialPlans, scans, articles, projects }: DashboardProps) {
   const [activeTab, setActiveTab] = useState<Tab>('allocations');
 
   return (
@@ -114,6 +116,26 @@ export default function Dashboard({ initialAllocations, initialPlans, scans, art
             <span className="hidden sm:inline">Media Articles</span>
             <span className="sm:hidden">Articles</span>
           </button>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              setActiveTab('projects');
+            }}
+            className={clsx(
+              'whitespace-nowrap py-3 px-4 md:px-6 rounded-xl font-semibold text-sm flex items-center gap-2 transition-all duration-300',
+              'shadow-sm hover:shadow-md transform hover:-translate-y-0.5',
+              'relative z-10 cursor-pointer',
+              activeTab === 'projects'
+                ? 'bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-lg shadow-emerald-500/30'
+                : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
+            )}
+          >
+            <Building2 className="w-4 h-4" />
+            <span className="hidden sm:inline">Infrastructure Projects</span>
+            <span className="sm:hidden">Projects</span>
+          </button>
         </nav>
       </div>
 
@@ -124,8 +146,10 @@ export default function Dashboard({ initialAllocations, initialPlans, scans, art
         <PlansView data={initialPlans} />
       ) : activeTab === 'scans' ? (
         <ScansView scans={scans} />
-      ) : (
+      ) : activeTab === 'articles' ? (
         <ArticlesView articles={articles} />
+      ) : (
+        <ProjectsView projects={projects} />
       )}
     </div>
   );
@@ -853,6 +877,393 @@ function ArticlesView({ articles }: { articles: ArticleData[] }) {
               </button>
             )}
           </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function ProjectsView({ projects }: { projects: ProjectData[] }) {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedRegion, setSelectedRegion] = useState<string>('All');
+  const [selectedStatus, setSelectedStatus] = useState<string>('All');
+  const [expandedId, setExpandedId] = useState<string | null>(null);
+
+  // Filter and search projects
+  const filteredProjects = useMemo(() => {
+    return projects.filter(project => {
+      const matchesSearch = !searchQuery ||
+        project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        project.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        project.region.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        project.location?.toLowerCase().includes(searchQuery.toLowerCase());
+
+      const matchesRegion = selectedRegion === 'All' || project.region === selectedRegion;
+      const matchesStatus = selectedStatus === 'All' || project.status === selectedStatus;
+
+      return matchesSearch && matchesRegion && matchesStatus;
+    });
+  }, [projects, searchQuery, selectedRegion, selectedStatus]);
+
+  // Get unique regions
+  const regions = useMemo(() => {
+    const unique = new Set(projects.map(p => p.region).filter(Boolean));
+    return ['All', ...Array.from(unique).sort()];
+  }, [projects]);
+
+  // Get unique statuses
+  const statuses = useMemo(() => {
+    const unique = new Set(projects.map(p => p.status));
+    return ['All', ...Array.from(unique).sort()];
+  }, [projects]);
+
+  // Status badge color mapping
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case 'completed':
+        return 'bg-green-100 text-green-800 border-green-200';
+      case 'construction':
+        return 'bg-blue-100 text-blue-800 border-blue-200';
+      case 'planning':
+        return 'bg-yellow-100 text-yellow-800 border-yellow-200';
+      case 'proposed':
+        return 'bg-purple-100 text-purple-800 border-purple-200';
+      case 'discontinued':
+        return 'bg-gray-100 text-gray-800 border-gray-200';
+      default:
+        return 'bg-gray-100 text-gray-800 border-gray-200';
+    }
+  };
+
+  return (
+    <div className="space-y-6">
+      {/* KPI Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+        <Card
+          title="Total Projects"
+          value={projects.length}
+          icon={<Building2 className="w-6 h-6 text-emerald-600" />}
+          subtext="Queensland water infrastructure projects"
+        />
+        <Card
+          title="Water Plan Regions"
+          value={regions.length - 1}
+          icon={<Filter className="w-6 h-6 text-teal-600" />}
+          subtext="Regions with infrastructure projects"
+        />
+        <Card
+          title="Active/Planning"
+          value={projects.filter(p => ['planning', 'construction', 'proposed'].includes(p.status)).length}
+          icon={<Info className="w-6 h-6 text-blue-600" />}
+          subtext="Projects in development pipeline"
+        />
+      </div>
+
+      {/* Search and Filters */}
+      <div className="bg-white p-4 md:p-6 rounded-2xl shadow-lg border border-gray-200/50">
+        <div className="space-y-4">
+          {/* Search Bar */}
+          <div className="relative">
+            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+            <input
+              type="text"
+              placeholder="Search projects by name, description, region, or location..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
+            />
+          </div>
+
+          {/* Filters */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <Filter className="inline w-4 h-4 mr-1" />
+                Water Plan Region
+              </label>
+              <select
+                value={selectedRegion}
+                onChange={(e) => setSelectedRegion(e.target.value)}
+                className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all bg-white"
+              >
+                {regions.map(region => (
+                  <option key={region} value={region}>{region}</option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <Info className="inline w-4 h-4 mr-1" />
+                Project Status
+              </label>
+              <select
+                value={selectedStatus}
+                onChange={(e) => setSelectedStatus(e.target.value)}
+                className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all bg-white"
+              >
+                {statuses.map(status => (
+                  <option key={status} value={status}>
+                    {status === 'All' ? 'All' : status.charAt(0).toUpperCase() + status.slice(1)}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          {/* Results Count */}
+          <div className="flex items-center justify-between text-sm text-gray-600">
+            <span>
+              Showing <span className="font-semibold text-emerald-600">{filteredProjects.length}</span> of {projects.length} projects
+            </span>
+            {(searchQuery || selectedRegion !== 'All' || selectedStatus !== 'All') && (
+              <button
+                onClick={() => {
+                  setSearchQuery('');
+                  setSelectedRegion('All');
+                  setSelectedStatus('All');
+                }}
+                className="text-emerald-600 hover:text-emerald-800 font-medium"
+              >
+                Clear filters
+              </button>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Projects List */}
+      <div className="space-y-4">
+        {filteredProjects.length === 0 ? (
+          <div className="bg-white p-12 rounded-2xl shadow-lg border border-gray-200/50 text-center">
+            <Building2 className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+            <p className="text-gray-500 text-lg">No projects found matching your criteria.</p>
+          </div>
+        ) : (
+          filteredProjects.map((project) => {
+            const isExpanded = expandedId === project.id;
+            return (
+              <div
+                key={project.id}
+                className="bg-white rounded-2xl shadow-lg border border-gray-200/50 overflow-hidden hover:shadow-xl transition-all duration-300"
+              >
+                {/* Project Header */}
+                <div className="p-6">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-2">
+                        <h3 className="text-xl md:text-2xl font-bold text-gray-900">{project.title}</h3>
+                        <span className={clsx(
+                          'px-3 py-1 rounded-full text-xs font-semibold border',
+                          getStatusColor(project.status)
+                        )}>
+                          {project.status.charAt(0).toUpperCase() + project.status.slice(1)}
+                        </span>
+                      </div>
+                      <p className="text-gray-600 leading-relaxed">{project.description}</p>
+                    </div>
+                  </div>
+
+                  {/* Quick Info Grid */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-4">
+                    {project.region && (
+                      <div className="bg-gradient-to-br from-emerald-50 to-teal-50 p-3 rounded-xl">
+                        <p className="text-xs font-semibold text-gray-600 mb-1">Region</p>
+                        <p className="text-sm font-bold text-emerald-700">{project.region}</p>
+                      </div>
+                    )}
+                    {project.capacity && (
+                      <div className="bg-gradient-to-br from-blue-50 to-cyan-50 p-3 rounded-xl">
+                        <p className="text-xs font-semibold text-gray-600 mb-1">Capacity</p>
+                        <p className="text-sm font-bold text-blue-700">{project.capacity}</p>
+                      </div>
+                    )}
+                    {project.estimatedCost && (
+                      <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-3 rounded-xl">
+                        <p className="text-xs font-semibold text-gray-600 mb-1">Estimated Cost</p>
+                        <p className="text-sm font-bold text-purple-700">{project.estimatedCost}</p>
+                      </div>
+                    )}
+                    {project.irrigationArea && (
+                      <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-3 rounded-xl">
+                        <p className="text-xs font-semibold text-gray-600 mb-1">Irrigation Area</p>
+                        <p className="text-sm font-bold text-green-700">{project.irrigationArea}</p>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Expand/Collapse Button */}
+                  <button
+                    onClick={() => setExpandedId(isExpanded ? null : project.id)}
+                    className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-gradient-to-r from-emerald-50 to-teal-50 hover:from-emerald-100 hover:to-teal-100 rounded-xl transition-all duration-200 border border-emerald-200"
+                  >
+                    <span className="font-semibold text-emerald-700">
+                      {isExpanded ? 'Hide Details' : 'View Details'}
+                    </span>
+                    {isExpanded ? (
+                      <ChevronUp className="w-5 h-5 text-emerald-700" />
+                    ) : (
+                      <ChevronDown className="w-5 h-5 text-emerald-700" />
+                    )}
+                  </button>
+                </div>
+
+                {/* Expanded Details */}
+                {isExpanded && (
+                  <div className="border-t border-gray-200 bg-gradient-to-br from-gray-50 to-white p-6 space-y-6">
+                    {/* Detailed Information Sections */}
+                    {project.location && (
+                      <div>
+                        <h4 className="text-sm font-bold text-gray-700 mb-2 flex items-center gap-2">
+                          <Info className="w-4 h-4 text-emerald-600" />
+                          Location
+                        </h4>
+                        <p className="text-gray-700">{project.location}</p>
+                      </div>
+                    )}
+
+                    {project.fundingCommitted && (
+                      <div>
+                        <h4 className="text-sm font-bold text-gray-700 mb-2 flex items-center gap-2">
+                          <Info className="w-4 h-4 text-emerald-600" />
+                          Funding
+                        </h4>
+                        <p className="text-gray-700 mb-2"><strong>Committed:</strong> {project.fundingCommitted}</p>
+                        {project.fundingSources && project.fundingSources.length > 0 && (
+                          <div>
+                            <p className="text-sm font-semibold text-gray-600 mb-1">Sources:</p>
+                            <ul className="list-disc list-inside text-gray-700 space-y-1">
+                              {project.fundingSources.map((source, idx) => (
+                                <li key={idx}>{source}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                      </div>
+                    )}
+
+                    {project.economicBenefits && (
+                      <div>
+                        <h4 className="text-sm font-bold text-gray-700 mb-2 flex items-center gap-2">
+                          <Info className="w-4 h-4 text-emerald-600" />
+                          Economic Benefits
+                        </h4>
+                        <p className="text-gray-700">{project.economicBenefits}</p>
+                      </div>
+                    )}
+
+                    {project.timeline && (
+                      <div>
+                        <h4 className="text-sm font-bold text-gray-700 mb-2 flex items-center gap-2">
+                          <Calendar className="w-4 h-4 text-emerald-600" />
+                          Timeline
+                        </h4>
+                        <p className="text-gray-700">{project.timeline}</p>
+                      </div>
+                    )}
+
+                    {project.approvalsStatus && (
+                      <div>
+                        <h4 className="text-sm font-bold text-gray-700 mb-2 flex items-center gap-2">
+                          <FileText className="w-4 h-4 text-emerald-600" />
+                          Approvals Status
+                        </h4>
+                        <p className="text-gray-700">{project.approvalsStatus}</p>
+                      </div>
+                    )}
+
+                    {project.environmentalRisks && (
+                      <div>
+                        <h4 className="text-sm font-bold text-gray-700 mb-2 flex items-center gap-2">
+                          <Info className="w-4 h-4 text-amber-600" />
+                          Environmental Considerations
+                        </h4>
+                        <p className="text-gray-700">{project.environmentalRisks}</p>
+                      </div>
+                    )}
+
+                    {project.culturalHeritageIssues && (
+                      <div>
+                        <h4 className="text-sm font-bold text-gray-700 mb-2 flex items-center gap-2">
+                          <Info className="w-4 h-4 text-amber-600" />
+                          Cultural Heritage
+                        </h4>
+                        <p className="text-gray-700">{project.culturalHeritageIssues}</p>
+                      </div>
+                    )}
+
+                    {project.organizations && project.organizations.length > 0 && (
+                      <div>
+                        <h4 className="text-sm font-bold text-gray-700 mb-2 flex items-center gap-2">
+                          <Building2 className="w-4 h-4 text-emerald-600" />
+                          Key Organizations
+                        </h4>
+                        <div className="flex flex-wrap gap-2">
+                          {project.organizations.map((org, idx) => (
+                            <span
+                              key={idx}
+                              className="px-3 py-1 bg-emerald-100 text-emerald-800 rounded-full text-xs font-medium border border-emerald-200"
+                            >
+                              {org}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Full Content */}
+                    {project.contentHtml && (
+                      <div>
+                        <h4 className="text-sm font-bold text-gray-700 mb-3 flex items-center gap-2">
+                          <FileText className="w-4 h-4 text-emerald-600" />
+                          Detailed Information
+                        </h4>
+                        <div
+                          className="prose prose-sm max-w-none prose-headings:text-gray-900 prose-p:text-gray-700 prose-a:text-emerald-600 hover:prose-a:text-emerald-800 prose-strong:text-gray-900"
+                          dangerouslySetInnerHTML={{ __html: project.contentHtml }}
+                        />
+                      </div>
+                    )}
+
+                    {/* Links */}
+                    {project.links && project.links.length > 0 && (
+                      <div>
+                        <h4 className="text-sm font-bold text-gray-700 mb-3 flex items-center gap-2">
+                          <ExternalLink className="w-4 h-4 text-emerald-600" />
+                          External Resources
+                        </h4>
+                        <div className="space-y-2">
+                          {project.links.map((link, idx) => (
+                            <a
+                              key={idx}
+                              href={link.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center gap-2 text-emerald-600 hover:text-emerald-800 hover:underline group"
+                            >
+                              <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                              <span>{link.title}</span>
+                            </a>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Last Updated */}
+                    <div className="pt-4 border-t border-gray-200">
+                      <p className="text-xs text-gray-500">
+                        Last updated: {new Date(project.lastUpdated).toLocaleDateString('en-AU', {
+                          year: 'numeric',
+                          month: 'long',
+                          day: 'numeric'
+                        })}
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </div>
+            );
+          })
         )}
       </div>
     </div>

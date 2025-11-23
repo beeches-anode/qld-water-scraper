@@ -1,6 +1,7 @@
 import { fetchWaterAllocations, fetchWaterPlans } from '@/lib/data';
 import { getSortedScansData, getScanData } from '@/lib/scans';
 import { getSortedArticlesData, getArticleData } from '@/lib/articles';
+import { getSortedProjectsData, getProjectData } from '@/lib/projects';
 import Dashboard from '@/components/Dashboard';
 
 export default async function Home() {
@@ -11,6 +12,7 @@ export default async function Home() {
 
   const scansList = getSortedScansData();
   const articlesList = getSortedArticlesData();
+  const projectsList = getSortedProjectsData();
 
   // Pre-fetch content for all scans (since it's a small blog)
   // In a larger app, you'd fetch content on demand via API or separate page
@@ -21,6 +23,11 @@ export default async function Home() {
   // Pre-fetch content for all articles
   const articlesWithContent = await Promise.all(
     articlesList.map(article => getArticleData(article.id))
+  );
+
+  // Pre-fetch content for all projects
+  const projectsWithContent = await Promise.all(
+    projectsList.map(project => getProjectData(project.id))
   );
 
   return (
@@ -83,6 +90,7 @@ export default async function Home() {
           initialPlans={plans}
           scans={scansWithContent}
           articles={articlesWithContent}
+          projects={projectsWithContent}
         />
       </div>
     </main>

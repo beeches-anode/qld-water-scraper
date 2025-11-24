@@ -1,0 +1,17 @@
+---
+date: 2025-11-13
+title: Queensland Agriculture, Energy and Water Council Meeting
+source: Cotton Australia
+url: https://cottonaustralia.com.au/news/queensland-agriculture-energy-and-water-council-meeting
+tags: ["Sunwater", "SEQ Water", "Cotton Australia", "Queensland Government", "Crisafulli Government", "water-policy", "governance", "agriculture", "CSG-subsidence", "electricity-tariff-reform", "land-tax-reform", "Queensland"]
+implications: Governance changes with new SunWater Board members introduced at this high-level council meeting signal potential strategic direction shifts that could impact operational priorities and stakeholder engagement approaches. The focus on CSG-induced subsidence remediation may require Sunwater to collaborate on infrastructure adjustments or water management strategies in affected agricultural regions, particularly where Sunwater's 19 dams and 65 weirs serve irrigation customers. Electricity tariff reform discussions directly impact Sunwater's operational costs across its extensive pipeline and channel network, potentially affecting pricing structures and financial sustainability. The council's emphasis on agricultural stakeholder concerns, including land tax and regulatory burden, highlights ongoing political sensitivity around irrigation pricing and customer relations that Sunwater must navigate carefully. This forum demonstrates the Crisafulli government's coordinated approach to agriculture, energy, and water policy, requiring Sunwater to maintain strong relationships with peak agricultural bodies like Cotton Australia while balancing government policy objectives with customer service delivery.
+---
+
+## Summary
+
+The Queensland Government's Agriculture, Energy and Water Council (AEW Council) convened for its second session on November 6, 2025, bringing together peak agricultural organizations including Cotton Australia with ministers responsible for Agriculture (Tony Perrett), Energy (Treasurer David Janetzki), and Water (Anne Leahy). Cotton Australia was represented by Chair Liz Stott and General Manager Michael Murray, who raised several critical issues including the need to reform Land Tax to remove obligations on foreign-owned primary production land, the urgent requirement for ongoing electricity tariff reform, and industry support for a safe and practical alternative to formal forklift licensing for rural operators who use forklifts incidentally in their work.
+
+The meeting provided an opportunity for the government to introduce new members of the SunWater and SEQ Water Boards, signaling potential changes in governance and strategic direction for Queensland's major bulk water suppliers. The council also presented progress on identifying and facilitating the remediation of land economically impacted by coal seam gas (CSG)-induced subsidence, an issue that affects agricultural productivity and water management in regions where Sunwater operates infrastructure serving irrigation customers.
+
+The AEW Council, established earlier in 2025, represents a coordinated approach by the Crisafulli government to address interconnected challenges facing Queensland's agricultural sector, including water supply reliability, energy costs, and regulatory burden. This high-level forum demonstrates the government's recognition of the critical relationship between water policy, energy affordability, and agricultural competitiveness, with implications for how Sunwater engages with agricultural stakeholders and implements government water policy initiatives.
+

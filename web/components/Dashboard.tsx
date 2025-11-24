@@ -5,31 +5,36 @@ import { WaterAllocation, WaterPlan } from '@/lib/data';
 import { ScanData } from '@/lib/scans';
 import { ArticleData } from '@/lib/articles';
 import { ProjectData } from '@/lib/projects';
-import { 
-  BarChart, 
-  Bar, 
-  XAxis, 
-  YAxis, 
-  CartesianGrid, 
-  Tooltip, 
-  Legend, 
-  ResponsiveContainer 
+import { UnallocatedWater } from '@/lib/unallocated';
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+  PieChart,
+  Pie,
+  Cell
 } from 'recharts';
-import { Filter, Droplets, ArrowRightLeft, Info, Calendar, FileText, ExternalLink, Newspaper, ChevronDown, ChevronUp, Search, ArrowUpDown, BookOpen, Building2 } from 'lucide-react';
+import { Filter, Droplets, ArrowRightLeft, Info, Calendar, FileText, ExternalLink, Newspaper, ChevronDown, ChevronUp, Search, ArrowUpDown, BookOpen, Building2, Layers } from 'lucide-react';
 import clsx from 'clsx';
 
 interface DashboardProps {
   initialAllocations: WaterAllocation[];
   initialPlans: WaterPlan[];
+  unallocatedWater: UnallocatedWater[];
   scans?: ScanData[]; // Optional - scans tab temporarily removed
   articles: ArticleData[];
   projects: ProjectData[];
 }
 
-type Tab = 'allocations' | 'plans' | 'articles' | 'projects';
+type Tab = 'allocations' | 'unallocated' | 'plans' | 'articles' | 'projects';
 // 'scans' removed temporarily - can be re-added later
 
-export default function Dashboard({ initialAllocations, initialPlans, scans, articles, projects }: DashboardProps) {
+export default function Dashboard({ initialAllocations, initialPlans, unallocatedWater, scans, articles, projects }: DashboardProps) {
   const [activeTab, setActiveTab] = useState<Tab>('allocations');
 
   return (
@@ -56,6 +61,26 @@ export default function Dashboard({ initialAllocations, initialPlans, scans, art
             <Droplets className="w-4 h-4" />
             <span className="hidden sm:inline">Allocations & Trading</span>
             <span className="sm:hidden">Allocations</span>
+          </button>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              setActiveTab('unallocated');
+            }}
+            className={clsx(
+              'whitespace-nowrap py-3 px-4 md:px-6 rounded-xl font-semibold text-sm flex items-center gap-2 transition-all duration-300',
+              'shadow-sm hover:shadow-md transform hover:-translate-y-0.5',
+              'relative z-10 cursor-pointer',
+              activeTab === 'unallocated'
+                ? 'bg-gradient-to-r from-violet-500 to-purple-600 text-white shadow-lg shadow-violet-500/30'
+                : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
+            )}
+          >
+            <Layers className="w-4 h-4" />
+            <span className="hidden sm:inline">Unallocated Water</span>
+            <span className="sm:hidden">Unallocated</span>
           </button>
           <button
             type="button"
@@ -145,6 +170,8 @@ export default function Dashboard({ initialAllocations, initialPlans, scans, art
       {/* Tab Content */}
       {activeTab === 'allocations' ? (
         <AllocationsView data={initialAllocations} />
+      ) : activeTab === 'unallocated' ? (
+        <UnallocatedWaterView data={unallocatedWater} />
       ) : activeTab === 'plans' ? (
         <PlansView data={initialPlans} />
       ) : activeTab === 'articles' ? (
@@ -1408,6 +1435,290 @@ function Card({ title, value, icon, subtext }: any) {
       </div>
       <div className="relative mt-auto">
         <p className="text-xs text-gray-600 leading-relaxed">{subtext}</p>
+      </div>
+    </div>
+  );
+}
+
+// Unallocated Water View Component
+function UnallocatedWaterView({ data }: { data: UnallocatedWater[] }) {
+  const [selectedBasin, setSelectedBasin] = useState<string>("All");
+  const [sortColumn, setSortColumn] = useState<keyof UnallocatedWater | null>(null);
+  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
+
+  // Get unique basins
+  const basins = useMemo(() => {
+    const unique = new Set(data.map(d => d.Basin).filter(Boolean));
+    return ["All", ...Array.from(unique).sort()];
+  }, [data]);
+
+  // Filter data by basin
+  const filteredData = useMemo(() => {
+    if (selectedBasin === "All") return data;
+    return data.filter(item => item.Basin === selectedBasin);
+  }, [data, selectedBasin]);
+
+  // Sort data
+  const sortedData = useMemo(() => {
+    if (!sortColumn) return filteredData;
+
+    return [...filteredData].sort((a, b) => {
+      const aVal = a[sortColumn];
+      const bVal = b[sortColumn];
+
+      if (typeof aVal === 'number' && typeof bVal === 'number') {
+        return sortDirection === 'asc' ? aVal - bVal : bVal - aVal;
+      }
+
+      const aStr = String(aVal || '');
+      const bStr = String(bVal || '');
+      return sortDirection === 'asc'
+        ? aStr.localeCompare(bStr)
+        : bStr.localeCompare(aStr);
+    });
+  }, [filteredData, sortColumn, sortDirection]);
+
+  // Calculate total volume
+  const totalVolume = useMemo(() => {
+    return filteredData.reduce((acc, curr) => acc + (curr['Reserve Volume (ML)'] || 0), 0);
+  }, [filteredData]);
+
+  // Group by purpose for chart
+  const purposeData = useMemo(() => {
+    const grouped = filteredData.reduce((acc, curr) => {
+      const purpose = curr.Purpose || 'Unknown';
+      if (!acc[purpose]) {
+        acc[purpose] = 0;
+      }
+      acc[purpose] += curr['Reserve Volume (ML)'] || 0;
+      return acc;
+    }, {} as Record<string, number>);
+
+    return Object.entries(grouped)
+      .map(([purpose, volume]) => ({ purpose, volume }))
+      .sort((a, b) => b.volume - a.volume);
+  }, [filteredData]);
+
+  // Group by basin for chart
+  const basinData = useMemo(() => {
+    const grouped = filteredData.reduce((acc, curr) => {
+      const basin = curr.Basin || 'Unknown';
+      if (!acc[basin]) {
+        acc[basin] = 0;
+      }
+      acc[basin] += curr['Reserve Volume (ML)'] || 0;
+      return acc;
+    }, {} as Record<string, number>);
+
+    return Object.entries(grouped)
+      .map(([basin, volume]) => ({ basin, volume }))
+      .sort((a, b) => b.volume - a.volume)
+      .slice(0, 10); // Top 10 basins
+  }, [filteredData]);
+
+  const handleSort = (column: keyof UnallocatedWater) => {
+    if (sortColumn === column) {
+      setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
+    } else {
+      setSortColumn(column);
+      setSortDirection('asc');
+    }
+  };
+
+  // Colors for charts
+  const COLORS = ['#8b5cf6', '#6366f1', '#3b82f6', '#06b6d4', '#10b981', '#f59e0b', '#ef4444', '#ec4899'];
+
+  return (
+    <div className="space-y-6">
+      {/* Filters */}
+      <div className="bg-white p-4 md:p-6 rounded-2xl shadow-lg border border-gray-200/50">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+          <Filter className="w-5 h-5 text-violet-600 flex-shrink-0" />
+          <div className="flex-1 w-full">
+            <label className="block text-sm font-medium text-gray-700 mb-2">Basin</label>
+            <select
+              value={selectedBasin}
+              onChange={(e) => setSelectedBasin(e.target.value)}
+              className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all duration-200 bg-white text-gray-900"
+            >
+              {basins.map(basin => (
+                <option key={basin} value={basin}>{basin}</option>
+              ))}
+            </select>
+          </div>
+        </div>
+      </div>
+
+      {/* KPI Card */}
+      <div className="bg-gradient-to-br from-violet-500 to-purple-600 p-6 md:p-8 rounded-2xl shadow-2xl text-white">
+        <div className="flex items-center justify-between">
+          <div>
+            <p className="text-violet-100 text-sm font-medium mb-2">Total Unallocated Water</p>
+            <h3 className="text-4xl md:text-5xl font-bold">{totalVolume.toLocaleString()} ML</h3>
+            <p className="text-violet-100 text-sm mt-2">{filteredData.length} reserves{selectedBasin !== "All" ? ` in ${selectedBasin}` : ''}</p>
+          </div>
+          <div className="p-4 bg-white/20 rounded-2xl backdrop-blur-sm">
+            <Layers className="w-12 h-12" />
+          </div>
+        </div>
+      </div>
+
+      {/* Charts */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Purpose Distribution */}
+        <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-200/50">
+          <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+            <Info className="w-5 h-5 text-violet-600" />
+            Distribution by Purpose
+          </h3>
+          <ResponsiveContainer width="100%" height={300}>
+            <BarChart data={purposeData}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+              <XAxis
+                dataKey="purpose"
+                tick={{ fontSize: 12 }}
+                angle={-45}
+                textAnchor="end"
+                height={100}
+              />
+              <YAxis tick={{ fontSize: 12 }} />
+              <Tooltip
+                contentStyle={{ borderRadius: '12px', border: '1px solid #e5e7eb' }}
+                formatter={(value: number) => [`${value.toLocaleString()} ML`, 'Volume']}
+              />
+              <Bar dataKey="volume" fill="#8b5cf6" radius={[8, 8, 0, 0]} />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+
+        {/* Top Basins */}
+        {selectedBasin === "All" && (
+          <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-200/50">
+            <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+              <Droplets className="w-5 h-5 text-violet-600" />
+              Top 10 Basins
+            </h3>
+            <ResponsiveContainer width="100%" height={300}>
+              <BarChart data={basinData}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                <XAxis
+                  dataKey="basin"
+                  tick={{ fontSize: 12 }}
+                  angle={-45}
+                  textAnchor="end"
+                  height={100}
+                />
+                <YAxis tick={{ fontSize: 12 }} />
+                <Tooltip
+                  contentStyle={{ borderRadius: '12px', border: '1px solid #e5e7eb' }}
+                  formatter={(value: number) => [`${value.toLocaleString()} ML`, 'Volume']}
+                />
+                <Bar dataKey="volume" fill="#6366f1" radius={[8, 8, 0, 0]} />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        )}
+      </div>
+
+      {/* Data Table */}
+      <div className="bg-white rounded-2xl shadow-lg border border-gray-200/50 overflow-hidden">
+        <div className="p-6 border-b border-gray-200">
+          <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
+            <FileText className="w-5 h-5 text-violet-600" />
+            Unallocated Water Reserves
+          </h3>
+        </div>
+        <div className="overflow-x-auto">
+          <table className="w-full">
+            <thead className="bg-gradient-to-r from-violet-50 to-purple-50 border-b border-gray-200">
+              <tr>
+                <th
+                  className="px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider cursor-pointer hover:bg-violet-100 transition-colors"
+                  onClick={() => handleSort('Basin')}
+                >
+                  <div className="flex items-center gap-2">
+                    Basin
+                    {sortColumn === 'Basin' && (
+                      <ArrowUpDown className="w-3 h-3" />
+                    )}
+                  </div>
+                </th>
+                <th
+                  className="px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider cursor-pointer hover:bg-violet-100 transition-colors"
+                  onClick={() => handleSort('Location')}
+                >
+                  <div className="flex items-center gap-2">
+                    Location
+                    {sortColumn === 'Location' && (
+                      <ArrowUpDown className="w-3 h-3" />
+                    )}
+                  </div>
+                </th>
+                <th
+                  className="px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider cursor-pointer hover:bg-violet-100 transition-colors"
+                  onClick={() => handleSort('Reserve Volume (ML)')}
+                >
+                  <div className="flex items-center gap-2">
+                    Reserve Volume (ML)
+                    {sortColumn === 'Reserve Volume (ML)' && (
+                      <ArrowUpDown className="w-3 h-3" />
+                    )}
+                  </div>
+                </th>
+                <th
+                  className="px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider cursor-pointer hover:bg-violet-100 transition-colors"
+                  onClick={() => handleSort('Purpose')}
+                >
+                  <div className="flex items-center gap-2">
+                    Purpose
+                    {sortColumn === 'Purpose' && (
+                      <ArrowUpDown className="w-3 h-3" />
+                    )}
+                  </div>
+                </th>
+                <th
+                  className="px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider cursor-pointer hover:bg-violet-100 transition-colors"
+                  onClick={() => handleSort('Entity held in reserve for')}
+                >
+                  <div className="flex items-center gap-2">
+                    Entity
+                    {sortColumn === 'Entity held in reserve for' && (
+                      <ArrowUpDown className="w-3 h-3" />
+                    )}
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-200">
+              {sortedData.map((item, index) => (
+                <tr key={index} className="hover:bg-violet-50/50 transition-colors">
+                  <td className="px-4 py-3 text-sm font-medium text-gray-900">
+                    {item.Basin}
+                  </td>
+                  <td className="px-4 py-3 text-sm text-gray-600 max-w-xs">
+                    {item.Location}
+                  </td>
+                  <td className="px-4 py-3 text-sm font-semibold text-violet-600">
+                    {(item['Reserve Volume (ML)'] || 0).toLocaleString()}
+                  </td>
+                  <td className="px-4 py-3 text-sm text-gray-600">
+                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-violet-100 text-violet-800">
+                      {item.Purpose}
+                    </span>
+                  </td>
+                  <td className="px-4 py-3 text-sm text-gray-600">
+                    {item['Entity held in reserve for']}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        {sortedData.length === 0 && (
+          <div className="p-8 text-center text-gray-500">
+            No unallocated water reserves found for the selected filters.
+          </div>
+        )}
       </div>
     </div>
   );

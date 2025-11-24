@@ -3,12 +3,14 @@ import { fetchWaterAllocations, fetchWaterPlans } from '@/lib/data';
 // import { getSortedScansData, getScanData } from '@/lib/scans';
 import { getSortedArticlesData, getArticleData } from '@/lib/articles';
 import { getSortedProjectsData, getProjectData } from '@/lib/projects';
+import { getUnallocatedWater } from '@/lib/unallocated';
 import Dashboard from '@/components/Dashboard';
 
 export default async function Home() {
-  const [allocations, plans] = await Promise.all([
+  const [allocations, plans, unallocatedWater] = await Promise.all([
     fetchWaterAllocations(),
-    fetchWaterPlans()
+    fetchWaterPlans(),
+    getUnallocatedWater()
   ]);
 
   // Scans temporarily disabled - can be re-enabled later
@@ -91,6 +93,7 @@ export default async function Home() {
         <Dashboard
           initialAllocations={allocations}
           initialPlans={plans}
+          unallocatedWater={unallocatedWater}
           // scans={scansWithContent} // Temporarily disabled
           articles={articlesWithContent}
           projects={projectsWithContent}

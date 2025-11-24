@@ -166,6 +166,8 @@ export default function Dashboard({ initialAllocations, initialPlans, scans, art
 function AllocationsView({ data }: { data: WaterAllocation[] }) {
   const [selectedArea, setSelectedArea] = useState<string>("All");
   const [selectedScheme, setSelectedScheme] = useState<string>("All");
+  const [selectedPriorityGroup, setSelectedPriorityGroup] = useState<string>("All");
+  const [selectedZone, setSelectedZone] = useState<string>("All");
 
   // Get unique filters
   const areas = useMemo(() => {
@@ -182,22 +184,64 @@ function AllocationsView({ data }: { data: WaterAllocation[] }) {
     return ["All", ...Array.from(unique).sort()];
   }, [data, selectedArea]);
 
+  const priorityGroups = useMemo(() => {
+    let filtered = data;
+    if (selectedArea !== "All") {
+      filtered = filtered.filter(d => d['Water Area'] === selectedArea);
+    }
+    if (selectedScheme !== "All") {
+      filtered = filtered.filter(d => d.Scheme === selectedScheme);
+    }
+    const unique = new Set(filtered.map(d => d['Priority Group']).filter(Boolean));
+    return ["All", ...Array.from(unique).sort()];
+  }, [data, selectedArea, selectedScheme]);
+
+  const zones = useMemo(() => {
+    let filtered = data;
+    if (selectedArea !== "All") {
+      filtered = filtered.filter(d => d['Water Area'] === selectedArea);
+    }
+    if (selectedScheme !== "All") {
+      filtered = filtered.filter(d => d.Scheme === selectedScheme);
+    }
+    if (selectedPriorityGroup !== "All") {
+      filtered = filtered.filter(d => d['Priority Group'] === selectedPriorityGroup);
+    }
+    const unique = new Set(filtered.map(d => d['Zone/Location']).filter(Boolean));
+    return ["All", ...Array.from(unique).sort()];
+  }, [data, selectedArea, selectedScheme, selectedPriorityGroup]);
+
   // Filter Data
   const filteredData = useMemo(() => {
     return data.filter(item => {
       if (selectedArea !== "All" && item['Water Area'] !== selectedArea) return false;
       if (selectedScheme !== "All" && item.Scheme !== selectedScheme) return false;
+      if (selectedPriorityGroup !== "All" && item['Priority Group'] !== selectedPriorityGroup) return false;
+      if (selectedZone !== "All" && item['Zone/Location'] !== selectedZone) return false;
       return true;
     });
-  }, [data, selectedArea, selectedScheme]);
+  }, [data, selectedArea, selectedScheme, selectedPriorityGroup, selectedZone]);
 
-  // Calculate KPIs
-  const kpis = useMemo(() => {
-    return filteredData.reduce((acc, curr) => ({
-      current: acc.current + (curr['Current Volume (ML)'] || 0),
-      max: acc.max + (curr['Maximum Volume (ML)'] || 0),
-      headroom: acc.headroom + (curr['Trading Headroom (ML)'] || 0)
-    }), { current: 0, max: 0, headroom: 0 });
+  // Calculate total current volume
+  const totalCurrentVolume = useMemo(() => {
+    return filteredData.reduce((acc, curr) => acc + (curr['Current Volume (ML)'] || 0), 0);
+  }, [filteredData]);
+
+  // Calculate KPIs grouped by Priority Group
+  const priorityGroupKpis = useMemo(() => {
+    const grouped = filteredData.reduce((acc, curr) => {
+      const priorityGroup = curr['Priority Group'] || 'Unknown';
+      if (!acc[priorityGroup]) {
+        acc[priorityGroup] = 0;
+      }
+      acc[priorityGroup] += curr['Current Volume (ML)'] || 0;
+      return acc;
+    }, {} as Record<string, number>);
+
+    // Convert to array and sort by volume descending
+    return Object.entries(grouped)
+      .map(([group, volume]) => ({ group, volume }))
+      .sort((a, b) => b.volume - a.volume);
   }, [filteredData]);
 
   // Chart Data Aggregation
@@ -209,6 +253,7 @@ function AllocationsView({ data }: { data: WaterAllocation[] }) {
         name: item['Zone/Location'],
         Current: item['Current Volume (ML)'],
         Headroom: item['Trading Headroom (ML)'],
+        priorityGroup: item['Priority Group'],
       }));
   }, [filteredData]);
 
@@ -222,7 +267,7 @@ function AllocationsView({ data }: { data: WaterAllocation[] }) {
           </div>
           <span className="font-bold text-base">Filter Data</span>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           <div>
             <label className="block text-sm font-semibold text-gray-700 mb-2">Water Area</label>
             <select
@@ -231,6 +276,8 @@ function AllocationsView({ data }: { data: WaterAllocation[] }) {
               onChange={(e) => {
                 setSelectedArea(e.target.value);
                 setSelectedScheme("All");
+                setSelectedPriorityGroup("All");
+                setSelectedZone("All");
               }}
             >
               {areas.map(area => (
@@ -243,36 +290,83 @@ function AllocationsView({ data }: { data: WaterAllocation[] }) {
             <select
               className="w-full rounded-xl border-2 border-gray-200 p-3 text-sm focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all duration-200 hover:border-gray-300 shadow-sm bg-white"
               value={selectedScheme}
-              onChange={(e) => setSelectedScheme(e.target.value)}
+              onChange={(e) => {
+                setSelectedScheme(e.target.value);
+                setSelectedPriorityGroup("All");
+                setSelectedZone("All");
+              }}
             >
               {schemes.map(scheme => (
                 <option key={scheme} value={scheme}>{scheme}</option>
               ))}
             </select>
           </div>
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">Priority Group</label>
+            <select
+              className="w-full rounded-xl border-2 border-gray-200 p-3 text-sm focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all duration-200 hover:border-gray-300 shadow-sm bg-white"
+              value={selectedPriorityGroup}
+              onChange={(e) => {
+                setSelectedPriorityGroup(e.target.value);
+                setSelectedZone("All");
+              }}
+            >
+              {priorityGroups.map(group => (
+                <option key={group} value={group}>{group}</option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">Zone / Location</label>
+            <select
+              className="w-full rounded-xl border-2 border-gray-200 p-3 text-sm focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all duration-200 hover:border-gray-300 shadow-sm bg-white"
+              value={selectedZone}
+              onChange={(e) => setSelectedZone(e.target.value)}
+            >
+              {zones.map(zone => (
+                <option key={zone} value={zone}>{zone}</option>
+              ))}
+            </select>
+          </div>
         </div>
       </div>
 
-      {/* KPIs */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <Card 
-          title="Current Volume" 
-          value={`${kpis.current.toLocaleString(undefined, {maximumFractionDigits: 0})} ML`}
+      {/* KPIs - Total and Priority Group Volumes */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Total Current Volume Card */}
+        <Card
+          title="Total Current Volume"
+          value={`${totalCurrentVolume.toLocaleString(undefined, {maximumFractionDigits: 0})} ML`}
           icon={<Droplets className="w-6 h-6 text-blue-500" />}
           subtext="Total allocated volume currently held"
         />
-        <Card 
-          title="Max Capacity" 
-          value={`${kpis.max.toLocaleString(undefined, {maximumFractionDigits: 0})} ML`}
-          icon={<Info className="w-6 h-6 text-gray-500" />}
-          subtext="Total nominal volume limit"
-        />
-        <Card 
-          title="Trading Headroom" 
-          value={`${kpis.headroom.toLocaleString(undefined, {maximumFractionDigits: 0})} ML`}
-          icon={<ArrowRightLeft className="w-6 h-6 text-green-500" />}
-          subtext="Volume available for trading IN"
-        />
+
+        {/* Priority Group Cards */}
+        {priorityGroupKpis.map(({ group, volume }) => {
+          // Determine icon and color based on priority group
+          let icon;
+          let subtext = "Allocated current volume";
+
+          if (group.toLowerCase().includes('high')) {
+            icon = <Droplets className="w-6 h-6 text-red-500" />;
+          } else if (group.toLowerCase().includes('medium')) {
+            icon = <Droplets className="w-6 h-6 text-amber-500" />;
+          } else if (group.toLowerCase().includes('unsupplemented')) {
+            icon = <Droplets className="w-6 h-6 text-gray-500" />;
+          } else {
+            icon = <Droplets className="w-6 h-6 text-blue-500" />;
+          }
+
+          return (
+            <Card
+              key={group}
+              title={group}
+              value={`${volume.toLocaleString(undefined, {maximumFractionDigits: 0})} ML`}
+              icon={icon}
+              subtext={subtext}
+            />
+          );
+        })}
       </div>
 
       {/* Chart */}
@@ -282,17 +376,35 @@ function AllocationsView({ data }: { data: WaterAllocation[] }) {
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={chartData} margin={{ top: 20, right: 30, left: 20, bottom: 50 }}>
               <CartesianGrid strokeDasharray="3 3" vertical={false} />
-              <XAxis 
-                dataKey="name" 
-                angle={-45} 
-                textAnchor="end" 
-                interval={0} 
-                height={100} 
+              <XAxis
+                dataKey="name"
+                angle={-45}
+                textAnchor="end"
+                interval={0}
+                height={100}
                 tick={{fontSize: 12}}
               />
               <YAxis />
-              <Tooltip 
+              <Tooltip
                 contentStyle={{ backgroundColor: 'rgba(255, 255, 255, 0.95)', borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
+                content={({ active, payload, label }) => {
+                  if (active && payload && payload.length) {
+                    return (
+                      <div className="bg-white p-4 rounded-xl shadow-lg border border-gray-200">
+                        <p className="font-bold text-gray-900 mb-2">{label}</p>
+                        <p className="text-sm text-gray-600 mb-2">
+                          <span className="font-semibold">Priority Group:</span> {payload[0]?.payload?.priorityGroup || 'N/A'}
+                        </p>
+                        {payload.map((entry: any, index: number) => (
+                          <p key={index} className="text-sm" style={{ color: entry.color }}>
+                            <span className="font-semibold">{entry.name}:</span> {entry.value?.toLocaleString() || 0} ML
+                          </p>
+                        ))}
+                      </div>
+                    );
+                  }
+                  return null;
+                }}
               />
               <Legend />
               <Bar dataKey="Current" stackId="a" fill="#3b82f6" radius={[0, 0, 4, 4]} />

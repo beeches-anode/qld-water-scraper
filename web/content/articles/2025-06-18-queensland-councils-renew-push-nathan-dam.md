@@ -15,3 +15,4 @@ WDRC Mayor Andrew Smith described Nathan Dam as "the most critical water project
 
 However, Banana Shire Mayor Nev Ferrier, whose region would host the dam, expressed skepticism about the project's viability. He questioned whether the dam would be big enough to serve its purpose and raised concerns about environmental hurdles, particularly referencing the boggomoss snail, an endangered species native to the area that has posed significant obstacles to past versions of the project. Water Minister Ann Leahy confirmed she was aware of the renewed advocacy and said the state was assessing water infrastructure projects across Queensland, including Nathan Dam, but would not confirm whether there was any funding for a feasibility study in the upcoming state budget, stating "we need to make sure we don't invest in things that don't stack up."
 
+

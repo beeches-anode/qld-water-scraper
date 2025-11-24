@@ -1442,21 +1442,31 @@ function Card({ title, value, icon, subtext }: any) {
 
 // Unallocated Water View Component
 function UnallocatedWaterView({ data }: { data: UnallocatedWater[] }) {
-  const [selectedBasin, setSelectedBasin] = useState<string>("All");
+  const [selectedWaterPlanArea, setSelectedWaterPlanArea] = useState<string>("All");
+  const [selectedReserveType, setSelectedReserveType] = useState<string>("All");
   const [sortColumn, setSortColumn] = useState<keyof UnallocatedWater | null>(null);
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
 
-  // Get unique basins
-  const basins = useMemo(() => {
-    const unique = new Set(data.map(d => d.Basin).filter(Boolean));
+  // Get unique water plan areas
+  const waterPlanAreas = useMemo(() => {
+    const unique = new Set(data.map(d => d['Water plan area']).filter(Boolean));
     return ["All", ...Array.from(unique).sort()];
   }, [data]);
 
-  // Filter data by basin
+  // Get unique reserve types
+  const reserveTypes = useMemo(() => {
+    const unique = new Set(data.map(d => d['Reserve type']).filter(Boolean));
+    return ["All", ...Array.from(unique).sort()];
+  }, [data]);
+
+  // Filter data by water plan area and reserve type
   const filteredData = useMemo(() => {
-    if (selectedBasin === "All") return data;
-    return data.filter(item => item.Basin === selectedBasin);
-  }, [data, selectedBasin]);
+    return data.filter(item => {
+      if (selectedWaterPlanArea !== "All" && item['Water plan area'] !== selectedWaterPlanArea) return false;
+      if (selectedReserveType !== "All" && item['Reserve type'] !== selectedReserveType) return false;
+      return true;
+    });
+  }, [data, selectedWaterPlanArea, selectedReserveType]);
 
   // Sort data
   const sortedData = useMemo(() => {
@@ -1478,9 +1488,14 @@ function UnallocatedWaterView({ data }: { data: UnallocatedWater[] }) {
     });
   }, [filteredData, sortColumn, sortDirection]);
 
-  // Calculate total volume
-  const totalVolume = useMemo(() => {
-    return filteredData.reduce((acc, curr) => acc + (curr['Reserve Volume (ML)'] || 0), 0);
+  // Calculate total volume remaining
+  const totalVolumeRemaining = useMemo(() => {
+    return filteredData.reduce((acc, curr) => acc + (curr['Volume remaining (ML)'] || 0), 0);
+  }, [filteredData]);
+
+  // Calculate total water plan volume
+  const totalWaterPlanVolume = useMemo(() => {
+    return filteredData.reduce((acc, curr) => acc + (curr['Water Plan volume (ML)'] || 0), 0);
   }, [filteredData]);
 
   // Group by purpose for chart
@@ -1490,7 +1505,7 @@ function UnallocatedWaterView({ data }: { data: UnallocatedWater[] }) {
       if (!acc[purpose]) {
         acc[purpose] = 0;
       }
-      acc[purpose] += curr['Reserve Volume (ML)'] || 0;
+      acc[purpose] += curr['Volume remaining (ML)'] || 0;
       return acc;
     }, {} as Record<string, number>);
 
@@ -1499,21 +1514,21 @@ function UnallocatedWaterView({ data }: { data: UnallocatedWater[] }) {
       .sort((a, b) => b.volume - a.volume);
   }, [filteredData]);
 
-  // Group by basin for chart
-  const basinData = useMemo(() => {
+  // Group by water plan area for chart
+  const waterPlanAreaData = useMemo(() => {
     const grouped = filteredData.reduce((acc, curr) => {
-      const basin = curr.Basin || 'Unknown';
-      if (!acc[basin]) {
-        acc[basin] = 0;
+      const area = curr['Water plan area'] || 'Unknown';
+      if (!acc[area]) {
+        acc[area] = 0;
       }
-      acc[basin] += curr['Reserve Volume (ML)'] || 0;
+      acc[area] += curr['Volume remaining (ML)'] || 0;
       return acc;
     }, {} as Record<string, number>);
 
     return Object.entries(grouped)
-      .map(([basin, volume]) => ({ basin, volume }))
+      .map(([area, volume]) => ({ area, volume }))
       .sort((a, b) => b.volume - a.volume)
-      .slice(0, 10); // Top 10 basins
+      .slice(0, 10); // Top 10 areas
   }, [filteredData]);
 
   const handleSort = (column: keyof UnallocatedWater) => {
@@ -1534,31 +1549,59 @@ function UnallocatedWaterView({ data }: { data: UnallocatedWater[] }) {
       <div className="bg-white p-4 md:p-6 rounded-2xl shadow-lg border border-gray-200/50">
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
           <Filter className="w-5 h-5 text-violet-600 flex-shrink-0" />
-          <div className="flex-1 w-full">
-            <label className="block text-sm font-medium text-gray-700 mb-2">Basin</label>
-            <select
-              value={selectedBasin}
-              onChange={(e) => setSelectedBasin(e.target.value)}
-              className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all duration-200 bg-white text-gray-900"
-            >
-              {basins.map(basin => (
-                <option key={basin} value={basin}>{basin}</option>
-              ))}
-            </select>
+          <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Water Plan Area</label>
+              <select
+                value={selectedWaterPlanArea}
+                onChange={(e) => setSelectedWaterPlanArea(e.target.value)}
+                className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all duration-200 bg-white text-gray-900"
+              >
+                {waterPlanAreas.map(area => (
+                  <option key={area} value={area}>{area}</option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Reserve Type</label>
+              <select
+                value={selectedReserveType}
+                onChange={(e) => setSelectedReserveType(e.target.value)}
+                className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all duration-200 bg-white text-gray-900"
+              >
+                {reserveTypes.map(type => (
+                  <option key={type} value={type}>{type}</option>
+                ))}
+              </select>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* KPI Card */}
-      <div className="bg-gradient-to-br from-violet-500 to-purple-600 p-6 md:p-8 rounded-2xl shadow-2xl text-white">
-        <div className="flex items-center justify-between">
-          <div>
-            <p className="text-violet-100 text-sm font-medium mb-2">Total Unallocated Water</p>
-            <h3 className="text-4xl md:text-5xl font-bold">{totalVolume.toLocaleString()} ML</h3>
-            <p className="text-violet-100 text-sm mt-2">{filteredData.length} reserves{selectedBasin !== "All" ? ` in ${selectedBasin}` : ''}</p>
+      {/* KPI Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="bg-gradient-to-br from-violet-500 to-purple-600 p-6 md:p-8 rounded-2xl shadow-2xl text-white">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-violet-100 text-sm font-medium mb-2">Volume Remaining</p>
+              <h3 className="text-3xl md:text-4xl font-bold">{totalVolumeRemaining.toLocaleString()} ML</h3>
+              <p className="text-violet-100 text-sm mt-2">{filteredData.length} reserves</p>
+            </div>
+            <div className="p-4 bg-white/20 rounded-2xl backdrop-blur-sm">
+              <Layers className="w-10 h-10" />
+            </div>
           </div>
-          <div className="p-4 bg-white/20 rounded-2xl backdrop-blur-sm">
-            <Layers className="w-12 h-12" />
+        </div>
+        <div className="bg-gradient-to-br from-indigo-500 to-blue-600 p-6 md:p-8 rounded-2xl shadow-2xl text-white">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-indigo-100 text-sm font-medium mb-2">Water Plan Volume</p>
+              <h3 className="text-3xl md:text-4xl font-bold">{totalWaterPlanVolume.toLocaleString()} ML</h3>
+              <p className="text-indigo-100 text-sm mt-2">Total allocation</p>
+            </div>
+            <div className="p-4 bg-white/20 rounded-2xl backdrop-blur-sm">
+              <Droplets className="w-10 h-10" />
+            </div>
           </div>
         </div>
       </div>
@@ -1591,18 +1634,18 @@ function UnallocatedWaterView({ data }: { data: UnallocatedWater[] }) {
           </ResponsiveContainer>
         </div>
 
-        {/* Top Basins */}
-        {selectedBasin === "All" && (
+        {/* Top Water Plan Areas */}
+        {selectedWaterPlanArea === "All" && (
           <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-200/50">
             <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
               <Droplets className="w-5 h-5 text-violet-600" />
-              Top 10 Basins
+              Top 10 Water Plan Areas
             </h3>
             <ResponsiveContainer width="100%" height={300}>
-              <BarChart data={basinData}>
+              <BarChart data={waterPlanAreaData}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
                 <XAxis
-                  dataKey="basin"
+                  dataKey="area"
                   tick={{ fontSize: 12 }}
                   angle={-45}
                   textAnchor="end"
@@ -1634,33 +1677,55 @@ function UnallocatedWaterView({ data }: { data: UnallocatedWater[] }) {
               <tr>
                 <th
                   className="px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider cursor-pointer hover:bg-violet-100 transition-colors"
-                  onClick={() => handleSort('Basin')}
+                  onClick={() => handleSort('Water plan area')}
                 >
                   <div className="flex items-center gap-2">
-                    Basin
-                    {sortColumn === 'Basin' && (
+                    Water Plan Area
+                    {sortColumn === 'Water plan area' && (
                       <ArrowUpDown className="w-3 h-3" />
                     )}
                   </div>
                 </th>
                 <th
                   className="px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider cursor-pointer hover:bg-violet-100 transition-colors"
-                  onClick={() => handleSort('Location')}
+                  onClick={() => handleSort('Catchment/Sub-catchment/Location')}
                 >
                   <div className="flex items-center gap-2">
                     Location
-                    {sortColumn === 'Location' && (
+                    {sortColumn === 'Catchment/Sub-catchment/Location' && (
                       <ArrowUpDown className="w-3 h-3" />
                     )}
                   </div>
                 </th>
                 <th
                   className="px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider cursor-pointer hover:bg-violet-100 transition-colors"
-                  onClick={() => handleSort('Reserve Volume (ML)')}
+                  onClick={() => handleSort('Reserve type')}
                 >
                   <div className="flex items-center gap-2">
-                    Reserve Volume (ML)
-                    {sortColumn === 'Reserve Volume (ML)' && (
+                    Reserve Type
+                    {sortColumn === 'Reserve type' && (
+                      <ArrowUpDown className="w-3 h-3" />
+                    )}
+                  </div>
+                </th>
+                <th
+                  className="px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider cursor-pointer hover:bg-violet-100 transition-colors"
+                  onClick={() => handleSort('Volume remaining (ML)')}
+                >
+                  <div className="flex items-center gap-2">
+                    Remaining (ML)
+                    {sortColumn === 'Volume remaining (ML)' && (
+                      <ArrowUpDown className="w-3 h-3" />
+                    )}
+                  </div>
+                </th>
+                <th
+                  className="px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider cursor-pointer hover:bg-violet-100 transition-colors"
+                  onClick={() => handleSort('Water Plan volume (ML)')}
+                >
+                  <div className="flex items-center gap-2">
+                    Plan Volume (ML)
+                    {sortColumn === 'Water Plan volume (ML)' && (
                       <ArrowUpDown className="w-3 h-3" />
                     )}
                   </div>
@@ -1676,38 +1741,32 @@ function UnallocatedWaterView({ data }: { data: UnallocatedWater[] }) {
                     )}
                   </div>
                 </th>
-                <th
-                  className="px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider cursor-pointer hover:bg-violet-100 transition-colors"
-                  onClick={() => handleSort('Entity held in reserve for')}
-                >
-                  <div className="flex items-center gap-2">
-                    Entity
-                    {sortColumn === 'Entity held in reserve for' && (
-                      <ArrowUpDown className="w-3 h-3" />
-                    )}
-                  </div>
-                </th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
               {sortedData.map((item, index) => (
                 <tr key={index} className="hover:bg-violet-50/50 transition-colors">
                   <td className="px-4 py-3 text-sm font-medium text-gray-900">
-                    {item.Basin}
+                    {item['Water plan area']}
                   </td>
                   <td className="px-4 py-3 text-sm text-gray-600 max-w-xs">
-                    {item.Location}
+                    {item['Catchment/Sub-catchment/Location']}
+                  </td>
+                  <td className="px-4 py-3 text-sm text-gray-600">
+                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                      {item['Reserve type']}
+                    </span>
                   </td>
                   <td className="px-4 py-3 text-sm font-semibold text-violet-600">
-                    {(item['Reserve Volume (ML)'] || 0).toLocaleString()}
+                    {(item['Volume remaining (ML)'] || 0).toLocaleString()}
+                  </td>
+                  <td className="px-4 py-3 text-sm text-gray-600">
+                    {(item['Water Plan volume (ML)'] || 0).toLocaleString()}
                   </td>
                   <td className="px-4 py-3 text-sm text-gray-600">
                     <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-violet-100 text-violet-800">
                       {item.Purpose}
                     </span>
-                  </td>
-                  <td className="px-4 py-3 text-sm text-gray-600">
-                    {item['Entity held in reserve for']}
                   </td>
                 </tr>
               ))}

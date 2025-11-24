@@ -15,3 +15,4 @@ The meeting provided an opportunity for the government to introduce new members 
 
 The AEW Council, established earlier in 2025, represents a coordinated approach by the Crisafulli government to address interconnected challenges facing Queensland's agricultural sector, including water supply reliability, energy costs, and regulatory burden. This high-level forum demonstrates the government's recognition of the critical relationship between water policy, energy affordability, and agricultural competitiveness, with implications for how Sunwater engages with agricultural stakeholders and implements government water policy initiatives.
 
+

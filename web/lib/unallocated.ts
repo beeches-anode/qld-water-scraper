@@ -3,12 +3,16 @@ import path from 'path';
 import Papa from 'papaparse';
 
 export interface UnallocatedWater {
-  Basin: string;
-  'Water Management Protocol Link': string;
-  'Entity held in reserve for': string;
-  Location: string;
-  'Reserve Volume (ML)': number;
+  'Water plan area': string;
+  'Catchment/Sub-catchment/Location': string;
+  'Reserve type': string;
   Purpose: string;
+  'Water Plan volume (ML)': number;
+  'Volume granted (ML)': number;
+  'Volume remaining (ML)': number;
+  Notes: string;
+  'Protocol Link': string;
+  'Other Link': string;
 }
 
 export async function getUnallocatedWater(): Promise<UnallocatedWater[]> {

@@ -1,5 +1,6 @@
 import { fetchWaterAllocations, fetchWaterPlans } from '@/lib/data';
-import { getSortedScansData, getScanData } from '@/lib/scans';
+// Scans temporarily disabled - can be re-enabled later
+// import { getSortedScansData, getScanData } from '@/lib/scans';
 import { getSortedArticlesData, getArticleData } from '@/lib/articles';
 import { getSortedProjectsData, getProjectData } from '@/lib/projects';
 import Dashboard from '@/components/Dashboard';
@@ -10,15 +11,17 @@ export default async function Home() {
     fetchWaterPlans()
   ]);
 
-  const scansList = getSortedScansData();
+  // Scans temporarily disabled - can be re-enabled later
+  // const scansList = getSortedScansData();
   const articlesList = getSortedArticlesData();
   const projectsList = getSortedProjectsData();
 
   // Pre-fetch content for all scans (since it's a small blog)
   // In a larger app, you'd fetch content on demand via API or separate page
-  const scansWithContent = await Promise.all(
-    scansList.map(scan => getScanData(scan.id))
-  );
+  // const scansWithContent = await Promise.all(
+  //   scansList.map(scan => getScanData(scan.id))
+  // );
+  const scansWithContent: any[] = []; // Empty array while scans are disabled
 
   // Pre-fetch content for all articles
   const articlesWithContent = await Promise.all(
@@ -88,7 +91,7 @@ export default async function Home() {
         <Dashboard
           initialAllocations={allocations}
           initialPlans={plans}
-          scans={scansWithContent}
+          // scans={scansWithContent} // Temporarily disabled
           articles={articlesWithContent}
           projects={projectsWithContent}
         />

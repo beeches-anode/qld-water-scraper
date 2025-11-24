@@ -21,12 +21,13 @@ import clsx from 'clsx';
 interface DashboardProps {
   initialAllocations: WaterAllocation[];
   initialPlans: WaterPlan[];
-  scans: ScanData[];
+  scans?: ScanData[]; // Optional - scans tab temporarily removed
   articles: ArticleData[];
   projects: ProjectData[];
 }
 
-type Tab = 'allocations' | 'plans' | 'scans' | 'articles' | 'projects';
+type Tab = 'allocations' | 'plans' | 'articles' | 'projects';
+// 'scans' removed temporarily - can be re-added later
 
 export default function Dashboard({ initialAllocations, initialPlans, scans, articles, projects }: DashboardProps) {
   const [activeTab, setActiveTab] = useState<Tab>('allocations');
@@ -76,6 +77,7 @@ export default function Dashboard({ initialAllocations, initialPlans, scans, art
             <span className="hidden sm:inline">Water Plans</span>
             <span className="sm:hidden">Plans</span>
           </button>
+          {/* Media Scans tab - temporarily removed, can be re-enabled later
           <button
             type="button"
             onClick={(e) => {
@@ -96,6 +98,7 @@ export default function Dashboard({ initialAllocations, initialPlans, scans, art
             <span className="hidden sm:inline">Media Scans</span>
             <span className="sm:hidden">Scans</span>
           </button>
+          */}
           <button
             type="button"
             onClick={(e) => {
@@ -144,13 +147,16 @@ export default function Dashboard({ initialAllocations, initialPlans, scans, art
         <AllocationsView data={initialAllocations} />
       ) : activeTab === 'plans' ? (
         <PlansView data={initialPlans} />
-      ) : activeTab === 'scans' ? (
-        <ScansView scans={scans} />
       ) : activeTab === 'articles' ? (
         <ArticlesView articles={articles} />
       ) : (
         <ProjectsView projects={projects} />
       )}
+      {/* Scans tab content - temporarily removed, can be re-enabled later
+      : activeTab === 'scans' ? (
+        <ScansView scans={scans} />
+      )
+      */}
     </div>
   );
 }
@@ -543,6 +549,8 @@ function PlansView({ data }: { data: WaterPlan[] }) {
   );
 }
 
+// ScansView component - temporarily removed, can be re-enabled later
+/*
 function ScansView({ scans }: { scans: ScanData[] }) {
   const [expandedId, setExpandedId] = useState<string | null>(scans[0]?.id || null);
 
@@ -639,6 +647,7 @@ function ScansView({ scans }: { scans: ScanData[] }) {
     </div>
   );
 }
+*/
 
 function ArticlesView({ articles }: { articles: ArticleData[] }) {
   const [searchQuery, setSearchQuery] = useState("");

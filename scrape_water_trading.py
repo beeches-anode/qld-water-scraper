@@ -786,73 +786,88 @@ def transform_open_data_record(record, source_name):
     }
 
 
-def generate_pwtr_pdf_urls():
+def discover_pwtr_pdf_urls():
     """
-    Generate potential PWTR PDF URLs for all months from July 2024 to present.
+    Discover PWTR PDF URLs by scraping the official government pages.
 
-    The QLD Government publishes monthly reports at predictable URL patterns.
-    We try multiple URL patterns since the exact format varies.
+    Each PDF has a unique asset ID in the URL that cannot be predicted,
+    so we must scrape the source pages to find the actual links.
+
+    Sources:
+    1. Business Queensland Market Information page
+    2. DLGWV Water Trading page
     """
-    urls = []
+    discovered_urls = []
 
-    # Month name variations used in URLs
-    month_names = {
-        1: ['jan', 'january'],
-        2: ['feb', 'february'],
-        3: ['mar', 'march'],
-        4: ['apr', 'april'],
-        5: ['may'],
-        6: ['jun', 'june'],
-        7: ['jul', 'july'],
-        8: ['aug', 'august'],
-        9: ['sep', 'sept', 'september'],
-        10: ['oct', 'october'],
-        11: ['nov', 'november'],
-        12: ['dec', 'december']
-    }
-
-    # Report types to fetch
-    report_types = [
-        'supplemented-surface-water',
-        'unsupplemented-surface-water'
+    # Pages that list PWTR PDF links
+    source_pages = [
+        "https://www.business.qld.gov.au/industries/mining-energy-water/water/water-markets/market-information",
+        "https://www.dlgwv.qld.gov.au/water/consultations-initiatives/water-trading",
     ]
 
-    # Generate URLs from July 2024 to present
-    start_date = datetime(2024, 7, 1)
-    end_date = datetime.now()
+    print("    Discovering PDF URLs from government pages...")
 
-    current = start_date
-    while current <= end_date:
-        year = current.year
-        month = current.month
+    for page_url in source_pages:
+        try:
+            print(f"    Checking: {page_url}")
+            response = requests.get(page_url, headers=HEADERS, timeout=30)
+            response.raise_for_status()
 
-        for month_name in month_names[month]:
-            for report_type in report_types:
-                # Primary URL pattern (dlgwv domain)
-                urls.append(f"https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0005/1989383/pwtr-{report_type}-{month_name}-{year}.pdf")
-                urls.append(f"https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0006/1908627/pwtr-{report_type}-{month_name}-{year}.pdf")
-                urls.append(f"https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0012/1976583/pwtr-{report_type}-{month_name}-{year}.pdf")
-                urls.append(f"https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0004/1775137/pwtr-{report_type}-{month_name}-{year}.pdf")
-                urls.append(f"https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0004/1995511/pwtr-{report_type}-{month_name}-{year}.pdf")
+            soup = BeautifulSoup(response.content, 'html.parser')
 
-        # Move to next month
-        if month == 12:
-            current = datetime(year + 1, 1, 1)
-        else:
-            current = datetime(year, month + 1, 1)
+            # Find all links that look like PWTR PDFs
+            for link in soup.find_all('a', href=True):
+                href = link['href']
 
-    # Also add known working URLs discovered previously
-    known_urls = [
-        "https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0005/1989383/pwtr-supplemented-surface-water-dec-2024.pdf",
-        "https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0012/1976583/pwtr-supplemented-surface-water-nov-2024.pdf",
-        "https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0006/1908627/pwtr-supplemented-surface-water-jun-2024.pdf",
-        "https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0006/1908627/pwtr-supplemented-surface-water-jul-2024.pdf",
-        "https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0006/1908627/pwtr-supplemented-surface-water-aug-2024.pdf",
-        "https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0006/1908627/pwtr-supplemented-surface-water-sep-2024.pdf",
-        "https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0006/1908627/pwtr-supplemented-surface-water-oct-2024.pdf",
-    ]
+                # Look for PWTR PDF links
+                if 'pwtr' in href.lower() and '.pdf' in href.lower():
+                    # Make absolute URL if relative
+                    if href.startswith('/'):
+                        if 'business.qld.gov.au' in page_url:
+                            href = f"https://www.business.qld.gov.au{href}"
+                        else:
+                            href = f"https://www.dlgwv.qld.gov.au{href}"
+                    elif not href.startswith('http'):
+                        href = urljoin(page_url, href)
 
-    return list(set(urls + known_urls))  # Remove duplicates
+                    # Filter for surface water reports (not groundwater)
+                    if 'surface-water' in href.lower() or 'supplemented' in href.lower():
+                        discovered_urls.append(href)
+                        print(f"      Found: {href.split('/')[-1]}")
+
+            time.sleep(1)  # Be respectful
+
+        except Exception as e:
+            print(f"    Error fetching {page_url}: {e}")
+            continue
+
+    # Remove duplicates while preserving order
+    seen = set()
+    unique_urls = []
+    for url in discovered_urls:
+        if url not in seen:
+            seen.add(url)
+            unique_urls.append(url)
+
+    print(f"    Discovered {len(unique_urls)} PDF URLs from source pages")
+
+    # If discovery failed, fall back to known working URLs
+    if len(unique_urls) < 3:
+        print("    Discovery found few URLs, adding known working URLs...")
+        known_urls = [
+            # October 2025 - confirmed working
+            "https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0003/2110782/pwtr-supplemented-surface-water-oct-2025.pdf",
+            # Recent months - patterns discovered from government site
+            "https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0005/1989383/pwtr-supplemented-surface-water-dec-2024.pdf",
+            "https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0012/1976583/pwtr-supplemented-surface-water-nov-2024.pdf",
+            "https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0006/1908627/pwtr-supplemented-surface-water-jun-2024.pdf",
+        ]
+        for url in known_urls:
+            if url not in seen:
+                unique_urls.append(url)
+                seen.add(url)
+
+    return unique_urls
 
 
 def scrape_permanent_trading_pdfs():
@@ -873,34 +888,51 @@ def scrape_permanent_trading_pdfs():
     print("    Data type: Monthly weighted average prices (not individual trades)")
     results = []
 
-    # Generate URLs dynamically for all months from July 2024 to present
-    pdf_urls = generate_pwtr_pdf_urls()
-    print(f"    Checking {len(pdf_urls)} potential PDF URLs...")
+    # Discover actual PDF URLs from government pages
+    # (Each PDF has a unique asset ID that cannot be predicted)
+    pdf_urls = discover_pwtr_pdf_urls()
+    print(f"    Processing {len(pdf_urls)} discovered PDF URLs...")
 
     # Try to import PDF library
     try:
         import pdfplumber
-        pdf_available = True
+        pdf_available = 'pdfplumber'
+        print("    Using pdfplumber for PDF extraction")
     except ImportError:
         try:
             import PyPDF2
             pdf_available = 'pypdf2'
+            print("    Using PyPDF2 for PDF extraction")
         except ImportError:
             pdf_available = False
-            print("  PDF libraries not available, skipping PDF scraping")
+            print("    ERROR: No PDF libraries available (need pdfplumber or PyPDF2)")
             return results
 
+    successful_pdfs = 0
+    failed_pdfs = 0
+
     for url in pdf_urls:
+        filename = url.split('/')[-1]
         try:
-            print(f"  Processing: {url.split('/')[-1]}")
+            print(f"    Fetching: {filename}")
             response = requests.get(url, headers=HEADERS, timeout=60)
+
+            if response.status_code == 404:
+                print(f"      → 404 Not Found (PDF may not exist yet)")
+                failed_pdfs += 1
+                continue
+            elif response.status_code == 403:
+                print(f"      → 403 Forbidden (access denied)")
+                failed_pdfs += 1
+                continue
+
             response.raise_for_status()
+            print(f"      → Downloaded {len(response.content)} bytes")
 
             from io import BytesIO
             pdf_content = BytesIO(response.content)
 
             # Extract period from filename
-            filename = url.split('/')[-1]
             period_match = re.search(r'(jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*[-_]?(\d{4})', filename, re.IGNORECASE)
             if period_match:
                 month = period_match.group(1)
@@ -913,19 +945,32 @@ def scrape_permanent_trading_pdfs():
             report_type = 'Unsupplemented' if 'unsupplemented' in filename.lower() else 'Supplemented'
 
             # Extract data based on available library
-            if pdf_available == True:  # pdfplumber
+            if pdf_available == 'pdfplumber':
                 extracted = extract_pdf_data_pdfplumber(pdf_content, period, report_type)
             else:  # PyPDF2
                 extracted = extract_pdf_data_pypdf2(pdf_content, period, report_type)
 
-            results.extend(extracted)
+            if extracted:
+                print(f"      → Extracted {len(extracted)} records for {period}")
+                results.extend(extracted)
+                successful_pdfs += 1
+            else:
+                print(f"      → No data extracted from PDF")
+                failed_pdfs += 1
+
             time.sleep(1)  # Be respectful
 
+        except requests.exceptions.RequestException as e:
+            print(f"      → Network error: {e}")
+            failed_pdfs += 1
+            continue
         except Exception as e:
-            print(f"    Error: {e}")
+            print(f"      → PDF parsing error: {type(e).__name__}: {e}")
+            failed_pdfs += 1
             continue
 
-    print(f"  Found {len(results)} permanent trading records")
+    print(f"\n    Summary: {successful_pdfs} PDFs processed, {failed_pdfs} failed")
+    print(f"    Total records extracted: {len(results)}")
     return results
 
 

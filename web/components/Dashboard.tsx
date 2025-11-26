@@ -6,6 +6,8 @@ import { ScanData } from '@/lib/scans';
 import { ArticleData } from '@/lib/articles';
 import { ProjectData } from '@/lib/projects';
 import { UnallocatedWater } from '@/lib/unallocated';
+import { useTheme } from '@/lib/ThemeContext';
+import { ThemeColors } from '@/lib/themes';
 import {
   BarChart,
   Bar,
@@ -36,161 +38,70 @@ type Tab = 'allocations' | 'unallocated' | 'plans' | 'articles' | 'projects';
 
 export default function Dashboard({ initialAllocations, initialPlans, unallocatedWater, scans, articles, projects }: DashboardProps) {
   const [activeTab, setActiveTab] = useState<Tab>('allocations');
+  const { theme } = useTheme();
+
+  const tabs = [
+    { id: 'allocations' as Tab, label: 'Allocations & Trading', shortLabel: 'Allocations', icon: Droplets },
+    { id: 'unallocated' as Tab, label: 'Unallocated Water', shortLabel: 'Unallocated', icon: Layers },
+    { id: 'plans' as Tab, label: 'Water Plans', shortLabel: 'Plans', icon: FileText },
+    { id: 'articles' as Tab, label: 'Media Articles', shortLabel: 'Articles', icon: BookOpen },
+    { id: 'projects' as Tab, label: 'Infrastructure Projects', shortLabel: 'Projects', icon: Building2 },
+  ];
 
   return (
     <div className="space-y-4 md:space-y-6">
       {/* Tabs */}
       <div className="bg-gradient-to-br from-white to-gray-50 p-2 rounded-2xl shadow-lg border border-gray-200/50 overflow-x-auto relative z-20">
         <nav className="flex space-x-2 min-w-max relative z-20" aria-label="Tabs">
-          <button
-            type="button"
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              setActiveTab('allocations');
-            }}
-            className={clsx(
-              'whitespace-nowrap py-3 px-4 md:px-6 rounded-xl font-semibold text-sm flex items-center gap-2 transition-all duration-300',
-              'shadow-sm hover:shadow-md transform hover:-translate-y-0.5',
-              'relative z-10 cursor-pointer',
-              activeTab === 'allocations'
-                ? 'bg-gradient-to-r from-blue-500 to-cyan-600 text-white shadow-lg shadow-blue-500/30'
-                : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
-            )}
-          >
-            <Droplets className="w-4 h-4" />
-            <span className="hidden sm:inline">Allocations & Trading</span>
-            <span className="sm:hidden">Allocations</span>
-          </button>
-          <button
-            type="button"
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              setActiveTab('unallocated');
-            }}
-            className={clsx(
-              'whitespace-nowrap py-3 px-4 md:px-6 rounded-xl font-semibold text-sm flex items-center gap-2 transition-all duration-300',
-              'shadow-sm hover:shadow-md transform hover:-translate-y-0.5',
-              'relative z-10 cursor-pointer',
-              activeTab === 'unallocated'
-                ? 'bg-gradient-to-r from-violet-500 to-purple-600 text-white shadow-lg shadow-violet-500/30'
-                : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
-            )}
-          >
-            <Layers className="w-4 h-4" />
-            <span className="hidden sm:inline">Unallocated Water</span>
-            <span className="sm:hidden">Unallocated</span>
-          </button>
-          <button
-            type="button"
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              setActiveTab('plans');
-            }}
-            className={clsx(
-              'whitespace-nowrap py-3 px-4 md:px-6 rounded-xl font-semibold text-sm flex items-center gap-2 transition-all duration-300',
-              'shadow-sm hover:shadow-md transform hover:-translate-y-0.5',
-              'relative z-10 cursor-pointer',
-              activeTab === 'plans'
-                ? 'bg-gradient-to-r from-blue-500 to-cyan-600 text-white shadow-lg shadow-blue-500/30'
-                : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
-            )}
-          >
-            <FileText className="w-4 h-4" />
-            <span className="hidden sm:inline">Water Plans</span>
-            <span className="sm:hidden">Plans</span>
-          </button>
-          {/* Media Scans tab - temporarily removed, can be re-enabled later
-          <button
-            type="button"
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              setActiveTab('scans');
-            }}
-            className={clsx(
-              'whitespace-nowrap py-3 px-4 md:px-6 rounded-xl font-semibold text-sm flex items-center gap-2 transition-all duration-300',
-              'shadow-sm hover:shadow-md transform hover:-translate-y-0.5',
-              'relative z-10 cursor-pointer',
-              activeTab === 'scans'
-                ? 'bg-gradient-to-r from-purple-500 to-pink-600 text-white shadow-lg shadow-purple-500/30'
-                : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
-            )}
-          >
-            <Newspaper className="w-4 h-4" />
-            <span className="hidden sm:inline">Media Scans</span>
-            <span className="sm:hidden">Scans</span>
-          </button>
-          */}
-          <button
-            type="button"
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              setActiveTab('articles');
-            }}
-            className={clsx(
-              'whitespace-nowrap py-3 px-4 md:px-6 rounded-xl font-semibold text-sm flex items-center gap-2 transition-all duration-300',
-              'shadow-sm hover:shadow-md transform hover:-translate-y-0.5',
-              'relative z-10 cursor-pointer',
-              activeTab === 'articles'
-                ? 'bg-gradient-to-r from-indigo-500 to-purple-600 text-white shadow-lg shadow-indigo-500/30'
-                : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
-            )}
-          >
-            <BookOpen className="w-4 h-4" />
-            <span className="hidden sm:inline">Media Articles</span>
-            <span className="sm:hidden">Articles</span>
-          </button>
-          <button
-            type="button"
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              setActiveTab('projects');
-            }}
-            className={clsx(
-              'whitespace-nowrap py-3 px-4 md:px-6 rounded-xl font-semibold text-sm flex items-center gap-2 transition-all duration-300',
-              'shadow-sm hover:shadow-md transform hover:-translate-y-0.5',
-              'relative z-10 cursor-pointer',
-              activeTab === 'projects'
-                ? 'bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-lg shadow-emerald-500/30'
-                : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
-            )}
-          >
-            <Building2 className="w-4 h-4" />
-            <span className="hidden sm:inline">Infrastructure Projects</span>
-            <span className="sm:hidden">Projects</span>
-          </button>
+          {tabs.map((tab) => {
+            const Icon = tab.icon;
+            const isActive = activeTab === tab.id;
+            return (
+              <button
+                key={tab.id}
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setActiveTab(tab.id);
+                }}
+                className={clsx(
+                  'whitespace-nowrap py-3 px-4 md:px-6 rounded-xl font-semibold text-sm flex items-center gap-2 transition-all duration-300',
+                  'shadow-sm hover:shadow-md transform hover:-translate-y-0.5',
+                  'relative z-10 cursor-pointer',
+                  isActive
+                    ? `bg-gradient-to-r ${theme.tabActiveBg} text-white shadow-lg ${theme.tabActiveShadow}`
+                    : `${theme.tabInactiveBg} ${theme.tabInactiveText} ${theme.tabHoverBg} border ${theme.tabInactiveBorder}`
+                )}
+              >
+                <Icon className="w-4 h-4" />
+                <span className="hidden sm:inline">{tab.label}</span>
+                <span className="sm:hidden">{tab.shortLabel}</span>
+              </button>
+            );
+          })}
         </nav>
       </div>
 
       {/* Tab Content */}
       {activeTab === 'allocations' ? (
-        <AllocationsView data={initialAllocations} />
+        <AllocationsView data={initialAllocations} theme={theme} />
       ) : activeTab === 'unallocated' ? (
-        <UnallocatedWaterView data={unallocatedWater} />
+        <UnallocatedWaterView data={unallocatedWater} theme={theme} />
       ) : activeTab === 'plans' ? (
-        <PlansView data={initialPlans} />
+        <PlansView data={initialPlans} theme={theme} />
       ) : activeTab === 'articles' ? (
-        <ArticlesView articles={articles} />
+        <ArticlesView articles={articles} theme={theme} />
       ) : (
-        <ProjectsView projects={projects} />
+        <ProjectsView projects={projects} theme={theme} />
       )}
-      {/* Scans tab content - temporarily removed, can be re-enabled later
-      : activeTab === 'scans' ? (
-        <ScansView scans={scans} />
-      )
-      */}
     </div>
   );
 }
 
 // --- Sub-Components ---
 
-function AllocationsView({ data }: { data: WaterAllocation[] }) {
+function AllocationsView({ data, theme }: { data: WaterAllocation[]; theme: ThemeColors }) {
   const [selectedArea, setSelectedArea] = useState<string>("All");
   const [selectedScheme, setSelectedScheme] = useState<string>("All");
   const [selectedPriorityGroup, setSelectedPriorityGroup] = useState<string>("All");
@@ -287,9 +198,9 @@ function AllocationsView({ data }: { data: WaterAllocation[] }) {
   return (
     <div className="space-y-6 md:space-y-8">
       {/* Filters */}
-      <div className="bg-gradient-to-br from-white to-blue-50 p-6 rounded-2xl shadow-lg border border-gray-200/50 backdrop-blur-sm">
-        <div className="flex items-center gap-3 mb-5 text-blue-700">
-          <div className="p-2 bg-blue-100 rounded-xl">
+      <div className={clsx('p-6 rounded-2xl shadow-lg border border-gray-200/50 backdrop-blur-sm', `bg-gradient-to-br ${theme.filterBg}`)}>
+        <div className={clsx('flex items-center gap-3 mb-5', theme.filterIcon)}>
+          <div className={clsx('p-2 rounded-xl', theme.filterIconBg)}>
             <Filter className="w-5 h-5" />
           </div>
           <span className="font-bold text-base">Filter Data</span>
@@ -298,7 +209,7 @@ function AllocationsView({ data }: { data: WaterAllocation[] }) {
           <div>
             <label className="block text-sm font-semibold text-gray-700 mb-2">Water Area</label>
             <select
-              className="w-full rounded-xl border-2 border-gray-200 p-3 text-sm focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all duration-200 hover:border-gray-300 shadow-sm bg-white"
+              className={clsx('w-full rounded-xl border-2 border-gray-200 p-3 text-sm outline-none transition-all duration-200 hover:border-gray-300 shadow-sm bg-white', theme.inputFocusRing, theme.inputFocusBorder)}
               value={selectedArea}
               onChange={(e) => {
                 setSelectedArea(e.target.value);
@@ -315,7 +226,7 @@ function AllocationsView({ data }: { data: WaterAllocation[] }) {
           <div>
             <label className="block text-sm font-semibold text-gray-700 mb-2">Scheme</label>
             <select
-              className="w-full rounded-xl border-2 border-gray-200 p-3 text-sm focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all duration-200 hover:border-gray-300 shadow-sm bg-white"
+              className={clsx('w-full rounded-xl border-2 border-gray-200 p-3 text-sm outline-none transition-all duration-200 hover:border-gray-300 shadow-sm bg-white', theme.inputFocusRing, theme.inputFocusBorder)}
               value={selectedScheme}
               onChange={(e) => {
                 setSelectedScheme(e.target.value);
@@ -331,7 +242,7 @@ function AllocationsView({ data }: { data: WaterAllocation[] }) {
           <div>
             <label className="block text-sm font-semibold text-gray-700 mb-2">Priority Group</label>
             <select
-              className="w-full rounded-xl border-2 border-gray-200 p-3 text-sm focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all duration-200 hover:border-gray-300 shadow-sm bg-white"
+              className={clsx('w-full rounded-xl border-2 border-gray-200 p-3 text-sm outline-none transition-all duration-200 hover:border-gray-300 shadow-sm bg-white', theme.inputFocusRing, theme.inputFocusBorder)}
               value={selectedPriorityGroup}
               onChange={(e) => {
                 setSelectedPriorityGroup(e.target.value);
@@ -346,7 +257,7 @@ function AllocationsView({ data }: { data: WaterAllocation[] }) {
           <div>
             <label className="block text-sm font-semibold text-gray-700 mb-2">Zone / Location</label>
             <select
-              className="w-full rounded-xl border-2 border-gray-200 p-3 text-sm focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all duration-200 hover:border-gray-300 shadow-sm bg-white"
+              className={clsx('w-full rounded-xl border-2 border-gray-200 p-3 text-sm outline-none transition-all duration-200 hover:border-gray-300 shadow-sm bg-white', theme.inputFocusRing, theme.inputFocusBorder)}
               value={selectedZone}
               onChange={(e) => setSelectedZone(e.target.value)}
             >
@@ -364,8 +275,9 @@ function AllocationsView({ data }: { data: WaterAllocation[] }) {
         <Card
           title="Total Current Volume"
           value={`${totalCurrentVolume.toLocaleString(undefined, {maximumFractionDigits: 0})} ML`}
-          icon={<Droplets className="w-6 h-6 text-blue-500" />}
+          icon={<Droplets className={clsx('w-6 h-6', theme.primaryText)} />}
           subtext="Total allocated volume currently held"
+          theme={theme}
         />
 
         {/* Priority Group Cards */}
@@ -381,7 +293,7 @@ function AllocationsView({ data }: { data: WaterAllocation[] }) {
           } else if (group.toLowerCase().includes('unsupplemented')) {
             icon = <Droplets className="w-6 h-6 text-gray-500" />;
           } else {
-            icon = <Droplets className="w-6 h-6 text-blue-500" />;
+            icon = <Droplets className={clsx('w-6 h-6', theme.primaryText)} />;
           }
 
           return (
@@ -391,6 +303,7 @@ function AllocationsView({ data }: { data: WaterAllocation[] }) {
               value={`${volume.toLocaleString(undefined, {maximumFractionDigits: 0})} ML`}
               icon={icon}
               subtext={subtext}
+              theme={theme}
             />
           );
         })}
@@ -434,8 +347,8 @@ function AllocationsView({ data }: { data: WaterAllocation[] }) {
                 }}
               />
               <Legend />
-              <Bar dataKey="Current" stackId="a" fill="#3b82f6" radius={[0, 0, 4, 4]} />
-              <Bar dataKey="Headroom" stackId="a" fill="#22c55e" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="Current" stackId="a" fill={theme.chartPrimary} radius={[0, 0, 4, 4]} />
+              <Bar dataKey="Headroom" stackId="a" fill={theme.chartTertiary} radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -445,11 +358,11 @@ function AllocationsView({ data }: { data: WaterAllocation[] }) {
       <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
         <div className="p-4 md:p-6 border-b border-gray-100">
           <h3 className="text-base md:text-lg font-semibold text-gray-900">Allocation Data</h3>
-          <p className="text-xs md:text-sm text-gray-500 mt-1">Scroll horizontally to view all columns →</p>
+          <p className="text-xs md:text-sm text-gray-500 mt-1">Scroll horizontally to view all columns</p>
         </div>
         <div className="overflow-x-auto -webkit-overflow-scrolling-touch">
           <table className="w-full text-xs md:text-sm text-left min-w-[640px]">
-            <thead className="bg-gray-50 text-gray-500 font-medium sticky top-0 md:static">
+            <thead className={clsx('text-gray-500 font-medium sticky top-0 md:static', `bg-gradient-to-r ${theme.tableHeaderBg}`)}>
               <tr>
                 <th className="px-3 md:px-6 py-2 md:py-3">Zone / Location</th>
                 <th className="px-3 md:px-6 py-2 md:py-3">Priority Group</th>
@@ -460,10 +373,10 @@ function AllocationsView({ data }: { data: WaterAllocation[] }) {
             </thead>
             <tbody className="divide-y divide-gray-100">
               {filteredData.map((item, i) => (
-                <tr key={i} className="hover:bg-gray-50/50 transition-colors">
+                <tr key={i} className={clsx('transition-colors', theme.tableRowHover)}>
                   <td className="px-3 md:px-6 py-2 md:py-3 font-medium text-gray-900">{item['Zone/Location']}</td>
                   <td className="px-3 md:px-6 py-2 md:py-3 text-gray-500">{item['Priority Group']}</td>
-                  <td className="px-3 md:px-6 py-2 md:py-3 text-right text-blue-600">
+                  <td className={clsx('px-3 md:px-6 py-2 md:py-3 text-right', theme.tableAccent)}>
                     {(item['Current Volume (ML)'] || 0).toLocaleString()}
                   </td>
                   <td className="px-3 md:px-6 py-2 md:py-3 text-right text-gray-500">
@@ -489,7 +402,7 @@ function AllocationsView({ data }: { data: WaterAllocation[] }) {
   );
 }
 
-function PlansView({ data }: { data: WaterPlan[] }) {
+function PlansView({ data, theme }: { data: WaterPlan[]; theme: ThemeColors }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState<'expiry' | 'name'>('expiry');
 
@@ -530,22 +443,24 @@ function PlansView({ data }: { data: WaterPlan[] }) {
     <div className="space-y-6 md:space-y-8">
       {/* KPIs */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <Card 
-          title="Total Plans" 
+        <Card
+          title="Total Plans"
           value={data.length.toString()}
-          icon={<FileText className="w-6 h-6 text-blue-500" />}
+          icon={<FileText className={clsx('w-6 h-6', theme.primaryText)} />}
           subtext="Active water plans tracked"
+          theme={theme}
         />
         <Card
           title="Expiring Soon"
           value={data.filter(p => ['2025', '2026'].some(y => String(p['Estimated Expiry']).includes(y))).length.toString()}
           icon={<Calendar className="w-6 h-6 text-orange-500" />}
           subtext="Expiring in 2025-2026"
+          theme={theme}
         />
       </div>
 
       {/* Search and Sort Controls */}
-      <div className="bg-gradient-to-br from-white to-blue-50 p-6 rounded-2xl shadow-lg border border-gray-200/50 backdrop-blur-sm">
+      <div className={clsx('p-6 rounded-2xl shadow-lg border border-gray-200/50 backdrop-blur-sm', `bg-gradient-to-br ${theme.filterBg}`)}>
         <div className="flex flex-col md:flex-row gap-6">
           {/* Search Input */}
           <div className="flex-1">
@@ -554,7 +469,7 @@ function PlansView({ data }: { data: WaterPlan[] }) {
             </label>
             <div className="relative group">
               <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                <Search className="h-5 w-5 text-gray-400 group-focus-within:text-blue-500 transition-colors" />
+                <Search className={clsx('h-5 w-5 text-gray-400 transition-colors', `group-focus-within:${theme.primaryText}`)} />
               </div>
               <input
                 id="plan-search"
@@ -562,10 +477,12 @@ function PlansView({ data }: { data: WaterPlan[] }) {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search by name, status, or expiry year..."
-                className="block w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-xl
-                         focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500
-                         text-sm placeholder-gray-400 transition-all duration-200
-                         hover:border-gray-300 shadow-sm bg-white"
+                className={clsx(
+                  'block w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-xl',
+                  'text-sm placeholder-gray-400 transition-all duration-200',
+                  'hover:border-gray-300 shadow-sm bg-white',
+                  theme.inputFocusRing, theme.inputFocusBorder
+                )}
               />
             </div>
           </div>
@@ -582,8 +499,8 @@ function PlansView({ data }: { data: WaterPlan[] }) {
                   "flex items-center gap-2 px-4 py-3 rounded-xl font-semibold text-sm transition-all duration-200",
                   "shadow-sm hover:shadow-md transform hover:-translate-y-0.5",
                   sortBy === 'expiry'
-                    ? "bg-gradient-to-r from-blue-500 to-cyan-600 text-white shadow-lg shadow-blue-500/30"
-                    : "bg-white border-2 border-gray-200 text-gray-700 hover:border-blue-300 hover:bg-blue-50"
+                    ? `bg-gradient-to-r ${theme.primaryGradient} text-white shadow-lg ${theme.primaryShadow}`
+                    : "bg-white border-2 border-gray-200 text-gray-700 hover:border-gray-300"
                 )}
               >
                 <Calendar className="w-4 h-4" />
@@ -595,8 +512,8 @@ function PlansView({ data }: { data: WaterPlan[] }) {
                   "flex items-center gap-2 px-4 py-3 rounded-xl font-semibold text-sm transition-all duration-200",
                   "shadow-sm hover:shadow-md transform hover:-translate-y-0.5",
                   sortBy === 'name'
-                    ? "bg-gradient-to-r from-blue-500 to-cyan-600 text-white shadow-lg shadow-blue-500/30"
-                    : "bg-white border-2 border-gray-200 text-gray-700 hover:border-blue-300 hover:bg-blue-50"
+                    ? `bg-gradient-to-r ${theme.primaryGradient} text-white shadow-lg ${theme.primaryShadow}`
+                    : "bg-white border-2 border-gray-200 text-gray-700 hover:border-gray-300"
                 )}
               >
                 <ArrowUpDown className="w-4 h-4" />
@@ -610,9 +527,9 @@ function PlansView({ data }: { data: WaterPlan[] }) {
         {searchQuery && (
           <div className="mt-4 pt-4 border-t border-gray-200">
             <div className="flex items-center gap-2 text-sm">
-              <div className="h-2 w-2 rounded-full bg-blue-500 animate-pulse"></div>
+              <div className={clsx('h-2 w-2 rounded-full animate-pulse', theme.primaryText.replace('text-', 'bg-'))}></div>
               <span className="text-gray-600">
-                Found <span className="font-bold text-blue-600">{filteredAndSortedData.length}</span> plan{filteredAndSortedData.length !== 1 ? 's' : ''} matching "{searchQuery}"
+                Found <span className={clsx('font-bold', theme.primaryText)}>{filteredAndSortedData.length}</span> plan{filteredAndSortedData.length !== 1 ? 's' : ''} matching "{searchQuery}"
               </span>
             </div>
           </div>
@@ -623,15 +540,15 @@ function PlansView({ data }: { data: WaterPlan[] }) {
       <div className="grid grid-cols-1 gap-6">
         {filteredAndSortedData.length > 0 ? (
           filteredAndSortedData.map((plan, i) => (
-          <div key={i} className="group bg-white p-8 rounded-2xl shadow-md border border-gray-200/50 hover:shadow-2xl hover:border-blue-200 transition-all duration-300 hover:-translate-y-1">
+          <div key={i} className={clsx('group bg-white p-8 rounded-2xl shadow-md border border-gray-200/50 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1', theme.cardHoverBorder)}>
             <div className="flex flex-col md:flex-row justify-between gap-4 mb-6">
               <div className="flex-1">
                 <h3 className="text-xl font-bold mb-3 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">{plan['Plan Name']}</h3>
                 <span className={clsx(
                   "inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold shadow-sm",
                   ['2024', '2025'].some(y => String(plan['Estimated Expiry']).includes(y))
-                    ? "bg-gradient-to-r from-red-500 to-orange-600 text-white shadow-red-500/30"
-                    : "bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-green-500/30"
+                    ? `bg-gradient-to-r ${theme.statusDanger} text-white`
+                    : `bg-gradient-to-r ${theme.statusSuccess} text-white`
                 )}>
                   <Calendar className="w-3.5 h-3.5" />
                   Expires: {plan['Estimated Expiry']}
@@ -642,7 +559,7 @@ function PlansView({ data }: { data: WaterPlan[] }) {
                   href={plan.URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-800 font-semibold transition-all duration-200 hover:gap-3 group/link"
+                  className={clsx('flex items-center gap-2 text-sm font-semibold transition-all duration-200 hover:gap-3 group/link', theme.primaryText, theme.primaryHover)}
                 >
                   View on Business QLD
                   <ExternalLink className="w-4 h-4 transform group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
@@ -650,14 +567,14 @@ function PlansView({ data }: { data: WaterPlan[] }) {
               )}
             </div>
 
-            <div className="bg-gradient-to-br from-blue-50 via-cyan-50 to-blue-100 border-l-4 border-blue-500 rounded-2xl p-6 shadow-sm">
+            <div className={clsx('border-l-4 rounded-2xl p-6 shadow-sm', `bg-gradient-to-br ${theme.filterBg}`, theme.primaryText.replace('text-', 'border-'))}>
               <div className="flex items-start gap-3">
                 <div className="p-2 bg-white rounded-xl shadow-sm">
-                  <Info className="w-5 h-5 text-blue-600" />
+                  <Info className={clsx('w-5 h-5', theme.primaryText)} />
                 </div>
                 <div className="flex-1">
-                  <p className="font-bold text-blue-900 mb-2 text-sm">Status Update</p>
-                  <p className="text-sm text-blue-900 leading-relaxed">{plan['Status Summary']}</p>
+                  <p className="font-bold text-gray-900 mb-2 text-sm">Status Update</p>
+                  <p className="text-sm text-gray-700 leading-relaxed">{plan['Status Summary']}</p>
                 </div>
               </div>
             </div>
@@ -676,7 +593,7 @@ function PlansView({ data }: { data: WaterPlan[] }) {
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery("")}
-                className="mt-4 text-blue-600 hover:text-blue-800 font-medium text-sm"
+                className={clsx('mt-4 font-medium text-sm', theme.primaryText, theme.primaryHover)}
               >
                 Clear search
               </button>
@@ -788,7 +705,7 @@ function ScansView({ scans }: { scans: ScanData[] }) {
 }
 */
 
-function ArticlesView({ articles }: { articles: ArticleData[] }) {
+function ArticlesView({ articles, theme }: { articles: ArticleData[]; theme: ThemeColors }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedTag, setSelectedTag] = useState<string>("All");
   const [tagsExpanded, setTagsExpanded] = useState(false);
@@ -843,25 +760,28 @@ function ArticlesView({ articles }: { articles: ArticleData[] }) {
         <Card
           title="Total Articles"
           value={articles.length.toString()}
-          icon={<BookOpen className="w-6 h-6 text-indigo-500" />}
+          icon={<BookOpen className={clsx('w-6 h-6', theme.primaryText)} />}
           subtext="Media articles tracked"
+          theme={theme}
         />
         <Card
           title="Latest Article"
           value={articles[0]?.date || "N/A"}
-          icon={<Calendar className="w-6 h-6 text-blue-500" />}
+          icon={<Calendar className={clsx('w-6 h-6', theme.secondaryText)} />}
           subtext={articles[0]?.source || "No articles yet"}
+          theme={theme}
         />
         <Card
           title="Sources"
           value={new Set(articles.map(a => a.source)).size.toString()}
-          icon={<Newspaper className="w-6 h-6 text-purple-500" />}
+          icon={<Newspaper className={clsx('w-6 h-6', theme.primaryText)} />}
           subtext="Unique media sources"
+          theme={theme}
         />
       </div>
 
       {/* Search and Filter Controls */}
-      <div className="bg-gradient-to-br from-white to-gray-50 p-6 rounded-2xl shadow-lg border border-gray-200/50 backdrop-blur-sm">
+      <div className={clsx('p-6 rounded-2xl shadow-lg border border-gray-200/50 backdrop-blur-sm', `bg-gradient-to-br ${theme.filterBg}`)}>
         <div className="flex flex-col gap-6">
           {/* Search Input */}
           <div className="flex-1">
@@ -870,7 +790,7 @@ function ArticlesView({ articles }: { articles: ArticleData[] }) {
             </label>
             <div className="relative group">
               <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                <Search className="h-5 w-5 text-gray-400 group-focus-within:text-indigo-500 transition-colors" />
+                <Search className="h-5 w-5 text-gray-400 transition-colors" />
               </div>
               <input
                 id="article-search"
@@ -878,10 +798,12 @@ function ArticlesView({ articles }: { articles: ArticleData[] }) {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search by title, source, tags, or implications..."
-                className="block w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-xl
-                         focus:ring-4 focus:ring-indigo-500/20 focus:border-indigo-500
-                         text-sm placeholder-gray-400 transition-all duration-200
-                         hover:border-gray-300 shadow-sm"
+                className={clsx(
+                  'block w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-xl',
+                  'text-sm placeholder-gray-400 transition-all duration-200',
+                  'hover:border-gray-300 shadow-sm bg-white',
+                  theme.inputFocusRing, theme.inputFocusBorder
+                )}
               />
             </div>
           </div>
@@ -901,8 +823,8 @@ function ArticlesView({ articles }: { articles: ArticleData[] }) {
                       "px-4 py-2 rounded-full font-medium text-xs transition-all duration-200 whitespace-nowrap",
                       "shadow-sm hover:shadow-md transform hover:-translate-y-0.5",
                       selectedTag === tag
-                        ? "bg-gradient-to-r from-indigo-500 to-purple-600 text-white border-0 shadow-lg shadow-indigo-500/30"
-                        : "bg-white border-2 border-gray-200 text-gray-700 hover:border-indigo-300 hover:bg-indigo-50"
+                        ? `bg-gradient-to-r ${theme.primaryGradient} text-white border-0 shadow-lg ${theme.primaryShadow}`
+                        : "bg-white border-2 border-gray-200 text-gray-700 hover:border-gray-300"
                     )}
                   >
                     {tag}
@@ -914,7 +836,7 @@ function ArticlesView({ articles }: { articles: ArticleData[] }) {
               {allTags.length > 13 && (
                 <button
                   onClick={() => setTagsExpanded(!tagsExpanded)}
-                  className="mt-3 flex items-center gap-2 text-sm font-medium text-indigo-600 hover:text-indigo-800 transition-colors"
+                  className={clsx('mt-3 flex items-center gap-2 text-sm font-medium transition-colors', theme.primaryText, theme.primaryHover)}
                 >
                   {tagsExpanded ? (
                     <>
@@ -937,9 +859,9 @@ function ArticlesView({ articles }: { articles: ArticleData[] }) {
         {(searchQuery || selectedTag !== "All") && (
           <div className="mt-4 pt-4 border-t border-gray-200">
             <div className="flex items-center gap-2 text-sm">
-              <div className="h-2 w-2 rounded-full bg-indigo-500 animate-pulse"></div>
+              <div className={clsx('h-2 w-2 rounded-full animate-pulse', theme.primaryText.replace('text-', 'bg-'))}></div>
               <span className="text-gray-600">
-                Found <span className="font-bold text-indigo-600">{filteredArticles.length}</span> article{filteredArticles.length !== 1 ? 's' : ''}
+                Found <span className={clsx('font-bold', theme.primaryText)}>{filteredArticles.length}</span> article{filteredArticles.length !== 1 ? 's' : ''}
                 {searchQuery && ` matching "${searchQuery}"`}
                 {selectedTag !== "All" && ` with tag "${selectedTag}"`}
               </span>
@@ -952,7 +874,7 @@ function ArticlesView({ articles }: { articles: ArticleData[] }) {
       <div className="grid grid-cols-1 gap-8">
         {filteredArticles.length > 0 ? (
           filteredArticles.map((article) => (
-            <div key={article.id} className="group bg-white p-8 rounded-2xl shadow-md border border-gray-200/50 hover:shadow-2xl hover:border-indigo-200 transition-all duration-300 hover:-translate-y-1">
+            <div key={article.id} className={clsx('group bg-white p-8 rounded-2xl shadow-md border border-gray-200/50 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1', theme.cardHoverBorder)}>
               {/* Header */}
               <div className="flex flex-col gap-4 mb-6">
                 <div className="flex-1">
@@ -961,7 +883,7 @@ function ArticlesView({ articles }: { articles: ArticleData[] }) {
                       <Calendar className="w-3 h-3" />
                       {article.date}
                     </span>
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-700">
+                    <span className={clsx('inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold', `bg-gradient-to-r ${theme.tagBg}`, theme.tagText)}>
                       <Newspaper className="w-3 h-3" />
                       {article.source}
                     </span>
@@ -970,7 +892,11 @@ function ArticlesView({ articles }: { articles: ArticleData[] }) {
                     {article.tags.map(tag => (
                       <span
                         key={tag}
-                        className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r from-blue-50 to-indigo-50 text-indigo-700 border border-indigo-200 hover:from-indigo-500 hover:to-purple-600 hover:text-white cursor-pointer transition-all duration-200 hover:shadow-md hover:scale-105"
+                        className={clsx(
+                          'inline-flex items-center px-3 py-1 rounded-full text-xs font-medium cursor-pointer transition-all duration-200 hover:shadow-md hover:scale-105',
+                          `bg-gradient-to-r ${theme.tagBg}`, theme.tagText, `border ${theme.tagBorder}`,
+                          theme.tagHoverBg, theme.tagHoverText
+                        )}
                         onClick={() => setSelectedTag(tag)}
                       >
                         {tag}
@@ -981,19 +907,19 @@ function ArticlesView({ articles }: { articles: ArticleData[] }) {
                     href={article.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-2xl font-bold text-gray-900 hover:text-indigo-600 transition-colors inline-flex items-center gap-3 group/link"
+                    className="text-2xl font-bold text-gray-900 transition-colors inline-flex items-center gap-3 group/link"
                   >
-                    <span className="bg-gradient-to-r from-gray-900 to-gray-700 group-hover/link:from-indigo-600 group-hover/link:to-purple-600 bg-clip-text text-transparent">
+                    <span className={clsx('bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent', `group-hover/link:${theme.primaryGradient}`)}>
                       {article.title}
                     </span>
-                    <ExternalLink className="w-5 h-5 text-gray-400 group-hover/link:text-indigo-600 transform group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-all" />
+                    <ExternalLink className={clsx('w-5 h-5 text-gray-400 transform group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-all', `group-hover/link:${theme.primaryText}`)} />
                   </a>
                 </div>
               </div>
 
               {/* Summary (if content exists) */}
               {article.contentHtml && (
-                <div className="prose prose-sm max-w-none text-gray-700 prose-headings:text-gray-900 prose-a:text-indigo-600 hover:prose-a:text-indigo-700">
+                <div className={clsx('prose prose-sm max-w-none text-gray-700 prose-headings:text-gray-900', `prose-a:${theme.primaryText}`)}>
                   <div dangerouslySetInnerHTML={{ __html: article.contentHtml }} />
                 </div>
               )}
@@ -1019,7 +945,7 @@ function ArticlesView({ articles }: { articles: ArticleData[] }) {
                   setSearchQuery("");
                   setSelectedTag("All");
                 }}
-                className="mt-4 text-blue-600 hover:text-blue-800 font-medium text-sm"
+                className={clsx('mt-4 font-medium text-sm', theme.primaryText, theme.primaryHover)}
               >
                 Clear filters
               </button>
@@ -1031,7 +957,7 @@ function ArticlesView({ articles }: { articles: ArticleData[] }) {
   );
 }
 
-function ProjectsView({ projects }: { projects: ProjectData[] }) {
+function ProjectsView({ projects, theme }: { projects: ProjectData[]; theme: ThemeColors }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedRegion, setSelectedRegion] = useState<string>('All');
   const [selectedStatus, setSelectedStatus] = useState<string>('All');
@@ -1090,25 +1016,28 @@ function ProjectsView({ projects }: { projects: ProjectData[] }) {
         <Card
           title="Total Projects"
           value={projects.length}
-          icon={<Building2 className="w-6 h-6 text-emerald-600" />}
+          icon={<Building2 className={clsx('w-6 h-6', theme.primaryText)} />}
           subtext="Queensland water infrastructure projects"
+          theme={theme}
         />
         <Card
           title="Water Plan Regions"
           value={regions.length - 1}
-          icon={<Filter className="w-6 h-6 text-teal-600" />}
+          icon={<Filter className={clsx('w-6 h-6', theme.secondaryText)} />}
           subtext="Regions with infrastructure projects"
+          theme={theme}
         />
         <Card
           title="Active/Planning"
           value={projects.filter(p => ['planning', 'construction', 'proposed'].includes(p.status)).length}
-          icon={<Info className="w-6 h-6 text-blue-600" />}
+          icon={<Info className={clsx('w-6 h-6', theme.primaryText)} />}
           subtext="Projects in development pipeline"
+          theme={theme}
         />
       </div>
 
       {/* Search and Filters */}
-      <div className="bg-white p-4 md:p-6 rounded-2xl shadow-lg border border-gray-200/50">
+      <div className={clsx('p-4 md:p-6 rounded-2xl shadow-lg border border-gray-200/50', `bg-gradient-to-br ${theme.filterBg}`)}>
         <div className="space-y-4">
           {/* Search Bar */}
           <div className="relative">
@@ -1118,7 +1047,10 @@ function ProjectsView({ projects }: { projects: ProjectData[] }) {
               placeholder="Search projects by name, description, region, or location..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
+              className={clsx(
+                'w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl transition-all bg-white',
+                theme.inputFocusRing, theme.inputFocusBorder
+              )}
             />
           </div>
 
@@ -1132,7 +1064,10 @@ function ProjectsView({ projects }: { projects: ProjectData[] }) {
               <select
                 value={selectedRegion}
                 onChange={(e) => setSelectedRegion(e.target.value)}
-                className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all bg-white"
+                className={clsx(
+                  'w-full px-4 py-2.5 border border-gray-300 rounded-xl transition-all bg-white',
+                  theme.inputFocusRing, theme.inputFocusBorder
+                )}
               >
                 {regions.map(region => (
                   <option key={region} value={region}>{region}</option>
@@ -1148,7 +1083,10 @@ function ProjectsView({ projects }: { projects: ProjectData[] }) {
               <select
                 value={selectedStatus}
                 onChange={(e) => setSelectedStatus(e.target.value)}
-                className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all bg-white"
+                className={clsx(
+                  'w-full px-4 py-2.5 border border-gray-300 rounded-xl transition-all bg-white',
+                  theme.inputFocusRing, theme.inputFocusBorder
+                )}
               >
                 {statuses.map(status => (
                   <option key={status} value={status}>
@@ -1162,7 +1100,7 @@ function ProjectsView({ projects }: { projects: ProjectData[] }) {
           {/* Results Count */}
           <div className="flex items-center justify-between text-sm text-gray-600">
             <span>
-              Showing <span className="font-semibold text-emerald-600">{filteredProjects.length}</span> of {projects.length} projects
+              Showing <span className={clsx('font-semibold', theme.primaryText)}>{filteredProjects.length}</span> of {projects.length} projects
             </span>
             {(searchQuery || selectedRegion !== 'All' || selectedStatus !== 'All') && (
               <button
@@ -1171,7 +1109,7 @@ function ProjectsView({ projects }: { projects: ProjectData[] }) {
                   setSelectedRegion('All');
                   setSelectedStatus('All');
                 }}
-                className="text-emerald-600 hover:text-emerald-800 font-medium"
+                className={clsx('font-medium', theme.primaryText, theme.primaryHover)}
               >
                 Clear filters
               </button>
@@ -1193,7 +1131,7 @@ function ProjectsView({ projects }: { projects: ProjectData[] }) {
             return (
               <div
                 key={project.id}
-                className="bg-white rounded-2xl shadow-lg border border-gray-200/50 overflow-hidden hover:shadow-xl transition-all duration-300"
+                className={clsx('bg-white rounded-2xl shadow-lg border border-gray-200/50 overflow-hidden hover:shadow-xl transition-all duration-300', theme.cardHoverBorder)}
               >
                 {/* Project Header */}
                 <div className="p-6">
@@ -1215,27 +1153,27 @@ function ProjectsView({ projects }: { projects: ProjectData[] }) {
                   {/* Quick Info Grid */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-4">
                     {project.region && (
-                      <div className="bg-gradient-to-br from-emerald-50 to-teal-50 p-3 rounded-xl">
+                      <div className={clsx('p-3 rounded-xl', `bg-gradient-to-br ${theme.cardIconBg}`)}>
                         <p className="text-xs font-semibold text-gray-600 mb-1">Region</p>
-                        <p className="text-sm font-bold text-emerald-700">{project.region}</p>
+                        <p className={clsx('text-sm font-bold', theme.primaryText)}>{project.region}</p>
                       </div>
                     )}
                     {project.capacity && (
-                      <div className="bg-gradient-to-br from-blue-50 to-cyan-50 p-3 rounded-xl">
+                      <div className={clsx('p-3 rounded-xl', `bg-gradient-to-br ${theme.cardIconBg}`)}>
                         <p className="text-xs font-semibold text-gray-600 mb-1">Capacity</p>
-                        <p className="text-sm font-bold text-blue-700">{project.capacity}</p>
+                        <p className={clsx('text-sm font-bold', theme.primaryText)}>{project.capacity}</p>
                       </div>
                     )}
                     {project.estimatedCost && (
-                      <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-3 rounded-xl">
+                      <div className={clsx('p-3 rounded-xl', `bg-gradient-to-br ${theme.cardIconBg}`)}>
                         <p className="text-xs font-semibold text-gray-600 mb-1">Estimated Cost</p>
-                        <p className="text-sm font-bold text-purple-700">{project.estimatedCost}</p>
+                        <p className={clsx('text-sm font-bold', theme.primaryText)}>{project.estimatedCost}</p>
                       </div>
                     )}
                     {project.irrigationArea && (
-                      <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-3 rounded-xl">
+                      <div className={clsx('p-3 rounded-xl', `bg-gradient-to-br ${theme.cardIconBg}`)}>
                         <p className="text-xs font-semibold text-gray-600 mb-1">Irrigation Area</p>
-                        <p className="text-sm font-bold text-green-700">{project.irrigationArea}</p>
+                        <p className={clsx('text-sm font-bold', theme.primaryText)}>{project.irrigationArea}</p>
                       </div>
                     )}
                   </div>
@@ -1243,15 +1181,18 @@ function ProjectsView({ projects }: { projects: ProjectData[] }) {
                   {/* Expand/Collapse Button */}
                   <button
                     onClick={() => setExpandedId(isExpanded ? null : project.id)}
-                    className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-gradient-to-r from-emerald-50 to-teal-50 hover:from-emerald-100 hover:to-teal-100 rounded-xl transition-all duration-200 border border-emerald-200"
+                    className={clsx(
+                      'w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl transition-all duration-200 border',
+                      `bg-gradient-to-r ${theme.filterBg}`, theme.primaryText.replace('text-', 'border-')
+                    )}
                   >
-                    <span className="font-semibold text-emerald-700">
+                    <span className={clsx('font-semibold', theme.primaryText)}>
                       {isExpanded ? 'Hide Details' : 'View Details'}
                     </span>
                     {isExpanded ? (
-                      <ChevronUp className="w-5 h-5 text-emerald-700" />
+                      <ChevronUp className={clsx('w-5 h-5', theme.primaryText)} />
                     ) : (
-                      <ChevronDown className="w-5 h-5 text-emerald-700" />
+                      <ChevronDown className={clsx('w-5 h-5', theme.primaryText)} />
                     )}
                   </button>
                 </div>
@@ -1263,7 +1204,7 @@ function ProjectsView({ projects }: { projects: ProjectData[] }) {
                     {project.location && (
                       <div>
                         <h4 className="text-sm font-bold text-gray-700 mb-2 flex items-center gap-2">
-                          <Info className="w-4 h-4 text-emerald-600" />
+                          <Info className={clsx('w-4 h-4', theme.primaryText)} />
                           Location
                         </h4>
                         <p className="text-gray-700">{project.location}</p>
@@ -1273,7 +1214,7 @@ function ProjectsView({ projects }: { projects: ProjectData[] }) {
                     {project.fundingCommitted && (
                       <div>
                         <h4 className="text-sm font-bold text-gray-700 mb-2 flex items-center gap-2">
-                          <Info className="w-4 h-4 text-emerald-600" />
+                          <Info className={clsx('w-4 h-4', theme.primaryText)} />
                           Funding
                         </h4>
                         <p className="text-gray-700 mb-2"><strong>Committed:</strong> {project.fundingCommitted}</p>
@@ -1293,7 +1234,7 @@ function ProjectsView({ projects }: { projects: ProjectData[] }) {
                     {project.economicBenefits && (
                       <div>
                         <h4 className="text-sm font-bold text-gray-700 mb-2 flex items-center gap-2">
-                          <Info className="w-4 h-4 text-emerald-600" />
+                          <Info className={clsx('w-4 h-4', theme.primaryText)} />
                           Economic Benefits
                         </h4>
                         <p className="text-gray-700">{project.economicBenefits}</p>
@@ -1303,7 +1244,7 @@ function ProjectsView({ projects }: { projects: ProjectData[] }) {
                     {project.timeline && (
                       <div>
                         <h4 className="text-sm font-bold text-gray-700 mb-2 flex items-center gap-2">
-                          <Calendar className="w-4 h-4 text-emerald-600" />
+                          <Calendar className={clsx('w-4 h-4', theme.primaryText)} />
                           Timeline
                         </h4>
                         <p className="text-gray-700">{project.timeline}</p>
@@ -1313,7 +1254,7 @@ function ProjectsView({ projects }: { projects: ProjectData[] }) {
                     {project.approvalsStatus && (
                       <div>
                         <h4 className="text-sm font-bold text-gray-700 mb-2 flex items-center gap-2">
-                          <FileText className="w-4 h-4 text-emerald-600" />
+                          <FileText className={clsx('w-4 h-4', theme.primaryText)} />
                           Approvals Status
                         </h4>
                         <p className="text-gray-700">{project.approvalsStatus}</p>
@@ -1343,14 +1284,14 @@ function ProjectsView({ projects }: { projects: ProjectData[] }) {
                     {project.organizations && project.organizations.length > 0 && (
                       <div>
                         <h4 className="text-sm font-bold text-gray-700 mb-2 flex items-center gap-2">
-                          <Building2 className="w-4 h-4 text-emerald-600" />
+                          <Building2 className={clsx('w-4 h-4', theme.primaryText)} />
                           Key Organizations
                         </h4>
                         <div className="flex flex-wrap gap-2">
                           {project.organizations.map((org, idx) => (
                             <span
                               key={idx}
-                              className="px-3 py-1 bg-emerald-100 text-emerald-800 rounded-full text-xs font-medium border border-emerald-200"
+                              className={clsx('px-3 py-1 rounded-full text-xs font-medium border', `bg-gradient-to-r ${theme.tagBg}`, theme.tagText, theme.tagBorder)}
                             >
                               {org}
                             </span>
@@ -1363,11 +1304,11 @@ function ProjectsView({ projects }: { projects: ProjectData[] }) {
                     {project.contentHtml && (
                       <div>
                         <h4 className="text-sm font-bold text-gray-700 mb-3 flex items-center gap-2">
-                          <FileText className="w-4 h-4 text-emerald-600" />
+                          <FileText className={clsx('w-4 h-4', theme.primaryText)} />
                           Detailed Information
                         </h4>
                         <div
-                          className="prose prose-sm max-w-none prose-headings:text-gray-900 prose-p:text-gray-700 prose-a:text-emerald-600 hover:prose-a:text-emerald-800 prose-strong:text-gray-900"
+                          className={clsx('prose prose-sm max-w-none prose-headings:text-gray-900 prose-p:text-gray-700 prose-strong:text-gray-900', `prose-a:${theme.primaryText}`)}
                           dangerouslySetInnerHTML={{ __html: project.contentHtml }}
                         />
                       </div>
@@ -1377,7 +1318,7 @@ function ProjectsView({ projects }: { projects: ProjectData[] }) {
                     {project.links && project.links.length > 0 && (
                       <div>
                         <h4 className="text-sm font-bold text-gray-700 mb-3 flex items-center gap-2">
-                          <ExternalLink className="w-4 h-4 text-emerald-600" />
+                          <ExternalLink className={clsx('w-4 h-4', theme.primaryText)} />
                           External Resources
                         </h4>
                         <div className="space-y-2">
@@ -1387,7 +1328,7 @@ function ProjectsView({ projects }: { projects: ProjectData[] }) {
                               href={link.url}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="flex items-center gap-2 text-emerald-600 hover:text-emerald-800 hover:underline group"
+                              className={clsx('flex items-center gap-2 hover:underline group', theme.primaryText, theme.primaryHover)}
                             >
                               <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                               <span>{link.title}</span>
@@ -1418,18 +1359,18 @@ function ProjectsView({ projects }: { projects: ProjectData[] }) {
   );
 }
 
-function Card({ title, value, icon, subtext }: any) {
+function Card({ title, value, icon, subtext, theme }: { title: string; value: string | number; icon: React.ReactNode; subtext: string; theme: ThemeColors }) {
   return (
-    <div className="group relative bg-gradient-to-br from-white via-gray-50 to-white p-6 rounded-2xl shadow-lg border border-gray-200/50 hover:shadow-2xl hover:border-indigo-200 transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+    <div className={clsx('group relative p-6 rounded-2xl shadow-lg border hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 overflow-hidden', `bg-gradient-to-br ${theme.cardBg}`, theme.cardBorder, theme.cardHoverBorder)}>
       {/* Background gradient overlay on hover */}
-      <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      <div className={clsx('absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300', `bg-gradient-to-br ${theme.cardIconBg}`)} style={{ opacity: 0.05 }} />
 
       <div className="relative flex items-start justify-between mb-4">
         <div className="flex-1">
           <p className="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-2">{title}</p>
           <h4 className="text-3xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">{value}</h4>
         </div>
-        <div className="p-3 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl shadow-sm group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
+        <div className={clsx('p-3 rounded-2xl shadow-sm group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300', `bg-gradient-to-br ${theme.cardIconBg}`)}>
           {icon}
         </div>
       </div>
@@ -1441,7 +1382,7 @@ function Card({ title, value, icon, subtext }: any) {
 }
 
 // Unallocated Water View Component
-function UnallocatedWaterView({ data }: { data: UnallocatedWater[] }) {
+function UnallocatedWaterView({ data, theme }: { data: UnallocatedWater[]; theme: ThemeColors }) {
   const [selectedWaterPlanArea, setSelectedWaterPlanArea] = useState<string>("All");
   const [selectedReserveType, setSelectedReserveType] = useState<string>("All");
   const [sortColumn, setSortColumn] = useState<keyof UnallocatedWater | null>(null);
@@ -1540,22 +1481,19 @@ function UnallocatedWaterView({ data }: { data: UnallocatedWater[] }) {
     }
   };
 
-  // Colors for charts
-  const COLORS = ['#8b5cf6', '#6366f1', '#3b82f6', '#06b6d4', '#10b981', '#f59e0b', '#ef4444', '#ec4899'];
-
   return (
     <div className="space-y-6">
       {/* Filters */}
-      <div className="bg-white p-4 md:p-6 rounded-2xl shadow-lg border border-gray-200/50">
+      <div className={clsx('p-4 md:p-6 rounded-2xl shadow-lg border border-gray-200/50', `bg-gradient-to-br ${theme.filterBg}`)}>
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-          <Filter className="w-5 h-5 text-violet-600 flex-shrink-0" />
+          <Filter className={clsx('w-5 h-5 flex-shrink-0', theme.primaryText)} />
           <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">Water Plan Area</label>
               <select
                 value={selectedWaterPlanArea}
                 onChange={(e) => setSelectedWaterPlanArea(e.target.value)}
-                className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all duration-200 bg-white text-gray-900"
+                className={clsx('w-full px-4 py-2.5 border border-gray-300 rounded-xl transition-all duration-200 bg-white text-gray-900', theme.inputFocusRing, theme.inputFocusBorder)}
               >
                 {waterPlanAreas.map(area => (
                   <option key={area} value={area}>{area}</option>
@@ -1567,7 +1505,7 @@ function UnallocatedWaterView({ data }: { data: UnallocatedWater[] }) {
               <select
                 value={selectedReserveType}
                 onChange={(e) => setSelectedReserveType(e.target.value)}
-                className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all duration-200 bg-white text-gray-900"
+                className={clsx('w-full px-4 py-2.5 border border-gray-300 rounded-xl transition-all duration-200 bg-white text-gray-900', theme.inputFocusRing, theme.inputFocusBorder)}
               >
                 {reserveTypes.map(type => (
                   <option key={type} value={type}>{type}</option>
@@ -1580,24 +1518,24 @@ function UnallocatedWaterView({ data }: { data: UnallocatedWater[] }) {
 
       {/* KPI Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="bg-gradient-to-br from-violet-500 to-purple-600 p-6 md:p-8 rounded-2xl shadow-2xl text-white">
+        <div className={clsx('p-6 md:p-8 rounded-2xl shadow-2xl text-white', `bg-gradient-to-br ${theme.kpiPrimaryGradient}`)}>
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-violet-100 text-sm font-medium mb-2">Volume Remaining</p>
+              <p className="text-white/80 text-sm font-medium mb-2">Volume Remaining</p>
               <h3 className="text-3xl md:text-4xl font-bold">{totalVolumeRemaining.toLocaleString()} ML</h3>
-              <p className="text-violet-100 text-sm mt-2">{filteredData.length} reserves</p>
+              <p className="text-white/80 text-sm mt-2">{filteredData.length} reserves</p>
             </div>
             <div className="p-4 bg-white/20 rounded-2xl backdrop-blur-sm">
               <Layers className="w-10 h-10" />
             </div>
           </div>
         </div>
-        <div className="bg-gradient-to-br from-indigo-500 to-blue-600 p-6 md:p-8 rounded-2xl shadow-2xl text-white">
+        <div className={clsx('p-6 md:p-8 rounded-2xl shadow-2xl text-white', `bg-gradient-to-br ${theme.kpiSecondaryGradient}`)}>
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-indigo-100 text-sm font-medium mb-2">Water Plan Volume</p>
+              <p className="text-white/80 text-sm font-medium mb-2">Water Plan Volume</p>
               <h3 className="text-3xl md:text-4xl font-bold">{totalWaterPlanVolume.toLocaleString()} ML</h3>
-              <p className="text-indigo-100 text-sm mt-2">Total allocation</p>
+              <p className="text-white/80 text-sm mt-2">Total allocation</p>
             </div>
             <div className="p-4 bg-white/20 rounded-2xl backdrop-blur-sm">
               <Droplets className="w-10 h-10" />
@@ -1611,7 +1549,7 @@ function UnallocatedWaterView({ data }: { data: UnallocatedWater[] }) {
         {/* Purpose Distribution */}
         <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-200/50">
           <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
-            <Info className="w-5 h-5 text-violet-600" />
+            <Info className={clsx('w-5 h-5', theme.primaryText)} />
             Distribution by Purpose
           </h3>
           <ResponsiveContainer width="100%" height={300}>
@@ -1629,7 +1567,7 @@ function UnallocatedWaterView({ data }: { data: UnallocatedWater[] }) {
                 contentStyle={{ borderRadius: '12px', border: '1px solid #e5e7eb' }}
                 formatter={(value: number) => [`${value.toLocaleString()} ML`, 'Volume']}
               />
-              <Bar dataKey="volume" fill="#8b5cf6" radius={[8, 8, 0, 0]} />
+              <Bar dataKey="volume" fill={theme.chartPrimary} radius={[8, 8, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -1638,7 +1576,7 @@ function UnallocatedWaterView({ data }: { data: UnallocatedWater[] }) {
         {selectedWaterPlanArea === "All" && (
           <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-200/50">
             <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
-              <Droplets className="w-5 h-5 text-violet-600" />
+              <Droplets className={clsx('w-5 h-5', theme.primaryText)} />
               Top 10 Water Plan Areas
             </h3>
             <ResponsiveContainer width="100%" height={300}>
@@ -1656,7 +1594,7 @@ function UnallocatedWaterView({ data }: { data: UnallocatedWater[] }) {
                   contentStyle={{ borderRadius: '12px', border: '1px solid #e5e7eb' }}
                   formatter={(value: number) => [`${value.toLocaleString()} ML`, 'Volume']}
                 />
-                <Bar dataKey="volume" fill="#6366f1" radius={[8, 8, 0, 0]} />
+                <Bar dataKey="volume" fill={theme.chartSecondary} radius={[8, 8, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -1667,16 +1605,16 @@ function UnallocatedWaterView({ data }: { data: UnallocatedWater[] }) {
       <div className="bg-white rounded-2xl shadow-lg border border-gray-200/50 overflow-hidden">
         <div className="p-6 border-b border-gray-200">
           <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
-            <FileText className="w-5 h-5 text-violet-600" />
+            <FileText className={clsx('w-5 h-5', theme.primaryText)} />
             Unallocated Water Reserves
           </h3>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-gradient-to-r from-violet-50 to-purple-50 border-b border-gray-200">
+            <thead className={clsx('border-b border-gray-200', `bg-gradient-to-r ${theme.tableHeaderBg}`)}>
               <tr>
                 <th
-                  className="px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider cursor-pointer hover:bg-violet-100 transition-colors"
+                  className={clsx('px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider cursor-pointer transition-colors', theme.tableRowHover)}
                   onClick={() => handleSort('Water plan area')}
                 >
                   <div className="flex items-center gap-2">
@@ -1687,7 +1625,7 @@ function UnallocatedWaterView({ data }: { data: UnallocatedWater[] }) {
                   </div>
                 </th>
                 <th
-                  className="px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider cursor-pointer hover:bg-violet-100 transition-colors"
+                  className={clsx('px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider cursor-pointer transition-colors', theme.tableRowHover)}
                   onClick={() => handleSort('Catchment/Sub-catchment/Location')}
                 >
                   <div className="flex items-center gap-2">
@@ -1698,7 +1636,7 @@ function UnallocatedWaterView({ data }: { data: UnallocatedWater[] }) {
                   </div>
                 </th>
                 <th
-                  className="px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider cursor-pointer hover:bg-violet-100 transition-colors"
+                  className={clsx('px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider cursor-pointer transition-colors', theme.tableRowHover)}
                   onClick={() => handleSort('Reserve type')}
                 >
                   <div className="flex items-center gap-2">
@@ -1709,7 +1647,7 @@ function UnallocatedWaterView({ data }: { data: UnallocatedWater[] }) {
                   </div>
                 </th>
                 <th
-                  className="px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider cursor-pointer hover:bg-violet-100 transition-colors"
+                  className={clsx('px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider cursor-pointer transition-colors', theme.tableRowHover)}
                   onClick={() => handleSort('Volume remaining (ML)')}
                 >
                   <div className="flex items-center gap-2">
@@ -1720,7 +1658,7 @@ function UnallocatedWaterView({ data }: { data: UnallocatedWater[] }) {
                   </div>
                 </th>
                 <th
-                  className="px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider cursor-pointer hover:bg-violet-100 transition-colors"
+                  className={clsx('px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider cursor-pointer transition-colors', theme.tableRowHover)}
                   onClick={() => handleSort('Water Plan volume (ML)')}
                 >
                   <div className="flex items-center gap-2">
@@ -1731,7 +1669,7 @@ function UnallocatedWaterView({ data }: { data: UnallocatedWater[] }) {
                   </div>
                 </th>
                 <th
-                  className="px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider cursor-pointer hover:bg-violet-100 transition-colors"
+                  className={clsx('px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider cursor-pointer transition-colors', theme.tableRowHover)}
                   onClick={() => handleSort('Purpose')}
                 >
                   <div className="flex items-center gap-2">
@@ -1745,7 +1683,7 @@ function UnallocatedWaterView({ data }: { data: UnallocatedWater[] }) {
             </thead>
             <tbody className="divide-y divide-gray-200">
               {sortedData.map((item, index) => (
-                <tr key={index} className="hover:bg-violet-50/50 transition-colors">
+                <tr key={index} className={clsx('transition-colors', theme.tableRowHover)}>
                   <td className="px-4 py-3 text-sm font-medium text-gray-900">
                     {item['Water plan area']}
                   </td>
@@ -1753,18 +1691,18 @@ function UnallocatedWaterView({ data }: { data: UnallocatedWater[] }) {
                     {item['Catchment/Sub-catchment/Location']}
                   </td>
                   <td className="px-4 py-3 text-sm text-gray-600">
-                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                    <span className={clsx('inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium', `bg-gradient-to-r ${theme.tagBg}`, theme.tagText)}>
                       {item['Reserve type']}
                     </span>
                   </td>
-                  <td className="px-4 py-3 text-sm font-semibold text-violet-600">
+                  <td className={clsx('px-4 py-3 text-sm font-semibold', theme.tableAccent)}>
                     {(item['Volume remaining (ML)'] || 0).toLocaleString()}
                   </td>
                   <td className="px-4 py-3 text-sm text-gray-600">
                     {(item['Water Plan volume (ML)'] || 0).toLocaleString()}
                   </td>
                   <td className="px-4 py-3 text-sm text-gray-600">
-                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-violet-100 text-violet-800">
+                    <span className={clsx('inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium', `bg-gradient-to-r ${theme.tagBg}`, theme.tagText)}>
                       {item.Purpose}
                     </span>
                   </td>

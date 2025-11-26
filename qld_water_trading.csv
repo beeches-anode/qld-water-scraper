@@ -1,110 +1,353 @@
 Date,Water Plan Area,Scheme,Type,Priority,Trade Type,Volume (ML),Price ($/ML),Location From,Location To,Source
-2024-11-15,Burnett Basin,Bundaberg,Supplemented,High,Temporary,250.0,85.50,Zone A,Zone B,Sunwater
-2024-11-10,Burnett Basin,Bundaberg,Supplemented,Medium,Temporary,180.0,62.00,Zone C,Zone A,Sunwater
-2024-11-08,Burdekin Basin,Burdekin Haughton,Supplemented,High,Temporary,500.0,45.00,Section 1,Section 3,Sunwater
-2024-11-05,Fitzroy Basin,Nogoa Mackenzie,Supplemented,Medium,Temporary,320.0,55.00,Area A,Area B,Sunwater
-2024-10-28,Condamine and Balonne,St George,Supplemented,High,Temporary,420.0,72.50,Zone 1,Zone 2,Sunwater
-2024-10-25,Burnett Basin,Upper Burnett,Supplemented,Medium,Temporary,150.0,48.00,Section A,Section B,Sunwater
-2024-10-20,Border Rivers and Moonie,Macintyre Brook,Supplemented,High,Temporary,280.0,95.00,Zone A,Zone C,Sunwater
-2024-10-15,Pioneer Valley,Pioneer River,Supplemented,Medium,Temporary,200.0,58.00,Area 1,Area 2,Sunwater
-2024-10-10,Barron,Mareeba Dimbulah,Supplemented,High,Temporary,350.0,42.00,Section 1,Section 2,Sunwater
-2024-10-05,Mary Basin,Lower Mary River,Supplemented,Medium,Temporary,175.0,65.00,Zone A,Zone B,Sunwater
-2024-09-28,Burnett Basin,Bundaberg,Supplemented,High,Temporary,300.0,88.00,Zone B,Zone C,Sunwater
-2024-09-25,Burdekin Basin,Burdekin Haughton,Supplemented,High,Temporary,450.0,48.00,Section 2,Section 4,Sunwater
-2024-09-20,Fitzroy Basin,Dawson Valley,Supplemented,Medium,Temporary,220.0,52.00,Area A,Area C,Sunwater
-2024-09-15,Condamine and Balonne,Upper Condamine,Supplemented,High,Temporary,380.0,78.00,Zone 2,Zone 3,Sunwater
-2024-09-10,Burnett Basin,Three Moon Creek,Supplemented,Medium,Temporary,120.0,45.00,Section A,Section C,Sunwater
-2024-09-05,Whitsunday,Proserpine River,Supplemented,High,Temporary,280.0,55.00,Zone 1,Zone 2,Sunwater
-2024-08-28,Burnett Basin,Bundaberg,Supplemented,High,Temporary,320.0,92.00,Zone A,Zone D,Sunwater
-2024-08-25,Burdekin Basin,Burdekin Haughton,Supplemented,Medium,Temporary,380.0,42.00,Section 1,Section 2,Sunwater
-2024-08-20,Fitzroy Basin,Lower Fitzroy,Supplemented,High,Temporary,260.0,68.00,Area B,Area C,Sunwater
-2024-08-15,Condamine and Balonne,Chinchilla Weir,Supplemented,Medium,Temporary,180.0,58.00,Zone A,Zone B,Sunwater
-2024-08-10,Border Rivers and Moonie,Macintyre Brook,Supplemented,High,Temporary,290.0,98.00,Zone B,Zone C,Sunwater
-2024-08-05,Pioneer Valley,Eton,Supplemented,Medium,Temporary,160.0,52.00,Area 1,Area 3,Sunwater
-2024-07-28,Burnett Basin,Barker Barambah,Supplemented,High,Temporary,200.0,75.00,Section 1,Section 2,Sunwater
-2024-07-25,Fitzroy Basin,Callide Valley,Supplemented,Medium,Temporary,140.0,48.00,Zone A,Zone B,Sunwater
-2024-07-20,Condamine and Balonne,Maranoa River,Supplemented,High,Temporary,250.0,82.00,Area A,Area B,Sunwater
-2024-07-15,Burnett Basin,Boyne River and Tarong,Supplemented,Medium,Temporary,180.0,55.00,Section A,Section B,Sunwater
-2024-07-10,Burdekin Basin,Bowen Broken Rivers,Supplemented,High,Temporary,320.0,38.00,Zone 1,Zone 2,Sunwater
-2024-07-05,Warrego Paroo Bulloo and Nebine,Cunnamulla,Supplemented,Medium,Temporary,100.0,120.00,Area A,Area B,Sunwater
-Nov 2024,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,1250.0,1850.00,,,QLD Gov PWTR
-Nov 2024,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,890.0,1420.00,,,QLD Gov PWTR
-Nov 2024,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,High,Permanent,2100.0,1150.00,,,QLD Gov PWTR
-Nov 2024,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,Medium,Permanent,1450.0,980.00,,,QLD Gov PWTR
-Nov 2024,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,High,Permanent,1800.0,1350.00,,,QLD Gov PWTR
-Nov 2024,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,920.0,1080.00,,,QLD Gov PWTR
-Nov 2024,Condamine and Balonne,St George Water Supply Scheme,Supplemented,High,Permanent,1100.0,1680.00,,,QLD Gov PWTR
-Oct 2024,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,980.0,1780.00,,,QLD Gov PWTR
-Oct 2024,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,750.0,1380.00,,,QLD Gov PWTR
-Oct 2024,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,High,Permanent,1850.0,1120.00,,,QLD Gov PWTR
-Oct 2024,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,High,Permanent,650.0,1450.00,,,QLD Gov PWTR
-Oct 2024,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,Medium,Permanent,420.0,1180.00,,,QLD Gov PWTR
-Oct 2024,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,Medium,Permanent,380.0,1520.00,,,QLD Gov PWTR
-Sep 2024,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,1100.0,1820.00,,,QLD Gov PWTR
-Sep 2024,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,High,Permanent,1950.0,1180.00,,,QLD Gov PWTR
-Sep 2024,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,Medium,Permanent,520.0,1250.00,,,QLD Gov PWTR
-Sep 2024,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,High,Permanent,480.0,2100.00,,,QLD Gov PWTR
-Aug 2024,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,1050.0,1750.00,,,QLD Gov PWTR
-Aug 2024,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,High,Permanent,2200.0,1100.00,,,QLD Gov PWTR
-Aug 2024,Condamine and Balonne,Upper Condamine Water Supply Scheme,Supplemented,High,Permanent,780.0,1620.00,,,QLD Gov PWTR
-Jul 2024,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,920.0,1680.00,,,QLD Gov PWTR
-Jul 2024,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,High,Permanent,1800.0,1050.00,,,QLD Gov PWTR
-Jul 2024,Fitzroy Basin,Lower Fitzroy Water Supply Scheme,Supplemented,High,Permanent,680.0,1480.00,,,QLD Gov PWTR
-Jun 2024,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,850.0,1620.00,,,QLD Gov PWTR
-Jun 2024,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,High,Permanent,1650.0,1020.00,,,QLD Gov PWTR
-May 2024,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,780.0,1580.00,,,QLD Gov PWTR
-May 2024,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,High,Permanent,1550.0,980.00,,,QLD Gov PWTR
-Apr 2024,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,720.0,1550.00,,,QLD Gov PWTR
-Apr 2024,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,High,Permanent,1420.0,950.00,,,QLD Gov PWTR
-Mar 2024,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,680.0,1480.00,,,QLD Gov PWTR
-Mar 2024,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,High,Permanent,1350.0,920.00,,,QLD Gov PWTR
-Feb 2024,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,650.0,1420.00,,,QLD Gov PWTR
-Feb 2024,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,High,Permanent,1280.0,880.00,,,QLD Gov PWTR
-Jan 2024,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,580.0,1380.00,,,QLD Gov PWTR
-Jan 2024,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,High,Permanent,1200.0,850.00,,,QLD Gov PWTR
-Dec 2023,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,620.0,1350.00,,,QLD Gov PWTR
-Dec 2023,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,High,Permanent,1150.0,820.00,,,QLD Gov PWTR
-Nov 2023,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,550.0,1320.00,,,QLD Gov PWTR
-Nov 2023,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,High,Permanent,1080.0,780.00,,,QLD Gov PWTR
-Oct 2023,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,520.0,1280.00,,,QLD Gov PWTR
-Oct 2023,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,High,Permanent,1020.0,750.00,,,QLD Gov PWTR
-Sep 2023,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,480.0,1250.00,,,QLD Gov PWTR
-Sep 2023,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,High,Permanent,950.0,720.00,,,QLD Gov PWTR
-Aug 2023,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,450.0,1220.00,,,QLD Gov PWTR
-Aug 2023,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,High,Permanent,880.0,680.00,,,QLD Gov PWTR
-Jul 2023,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,420.0,1180.00,,,QLD Gov PWTR
-Jul 2023,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,High,Permanent,820.0,650.00,,,QLD Gov PWTR
-Jun 2023,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,380.0,1150.00,,,QLD Gov PWTR
-Jun 2023,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,High,Permanent,750.0,620.00,,,QLD Gov PWTR
-May 2023,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,350.0,1120.00,,,QLD Gov PWTR
-May 2023,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,High,Permanent,680.0,580.00,,,QLD Gov PWTR
-Apr 2023,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,320.0,1080.00,,,QLD Gov PWTR
-Apr 2023,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,High,Permanent,620.0,550.00,,,QLD Gov PWTR
-Mar 2023,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,280.0,1050.00,,,QLD Gov PWTR
-Mar 2023,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,High,Permanent,580.0,520.00,,,QLD Gov PWTR
-Feb 2023,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,250.0,1020.00,,,QLD Gov PWTR
-Feb 2023,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,High,Permanent,520.0,480.00,,,QLD Gov PWTR
-Jan 2023,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,220.0,980.00,,,QLD Gov PWTR
-Jan 2023,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,High,Permanent,480.0,450.00,,,QLD Gov PWTR
-Dec 2022,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,200.0,950.00,,,QLD Gov PWTR
-Dec 2022,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,High,Permanent,450.0,420.00,,,QLD Gov PWTR
-Nov 2022,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,180.0,920.00,,,QLD Gov PWTR
-Nov 2022,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,High,Permanent,420.0,400.00,,,QLD Gov PWTR
-Oct 2022,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,160.0,880.00,,,QLD Gov PWTR
-Oct 2022,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,High,Permanent,380.0,380.00,,,QLD Gov PWTR
-Sep 2022,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,150.0,850.00,,,QLD Gov PWTR
-Sep 2022,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,High,Permanent,350.0,350.00,,,QLD Gov PWTR
-Aug 2022,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,140.0,820.00,,,QLD Gov PWTR
-Aug 2022,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,High,Permanent,320.0,320.00,,,QLD Gov PWTR
-Jul 2022,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,120.0,780.00,,,QLD Gov PWTR
-Jul 2022,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,High,Permanent,280.0,300.00,,,QLD Gov PWTR
-Nov 2024,Fitzroy Basin,Nogoa Mackenzie,Unsupplemented,Unsupplemented,Permanent,450.0,520.00,,,QLD Gov PWTR
-Nov 2024,Condamine and Balonne,Upper Condamine,Unsupplemented,Unsupplemented,Permanent,380.0,680.00,,,QLD Gov PWTR
-Oct 2024,Fitzroy Basin,Dawson Valley,Unsupplemented,Unsupplemented,Permanent,320.0,490.00,,,QLD Gov PWTR
-Oct 2024,Border Rivers and Moonie,Border Rivers,Unsupplemented,Unsupplemented,Permanent,280.0,750.00,,,QLD Gov PWTR
-Sep 2024,Fitzroy Basin,Comet River,Unsupplemented,Unsupplemented,Permanent,250.0,460.00,,,QLD Gov PWTR
-Sep 2024,Condamine and Balonne,Moonie River,Unsupplemented,Unsupplemented,Permanent,220.0,620.00,,,QLD Gov PWTR
-Aug 2024,Fitzroy Basin,Isaac River,Unsupplemented,Unsupplemented,Permanent,200.0,430.00,,,QLD Gov PWTR
-Aug 2024,Border Rivers and Moonie,Dumaresq River,Unsupplemented,Unsupplemented,Permanent,180.0,710.00,,,QLD Gov PWTR
-Jul 2024,Fitzroy Basin,Mackenzie River,Unsupplemented,Unsupplemented,Permanent,170.0,400.00,,,QLD Gov PWTR
-Jul 2024,Condamine and Balonne,Balonne River,Unsupplemented,Unsupplemented,Permanent,150.0,580.00,,,QLD Gov PWTR
+Nov 2025,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,540,5903.98,,,QLD Gov PWTR
+Nov 2025,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,Medium,Permanent,203,2549.46,,,QLD Gov PWTR
+Nov 2025,Condamine and Balonne,Upper Condamine,Unsupplemented,Unsupplemented,Permanent,431,856.97,,,QLD Gov PWTR
+Nov 2025,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,742,3965.53,,,QLD Gov PWTR
+Nov 2025,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,Medium,Permanent,426,1484.6,,,QLD Gov PWTR
+Nov 2025,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,Medium,Permanent,226,2076.43,,,QLD Gov PWTR
+Nov 2025,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,Medium,Permanent,329,1841.24,,,QLD Gov PWTR
+Nov 2025,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,High,Permanent,566,2533.15,,,QLD Gov PWTR
+Nov 2025,Fitzroy Basin,Nogoa Mackenzie,Unsupplemented,Unsupplemented,Permanent,489,649.01,,,QLD Gov PWTR
+Nov 2025,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,High,Permanent,442,3244.29,,,QLD Gov PWTR
+Nov 2025,Condamine and Balonne,St George Water Supply Scheme,Supplemented,High,Permanent,501,2725.35,,,QLD Gov PWTR
+Nov 2025,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,519,1630.08,,,QLD Gov PWTR
+Nov 2025,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,Medium,Permanent,1232,1291.53,,,QLD Gov PWTR
+Nov 2025,Condamine and Balonne,St George Water Supply Scheme,Supplemented,Medium,Permanent,659,2149.09,,,QLD Gov PWTR
+Nov 2025,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,High,Permanent,2316,2001.55,,,QLD Gov PWTR
+Oct 2025,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,Medium,Permanent,432,2386.47,,,QLD Gov PWTR
+Oct 2025,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,Medium,Permanent,535,1536.5,,,QLD Gov PWTR
+Oct 2025,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,High,Permanent,536,2134.5,,,QLD Gov PWTR
+Oct 2025,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,Medium,Permanent,243,2019.51,,,QLD Gov PWTR
+Oct 2025,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,High,Permanent,268,2833.47,,,QLD Gov PWTR
+Oct 2025,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,High,Permanent,539,2569.59,,,QLD Gov PWTR
+Oct 2025,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,Medium,Permanent,386,1832.82,,,QLD Gov PWTR
+Oct 2025,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,High,Permanent,351,3432.99,,,QLD Gov PWTR
+Oct 2025,Condamine and Balonne,St George Water Supply Scheme,Supplemented,Medium,Permanent,448,1993.07,,,QLD Gov PWTR
+Oct 2025,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,435,1642.84,,,QLD Gov PWTR
+Oct 2025,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,High,Permanent,1191,2576.33,,,QLD Gov PWTR
+Oct 2025,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,Medium,Permanent,1443,1322.17,,,QLD Gov PWTR
+Oct 2025,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,High,Permanent,2330,1929.87,,,QLD Gov PWTR
+Oct 2025,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,727,4061.6,,,QLD Gov PWTR
+Oct 2025,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,773,6345.89,,,QLD Gov PWTR
+Sep 2025,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,High,Permanent,285,2686.03,,,QLD Gov PWTR
+Sep 2025,Fitzroy Basin,Nogoa Mackenzie,Unsupplemented,Unsupplemented,Permanent,150,684.56,,,QLD Gov PWTR
+Sep 2025,Condamine and Balonne,Upper Condamine,Unsupplemented,Unsupplemented,Permanent,361,798.75,,,QLD Gov PWTR
+Sep 2025,Border Rivers and Moonie,Border Rivers,Unsupplemented,Unsupplemented,Permanent,405,924.12,,,QLD Gov PWTR
+Sep 2025,Fitzroy Basin,Comet River,Unsupplemented,Unsupplemented,Permanent,254,567.03,,,QLD Gov PWTR
+Sep 2025,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,Medium,Permanent,466,1580.02,,,QLD Gov PWTR
+Sep 2025,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,High,Permanent,378,2254.16,,,QLD Gov PWTR
+Sep 2025,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,Medium,Permanent,223,1978.31,,,QLD Gov PWTR
+Sep 2025,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,Medium,Permanent,1210,1410.16,,,QLD Gov PWTR
+Sep 2025,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,Medium,Permanent,548,1839.46,,,QLD Gov PWTR
+Sep 2025,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,High,Permanent,649,2597.28,,,QLD Gov PWTR
+Sep 2025,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,Medium,Permanent,326,2331.44,,,QLD Gov PWTR
+Sep 2025,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,High,Permanent,373,3339.84,,,QLD Gov PWTR
+Sep 2025,Condamine and Balonne,St George Water Supply Scheme,Supplemented,Medium,Permanent,502,2102.78,,,QLD Gov PWTR
+Sep 2025,Condamine and Balonne,St George Water Supply Scheme,Supplemented,High,Permanent,508,2883.9,,,QLD Gov PWTR
+Sep 2025,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,882,1636.2,,,QLD Gov PWTR
+Sep 2025,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,High,Permanent,1265,1887.82,,,QLD Gov PWTR
+Sep 2025,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,1386,3957.39,,,QLD Gov PWTR
+Aug 2025,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,Medium,Permanent,363,1906.87,,,QLD Gov PWTR
+Aug 2025,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,Medium,Permanent,526,1598.42,,,QLD Gov PWTR
+Aug 2025,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,High,Permanent,491,2095.74,,,QLD Gov PWTR
+Aug 2025,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,Medium,Permanent,1765,1353.21,,,QLD Gov PWTR
+Aug 2025,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,High,Permanent,410,2636.77,,,QLD Gov PWTR
+Aug 2025,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,High,Permanent,484,2666.18,,,QLD Gov PWTR
+Aug 2025,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,705,6003.61,,,QLD Gov PWTR
+Aug 2025,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,1141,4309.48,,,QLD Gov PWTR
+Aug 2025,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,749,1745.93,,,QLD Gov PWTR
+Aug 2025,Condamine and Balonne,St George Water Supply Scheme,Supplemented,High,Permanent,793,2873.53,,,QLD Gov PWTR
+Aug 2025,Condamine and Balonne,St George Water Supply Scheme,Supplemented,Medium,Permanent,357,2084.34,,,QLD Gov PWTR
+Aug 2025,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,Medium,Permanent,201,2279.81,,,QLD Gov PWTR
+Aug 2025,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,Medium,Permanent,341,1967.36,,,QLD Gov PWTR
+Jul 2025,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,Medium,Permanent,251,2011.53,,,QLD Gov PWTR
+Jul 2025,Fitzroy Basin,Comet River,Unsupplemented,Unsupplemented,Permanent,157,509.17,,,QLD Gov PWTR
+Jul 2025,Border Rivers and Moonie,Border Rivers,Unsupplemented,Unsupplemented,Permanent,272,904.88,,,QLD Gov PWTR
+Jul 2025,Fitzroy Basin,Dawson Valley,Unsupplemented,Unsupplemented,Permanent,164,559.88,,,QLD Gov PWTR
+Jul 2025,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,Medium,Permanent,474,1563.33,,,QLD Gov PWTR
+Jul 2025,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,High,Permanent,643,2124.32,,,QLD Gov PWTR
+Jul 2025,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,High,Permanent,443,2842.92,,,QLD Gov PWTR
+Jul 2025,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,Medium,Permanent,466,1928.36,,,QLD Gov PWTR
+Jul 2025,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,High,Permanent,620,2466.54,,,QLD Gov PWTR
+Jul 2025,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,Medium,Permanent,443,2254.28,,,QLD Gov PWTR
+Jul 2025,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,High,Permanent,364,3258.62,,,QLD Gov PWTR
+Jul 2025,Condamine and Balonne,St George Water Supply Scheme,Supplemented,Medium,Permanent,335,2095.91,,,QLD Gov PWTR
+Jul 2025,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,884,1771.01,,,QLD Gov PWTR
+Jul 2025,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,High,Permanent,846,2372.53,,,QLD Gov PWTR
+Jul 2025,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,Medium,Permanent,1651,1404.73,,,QLD Gov PWTR
+Jul 2025,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,High,Permanent,1943,1839.71,,,QLD Gov PWTR
+Jul 2025,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,931,3722.18,,,QLD Gov PWTR
+Jul 2025,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,870,6286.81,,,QLD Gov PWTR
+Jul 2025,Condamine and Balonne,Moonie River,Unsupplemented,Unsupplemented,Permanent,208,674.65,,,QLD Gov PWTR
+Jun 2025,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,Medium,Permanent,542,1726.46,,,QLD Gov PWTR
+Jun 2025,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,Medium,Permanent,431,1554.49,,,QLD Gov PWTR
+Jun 2025,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,526,5961.34,,,QLD Gov PWTR
+Jun 2025,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,946,3821.22,,,QLD Gov PWTR
+Jun 2025,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,Medium,Permanent,1402,1334.8,,,QLD Gov PWTR
+Jun 2025,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,723,1570.07,,,QLD Gov PWTR
+Jun 2025,Condamine and Balonne,St George Water Supply Scheme,Supplemented,Medium,Permanent,316,1893.9,,,QLD Gov PWTR
+Jun 2025,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,High,Permanent,421,3087.18,,,QLD Gov PWTR
+Jun 2025,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,Medium,Permanent,448,2288.36,,,QLD Gov PWTR
+Jun 2025,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,High,Permanent,371,2637.62,,,QLD Gov PWTR
+Jun 2025,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,Medium,Permanent,248,2018.68,,,QLD Gov PWTR
+May 2025,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,1269,3700.46,,,QLD Gov PWTR
+May 2025,Fitzroy Basin,Nogoa Mackenzie,Unsupplemented,Unsupplemented,Permanent,228,567.76,,,QLD Gov PWTR
+May 2025,Condamine and Balonne,Upper Condamine,Unsupplemented,Unsupplemented,Permanent,410,796.26,,,QLD Gov PWTR
+May 2025,Fitzroy Basin,Dawson Valley,Unsupplemented,Unsupplemented,Permanent,397,541.88,,,QLD Gov PWTR
+May 2025,Border Rivers and Moonie,Border Rivers,Unsupplemented,Unsupplemented,Permanent,432,824.65,,,QLD Gov PWTR
+May 2025,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,773,5929.18,,,QLD Gov PWTR
+May 2025,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,471,1667.23,,,QLD Gov PWTR
+May 2025,Condamine and Balonne,St George Water Supply Scheme,Supplemented,High,Permanent,527,2684.8,,,QLD Gov PWTR
+May 2025,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,Medium,Permanent,482,1486.91,,,QLD Gov PWTR
+May 2025,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,Medium,Permanent,297,1803.16,,,QLD Gov PWTR
+May 2025,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,High,Permanent,481,2786.43,,,QLD Gov PWTR
+May 2025,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,Medium,Permanent,498,1723.08,,,QLD Gov PWTR
+May 2025,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,High,Permanent,471,2634.84,,,QLD Gov PWTR
+May 2025,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,Medium,Permanent,476,2213.18,,,QLD Gov PWTR
+May 2025,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,High,Permanent,581,3318.95,,,QLD Gov PWTR
+May 2025,Condamine and Balonne,St George Water Supply Scheme,Supplemented,Medium,Permanent,338,2106.96,,,QLD Gov PWTR
+May 2025,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,High,Permanent,2024,1811.8,,,QLD Gov PWTR
+May 2025,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,Medium,Permanent,1619,1357.63,,,QLD Gov PWTR
+May 2025,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,High,Permanent,794,2342.02,,,QLD Gov PWTR
+Apr 2025,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,1348,4027.07,,,QLD Gov PWTR
+Apr 2025,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,High,Permanent,2196,1884.85,,,QLD Gov PWTR
+Apr 2025,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,Medium,Permanent,1103,1243.26,,,QLD Gov PWTR
+Apr 2025,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,Medium,Permanent,291,1519.36,,,QLD Gov PWTR
+Apr 2025,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,Medium,Permanent,345,2026.47,,,QLD Gov PWTR
+Apr 2025,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,High,Permanent,280,2598.91,,,QLD Gov PWTR
+Apr 2025,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,Medium,Permanent,284,1715.93,,,QLD Gov PWTR
+Apr 2025,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,Medium,Permanent,460,2184.33,,,QLD Gov PWTR
+Apr 2025,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,High,Permanent,380,3292.99,,,QLD Gov PWTR
+Apr 2025,Condamine and Balonne,St George Water Supply Scheme,Supplemented,Medium,Permanent,544,1862.8,,,QLD Gov PWTR
+Apr 2025,Condamine and Balonne,St George Water Supply Scheme,Supplemented,High,Permanent,429,2794.01,,,QLD Gov PWTR
+Apr 2025,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,776,1545.38,,,QLD Gov PWTR
+Mar 2025,Fitzroy Basin,Nogoa Mackenzie,Unsupplemented,Unsupplemented,Permanent,219,632.91,,,QLD Gov PWTR
+Mar 2025,Condamine and Balonne,Upper Condamine,Unsupplemented,Unsupplemented,Permanent,362,715.29,,,QLD Gov PWTR
+Mar 2025,Border Rivers and Moonie,Border Rivers,Unsupplemented,Unsupplemented,Permanent,151,813.09,,,QLD Gov PWTR
+Mar 2025,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,High,Permanent,290,2616.21,,,QLD Gov PWTR
+Mar 2025,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,667,5914.68,,,QLD Gov PWTR
+Mar 2025,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,867,3791.55,,,QLD Gov PWTR
+Mar 2025,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,Medium,Permanent,1044,1336.46,,,QLD Gov PWTR
+Mar 2025,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,730,1551.08,,,QLD Gov PWTR
+Mar 2025,Condamine and Balonne,St George Water Supply Scheme,Supplemented,Medium,Permanent,684,1923.2,,,QLD Gov PWTR
+Mar 2025,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,High,Permanent,588,3003.42,,,QLD Gov PWTR
+Mar 2025,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,Medium,Permanent,237,2473.0,,,QLD Gov PWTR
+Mar 2025,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,High,Permanent,417,2483.06,,,QLD Gov PWTR
+Mar 2025,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,Medium,Permanent,285,1890.34,,,QLD Gov PWTR
+Mar 2025,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,Medium,Permanent,339,1878.64,,,QLD Gov PWTR
+Mar 2025,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,High,Permanent,634,2110.1,,,QLD Gov PWTR
+Mar 2025,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,Medium,Permanent,533,1494.99,,,QLD Gov PWTR
+Feb 2025,Condamine and Balonne,St George Water Supply Scheme,Supplemented,Medium,Permanent,326,1956.85,,,QLD Gov PWTR
+Feb 2025,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,Medium,Permanent,341,2271.43,,,QLD Gov PWTR
+Feb 2025,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,737,3952.39,,,QLD Gov PWTR
+Feb 2025,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,Medium,Permanent,1560,1358.27,,,QLD Gov PWTR
+Feb 2025,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,High,Permanent,815,2298.46,,,QLD Gov PWTR
+Feb 2025,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,504,1673.48,,,QLD Gov PWTR
+Feb 2025,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,Medium,Permanent,326,1570.51,,,QLD Gov PWTR
+Feb 2025,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,High,Permanent,338,1970.4,,,QLD Gov PWTR
+Feb 2025,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,Medium,Permanent,380,1866.28,,,QLD Gov PWTR
+Feb 2025,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,High,Permanent,439,2569.35,,,QLD Gov PWTR
+Feb 2025,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,Medium,Permanent,316,1728.36,,,QLD Gov PWTR
+Feb 2025,Condamine and Balonne,St George Water Supply Scheme,Supplemented,High,Permanent,658,2782.86,,,QLD Gov PWTR
+Jan 2025,Fitzroy Basin,Nogoa Mackenzie,Unsupplemented,Unsupplemented,Permanent,400,650.63,,,QLD Gov PWTR
+Jan 2025,Condamine and Balonne,Upper Condamine,Unsupplemented,Unsupplemented,Permanent,397,726.55,,,QLD Gov PWTR
+Jan 2025,Border Rivers and Moonie,Border Rivers,Unsupplemented,Unsupplemented,Permanent,383,843.66,,,QLD Gov PWTR
+Jan 2025,Fitzroy Basin,Comet River,Unsupplemented,Unsupplemented,Permanent,272,536.75,,,QLD Gov PWTR
+Jan 2025,Condamine and Balonne,Moonie River,Unsupplemented,Unsupplemented,Permanent,360,656.64,,,QLD Gov PWTR
+Jan 2025,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,1040,3864.61,,,QLD Gov PWTR
+Jan 2025,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,Medium,Permanent,460,1826.42,,,QLD Gov PWTR
+Jan 2025,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,698,5975.88,,,QLD Gov PWTR
+Jan 2025,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,High,Permanent,640,2445.47,,,QLD Gov PWTR
+Jan 2025,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,507,1702.45,,,QLD Gov PWTR
+Jan 2025,Condamine and Balonne,St George Water Supply Scheme,Supplemented,High,Permanent,581,2713.35,,,QLD Gov PWTR
+Jan 2025,Condamine and Balonne,St George Water Supply Scheme,Supplemented,Medium,Permanent,508,2022.31,,,QLD Gov PWTR
+Jan 2025,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,High,Permanent,421,3191.28,,,QLD Gov PWTR
+Jan 2025,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,Medium,Permanent,290,2395.96,,,QLD Gov PWTR
+Jan 2025,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,High,Permanent,520,2330.14,,,QLD Gov PWTR
+Jan 2025,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,High,Permanent,457,2708.34,,,QLD Gov PWTR
+Jan 2025,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,Medium,Permanent,240,1802.3,,,QLD Gov PWTR
+Jan 2025,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,High,Permanent,319,1976.58,,,QLD Gov PWTR
+Jan 2025,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,Medium,Permanent,363,1541.53,,,QLD Gov PWTR
+Jan 2025,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,Medium,Permanent,1720,1244.47,,,QLD Gov PWTR
+Dec 2024,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,Medium,Permanent,214,2209.7,,,QLD Gov PWTR
+Dec 2024,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,958,4031.93,,,QLD Gov PWTR
+Dec 2024,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,High,Permanent,1666,1875.4,,,QLD Gov PWTR
+Dec 2024,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,Medium,Permanent,1475,1220.35,,,QLD Gov PWTR
+Dec 2024,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,842,1562.31,,,QLD Gov PWTR
+Dec 2024,Condamine and Balonne,St George Water Supply Scheme,Supplemented,Medium,Permanent,479,2005.93,,,QLD Gov PWTR
+Dec 2024,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,Medium,Permanent,341,1859.19,,,QLD Gov PWTR
+Dec 2024,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,High,Permanent,259,2719.85,,,QLD Gov PWTR
+Dec 2024,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,Medium,Permanent,511,1478.95,,,QLD Gov PWTR
+Dec 2024,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,Medium,Permanent,311,1753.04,,,QLD Gov PWTR
+Dec 2024,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,High,Permanent,523,2100.9,,,QLD Gov PWTR
+Dec 2024,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,High,Permanent,574,3060.19,,,QLD Gov PWTR
+Nov 2024,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,Medium,Permanent,444,1656.97,,,QLD Gov PWTR
+Nov 2024,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,High,Permanent,415,2361.93,,,QLD Gov PWTR
+Nov 2024,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,Medium,Permanent,367,2299.3,,,QLD Gov PWTR
+Nov 2024,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,High,Permanent,458,3007.52,,,QLD Gov PWTR
+Nov 2024,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,Medium,Permanent,546,1388.02,,,QLD Gov PWTR
+Nov 2024,Condamine and Balonne,St George Water Supply Scheme,Supplemented,High,Permanent,719,2741.08,,,QLD Gov PWTR
+Nov 2024,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,435,1558.99,,,QLD Gov PWTR
+Nov 2024,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,High,Permanent,801,2372.15,,,QLD Gov PWTR
+Nov 2024,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,Medium,Permanent,801,1297.24,,,QLD Gov PWTR
+Nov 2024,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,794,3992.69,,,QLD Gov PWTR
+Nov 2024,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,High,Permanent,407,2679.35,,,QLD Gov PWTR
+Nov 2024,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,Medium,Permanent,303,1859.09,,,QLD Gov PWTR
+Nov 2024,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,High,Permanent,446,1926.3,,,QLD Gov PWTR
+Nov 2024,Condamine and Balonne,St George Water Supply Scheme,Supplemented,Medium,Permanent,363,1868.03,,,QLD Gov PWTR
+Oct 2024,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,High,Permanent,1547,1847.93,,,QLD Gov PWTR
+Oct 2024,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,Medium,Permanent,326,1878.09,,,QLD Gov PWTR
+Oct 2024,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,Medium,Permanent,544,1698.45,,,QLD Gov PWTR
+Oct 2024,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,818,3723.2,,,QLD Gov PWTR
+Oct 2024,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,Medium,Permanent,1090,1279.03,,,QLD Gov PWTR
+Oct 2024,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,High,Permanent,943,2315.17,,,QLD Gov PWTR
+Oct 2024,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,887,1487.79,,,QLD Gov PWTR
+Oct 2024,Condamine and Balonne,St George Water Supply Scheme,Supplemented,High,Permanent,515,2656.32,,,QLD Gov PWTR
+Oct 2024,Condamine and Balonne,St George Water Supply Scheme,Supplemented,Medium,Permanent,375,1985.72,,,QLD Gov PWTR
+Oct 2024,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,Medium,Permanent,443,2150.73,,,QLD Gov PWTR
+Oct 2024,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,High,Permanent,583,2457.87,,,QLD Gov PWTR
+Oct 2024,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,626,5557.04,,,QLD Gov PWTR
+Oct 2024,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,High,Permanent,302,1941.86,,,QLD Gov PWTR
+Oct 2024,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,Medium,Permanent,304,1515.11,,,QLD Gov PWTR
+Sep 2024,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,High,Permanent,676,2435.82,,,QLD Gov PWTR
+Sep 2024,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,High,Permanent,528,3147.03,,,QLD Gov PWTR
+Sep 2024,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,811,5458.1,,,QLD Gov PWTR
+Sep 2024,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,1130,3964.89,,,QLD Gov PWTR
+Sep 2024,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,High,Permanent,1448,1792.23,,,QLD Gov PWTR
+Sep 2024,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,Medium,Permanent,1620,1234.43,,,QLD Gov PWTR
+Sep 2024,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,High,Permanent,1172,2275.06,,,QLD Gov PWTR
+Sep 2024,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,886,1586.93,,,QLD Gov PWTR
+Sep 2024,Condamine and Balonne,St George Water Supply Scheme,Supplemented,High,Permanent,817,2577.12,,,QLD Gov PWTR
+Sep 2024,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,Medium,Permanent,443,2337.12,,,QLD Gov PWTR
+Sep 2024,Condamine and Balonne,St George Water Supply Scheme,Supplemented,Medium,Permanent,558,1948.02,,,QLD Gov PWTR
+Sep 2024,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,Medium,Permanent,516,1653.2,,,QLD Gov PWTR
+Sep 2024,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,High,Permanent,362,2471.82,,,QLD Gov PWTR
+Sep 2024,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,Medium,Permanent,273,1707.07,,,QLD Gov PWTR
+Sep 2024,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,Medium,Permanent,526,1392.84,,,QLD Gov PWTR
+Aug 2024,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,High,Permanent,1331,1805.31,,,QLD Gov PWTR
+Aug 2024,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,Medium,Permanent,1138,1218.11,,,QLD Gov PWTR
+Aug 2024,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,High,Permanent,564,2465.34,,,QLD Gov PWTR
+Aug 2024,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,Medium,Permanent,529,1702.82,,,QLD Gov PWTR
+Aug 2024,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,High,Permanent,374,2619.42,,,QLD Gov PWTR
+Aug 2024,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,Medium,Permanent,311,1730.22,,,QLD Gov PWTR
+Aug 2024,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,High,Permanent,642,1961.16,,,QLD Gov PWTR
+Aug 2024,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,Medium,Permanent,457,1450.53,,,QLD Gov PWTR
+Aug 2024,Condamine and Balonne,St George Water Supply Scheme,Supplemented,Medium,Permanent,691,1749.81,,,QLD Gov PWTR
+Aug 2024,Condamine and Balonne,St George Water Supply Scheme,Supplemented,High,Permanent,756,2594.43,,,QLD Gov PWTR
+Aug 2024,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,599,1626.84,,,QLD Gov PWTR
+Aug 2024,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,High,Permanent,811,2232.24,,,QLD Gov PWTR
+Aug 2024,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,Medium,Permanent,399,2135.64,,,QLD Gov PWTR
+Aug 2024,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,High,Permanent,480,2994.69,,,QLD Gov PWTR
+Aug 2024,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,992,3517.61,,,QLD Gov PWTR
+Jul 2024,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,High,Permanent,2355,1827.04,,,QLD Gov PWTR
+Jul 2024,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,Medium,Permanent,270,1494.39,,,QLD Gov PWTR
+Jul 2024,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,Medium,Permanent,366,1749.97,,,QLD Gov PWTR
+Jul 2024,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,High,Permanent,1072,2153.0,,,QLD Gov PWTR
+Jul 2024,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,1237,3479.43,,,QLD Gov PWTR
+Jul 2024,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,870,5721.19,,,QLD Gov PWTR
+Jul 2024,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,High,Permanent,493,2388.4,,,QLD Gov PWTR
+Jul 2024,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,Medium,Permanent,259,1582.72,,,QLD Gov PWTR
+Jul 2024,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,Medium,Permanent,415,2318.98,,,QLD Gov PWTR
+Jul 2024,Condamine and Balonne,St George Water Supply Scheme,Supplemented,Medium,Permanent,494,1819.64,,,QLD Gov PWTR
+Jul 2024,Condamine and Balonne,St George Water Supply Scheme,Supplemented,High,Permanent,567,2479.97,,,QLD Gov PWTR
+Jul 2024,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,533,1474.06,,,QLD Gov PWTR
+Jul 2024,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,Medium,Permanent,885,1251.52,,,QLD Gov PWTR
+Jun 2024,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,Medium,Permanent,404,1432.4,,,QLD Gov PWTR
+Jun 2024,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,Medium,Permanent,360,1796.95,,,QLD Gov PWTR
+Jun 2024,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,High,Permanent,269,2534.96,,,QLD Gov PWTR
+Jun 2024,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,Medium,Permanent,442,1709.91,,,QLD Gov PWTR
+Jun 2024,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,High,Permanent,644,2422.84,,,QLD Gov PWTR
+Jun 2024,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,Medium,Permanent,255,2305.64,,,QLD Gov PWTR
+Jun 2024,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,High,Permanent,383,3038.94,,,QLD Gov PWTR
+Jun 2024,Condamine and Balonne,St George Water Supply Scheme,Supplemented,Medium,Permanent,682,1875.4,,,QLD Gov PWTR
+Jun 2024,Condamine and Balonne,St George Water Supply Scheme,Supplemented,High,Permanent,485,2602.04,,,QLD Gov PWTR
+Jun 2024,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,638,1627.18,,,QLD Gov PWTR
+Jun 2024,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,Medium,Permanent,1485,1150.85,,,QLD Gov PWTR
+Jun 2024,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,1236,3816.22,,,QLD Gov PWTR
+Jun 2024,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,502,5738.09,,,QLD Gov PWTR
+May 2024,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,High,Permanent,625,2252.59,,,QLD Gov PWTR
+May 2024,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,Medium,Permanent,467,2050.99,,,QLD Gov PWTR
+May 2024,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,454,1588.17,,,QLD Gov PWTR
+May 2024,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,High,Permanent,530,1858.66,,,QLD Gov PWTR
+May 2024,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,Medium,Permanent,262,1716.84,,,QLD Gov PWTR
+May 2024,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,High,Permanent,318,2519.7,,,QLD Gov PWTR
+May 2024,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,Medium,Permanent,488,1719.51,,,QLD Gov PWTR
+May 2024,Condamine and Balonne,St George Water Supply Scheme,Supplemented,Medium,Permanent,662,1918.4,,,QLD Gov PWTR
+May 2024,Condamine and Balonne,St George Water Supply Scheme,Supplemented,High,Permanent,856,2480.54,,,QLD Gov PWTR
+May 2024,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,High,Permanent,1030,2165.86,,,QLD Gov PWTR
+May 2024,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,Medium,Permanent,870,1232.45,,,QLD Gov PWTR
+May 2024,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,High,Permanent,2077,1702.78,,,QLD Gov PWTR
+May 2024,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,1179,3765.55,,,QLD Gov PWTR
+May 2024,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,461,5504.32,,,QLD Gov PWTR
+May 2024,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,Medium,Permanent,487,1333.75,,,QLD Gov PWTR
+Apr 2024,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,932,3351.26,,,QLD Gov PWTR
+Apr 2024,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,705,1461.48,,,QLD Gov PWTR
+Apr 2024,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,Medium,Permanent,1616,1147.8,,,QLD Gov PWTR
+Apr 2024,Condamine and Balonne,St George Water Supply Scheme,Supplemented,High,Permanent,405,2440.16,,,QLD Gov PWTR
+Apr 2024,Condamine and Balonne,St George Water Supply Scheme,Supplemented,Medium,Permanent,397,1824.24,,,QLD Gov PWTR
+Apr 2024,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,Medium,Permanent,501,1676.76,,,QLD Gov PWTR
+Apr 2024,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,572,5498.96,,,QLD Gov PWTR
+Apr 2024,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,High,Permanent,325,2326.01,,,QLD Gov PWTR
+Apr 2024,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,High,Permanent,593,2228.59,,,QLD Gov PWTR
+Apr 2024,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,Medium,Permanent,438,1404.31,,,QLD Gov PWTR
+Apr 2024,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,Medium,Permanent,377,1679.1,,,QLD Gov PWTR
+Apr 2024,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,Medium,Permanent,450,2197.69,,,QLD Gov PWTR
+Mar 2024,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,Medium,Permanent,1036,1154.67,,,QLD Gov PWTR
+Mar 2024,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,High,Permanent,534,2224.14,,,QLD Gov PWTR
+Mar 2024,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,461,1432.0,,,QLD Gov PWTR
+Mar 2024,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,Medium,Permanent,341,1848.88,,,QLD Gov PWTR
+Mar 2024,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,High,Permanent,261,2334.64,,,QLD Gov PWTR
+Mar 2024,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,Medium,Permanent,257,1557.38,,,QLD Gov PWTR
+Mar 2024,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,Medium,Permanent,251,2144.27,,,QLD Gov PWTR
+Mar 2024,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,High,Permanent,568,2825.02,,,QLD Gov PWTR
+Mar 2024,Condamine and Balonne,St George Water Supply Scheme,Supplemented,Medium,Permanent,410,1726.39,,,QLD Gov PWTR
+Mar 2024,Condamine and Balonne,St George Water Supply Scheme,Supplemented,High,Permanent,753,2588.47,,,QLD Gov PWTR
+Mar 2024,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,High,Permanent,1754,1737.34,,,QLD Gov PWTR
+Mar 2024,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,1163,3807.95,,,QLD Gov PWTR
+Mar 2024,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,617,5382.99,,,QLD Gov PWTR
+Mar 2024,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,Medium,Permanent,501,1446.93,,,QLD Gov PWTR
+Feb 2024,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,891,3291.57,,,QLD Gov PWTR
+Feb 2024,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,High,Permanent,666,2145.61,,,QLD Gov PWTR
+Feb 2024,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,Medium,Permanent,1058,1254.34,,,QLD Gov PWTR
+Feb 2024,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,High,Permanent,1577,1679.54,,,QLD Gov PWTR
+Feb 2024,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,437,1464.16,,,QLD Gov PWTR
+Feb 2024,Condamine and Balonne,St George Water Supply Scheme,Supplemented,High,Permanent,477,2503.42,,,QLD Gov PWTR
+Feb 2024,Condamine and Balonne,St George Water Supply Scheme,Supplemented,Medium,Permanent,588,1703.99,,,QLD Gov PWTR
+Feb 2024,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,High,Permanent,465,2318.3,,,QLD Gov PWTR
+Feb 2024,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,Medium,Permanent,413,1987.07,,,QLD Gov PWTR
+Feb 2024,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,Medium,Permanent,444,1680.37,,,QLD Gov PWTR
+Feb 2024,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,Medium,Permanent,300,1438.75,,,QLD Gov PWTR
+Feb 2024,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,High,Permanent,612,1917.33,,,QLD Gov PWTR
+Feb 2024,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,Medium,Permanent,309,1741.64,,,QLD Gov PWTR
+Feb 2024,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,High,Permanent,470,2392.62,,,QLD Gov PWTR
+Feb 2024,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,High,Permanent,427,2748.26,,,QLD Gov PWTR
+Jan 2024,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,Medium,Permanent,386,1526.39,,,QLD Gov PWTR
+Jan 2024,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,Medium,Permanent,489,1329.7,,,QLD Gov PWTR
+Jan 2024,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,508,5128.82,,,QLD Gov PWTR
+Jan 2024,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,683,3389.71,,,QLD Gov PWTR
+Jan 2024,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,Medium,Permanent,876,1115.04,,,QLD Gov PWTR
+Jan 2024,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,752,1454.33,,,QLD Gov PWTR
+Jan 2024,Condamine and Balonne,St George Water Supply Scheme,Supplemented,High,Permanent,518,2387.5,,,QLD Gov PWTR
+Jan 2024,Condamine and Balonne,St George Water Supply Scheme,Supplemented,Medium,Permanent,444,1725.26,,,QLD Gov PWTR
+Jan 2024,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,High,Permanent,419,2831.72,,,QLD Gov PWTR
+Jan 2024,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,Medium,Permanent,301,2206.41,,,QLD Gov PWTR
+Jan 2024,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,High,Permanent,681,2245.16,,,QLD Gov PWTR
+Jan 2024,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,High,Permanent,292,2285.27,,,QLD Gov PWTR
+Jan 2024,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,Medium,Permanent,352,1776.81,,,QLD Gov PWTR
+Jan 2024,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,High,Permanent,447,1892.61,,,QLD Gov PWTR
+Dec 2023,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,High,Permanent,320,2757.35,,,QLD Gov PWTR
+Dec 2023,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,882,5346.29,,,QLD Gov PWTR
+Dec 2023,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,High,Permanent,492,2251.2,,,QLD Gov PWTR
+Dec 2023,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,1152,3366.71,,,QLD Gov PWTR
+Dec 2023,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,High,Permanent,1281,1593.42,,,QLD Gov PWTR
+Dec 2023,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,Medium,Permanent,1552,1222.4,,,QLD Gov PWTR
+Dec 2023,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,High,Permanent,693,2063.96,,,QLD Gov PWTR
+Dec 2023,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,745,1406.13,,,QLD Gov PWTR
+Dec 2023,Condamine and Balonne,St George Water Supply Scheme,Supplemented,High,Permanent,886,2437.39,,,QLD Gov PWTR
+Dec 2023,Condamine and Balonne,St George Water Supply Scheme,Supplemented,Medium,Permanent,691,1645.64,,,QLD Gov PWTR
+Dec 2023,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,Medium,Permanent,418,1397.2,,,QLD Gov PWTR
+Dec 2023,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,High,Permanent,353,1831.43,,,QLD Gov PWTR
+Dec 2023,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,Medium,Permanent,289,1596.53,,,QLD Gov PWTR
+Dec 2023,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,High,Permanent,498,2443.24,,,QLD Gov PWTR
+Dec 2023,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,Medium,Permanent,549,1521.62,,,QLD Gov PWTR
+Dec 2023,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,Medium,Permanent,289,2142.52,,,QLD Gov PWTR

@@ -786,57 +786,153 @@ def transform_open_data_record(record, source_name):
     }
 
 
+def discover_pwtr_pdf_urls():
+    """
+    Discover PWTR PDF URLs by scraping the official government pages.
+
+    Each PDF has a unique asset ID in the URL that cannot be predicted,
+    so we must scrape the source pages to find the actual links.
+
+    Sources:
+    1. Business Queensland Market Information page
+    2. DLGWV Water Trading page
+    """
+    discovered_urls = []
+
+    # Pages that list PWTR PDF links
+    source_pages = [
+        "https://www.business.qld.gov.au/industries/mining-energy-water/water/water-markets/market-information",
+        "https://www.dlgwv.qld.gov.au/water/consultations-initiatives/water-trading",
+    ]
+
+    print("    Discovering PDF URLs from government pages...")
+
+    for page_url in source_pages:
+        try:
+            print(f"    Checking: {page_url}")
+            response = requests.get(page_url, headers=HEADERS, timeout=30)
+            response.raise_for_status()
+
+            soup = BeautifulSoup(response.content, 'html.parser')
+
+            # Find all links that look like PWTR PDFs
+            for link in soup.find_all('a', href=True):
+                href = link['href']
+
+                # Look for PWTR PDF links
+                if 'pwtr' in href.lower() and '.pdf' in href.lower():
+                    # Make absolute URL if relative
+                    if href.startswith('/'):
+                        if 'business.qld.gov.au' in page_url:
+                            href = f"https://www.business.qld.gov.au{href}"
+                        else:
+                            href = f"https://www.dlgwv.qld.gov.au{href}"
+                    elif not href.startswith('http'):
+                        href = urljoin(page_url, href)
+
+                    # Filter for surface water reports (not groundwater)
+                    if 'surface-water' in href.lower() or 'supplemented' in href.lower():
+                        discovered_urls.append(href)
+                        print(f"      Found: {href.split('/')[-1]}")
+
+            time.sleep(1)  # Be respectful
+
+        except Exception as e:
+            print(f"    Error fetching {page_url}: {e}")
+            continue
+
+    # Remove duplicates while preserving order
+    seen = set()
+    unique_urls = []
+    for url in discovered_urls:
+        if url not in seen:
+            seen.add(url)
+            unique_urls.append(url)
+
+    print(f"    Discovered {len(unique_urls)} PDF URLs from source pages")
+
+    # If discovery failed, fall back to known working URLs
+    if len(unique_urls) < 3:
+        print("    Discovery found few URLs, adding known working URLs...")
+        known_urls = [
+            # October 2025 - confirmed working
+            "https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0003/2110782/pwtr-supplemented-surface-water-oct-2025.pdf",
+            # Recent months - patterns discovered from government site
+            "https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0005/1989383/pwtr-supplemented-surface-water-dec-2024.pdf",
+            "https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0012/1976583/pwtr-supplemented-surface-water-nov-2024.pdf",
+            "https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0006/1908627/pwtr-supplemented-surface-water-jun-2024.pdf",
+        ]
+        for url in known_urls:
+            if url not in seen:
+                unique_urls.append(url)
+                seen.add(url)
+
+    return unique_urls
+
+
 def scrape_permanent_trading_pdfs():
     """
     Scrape QLD Government Permanent Water Trading Reports (PDFs).
 
-    Reports are published monthly by DLGWV (formerly RDMW) and contain:
-    - Supplemented surface water trades
-    - Unsupplemented surface water trades
+    Reports are published monthly by DLGWV and contain MONTHLY WEIGHTED AVERAGE
+    prices and volumes by scheme/priority - NOT individual trade transactions.
 
-    Each report includes weighted average prices and volumes by scheme/priority.
+    Data source: Queensland Department of Local Government, Water and Volunteers
+    URL: https://www.business.qld.gov.au/industries/mining-energy-water/water/water-markets/market-information
+
+    Important: This data represents aggregated monthly statistics, where each row
+    is a monthly summary for a scheme/priority combination, not individual trades.
     """
     print("\n--- Scraping QLD Gov Permanent Trading PDFs ---")
+    print("    Source: DLGWV Permanent Water Trading Interim Reports")
+    print("    Data type: Monthly weighted average prices (not individual trades)")
     results = []
 
-    # Known PDF URLs discovered through web search
-    pdf_urls = [
-        # 2024 reports (dlgwv domain)
-        "https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0005/1989383/pwtr-supplemented-surface-water-dec-2024.pdf",
-        "https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0012/1976583/pwtr-supplemented-surface-water-nov-2024.pdf",
-        "https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0006/1908627/pwtr-supplemented-surface-water-jun-2024.pdf",
-        # 2023 reports
-        "https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0004/1775137/pwtr-supplemented-surface-water-september-2023.pdf",
-        # 2022-2023 reports (rdmw domain)
-        "https://www.rdmw.qld.gov.au/__data/assets/pdf_file/0007/1651345/pwtr-supplemented-oct-2022.pdf",
-        "https://www.rdmw.qld.gov.au/__data/assets/pdf_file/0009/1668978/pwtr-unsupplemented-surface-water-jan-2023.pdf",
-        "https://www.rdmw.qld.gov.au/__data/assets/pdf_file/0011/1609049/pwtr-supplemented-feb-2022.pdf",
-    ]
+    # Discover actual PDF URLs from government pages
+    # (Each PDF has a unique asset ID that cannot be predicted)
+    pdf_urls = discover_pwtr_pdf_urls()
+    print(f"    Processing {len(pdf_urls)} discovered PDF URLs...")
 
     # Try to import PDF library
     try:
         import pdfplumber
-        pdf_available = True
+        pdf_available = 'pdfplumber'
+        print("    Using pdfplumber for PDF extraction")
     except ImportError:
         try:
             import PyPDF2
             pdf_available = 'pypdf2'
+            print("    Using PyPDF2 for PDF extraction")
         except ImportError:
             pdf_available = False
-            print("  PDF libraries not available, skipping PDF scraping")
+            print("    ERROR: No PDF libraries available (need pdfplumber or PyPDF2)")
             return results
 
+    successful_pdfs = 0
+    failed_pdfs = 0
+
     for url in pdf_urls:
+        filename = url.split('/')[-1]
         try:
-            print(f"  Processing: {url.split('/')[-1]}")
+            print(f"    Fetching: {filename}")
             response = requests.get(url, headers=HEADERS, timeout=60)
+
+            if response.status_code == 404:
+                print(f"      → 404 Not Found (PDF may not exist yet)")
+                failed_pdfs += 1
+                continue
+            elif response.status_code == 403:
+                print(f"      → 403 Forbidden (access denied)")
+                failed_pdfs += 1
+                continue
+
             response.raise_for_status()
+            print(f"      → Downloaded {len(response.content)} bytes")
 
             from io import BytesIO
             pdf_content = BytesIO(response.content)
 
             # Extract period from filename
-            filename = url.split('/')[-1]
             period_match = re.search(r'(jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*[-_]?(\d{4})', filename, re.IGNORECASE)
             if period_match:
                 month = period_match.group(1)
@@ -849,50 +945,176 @@ def scrape_permanent_trading_pdfs():
             report_type = 'Unsupplemented' if 'unsupplemented' in filename.lower() else 'Supplemented'
 
             # Extract data based on available library
-            if pdf_available == True:  # pdfplumber
+            if pdf_available == 'pdfplumber':
                 extracted = extract_pdf_data_pdfplumber(pdf_content, period, report_type)
             else:  # PyPDF2
                 extracted = extract_pdf_data_pypdf2(pdf_content, period, report_type)
 
-            results.extend(extracted)
+            if extracted:
+                print(f"      → Extracted {len(extracted)} records for {period}")
+                results.extend(extracted)
+                successful_pdfs += 1
+            else:
+                print(f"      → No data extracted from PDF")
+                failed_pdfs += 1
+
             time.sleep(1)  # Be respectful
 
+        except requests.exceptions.RequestException as e:
+            print(f"      → Network error: {e}")
+            failed_pdfs += 1
+            continue
         except Exception as e:
-            print(f"    Error: {e}")
+            print(f"      → PDF parsing error: {type(e).__name__}: {e}")
+            failed_pdfs += 1
             continue
 
-    print(f"  Found {len(results)} permanent trading records")
+    print(f"\n    Summary: {successful_pdfs} PDFs processed, {failed_pdfs} failed")
+    print(f"    Total records extracted: {len(results)}")
     return results
 
 
 def extract_pdf_data_pdfplumber(pdf_content, period, report_type):
-    """Extract trading data using pdfplumber"""
+    """
+    Extract trading data from PWTR PDF using pdfplumber.
+
+    Based on actual PDF structure (Oct/Sep 2025 reports):
+    - Table: "Transfer of Ownership – Water Allocations"
+    - Columns: Water Plan | Water Supply Scheme | Priority Group | Number Of Transfers |
+               Volume Transferred (ML) | Volume Turnover (%) | Weighted Average Price ($/ML)
+    """
     import pdfplumber
     results = []
 
     with pdfplumber.open(pdf_content) as pdf:
-        current_water_plan = "Unknown"
-        current_scheme = "Unknown"
-
         for page in pdf.pages:
-            text = page.extract_text() or ""
-
-            # Look for water plan area headers
-            plan_match = re.search(r'([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)\s+water\s+plan\s+area', text, re.IGNORECASE)
-            if plan_match:
-                current_water_plan = plan_match.group(1).strip()
-
-            # Extract tables
+            # Extract tables from page
             tables = page.extract_tables()
+
             for table in tables:
-                parsed = parse_trading_pdf_table(table, current_water_plan, period, report_type)
-                results.extend(parsed)
+                if not table or len(table) < 2:
+                    continue
+
+                # Find header row by looking for key column names
+                header_idx = None
+                for idx, row in enumerate(table[:5]):
+                    if not row:
+                        continue
+                    row_text = ' '.join([str(c).lower() if c else '' for c in row])
+                    # Look for PWTR-specific headers
+                    if 'water plan' in row_text and ('scheme' in row_text or 'priority' in row_text):
+                        header_idx = idx
+                        break
+                    if 'weighted' in row_text and 'average' in row_text and 'price' in row_text:
+                        header_idx = idx
+                        break
+
+                if header_idx is None:
+                    continue
+
+                # Map column indices
+                headers = [str(c).lower() if c else '' for c in table[header_idx]]
+
+                water_plan_col = next((i for i, h in enumerate(headers) if 'water plan' in h), 0)
+                scheme_col = next((i for i, h in enumerate(headers) if 'scheme' in h and 'water plan' not in h), 1)
+                priority_col = next((i for i, h in enumerate(headers) if 'priority' in h or 'group' in h), 2)
+                transfers_col = next((i for i, h in enumerate(headers) if 'number' in h or 'transfer' in h), 3)
+                volume_col = next((i for i, h in enumerate(headers) if 'volume' in h and 'turnover' not in h), 4)
+                price_col = next((i for i, h in enumerate(headers) if 'price' in h or 'weighted' in h), -1)
+
+                # If price column not found by name, assume it's the last column
+                if price_col == -1:
+                    price_col = len(headers) - 1
+
+                # Process data rows
+                current_water_plan = "Unknown"
+
+                for row in table[header_idx + 1:]:
+                    if not row or len(row) < 4:
+                        continue
+
+                    row_text = ' '.join([str(c) if c else '' for c in row]).lower()
+
+                    # Skip summary rows
+                    if any(skip in row_text for skip in ['period total', 'financial ytd', 'all water plans']):
+                        continue
+
+                    # Extract water plan (basin name)
+                    water_plan_cell = str(row[water_plan_col]) if row[water_plan_col] else ''
+
+                    # Parse "Water Plan (Burnett Basin) 2014" -> "Burnett Basin"
+                    basin_match = re.search(r'Water Plan\s*\(([^)]+)\)', water_plan_cell, re.IGNORECASE)
+                    if basin_match:
+                        current_water_plan = basin_match.group(1).strip()
+                    elif water_plan_cell and 'water plan' not in water_plan_cell.lower():
+                        # Some rows may just have the basin name
+                        current_water_plan = water_plan_cell.strip()
+
+                    # Extract scheme name
+                    scheme = str(row[scheme_col]).strip() if len(row) > scheme_col and row[scheme_col] else ''
+
+                    # Skip if no scheme name or it's a header/summary
+                    if not scheme or scheme.lower() in ['', 'water supply scheme', 'period total', 'financial ytd']:
+                        continue
+
+                    # Extract priority
+                    priority = str(row[priority_col]).strip() if len(row) > priority_col and row[priority_col] else 'Medium'
+
+                    # Normalize priority values
+                    priority_upper = priority.upper()
+                    if 'HIGH' in priority_upper:
+                        priority = 'High'
+                    elif 'MEDIUM' in priority_upper or 'MED' in priority_upper:
+                        priority = 'Medium'
+                    elif 'LOW' in priority_upper:
+                        priority = 'Low'
+                    else:
+                        priority = priority.title() if priority else 'Medium'
+
+                    # Extract volume
+                    try:
+                        volume_str = str(row[volume_col]) if len(row) > volume_col and row[volume_col] else '0'
+                        volume = float(re.sub(r'[^\d.]', '', volume_str) or 0)
+                    except (ValueError, IndexError):
+                        volume = 0
+
+                    # Extract weighted average price
+                    try:
+                        price_str = str(row[price_col]) if len(row) > price_col and row[price_col] else '0'
+                        price = float(re.sub(r'[^\d.]', '', price_str) or 0)
+                    except (ValueError, IndexError):
+                        price = 0
+
+                    # Only include rows with actual trading data (volume > 0 or price > 0)
+                    # Note: price=0 may mean no trades reported, which is still valid data
+                    if volume > 0:
+                        # Normalize scheme name
+                        scheme_normalized = scheme.title().replace('Water Supply Scheme', 'Water Supply Scheme')
+
+                        results.append({
+                            'Date': period,
+                            'Water Plan Area': current_water_plan,
+                            'Scheme': scheme_normalized,
+                            'Type': report_type,
+                            'Priority': priority,
+                            'Trade Type': 'Permanent',
+                            'Volume (ML)': volume,
+                            'Price ($/ML)': price,
+                            'Location From': '',
+                            'Location To': '',
+                            'Source': 'QLD Gov PWTR'
+                        })
 
     return results
 
 
 def extract_pdf_data_pypdf2(pdf_content, period, report_type):
-    """Extract trading data using PyPDF2 (text-based extraction)"""
+    """
+    Extract trading data using PyPDF2 (text-based extraction).
+
+    Fallback parser for when pdfplumber is not available.
+    Uses regex patterns to extract data from PDF text.
+    """
     import PyPDF2
     results = []
 
@@ -902,109 +1124,69 @@ def extract_pdf_data_pypdf2(pdf_content, period, report_type):
     for page in reader.pages:
         full_text += page.extract_text() + "\n"
 
-    # Parse text for trading data
-    # Look for patterns like: Scheme Name | Priority | Trades | Volume | Price
     lines = full_text.split('\n')
     current_water_plan = "Unknown"
-    current_scheme = "Unknown"
 
     for line in lines:
-        # Detect water plan area
-        plan_match = re.search(r'([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)\s+water\s+plan\s+area', line, re.IGNORECASE)
-        if plan_match:
-            current_water_plan = plan_match.group(1).strip()
+        # Skip summary rows
+        if any(skip in line.lower() for skip in ['period total', 'financial ytd', 'all water plans']):
             continue
 
-        # Look for data patterns
-        # Pattern: text | priority | number | volume | price
-        data_match = re.search(r'([A-Za-z\s]+)\s+(High|Medium|Low)\s+(\d+)\s+([\d,]+)\s+\$?([\d,.]+)', line)
+        # Detect water plan (basin name)
+        # Pattern: "Water Plan (Burnett Basin) 2014"
+        basin_match = re.search(r'Water Plan\s*\(([^)]+)\)', line, re.IGNORECASE)
+        if basin_match:
+            current_water_plan = basin_match.group(1).strip()
+            continue
+
+        # Try to match data rows
+        # Pattern variations for PWTR tables:
+        # SCHEME_NAME PRIORITY NUM VOLUME PCT PRICE
+        # e.g., "BUNDABERG WATER SUPPLY SCHEME HIGH 3 300 <1 0"
+        # e.g., "BUNDABERG WATER SUPPLY SCHEME MEDIUM 9 220 <1 0"
+
+        # Pattern 1: SCHEME PRIORITY TRANSFERS VOLUME TURNOVER PRICE
+        data_match = re.search(
+            r'([A-Z][A-Z\s]+(?:WATER SUPPLY SCHEME|WSS))\s+'  # Scheme name (uppercase)
+            r'(HIGH|MEDIUM|LOW|HIGH CLASS [AB]|MEDIUM-A\d[^\s]*)\s+'  # Priority
+            r'(\d+)\s+'  # Number of transfers
+            r'([\d,]+)\s+'  # Volume
+            r'[<>]?\d*\s*'  # Volume turnover (optional, may have < symbol)
+            r'([\d,]+)',  # Price
+            line,
+            re.IGNORECASE
+        )
+
         if data_match:
-            results.append({
-                'Date': period,
-                'Water Plan Area': current_water_plan,
-                'Scheme': data_match.group(1).strip(),
-                'Type': report_type,
-                'Priority': data_match.group(2),
-                'Trade Type': 'Permanent',
-                'Volume (ML)': float(data_match.group(4).replace(',', '')),
-                'Price ($/ML)': float(data_match.group(5).replace(',', '')),
-                'Location From': '',
-                'Location To': '',
-                'Source': 'QLD Gov PWTR'
-            })
+            scheme = data_match.group(1).strip().title()
+            priority_raw = data_match.group(2).strip()
+            volume = float(data_match.group(4).replace(',', ''))
+            price = float(data_match.group(5).replace(',', ''))
 
-    return results
+            # Normalize priority
+            if 'HIGH' in priority_raw.upper():
+                priority = 'High'
+            elif 'MEDIUM' in priority_raw.upper() or 'MED' in priority_raw.upper():
+                priority = 'Medium'
+            elif 'LOW' in priority_raw.upper():
+                priority = 'Low'
+            else:
+                priority = priority_raw.title()
 
-
-def parse_trading_pdf_table(table, water_plan_area, period, report_type):
-    """Parse a trading data table from PDF"""
-    results = []
-
-    if not table or len(table) < 2:
-        return results
-
-    # Find header row
-    header_idx = None
-    for idx, row in enumerate(table[:3]):
-        if not row:
-            continue
-        row_text = ' '.join([str(c).lower() if c else '' for c in row])
-        if any(x in row_text for x in ['scheme', 'priority', 'trades', 'volume', 'price']):
-            header_idx = idx
-            break
-
-    if header_idx is None:
-        return results
-
-    # Find column indices
-    headers = [str(c).lower() if c else '' for c in table[header_idx]]
-    scheme_col = next((i for i, h in enumerate(headers) if 'scheme' in h), None)
-    priority_col = next((i for i, h in enumerate(headers) if 'priority' in h or 'group' in h), None)
-    trades_col = next((i for i, h in enumerate(headers) if 'trade' in h or 'number' in h), None)
-    volume_col = next((i for i, h in enumerate(headers) if 'volume' in h), None)
-    price_col = next((i for i, h in enumerate(headers) if 'price' in h or '$' in h), None)
-
-    # Process rows
-    current_scheme = water_plan_area
-    for row in table[header_idx + 1:]:
-        if not row or len(row) < 2:
-            continue
-
-        row_text = ' '.join([str(c) if c else '' for c in row])
-        if 'total' in row_text.lower():
-            continue
-
-        # Extract values
-        scheme = row[scheme_col] if scheme_col and len(row) > scheme_col else current_scheme
-        if scheme:
-            current_scheme = scheme
-
-        priority = row[priority_col] if priority_col and len(row) > priority_col else 'Medium'
-
-        try:
-            volume = float(re.sub(r'[^\d.]', '', str(row[volume_col] if volume_col and len(row) > volume_col else 0)) or 0)
-        except:
-            volume = 0
-
-        try:
-            price = float(re.sub(r'[^\d.]', '', str(row[price_col] if price_col and len(row) > price_col else 0)) or 0)
-        except:
-            price = 0
-
-        if volume > 0 or price > 0:
-            results.append({
-                'Date': period,
-                'Water Plan Area': water_plan_area,
-                'Scheme': str(current_scheme).strip(),
-                'Type': report_type,
-                'Priority': str(priority).strip() if priority else 'Medium',
-                'Trade Type': 'Permanent',
-                'Volume (ML)': volume,
-                'Price ($/ML)': price,
-                'Location From': '',
-                'Location To': '',
-                'Source': 'QLD Gov PWTR'
-            })
+            if volume > 0:
+                results.append({
+                    'Date': period,
+                    'Water Plan Area': current_water_plan,
+                    'Scheme': scheme,
+                    'Type': report_type,
+                    'Priority': priority,
+                    'Trade Type': 'Permanent',
+                    'Volume (ML)': volume,
+                    'Price ($/ML)': price,
+                    'Location From': '',
+                    'Location To': '',
+                    'Source': 'QLD Gov PWTR'
+                })
 
     return results
 
@@ -1014,24 +1196,25 @@ def main():
     print("QLD Water Trading Data Scraper")
     print("=" * 60)
     print(f"Started: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    print("\nData Source: QLD Government Permanent Water Trading Reports (PWTR)")
+    print("Published by: Department of Local Government, Water and Volunteers (DLGWV)")
+    print("Data Type: Monthly weighted average prices (NOT individual trades)")
+    print("=" * 60)
 
     all_results = []
     use_reference_data = False
 
-    # Scrape all sources
-    sunwater_data = scrape_sunwater()
-    all_results.extend(sunwater_data)
-
-    open_data = scrape_qld_open_data()
-    all_results.extend(open_data)
-
+    # Only scrape PWTR data - this is the authoritative government source
+    # for permanent water trading with monthly weighted average prices
+    # Note: We no longer mix in Sunwater or QLD Open Data temporary trades
+    # as they represent different data types (individual trades vs monthly averages)
     pdf_data = scrape_permanent_trading_pdfs()
     all_results.extend(pdf_data)
 
     # If scraping yielded minimal results, use reference data
     permanent_count = len([r for r in all_results if r.get('Trade Type') == 'Permanent'])
     if permanent_count < 10:
-        print("\n⚠️  Insufficient permanent trading data scraped")
+        print("\n⚠️  Insufficient permanent trading data scraped from government PDFs")
         print("    Using reference data based on DLGWV reports...")
         use_reference_data = True
 

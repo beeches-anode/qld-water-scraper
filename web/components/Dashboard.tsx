@@ -6,6 +6,7 @@ import { ScanData } from '@/lib/scans';
 import { ArticleData } from '@/lib/articles';
 import { ProjectData } from '@/lib/projects';
 import { UnallocatedWater } from '@/lib/unallocated';
+import { WaterTradeWithParsedDate, aggregateByMonth, aggregateByScheme } from '@/lib/trading';
 import { useTheme } from '@/lib/ThemeContext';
 import { ThemeColors } from '@/lib/themes';
 import {
@@ -19,30 +20,34 @@ import {
   ResponsiveContainer,
   PieChart,
   Pie,
-  Cell
+  Cell,
+  LineChart,
+  Line
 } from 'recharts';
-import { Filter, Droplets, ArrowRightLeft, Info, Calendar, FileText, ExternalLink, Newspaper, ChevronDown, ChevronUp, Search, ArrowUpDown, BookOpen, Building2, Layers } from 'lucide-react';
+import { Filter, Droplets, ArrowRightLeft, Info, Calendar, FileText, ExternalLink, Newspaper, ChevronDown, ChevronUp, Search, ArrowUpDown, BookOpen, Building2, Layers, TrendingUp, DollarSign } from 'lucide-react';
 import clsx from 'clsx';
 
 interface DashboardProps {
   initialAllocations: WaterAllocation[];
   initialPlans: WaterPlan[];
   unallocatedWater: UnallocatedWater[];
+  tradingData: WaterTradeWithParsedDate[];
   scans?: ScanData[]; // Optional - scans tab temporarily removed
   articles: ArticleData[];
   projects: ProjectData[];
 }
 
-type Tab = 'allocations' | 'unallocated' | 'plans' | 'articles' | 'projects';
+type Tab = 'allocations' | 'unallocated' | 'trading' | 'plans' | 'articles' | 'projects';
 // 'scans' removed temporarily - can be re-added later
 
-export default function Dashboard({ initialAllocations, initialPlans, unallocatedWater, scans, articles, projects }: DashboardProps) {
+export default function Dashboard({ initialAllocations, initialPlans, unallocatedWater, tradingData, scans, articles, projects }: DashboardProps) {
   const [activeTab, setActiveTab] = useState<Tab>('allocations');
   const { theme } = useTheme();
 
   const tabs = [
     { id: 'allocations' as Tab, label: 'Allocations & Trading', shortLabel: 'Allocations', icon: Droplets },
     { id: 'unallocated' as Tab, label: 'Unallocated Water', shortLabel: 'Unallocated', icon: Layers },
+    { id: 'trading' as Tab, label: 'Water Trading', shortLabel: 'Trading', icon: TrendingUp },
     { id: 'plans' as Tab, label: 'Water Plans', shortLabel: 'Plans', icon: FileText },
     { id: 'articles' as Tab, label: 'Media Articles', shortLabel: 'Articles', icon: BookOpen },
     { id: 'projects' as Tab, label: 'Infrastructure Projects', shortLabel: 'Projects', icon: Building2 },
@@ -88,6 +93,8 @@ export default function Dashboard({ initialAllocations, initialPlans, unallocate
         <AllocationsView data={initialAllocations} theme={theme} />
       ) : activeTab === 'unallocated' ? (
         <UnallocatedWaterView data={unallocatedWater} theme={theme} />
+      ) : activeTab === 'trading' ? (
+        <TradingView data={tradingData} theme={theme} />
       ) : activeTab === 'plans' ? (
         <PlansView data={initialPlans} theme={theme} />
       ) : activeTab === 'articles' ? (
@@ -391,6 +398,360 @@ function AllocationsView({ data, theme }: { data: WaterAllocation[]; theme: Them
                 <tr>
                   <td colSpan={5} className="px-6 py-8 text-center text-gray-500">
                     No data found for the selected filters.
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function TradingView({ data, theme }: { data: WaterTradeWithParsedDate[]; theme: ThemeColors }) {
+  const [selectedArea, setSelectedArea] = useState<string>("All");
+  const [selectedScheme, setSelectedScheme] = useState<string>("All");
+  const [selectedPriority, setSelectedPriority] = useState<string>("All");
+  const [selectedTradeType, setSelectedTradeType] = useState<string>("All");
+
+  // Get unique filter options
+  const waterPlanAreas = useMemo(() => {
+    const unique = new Set(data.map(d => d['Water Plan Area']).filter(Boolean));
+    return ["All", ...Array.from(unique).sort()];
+  }, [data]);
+
+  const schemes = useMemo(() => {
+    let filtered = data;
+    if (selectedArea !== "All") {
+      filtered = filtered.filter(d => d['Water Plan Area'] === selectedArea);
+    }
+    const unique = new Set(filtered.map(d => d.Scheme).filter(Boolean));
+    return ["All", ...Array.from(unique).sort()];
+  }, [data, selectedArea]);
+
+  const priorities = useMemo(() => {
+    const unique = new Set(data.map(d => d.Priority).filter(Boolean));
+    return ["All", ...Array.from(unique).sort()];
+  }, [data]);
+
+  const tradeTypes = useMemo(() => {
+    const unique = new Set(data.map(d => d['Trade Type']).filter(Boolean));
+    return ["All", ...Array.from(unique).sort()];
+  }, [data]);
+
+  // Filter data
+  const filteredData = useMemo(() => {
+    return data.filter(trade => {
+      if (selectedArea !== "All" && trade['Water Plan Area'] !== selectedArea) return false;
+      if (selectedScheme !== "All" && trade.Scheme !== selectedScheme) return false;
+      if (selectedPriority !== "All" && trade.Priority !== selectedPriority) return false;
+      if (selectedTradeType !== "All" && trade['Trade Type'] !== selectedTradeType) return false;
+      return true;
+    });
+  }, [data, selectedArea, selectedScheme, selectedPriority, selectedTradeType]);
+
+  // Aggregate data for charts
+  const monthlyData = useMemo(() => aggregateByMonth(filteredData), [filteredData]);
+  const schemeStats = useMemo(() => aggregateByScheme(filteredData), [filteredData]);
+
+  // Calculate KPIs
+  const kpis = useMemo(() => {
+    const totalVolume = filteredData.reduce((sum, t) => sum + (t['Volume (ML)'] || 0), 0);
+    const totalTrades = filteredData.length;
+    const prices = filteredData.filter(t => t['Price ($/ML)'] > 0).map(t => t['Price ($/ML)']);
+    const avgPrice = prices.length > 0 ? prices.reduce((a, b) => a + b, 0) / prices.length : 0;
+    const maxPrice = prices.length > 0 ? Math.max(...prices) : 0;
+    const minPrice = prices.length > 0 ? Math.min(...prices) : 0;
+
+    return { totalVolume, totalTrades, avgPrice, maxPrice, minPrice };
+  }, [filteredData]);
+
+  // Chart colors
+  const COLORS = ['#10b981', '#3b82f6', '#8b5cf6', '#f59e0b', '#ef4444', '#06b6d4'];
+
+  return (
+    <div className="space-y-6 md:space-y-8">
+      {/* Filters */}
+      <div className="bg-gradient-to-br from-white to-green-50 p-6 rounded-2xl shadow-lg border border-gray-200/50 backdrop-blur-sm">
+        <div className="flex items-center gap-3 mb-5 text-green-700">
+          <div className="p-2 bg-green-100 rounded-xl">
+            <Filter className="w-5 h-5" />
+          </div>
+          <span className="font-bold text-base">Filter Trading Data</span>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">Water Plan Area</label>
+            <select
+              className="w-full rounded-xl border-2 border-gray-200 p-3 text-sm focus:ring-4 focus:ring-green-500/20 focus:border-green-500 outline-none transition-all duration-200 hover:border-gray-300 shadow-sm bg-white"
+              value={selectedArea}
+              onChange={(e) => {
+                setSelectedArea(e.target.value);
+                setSelectedScheme("All");
+              }}
+            >
+              {waterPlanAreas.map(area => (
+                <option key={area} value={area}>{area}</option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">Scheme</label>
+            <select
+              className="w-full rounded-xl border-2 border-gray-200 p-3 text-sm focus:ring-4 focus:ring-green-500/20 focus:border-green-500 outline-none transition-all duration-200 hover:border-gray-300 shadow-sm bg-white"
+              value={selectedScheme}
+              onChange={(e) => setSelectedScheme(e.target.value)}
+            >
+              {schemes.map(scheme => (
+                <option key={scheme} value={scheme}>{scheme}</option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">Priority</label>
+            <select
+              className="w-full rounded-xl border-2 border-gray-200 p-3 text-sm focus:ring-4 focus:ring-green-500/20 focus:border-green-500 outline-none transition-all duration-200 hover:border-gray-300 shadow-sm bg-white"
+              value={selectedPriority}
+              onChange={(e) => setSelectedPriority(e.target.value)}
+            >
+              {priorities.map(priority => (
+                <option key={priority} value={priority}>{priority}</option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">Trade Type</label>
+            <select
+              className="w-full rounded-xl border-2 border-gray-200 p-3 text-sm focus:ring-4 focus:ring-green-500/20 focus:border-green-500 outline-none transition-all duration-200 hover:border-gray-300 shadow-sm bg-white"
+              value={selectedTradeType}
+              onChange={(e) => setSelectedTradeType(e.target.value)}
+            >
+              {tradeTypes.map(type => (
+                <option key={type} value={type}>{type}</option>
+              ))}
+            </select>
+          </div>
+        </div>
+      </div>
+
+      {/* KPIs */}
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
+        <Card
+          title="Total Trades"
+          value={kpis.totalTrades.toLocaleString()}
+          icon={<TrendingUp className="w-6 h-6 text-green-500" />}
+          subtext="Number of transactions"
+          theme={theme}
+        />
+        <Card
+          title="Total Volume"
+          value={`${kpis.totalVolume.toLocaleString(undefined, { maximumFractionDigits: 0 })} ML`}
+          icon={<Droplets className="w-6 h-6 text-blue-500" />}
+          subtext="Megalitres traded"
+          theme={theme}
+        />
+        <Card
+          title="Avg Price"
+          value={`$${kpis.avgPrice.toLocaleString(undefined, { maximumFractionDigits: 0 })}/ML`}
+          icon={<DollarSign className="w-6 h-6 text-amber-500" />}
+          subtext="Average price per ML"
+          theme={theme}
+        />
+        <Card
+          title="Min Price"
+          value={`$${kpis.minPrice.toLocaleString(undefined, { maximumFractionDigits: 0 })}/ML`}
+          icon={<DollarSign className="w-6 h-6 text-green-500" />}
+          subtext="Lowest price"
+          theme={theme}
+        />
+        <Card
+          title="Max Price"
+          value={`$${kpis.maxPrice.toLocaleString(undefined, { maximumFractionDigits: 0 })}/ML`}
+          icon={<DollarSign className="w-6 h-6 text-red-500" />}
+          subtext="Highest price"
+          theme={theme}
+        />
+      </div>
+
+      {/* Price Over Time Chart */}
+      <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+        <h3 className="text-lg font-semibold text-gray-900 mb-2">Price Trends Over Time</h3>
+        <p className="text-sm text-gray-500 mb-6">Volume-weighted average price ($/ML) by month</p>
+        <div className="h-[400px] w-full">
+          <ResponsiveContainer width="100%" height="100%">
+            <LineChart data={monthlyData} margin={{ top: 20, right: 30, left: 20, bottom: 50 }}>
+              <CartesianGrid strokeDasharray="3 3" vertical={false} />
+              <XAxis
+                dataKey="monthYear"
+                angle={-45}
+                textAnchor="end"
+                interval={0}
+                height={80}
+                tick={{ fontSize: 11 }}
+              />
+              <YAxis
+                tickFormatter={(value) => `$${value}`}
+                tick={{ fontSize: 12 }}
+              />
+              <Tooltip
+                contentStyle={{ backgroundColor: 'rgba(255, 255, 255, 0.95)', borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
+                content={({ active, payload, label }) => {
+                  if (active && payload && payload.length) {
+                    const data = payload[0].payload;
+                    return (
+                      <div className="bg-white p-4 rounded-xl shadow-lg border border-gray-200">
+                        <p className="font-bold text-gray-900 mb-2">{label}</p>
+                        <p className="text-sm text-green-600">
+                          <span className="font-semibold">Avg Price:</span> ${data.avgPrice?.toLocaleString()}/ML
+                        </p>
+                        <p className="text-sm text-blue-600">
+                          <span className="font-semibold">Volume:</span> {data.totalVolume?.toLocaleString()} ML
+                        </p>
+                        <p className="text-sm text-gray-600">
+                          <span className="font-semibold">Trades:</span> {data.tradeCount}
+                        </p>
+                      </div>
+                    );
+                  }
+                  return null;
+                }}
+              />
+              <Legend />
+              <Line
+                type="monotone"
+                dataKey="avgPrice"
+                name="Avg Price ($/ML)"
+                stroke="#10b981"
+                strokeWidth={3}
+                dot={{ fill: '#10b981', strokeWidth: 2, r: 4 }}
+                activeDot={{ r: 6, stroke: '#10b981', strokeWidth: 2 }}
+              />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
+      </div>
+
+      {/* Volume by Scheme Chart */}
+      <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+        <h3 className="text-lg font-semibold text-gray-900 mb-2">Trading Volume by Scheme</h3>
+        <p className="text-sm text-gray-500 mb-6">Total volume traded (ML) - Top 10 schemes</p>
+        <div className="h-[400px] w-full">
+          <ResponsiveContainer width="100%" height="100%">
+            <BarChart
+              data={schemeStats.slice(0, 10)}
+              layout="vertical"
+              margin={{ top: 20, right: 30, left: 150, bottom: 20 }}
+            >
+              <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} />
+              <XAxis type="number" tickFormatter={(value) => `${(value / 1000).toFixed(0)}k`} />
+              <YAxis
+                type="category"
+                dataKey="scheme"
+                tick={{ fontSize: 11 }}
+                width={140}
+              />
+              <Tooltip
+                contentStyle={{ backgroundColor: 'rgba(255, 255, 255, 0.95)', borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
+                content={({ active, payload }) => {
+                  if (active && payload && payload.length) {
+                    const data = payload[0].payload;
+                    return (
+                      <div className="bg-white p-4 rounded-xl shadow-lg border border-gray-200">
+                        <p className="font-bold text-gray-900 mb-2">{data.scheme}</p>
+                        <p className="text-xs text-gray-500 mb-2">{data.waterPlanArea}</p>
+                        <p className="text-sm text-blue-600">
+                          <span className="font-semibold">Volume:</span> {data.totalVolume?.toLocaleString()} ML
+                        </p>
+                        <p className="text-sm text-green-600">
+                          <span className="font-semibold">Avg Price:</span> ${data.avgPrice?.toLocaleString()}/ML
+                        </p>
+                        <p className="text-sm text-gray-600">
+                          <span className="font-semibold">Price Range:</span> ${data.minPrice?.toLocaleString()} - ${data.maxPrice?.toLocaleString()}/ML
+                        </p>
+                        <p className="text-sm text-gray-600">
+                          <span className="font-semibold">Trades:</span> {data.tradeCount}
+                        </p>
+                      </div>
+                    );
+                  }
+                  return null;
+                }}
+              />
+              <Bar dataKey="totalVolume" name="Volume (ML)" fill="#3b82f6" radius={[0, 4, 4, 0]} />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+      </div>
+
+      {/* Data Table */}
+      <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+        <div className="p-4 md:p-6 border-b border-gray-100">
+          <h3 className="text-base md:text-lg font-semibold text-gray-900">Trading Data</h3>
+          <p className="text-xs md:text-sm text-gray-500 mt-1">
+            {filteredData.length} trades found. Scroll horizontally to view all columns.
+          </p>
+        </div>
+        <div className="overflow-x-auto -webkit-overflow-scrolling-touch">
+          <table className="w-full text-xs md:text-sm text-left min-w-[900px]">
+            <thead className="bg-gray-50 text-gray-500 font-medium sticky top-0">
+              <tr>
+                <th className="px-3 md:px-4 py-2 md:py-3">Date</th>
+                <th className="px-3 md:px-4 py-2 md:py-3">Scheme</th>
+                <th className="px-3 md:px-4 py-2 md:py-3">Water Plan Area</th>
+                <th className="px-3 md:px-4 py-2 md:py-3">Type</th>
+                <th className="px-3 md:px-4 py-2 md:py-3">Priority</th>
+                <th className="px-3 md:px-4 py-2 md:py-3 text-right">Volume (ML)</th>
+                <th className="px-3 md:px-4 py-2 md:py-3 text-right">Price ($/ML)</th>
+                <th className="px-3 md:px-4 py-2 md:py-3">Source</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-100">
+              {filteredData.slice(0, 100).map((trade, i) => (
+                <tr key={i} className="hover:bg-gray-50/50 transition-colors">
+                  <td className="px-3 md:px-4 py-2 md:py-3 text-gray-600">{trade.Date}</td>
+                  <td className="px-3 md:px-4 py-2 md:py-3 font-medium text-gray-900">{trade.Scheme}</td>
+                  <td className="px-3 md:px-4 py-2 md:py-3 text-gray-500">{trade['Water Plan Area']}</td>
+                  <td className="px-3 md:px-4 py-2 md:py-3">
+                    <span className={clsx(
+                      'px-2 py-1 rounded-full text-xs font-medium',
+                      trade.Type === 'Supplemented'
+                        ? 'bg-blue-100 text-blue-700'
+                        : 'bg-gray-100 text-gray-700'
+                    )}>
+                      {trade.Type}
+                    </span>
+                  </td>
+                  <td className="px-3 md:px-4 py-2 md:py-3">
+                    <span className={clsx(
+                      'px-2 py-1 rounded-full text-xs font-medium',
+                      trade.Priority === 'High' ? 'bg-red-100 text-red-700' :
+                      trade.Priority === 'Medium' ? 'bg-amber-100 text-amber-700' :
+                      'bg-gray-100 text-gray-700'
+                    )}>
+                      {trade.Priority}
+                    </span>
+                  </td>
+                  <td className="px-3 md:px-4 py-2 md:py-3 text-right text-blue-600 font-medium">
+                    {(trade['Volume (ML)'] || 0).toLocaleString()}
+                  </td>
+                  <td className="px-3 md:px-4 py-2 md:py-3 text-right text-green-600 font-medium">
+                    ${(trade['Price ($/ML)'] || 0).toLocaleString()}
+                  </td>
+                  <td className="px-3 md:px-4 py-2 md:py-3 text-gray-400 text-xs">{trade.Source}</td>
+                </tr>
+              ))}
+              {filteredData.length === 0 && (
+                <tr>
+                  <td colSpan={8} className="px-6 py-8 text-center text-gray-500">
+                    No trading data found for the selected filters.
+                  </td>
+                </tr>
+              )}
+              {filteredData.length > 100 && (
+                <tr>
+                  <td colSpan={8} className="px-6 py-4 text-center text-gray-400 text-sm">
+                    Showing first 100 of {filteredData.length} trades. Apply filters to narrow results.
                   </td>
                 </tr>
               )}

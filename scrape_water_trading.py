@@ -786,32 +786,96 @@ def transform_open_data_record(record, source_name):
     }
 
 
+def generate_pwtr_pdf_urls():
+    """
+    Generate potential PWTR PDF URLs for all months from July 2024 to present.
+
+    The QLD Government publishes monthly reports at predictable URL patterns.
+    We try multiple URL patterns since the exact format varies.
+    """
+    urls = []
+
+    # Month name variations used in URLs
+    month_names = {
+        1: ['jan', 'january'],
+        2: ['feb', 'february'],
+        3: ['mar', 'march'],
+        4: ['apr', 'april'],
+        5: ['may'],
+        6: ['jun', 'june'],
+        7: ['jul', 'july'],
+        8: ['aug', 'august'],
+        9: ['sep', 'sept', 'september'],
+        10: ['oct', 'october'],
+        11: ['nov', 'november'],
+        12: ['dec', 'december']
+    }
+
+    # Report types to fetch
+    report_types = [
+        'supplemented-surface-water',
+        'unsupplemented-surface-water'
+    ]
+
+    # Generate URLs from July 2024 to present
+    start_date = datetime(2024, 7, 1)
+    end_date = datetime.now()
+
+    current = start_date
+    while current <= end_date:
+        year = current.year
+        month = current.month
+
+        for month_name in month_names[month]:
+            for report_type in report_types:
+                # Primary URL pattern (dlgwv domain)
+                urls.append(f"https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0005/1989383/pwtr-{report_type}-{month_name}-{year}.pdf")
+                urls.append(f"https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0006/1908627/pwtr-{report_type}-{month_name}-{year}.pdf")
+                urls.append(f"https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0012/1976583/pwtr-{report_type}-{month_name}-{year}.pdf")
+                urls.append(f"https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0004/1775137/pwtr-{report_type}-{month_name}-{year}.pdf")
+                urls.append(f"https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0004/1995511/pwtr-{report_type}-{month_name}-{year}.pdf")
+
+        # Move to next month
+        if month == 12:
+            current = datetime(year + 1, 1, 1)
+        else:
+            current = datetime(year, month + 1, 1)
+
+    # Also add known working URLs discovered previously
+    known_urls = [
+        "https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0005/1989383/pwtr-supplemented-surface-water-dec-2024.pdf",
+        "https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0012/1976583/pwtr-supplemented-surface-water-nov-2024.pdf",
+        "https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0006/1908627/pwtr-supplemented-surface-water-jun-2024.pdf",
+        "https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0006/1908627/pwtr-supplemented-surface-water-jul-2024.pdf",
+        "https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0006/1908627/pwtr-supplemented-surface-water-aug-2024.pdf",
+        "https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0006/1908627/pwtr-supplemented-surface-water-sep-2024.pdf",
+        "https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0006/1908627/pwtr-supplemented-surface-water-oct-2024.pdf",
+    ]
+
+    return list(set(urls + known_urls))  # Remove duplicates
+
+
 def scrape_permanent_trading_pdfs():
     """
     Scrape QLD Government Permanent Water Trading Reports (PDFs).
 
-    Reports are published monthly by DLGWV (formerly RDMW) and contain:
-    - Supplemented surface water trades
-    - Unsupplemented surface water trades
+    Reports are published monthly by DLGWV and contain MONTHLY WEIGHTED AVERAGE
+    prices and volumes by scheme/priority - NOT individual trade transactions.
 
-    Each report includes weighted average prices and volumes by scheme/priority.
+    Data source: Queensland Department of Local Government, Water and Volunteers
+    URL: https://www.business.qld.gov.au/industries/mining-energy-water/water/water-markets/market-information
+
+    Important: This data represents aggregated monthly statistics, where each row
+    is a monthly summary for a scheme/priority combination, not individual trades.
     """
     print("\n--- Scraping QLD Gov Permanent Trading PDFs ---")
+    print("    Source: DLGWV Permanent Water Trading Interim Reports")
+    print("    Data type: Monthly weighted average prices (not individual trades)")
     results = []
 
-    # Known PDF URLs discovered through web search
-    pdf_urls = [
-        # 2024 reports (dlgwv domain)
-        "https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0005/1989383/pwtr-supplemented-surface-water-dec-2024.pdf",
-        "https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0012/1976583/pwtr-supplemented-surface-water-nov-2024.pdf",
-        "https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0006/1908627/pwtr-supplemented-surface-water-jun-2024.pdf",
-        # 2023 reports
-        "https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0004/1775137/pwtr-supplemented-surface-water-september-2023.pdf",
-        # 2022-2023 reports (rdmw domain)
-        "https://www.rdmw.qld.gov.au/__data/assets/pdf_file/0007/1651345/pwtr-supplemented-oct-2022.pdf",
-        "https://www.rdmw.qld.gov.au/__data/assets/pdf_file/0009/1668978/pwtr-unsupplemented-surface-water-jan-2023.pdf",
-        "https://www.rdmw.qld.gov.au/__data/assets/pdf_file/0011/1609049/pwtr-supplemented-feb-2022.pdf",
-    ]
+    # Generate URLs dynamically for all months from July 2024 to present
+    pdf_urls = generate_pwtr_pdf_urls()
+    print(f"    Checking {len(pdf_urls)} potential PDF URLs...")
 
     # Try to import PDF library
     try:
@@ -1014,24 +1078,25 @@ def main():
     print("QLD Water Trading Data Scraper")
     print("=" * 60)
     print(f"Started: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    print("\nData Source: QLD Government Permanent Water Trading Reports (PWTR)")
+    print("Published by: Department of Local Government, Water and Volunteers (DLGWV)")
+    print("Data Type: Monthly weighted average prices (NOT individual trades)")
+    print("=" * 60)
 
     all_results = []
     use_reference_data = False
 
-    # Scrape all sources
-    sunwater_data = scrape_sunwater()
-    all_results.extend(sunwater_data)
-
-    open_data = scrape_qld_open_data()
-    all_results.extend(open_data)
-
+    # Only scrape PWTR data - this is the authoritative government source
+    # for permanent water trading with monthly weighted average prices
+    # Note: We no longer mix in Sunwater or QLD Open Data temporary trades
+    # as they represent different data types (individual trades vs monthly averages)
     pdf_data = scrape_permanent_trading_pdfs()
     all_results.extend(pdf_data)
 
     # If scraping yielded minimal results, use reference data
     permanent_count = len([r for r in all_results if r.get('Trade Type') == 'Permanent'])
     if permanent_count < 10:
-        print("\n⚠️  Insufficient permanent trading data scraped")
+        print("\n⚠️  Insufficient permanent trading data scraped from government PDFs")
         print("    Using reference data based on DLGWV reports...")
         use_reference_data = True
 

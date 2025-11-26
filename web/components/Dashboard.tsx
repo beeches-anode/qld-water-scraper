@@ -414,6 +414,7 @@ function TradingView({ data, theme }: { data: WaterTradeWithParsedDate[]; theme:
   const [selectedScheme, setSelectedScheme] = useState<string>("All");
   const [selectedPriority, setSelectedPriority] = useState<string>("All");
   const [selectedTradeType, setSelectedTradeType] = useState<string>("All");
+  const [showDataInfo, setShowDataInfo] = useState<boolean>(false);
 
   // Get unique filter options
   const waterPlanAreas = useMemo(() => {
@@ -472,6 +473,65 @@ function TradingView({ data, theme }: { data: WaterTradeWithParsedDate[]; theme:
 
   return (
     <div className="space-y-6 md:space-y-8">
+      {/* Data Source Information */}
+      <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-4 md:p-6 rounded-2xl shadow-lg border border-blue-200/50">
+        <button
+          onClick={() => setShowDataInfo(!showDataInfo)}
+          className="w-full flex items-center justify-between text-left"
+        >
+          <div className="flex items-center gap-3 text-blue-700">
+            <div className="p-2 bg-blue-100 rounded-xl">
+              <Info className="w-5 h-5" />
+            </div>
+            <div>
+              <span className="font-bold text-base">About This Data</span>
+              <span className="text-sm text-blue-600 ml-2">QLD Government Permanent Water Trading Reports</span>
+            </div>
+          </div>
+          {showDataInfo ? <ChevronUp className="w-5 h-5 text-blue-500" /> : <ChevronDown className="w-5 h-5 text-blue-500" />}
+        </button>
+
+        {showDataInfo && (
+          <div className="mt-4 pt-4 border-t border-blue-200 space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <h4 className="font-semibold text-blue-900 mb-2">Data Source</h4>
+                <p className="text-sm text-blue-800">
+                  Queensland Department of Local Government, Water and Volunteers (DLGWV)
+                  - Permanent Water Trading Interim Reports
+                </p>
+                <a
+                  href="https://www.business.qld.gov.au/industries/mining-energy-water/water/water-markets/market-information"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-sm text-blue-600 hover:text-blue-800 mt-2"
+                >
+                  <ExternalLink className="w-4 h-4" />
+                  View official source
+                </a>
+              </div>
+              <div>
+                <h4 className="font-semibold text-blue-900 mb-2">Data Type</h4>
+                <p className="text-sm text-blue-800">
+                  <strong>Monthly weighted average prices</strong> - Each row represents
+                  the aggregated trading activity for a scheme/priority combination during
+                  a calendar month, not individual trade transactions.
+                </p>
+              </div>
+            </div>
+            <div className="bg-blue-100/50 rounded-lg p-3">
+              <h4 className="font-semibold text-blue-900 mb-1 text-sm">Important Notes</h4>
+              <ul className="text-xs text-blue-800 space-y-1 list-disc list-inside">
+                <li>Prices shown are volume-weighted averages for each month</li>
+                <li>Volume represents total ML traded during the reporting period</li>
+                <li>Data covers permanent water allocation transfers only</li>
+                <li>Reports are published monthly with approximately 1-2 month lag</li>
+              </ul>
+            </div>
+          </div>
+        )}
+      </div>
+
       {/* Filters */}
       <div className="bg-gradient-to-br from-white to-green-50 p-6 rounded-2xl shadow-lg border border-gray-200/50 backdrop-blur-sm">
         <div className="flex items-center gap-3 mb-5 text-green-700">
@@ -538,10 +598,10 @@ function TradingView({ data, theme }: { data: WaterTradeWithParsedDate[]; theme:
       {/* KPIs */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
         <Card
-          title="Total Trades"
+          title="Monthly Records"
           value={kpis.totalTrades.toLocaleString()}
           icon={<TrendingUp className="w-6 h-6 text-green-500" />}
-          subtext="Number of transactions"
+          subtext="Scheme/month combinations"
           theme={theme}
         />
         <Card
@@ -555,21 +615,21 @@ function TradingView({ data, theme }: { data: WaterTradeWithParsedDate[]; theme:
           title="Avg Price"
           value={`$${kpis.avgPrice.toLocaleString(undefined, { maximumFractionDigits: 0 })}/ML`}
           icon={<DollarSign className="w-6 h-6 text-amber-500" />}
-          subtext="Average price per ML"
+          subtext="Weighted average"
           theme={theme}
         />
         <Card
           title="Min Price"
           value={`$${kpis.minPrice.toLocaleString(undefined, { maximumFractionDigits: 0 })}/ML`}
           icon={<DollarSign className="w-6 h-6 text-green-500" />}
-          subtext="Lowest price"
+          subtext="Lowest monthly avg"
           theme={theme}
         />
         <Card
           title="Max Price"
           value={`$${kpis.maxPrice.toLocaleString(undefined, { maximumFractionDigits: 0 })}/ML`}
           icon={<DollarSign className="w-6 h-6 text-red-500" />}
-          subtext="Highest price"
+          subtext="Highest monthly avg"
           theme={theme}
         />
       </div>
@@ -609,7 +669,7 @@ function TradingView({ data, theme }: { data: WaterTradeWithParsedDate[]; theme:
                           <span className="font-semibold">Volume:</span> {data.totalVolume?.toLocaleString()} ML
                         </p>
                         <p className="text-sm text-gray-600">
-                          <span className="font-semibold">Trades:</span> {data.tradeCount}
+                          <span className="font-semibold">Records:</span> {data.tradeCount}
                         </p>
                       </div>
                     );
@@ -670,7 +730,7 @@ function TradingView({ data, theme }: { data: WaterTradeWithParsedDate[]; theme:
                           <span className="font-semibold">Price Range:</span> ${data.minPrice?.toLocaleString()} - ${data.maxPrice?.toLocaleString()}/ML
                         </p>
                         <p className="text-sm text-gray-600">
-                          <span className="font-semibold">Trades:</span> {data.tradeCount}
+                          <span className="font-semibold">Records:</span> {data.tradeCount}
                         </p>
                       </div>
                     );
@@ -687,22 +747,22 @@ function TradingView({ data, theme }: { data: WaterTradeWithParsedDate[]; theme:
       {/* Data Table */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
         <div className="p-4 md:p-6 border-b border-gray-100">
-          <h3 className="text-base md:text-lg font-semibold text-gray-900">Trading Data</h3>
+          <h3 className="text-base md:text-lg font-semibold text-gray-900">Monthly Trading Data</h3>
           <p className="text-xs md:text-sm text-gray-500 mt-1">
-            {filteredData.length} trades found. Scroll horizontally to view all columns.
+            {filteredData.length} monthly records. Each row = weighted average for scheme/priority/month.
           </p>
         </div>
         <div className="overflow-x-auto -webkit-overflow-scrolling-touch">
           <table className="w-full text-xs md:text-sm text-left min-w-[900px]">
             <thead className="bg-gray-50 text-gray-500 font-medium sticky top-0">
               <tr>
-                <th className="px-3 md:px-4 py-2 md:py-3">Date</th>
+                <th className="px-3 md:px-4 py-2 md:py-3">Month</th>
                 <th className="px-3 md:px-4 py-2 md:py-3">Scheme</th>
                 <th className="px-3 md:px-4 py-2 md:py-3">Water Plan Area</th>
                 <th className="px-3 md:px-4 py-2 md:py-3">Type</th>
                 <th className="px-3 md:px-4 py-2 md:py-3">Priority</th>
                 <th className="px-3 md:px-4 py-2 md:py-3 text-right">Volume (ML)</th>
-                <th className="px-3 md:px-4 py-2 md:py-3 text-right">Price ($/ML)</th>
+                <th className="px-3 md:px-4 py-2 md:py-3 text-right">Avg Price ($/ML)</th>
                 <th className="px-3 md:px-4 py-2 md:py-3">Source</th>
               </tr>
             </thead>
@@ -751,7 +811,7 @@ function TradingView({ data, theme }: { data: WaterTradeWithParsedDate[]; theme:
               {filteredData.length > 100 && (
                 <tr>
                   <td colSpan={8} className="px-6 py-4 text-center text-gray-400 text-sm">
-                    Showing first 100 of {filteredData.length} trades. Apply filters to narrow results.
+                    Showing first 100 of {filteredData.length} monthly records. Apply filters to narrow results.
                   </td>
                 </tr>
               )}

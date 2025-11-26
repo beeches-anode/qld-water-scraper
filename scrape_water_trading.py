@@ -790,6 +790,10 @@ def discover_pwtr_pdf_urls():
     """
     Discover PWTR PDF URLs by scraping the official government pages.
 
+    SCOPE: MONTHLY SURFACE WATER REPORTS ONLY
+    - Includes: pwtr-supplemented-surface-water-[month]-[year].pdf
+    - Excludes: Annual reports, groundwater reports, unsupplemented reports
+
     Each PDF has a unique asset ID in the URL that cannot be predicted,
     so we must scrape the source pages to find the actual links.
 
@@ -819,7 +823,7 @@ def discover_pwtr_pdf_urls():
             for link in soup.find_all('a', href=True):
                 href = link['href']
 
-                # Look for PWTR PDF links
+                # Look for PWTR PDF links - ONLY monthly surface water reports
                 if 'pwtr' in href.lower() and '.pdf' in href.lower():
                     # Make absolute URL if relative
                     if href.startswith('/'):
@@ -830,10 +834,33 @@ def discover_pwtr_pdf_urls():
                     elif not href.startswith('http'):
                         href = urljoin(page_url, href)
 
-                    # Filter for surface water reports (not groundwater)
-                    if 'surface-water' in href.lower() or 'supplemented' in href.lower():
+                    href_lower = href.lower()
+                    filename_lower = href.split('/')[-1].lower()
+
+                    # STRICT FILTER: Only monthly surface water reports
+                    # Must have: surface-water in name
+                    # Must have: month name pattern (jan, feb, mar, etc.)
+                    # Must NOT have: groundwater, annual, yearly, financial-year
+
+                    month_pattern = r'(jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[-_]?\d{4}'
+                    has_month = re.search(month_pattern, filename_lower)
+                    is_surface_water = 'surface-water' in href_lower
+                    is_groundwater = 'groundwater' in href_lower
+                    is_annual = any(term in href_lower for term in ['annual', 'yearly', 'financial-year', 'fy-'])
+
+                    if is_surface_water and has_month and not is_groundwater and not is_annual:
                         discovered_urls.append(href)
-                        print(f"      Found: {href.split('/')[-1]}")
+                        print(f"      Found monthly surface water: {filename_lower}")
+                    elif 'pwtr' in filename_lower:
+                        # Log what we're skipping for diagnostics
+                        if is_groundwater:
+                            print(f"      Skipping groundwater report: {filename_lower}")
+                        elif is_annual:
+                            print(f"      Skipping annual report: {filename_lower}")
+                        elif not is_surface_water:
+                            print(f"      Skipping (not surface water): {filename_lower}")
+                        elif not has_month:
+                            print(f"      Skipping (no month pattern - may be annual): {filename_lower}")
 
             time.sleep(1)  # Be respectful
 
@@ -852,20 +879,37 @@ def discover_pwtr_pdf_urls():
     print(f"    Discovered {len(unique_urls)} PDF URLs from source pages")
 
     # If discovery failed, fall back to known working URLs
+    # IMPORTANT: Only include MONTHLY SURFACE WATER reports here
+    # Format: pwtr-supplemented-surface-water-[month]-[year].pdf
+    # Do NOT add annual reports, groundwater reports, or unsupplemented reports
     if len(unique_urls) < 3:
-        print("    Discovery found few URLs, adding known working URLs...")
+        print("    Discovery found few URLs, adding known monthly surface water URLs...")
         known_urls = [
-            # October 2025 - confirmed working
+            # 2025 Monthly Surface Water Reports
             "https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0003/2110782/pwtr-supplemented-surface-water-oct-2025.pdf",
-            # Recent months - patterns discovered from government site
+            "https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0009/2097738/pwtr-supplemented-surface-water-sep-2025.pdf",
+            "https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0006/2085885/pwtr-supplemented-surface-water-aug-2025.pdf",
+            "https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0003/2073330/pwtr-supplemented-surface-water-jul-2025.pdf",
+            "https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0009/2060667/pwtr-supplemented-surface-water-jun-2025.pdf",
+            "https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0006/2048304/pwtr-supplemented-surface-water-may-2025.pdf",
+            "https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0003/2035641/pwtr-supplemented-surface-water-apr-2025.pdf",
+            "https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0009/2022978/pwtr-supplemented-surface-water-mar-2025.pdf",
+            "https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0006/2010615/pwtr-supplemented-surface-water-feb-2025.pdf",
+            "https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0003/1997952/pwtr-supplemented-surface-water-jan-2025.pdf",
+            # 2024 Monthly Surface Water Reports
             "https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0005/1989383/pwtr-supplemented-surface-water-dec-2024.pdf",
             "https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0012/1976583/pwtr-supplemented-surface-water-nov-2024.pdf",
+            "https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0006/1963899/pwtr-supplemented-surface-water-oct-2024.pdf",
+            "https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0003/1951236/pwtr-supplemented-surface-water-sep-2024.pdf",
+            "https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0009/1938762/pwtr-supplemented-surface-water-aug-2024.pdf",
+            "https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0006/1926099/pwtr-supplemented-surface-water-jul-2024.pdf",
             "https://www.dlgwv.qld.gov.au/__data/assets/pdf_file/0006/1908627/pwtr-supplemented-surface-water-jun-2024.pdf",
         ]
         for url in known_urls:
             if url not in seen:
                 unique_urls.append(url)
                 seen.add(url)
+        print(f"    Added {len(known_urls)} known monthly surface water URLs")
 
     return unique_urls
 
@@ -873,6 +917,10 @@ def discover_pwtr_pdf_urls():
 def scrape_permanent_trading_pdfs():
     """
     Scrape QLD Government Permanent Water Trading Reports (PDFs).
+
+    SCOPE: MONTHLY SUPPLEMENTED SURFACE WATER REPORTS ONLY
+    - Targets: pwtr-supplemented-surface-water-[month]-[year].pdf
+    - Excludes: Annual reports, groundwater reports, unsupplemented reports
 
     Reports are published monthly by DLGWV and contain MONTHLY WEIGHTED AVERAGE
     prices and volumes by scheme/priority - NOT individual trade transactions.
@@ -885,6 +933,7 @@ def scrape_permanent_trading_pdfs():
     """
     print("\n--- Scraping QLD Gov Permanent Trading PDFs ---")
     print("    Source: DLGWV Permanent Water Trading Interim Reports")
+    print("    Scope: MONTHLY SUPPLEMENTED SURFACE WATER ONLY")
     print("    Data type: Monthly weighted average prices (not individual trades)")
     results = []
 
@@ -1213,10 +1262,20 @@ def main():
 
     # If scraping yielded minimal results, use reference data
     permanent_count = len([r for r in all_results if r.get('Trade Type') == 'Permanent'])
+    print(f"\n--- Scraping Results Summary ---")
+    print(f"    Total records scraped: {len(all_results)}")
+    print(f"    Permanent trade records: {permanent_count}")
+
     if permanent_count < 10:
-        print("\n⚠️  Insufficient permanent trading data scraped from government PDFs")
+        print(f"\n⚠️  FALLBACK TRIGGERED: Only {permanent_count} permanent records (minimum: 10)")
+        print("    Possible causes:")
+        print("    - PDF URLs may have changed (government site updates)")
+        print("    - Network issues preventing PDF downloads")
+        print("    - PDF format changes breaking parser")
         print("    Using reference data based on DLGWV reports...")
         use_reference_data = True
+    else:
+        print(f"    ✓ Sufficient data scraped ({permanent_count} records) - using live data")
 
     # Run validation on scraped data (if we have any permanent trades)
     if permanent_count > 0 and not use_reference_data:

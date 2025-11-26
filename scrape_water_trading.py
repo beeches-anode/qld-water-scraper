@@ -975,33 +975,146 @@ def scrape_permanent_trading_pdfs():
 
 
 def extract_pdf_data_pdfplumber(pdf_content, period, report_type):
-    """Extract trading data using pdfplumber"""
+    """
+    Extract trading data from PWTR PDF using pdfplumber.
+
+    Based on actual PDF structure (Oct/Sep 2025 reports):
+    - Table: "Transfer of Ownership – Water Allocations"
+    - Columns: Water Plan | Water Supply Scheme | Priority Group | Number Of Transfers |
+               Volume Transferred (ML) | Volume Turnover (%) | Weighted Average Price ($/ML)
+    """
     import pdfplumber
     results = []
 
     with pdfplumber.open(pdf_content) as pdf:
-        current_water_plan = "Unknown"
-        current_scheme = "Unknown"
-
         for page in pdf.pages:
-            text = page.extract_text() or ""
-
-            # Look for water plan area headers
-            plan_match = re.search(r'([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)\s+water\s+plan\s+area', text, re.IGNORECASE)
-            if plan_match:
-                current_water_plan = plan_match.group(1).strip()
-
-            # Extract tables
+            # Extract tables from page
             tables = page.extract_tables()
+
             for table in tables:
-                parsed = parse_trading_pdf_table(table, current_water_plan, period, report_type)
-                results.extend(parsed)
+                if not table or len(table) < 2:
+                    continue
+
+                # Find header row by looking for key column names
+                header_idx = None
+                for idx, row in enumerate(table[:5]):
+                    if not row:
+                        continue
+                    row_text = ' '.join([str(c).lower() if c else '' for c in row])
+                    # Look for PWTR-specific headers
+                    if 'water plan' in row_text and ('scheme' in row_text or 'priority' in row_text):
+                        header_idx = idx
+                        break
+                    if 'weighted' in row_text and 'average' in row_text and 'price' in row_text:
+                        header_idx = idx
+                        break
+
+                if header_idx is None:
+                    continue
+
+                # Map column indices
+                headers = [str(c).lower() if c else '' for c in table[header_idx]]
+
+                water_plan_col = next((i for i, h in enumerate(headers) if 'water plan' in h), 0)
+                scheme_col = next((i for i, h in enumerate(headers) if 'scheme' in h and 'water plan' not in h), 1)
+                priority_col = next((i for i, h in enumerate(headers) if 'priority' in h or 'group' in h), 2)
+                transfers_col = next((i for i, h in enumerate(headers) if 'number' in h or 'transfer' in h), 3)
+                volume_col = next((i for i, h in enumerate(headers) if 'volume' in h and 'turnover' not in h), 4)
+                price_col = next((i for i, h in enumerate(headers) if 'price' in h or 'weighted' in h), -1)
+
+                # If price column not found by name, assume it's the last column
+                if price_col == -1:
+                    price_col = len(headers) - 1
+
+                # Process data rows
+                current_water_plan = "Unknown"
+
+                for row in table[header_idx + 1:]:
+                    if not row or len(row) < 4:
+                        continue
+
+                    row_text = ' '.join([str(c) if c else '' for c in row]).lower()
+
+                    # Skip summary rows
+                    if any(skip in row_text for skip in ['period total', 'financial ytd', 'all water plans']):
+                        continue
+
+                    # Extract water plan (basin name)
+                    water_plan_cell = str(row[water_plan_col]) if row[water_plan_col] else ''
+
+                    # Parse "Water Plan (Burnett Basin) 2014" -> "Burnett Basin"
+                    basin_match = re.search(r'Water Plan\s*\(([^)]+)\)', water_plan_cell, re.IGNORECASE)
+                    if basin_match:
+                        current_water_plan = basin_match.group(1).strip()
+                    elif water_plan_cell and 'water plan' not in water_plan_cell.lower():
+                        # Some rows may just have the basin name
+                        current_water_plan = water_plan_cell.strip()
+
+                    # Extract scheme name
+                    scheme = str(row[scheme_col]).strip() if len(row) > scheme_col and row[scheme_col] else ''
+
+                    # Skip if no scheme name or it's a header/summary
+                    if not scheme or scheme.lower() in ['', 'water supply scheme', 'period total', 'financial ytd']:
+                        continue
+
+                    # Extract priority
+                    priority = str(row[priority_col]).strip() if len(row) > priority_col and row[priority_col] else 'Medium'
+
+                    # Normalize priority values
+                    priority_upper = priority.upper()
+                    if 'HIGH' in priority_upper:
+                        priority = 'High'
+                    elif 'MEDIUM' in priority_upper or 'MED' in priority_upper:
+                        priority = 'Medium'
+                    elif 'LOW' in priority_upper:
+                        priority = 'Low'
+                    else:
+                        priority = priority.title() if priority else 'Medium'
+
+                    # Extract volume
+                    try:
+                        volume_str = str(row[volume_col]) if len(row) > volume_col and row[volume_col] else '0'
+                        volume = float(re.sub(r'[^\d.]', '', volume_str) or 0)
+                    except (ValueError, IndexError):
+                        volume = 0
+
+                    # Extract weighted average price
+                    try:
+                        price_str = str(row[price_col]) if len(row) > price_col and row[price_col] else '0'
+                        price = float(re.sub(r'[^\d.]', '', price_str) or 0)
+                    except (ValueError, IndexError):
+                        price = 0
+
+                    # Only include rows with actual trading data (volume > 0 or price > 0)
+                    # Note: price=0 may mean no trades reported, which is still valid data
+                    if volume > 0:
+                        # Normalize scheme name
+                        scheme_normalized = scheme.title().replace('Water Supply Scheme', 'Water Supply Scheme')
+
+                        results.append({
+                            'Date': period,
+                            'Water Plan Area': current_water_plan,
+                            'Scheme': scheme_normalized,
+                            'Type': report_type,
+                            'Priority': priority,
+                            'Trade Type': 'Permanent',
+                            'Volume (ML)': volume,
+                            'Price ($/ML)': price,
+                            'Location From': '',
+                            'Location To': '',
+                            'Source': 'QLD Gov PWTR'
+                        })
 
     return results
 
 
 def extract_pdf_data_pypdf2(pdf_content, period, report_type):
-    """Extract trading data using PyPDF2 (text-based extraction)"""
+    """
+    Extract trading data using PyPDF2 (text-based extraction).
+
+    Fallback parser for when pdfplumber is not available.
+    Uses regex patterns to extract data from PDF text.
+    """
     import PyPDF2
     results = []
 
@@ -1011,109 +1124,69 @@ def extract_pdf_data_pypdf2(pdf_content, period, report_type):
     for page in reader.pages:
         full_text += page.extract_text() + "\n"
 
-    # Parse text for trading data
-    # Look for patterns like: Scheme Name | Priority | Trades | Volume | Price
     lines = full_text.split('\n')
     current_water_plan = "Unknown"
-    current_scheme = "Unknown"
 
     for line in lines:
-        # Detect water plan area
-        plan_match = re.search(r'([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)\s+water\s+plan\s+area', line, re.IGNORECASE)
-        if plan_match:
-            current_water_plan = plan_match.group(1).strip()
+        # Skip summary rows
+        if any(skip in line.lower() for skip in ['period total', 'financial ytd', 'all water plans']):
             continue
 
-        # Look for data patterns
-        # Pattern: text | priority | number | volume | price
-        data_match = re.search(r'([A-Za-z\s]+)\s+(High|Medium|Low)\s+(\d+)\s+([\d,]+)\s+\$?([\d,.]+)', line)
+        # Detect water plan (basin name)
+        # Pattern: "Water Plan (Burnett Basin) 2014"
+        basin_match = re.search(r'Water Plan\s*\(([^)]+)\)', line, re.IGNORECASE)
+        if basin_match:
+            current_water_plan = basin_match.group(1).strip()
+            continue
+
+        # Try to match data rows
+        # Pattern variations for PWTR tables:
+        # SCHEME_NAME PRIORITY NUM VOLUME PCT PRICE
+        # e.g., "BUNDABERG WATER SUPPLY SCHEME HIGH 3 300 <1 0"
+        # e.g., "BUNDABERG WATER SUPPLY SCHEME MEDIUM 9 220 <1 0"
+
+        # Pattern 1: SCHEME PRIORITY TRANSFERS VOLUME TURNOVER PRICE
+        data_match = re.search(
+            r'([A-Z][A-Z\s]+(?:WATER SUPPLY SCHEME|WSS))\s+'  # Scheme name (uppercase)
+            r'(HIGH|MEDIUM|LOW|HIGH CLASS [AB]|MEDIUM-A\d[^\s]*)\s+'  # Priority
+            r'(\d+)\s+'  # Number of transfers
+            r'([\d,]+)\s+'  # Volume
+            r'[<>]?\d*\s*'  # Volume turnover (optional, may have < symbol)
+            r'([\d,]+)',  # Price
+            line,
+            re.IGNORECASE
+        )
+
         if data_match:
-            results.append({
-                'Date': period,
-                'Water Plan Area': current_water_plan,
-                'Scheme': data_match.group(1).strip(),
-                'Type': report_type,
-                'Priority': data_match.group(2),
-                'Trade Type': 'Permanent',
-                'Volume (ML)': float(data_match.group(4).replace(',', '')),
-                'Price ($/ML)': float(data_match.group(5).replace(',', '')),
-                'Location From': '',
-                'Location To': '',
-                'Source': 'QLD Gov PWTR'
-            })
+            scheme = data_match.group(1).strip().title()
+            priority_raw = data_match.group(2).strip()
+            volume = float(data_match.group(4).replace(',', ''))
+            price = float(data_match.group(5).replace(',', ''))
 
-    return results
+            # Normalize priority
+            if 'HIGH' in priority_raw.upper():
+                priority = 'High'
+            elif 'MEDIUM' in priority_raw.upper() or 'MED' in priority_raw.upper():
+                priority = 'Medium'
+            elif 'LOW' in priority_raw.upper():
+                priority = 'Low'
+            else:
+                priority = priority_raw.title()
 
-
-def parse_trading_pdf_table(table, water_plan_area, period, report_type):
-    """Parse a trading data table from PDF"""
-    results = []
-
-    if not table or len(table) < 2:
-        return results
-
-    # Find header row
-    header_idx = None
-    for idx, row in enumerate(table[:3]):
-        if not row:
-            continue
-        row_text = ' '.join([str(c).lower() if c else '' for c in row])
-        if any(x in row_text for x in ['scheme', 'priority', 'trades', 'volume', 'price']):
-            header_idx = idx
-            break
-
-    if header_idx is None:
-        return results
-
-    # Find column indices
-    headers = [str(c).lower() if c else '' for c in table[header_idx]]
-    scheme_col = next((i for i, h in enumerate(headers) if 'scheme' in h), None)
-    priority_col = next((i for i, h in enumerate(headers) if 'priority' in h or 'group' in h), None)
-    trades_col = next((i for i, h in enumerate(headers) if 'trade' in h or 'number' in h), None)
-    volume_col = next((i for i, h in enumerate(headers) if 'volume' in h), None)
-    price_col = next((i for i, h in enumerate(headers) if 'price' in h or '$' in h), None)
-
-    # Process rows
-    current_scheme = water_plan_area
-    for row in table[header_idx + 1:]:
-        if not row or len(row) < 2:
-            continue
-
-        row_text = ' '.join([str(c) if c else '' for c in row])
-        if 'total' in row_text.lower():
-            continue
-
-        # Extract values
-        scheme = row[scheme_col] if scheme_col and len(row) > scheme_col else current_scheme
-        if scheme:
-            current_scheme = scheme
-
-        priority = row[priority_col] if priority_col and len(row) > priority_col else 'Medium'
-
-        try:
-            volume = float(re.sub(r'[^\d.]', '', str(row[volume_col] if volume_col and len(row) > volume_col else 0)) or 0)
-        except:
-            volume = 0
-
-        try:
-            price = float(re.sub(r'[^\d.]', '', str(row[price_col] if price_col and len(row) > price_col else 0)) or 0)
-        except:
-            price = 0
-
-        if volume > 0 or price > 0:
-            results.append({
-                'Date': period,
-                'Water Plan Area': water_plan_area,
-                'Scheme': str(current_scheme).strip(),
-                'Type': report_type,
-                'Priority': str(priority).strip() if priority else 'Medium',
-                'Trade Type': 'Permanent',
-                'Volume (ML)': volume,
-                'Price ($/ML)': price,
-                'Location From': '',
-                'Location To': '',
-                'Source': 'QLD Gov PWTR'
-            })
+            if volume > 0:
+                results.append({
+                    'Date': period,
+                    'Water Plan Area': current_water_plan,
+                    'Scheme': scheme,
+                    'Type': report_type,
+                    'Priority': priority,
+                    'Trade Type': 'Permanent',
+                    'Volume (ML)': volume,
+                    'Price ($/ML)': price,
+                    'Location From': '',
+                    'Location To': '',
+                    'Source': 'QLD Gov PWTR'
+                })
 
     return results
 

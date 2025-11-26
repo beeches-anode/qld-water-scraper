@@ -1134,25 +1134,24 @@ def extract_pdf_data_pdfplumber(pdf_content, period, report_type):
                     except (ValueError, IndexError):
                         price = 0
 
-                    # Only include rows with actual trading data (volume > 0 or price > 0)
-                    # Note: price=0 may mean no trades reported, which is still valid data
-                    if volume > 0:
-                        # Normalize scheme name
-                        scheme_normalized = scheme.title().replace('Water Supply Scheme', 'Water Supply Scheme')
+                    # Include all scheme/priority rows - even those with zero trades
+                    # A record showing "0 ML traded" is still valid data indicating no activity
+                    # Normalize scheme name
+                    scheme_normalized = scheme.title().replace('Water Supply Scheme', 'Water Supply Scheme')
 
-                        results.append({
-                            'Date': period,
-                            'Water Plan Area': current_water_plan,
-                            'Scheme': scheme_normalized,
-                            'Type': report_type,
-                            'Priority': priority,
-                            'Trade Type': 'Permanent',
-                            'Volume (ML)': volume,
-                            'Price ($/ML)': price,
-                            'Location From': '',
-                            'Location To': '',
-                            'Source': 'QLD Gov PWTR'
-                        })
+                    results.append({
+                        'Date': period,
+                        'Water Plan Area': current_water_plan,
+                        'Scheme': scheme_normalized,
+                        'Type': report_type,
+                        'Priority': priority,
+                        'Trade Type': 'Permanent',
+                        'Volume (ML)': volume,
+                        'Price ($/ML)': price,
+                        'Location From': '',
+                        'Location To': '',
+                        'Source': 'QLD Gov PWTR'
+                    })
 
     return results
 
@@ -1222,20 +1221,21 @@ def extract_pdf_data_pypdf2(pdf_content, period, report_type):
             else:
                 priority = priority_raw.title()
 
-            if volume > 0:
-                results.append({
-                    'Date': period,
-                    'Water Plan Area': current_water_plan,
-                    'Scheme': scheme,
-                    'Type': report_type,
-                    'Priority': priority,
-                    'Trade Type': 'Permanent',
-                    'Volume (ML)': volume,
-                    'Price ($/ML)': price,
-                    'Location From': '',
-                    'Location To': '',
-                    'Source': 'QLD Gov PWTR'
-                })
+            # Include all records - even those with zero volume
+            # Zero trades is still valid data showing no activity that month
+            results.append({
+                'Date': period,
+                'Water Plan Area': current_water_plan,
+                'Scheme': scheme,
+                'Type': report_type,
+                'Priority': priority,
+                'Trade Type': 'Permanent',
+                'Volume (ML)': volume,
+                'Price ($/ML)': price,
+                'Location From': '',
+                'Location To': '',
+                'Source': 'QLD Gov PWTR'
+            })
 
     return results
 
@@ -1260,14 +1260,15 @@ def main():
     pdf_data = scrape_permanent_trading_pdfs()
     all_results.extend(pdf_data)
 
-    # If scraping yielded minimal results, use reference data
+    # Check scraping results - only fallback if we got ZERO records
+    # Even low-activity months with just a few trades are valid data
     permanent_count = len([r for r in all_results if r.get('Trade Type') == 'Permanent'])
     print(f"\n--- Scraping Results Summary ---")
     print(f"    Total records scraped: {len(all_results)}")
     print(f"    Permanent trade records: {permanent_count}")
 
-    if permanent_count < 10:
-        print(f"\n⚠️  FALLBACK TRIGGERED: Only {permanent_count} permanent records (minimum: 10)")
+    if permanent_count == 0:
+        print(f"\n⚠️  FALLBACK TRIGGERED: No permanent records scraped")
         print("    Possible causes:")
         print("    - PDF URLs may have changed (government site updates)")
         print("    - Network issues preventing PDF downloads")
@@ -1275,7 +1276,7 @@ def main():
         print("    Using reference data based on DLGWV reports...")
         use_reference_data = True
     else:
-        print(f"    ✓ Sufficient data scraped ({permanent_count} records) - using live data")
+        print(f"    ✓ Data scraped successfully ({permanent_count} records) - using live data")
 
     # Run validation on scraped data (if we have any permanent trades)
     if permanent_count > 0 and not use_reference_data:

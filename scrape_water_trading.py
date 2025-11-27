@@ -839,10 +839,11 @@ def discover_pwtr_pdf_urls():
 
                     # STRICT FILTER: Only monthly surface water reports
                     # Must have: surface-water in name
-                    # Must have: month name pattern (jan, feb, mar, etc.)
+                    # Must have: month name pattern (jan, feb, mar, etc. OR full names like january, february)
                     # Must NOT have: groundwater, annual, yearly, financial-year
 
-                    month_pattern = r'(jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[-_]?\d{4}'
+                    # Match both abbreviated (jan, feb) and full (january, february) month names
+                    month_pattern = r'(january|february|march|april|may|june|july|august|september|october|november|december|jan|feb|mar|apr|jun|jul|aug|sep|sept|oct|nov|dec)[-_]?\d{4}'
                     has_month = re.search(month_pattern, filename_lower)
                     is_surface_water = 'surface-water' in href_lower
                     is_groundwater = 'groundwater' in href_lower
@@ -1292,19 +1293,18 @@ def main():
         print(f"    ✓ Data scraped successfully ({permanent_count} records) - using live data")
 
     # Run validation on scraped data (if we have any permanent trades)
+    # Note: Validation is for informational purposes only - real scraped data is always used
+    # Market prices legitimately vary and may fall outside historical benchmarks
     if permanent_count > 0 and not use_reference_data:
         validation_issues = run_all_validations(all_results)
         high_severity = len([i for i in validation_issues if i.get('severity') == 'HIGH'])
 
-        # If too many validation issues, supplement with reference data
-        if high_severity > 5:
-            print("\n⚠️  Scraped data has significant validation issues")
-            print("    Replacing permanent trading data with reference data...")
-            # Remove invalid permanent trades
-            all_results = [r for r in all_results if r.get('Trade Type') != 'Permanent']
-            use_reference_data = True
+        if high_severity > 0:
+            print(f"\n📋 Note: {high_severity} validation warnings detected")
+            print("    These indicate prices outside historical benchmarks, which may reflect")
+            print("    real market conditions rather than data errors. Using scraped data as-is.")
 
-    # Generate reference data if needed
+    # Generate reference data ONLY if scraping yielded zero records
     if use_reference_data:
         reference_data = generate_reference_trading_data()
         all_results.extend(reference_data)

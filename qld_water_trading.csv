@@ -1,2198 +1,626 @@
 Date,Water Plan Area,Scheme,Type,Priority,Trade Type,Volume (ML),Price ($/ML),Location From,Location To,Source
-Oct 2025,Barron,"Mareeba Dimbulah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,662.0,0.0,,,QLD Gov PWTR
-Oct 2025,Moreton,"Central Brisbane
-River Water
-Supply Scheme",Supplemented,Medium,Permanent,149.0,0.0,,,QLD Gov PWTR
-Oct 2025,"Burnett
-Basin","Bundaberg Water
-Supply Scheme",Supplemented,High,Permanent,300.0,0.0,,,QLD Gov PWTR
-Oct 2025,"Whitsunday Resource
-Operations Plan","Proserpine River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,45.0,0.0,,,QLD Gov PWTR
-Oct 2025,"Pioneer
-Valley","Pioneer River
-Water Supply
-Scheme",Supplemented,High,Permanent,276.0,0.0,,,QLD Gov PWTR
-Oct 2025,Moreton,"Warrill Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,321.0,0.0,,,QLD Gov PWTR
-Oct 2025,Moreton,"Lower Lockyer
-Valley Water
-Supply Scheme",Supplemented,Medium,Permanent,37.0,0.0,,,QLD Gov PWTR
-Oct 2025,"Pioneer
-Valley","Eton Water
-Supply Scheme",Supplemented,High,Permanent,121.0,0.0,,,QLD Gov PWTR
-Oct 2025,Mary Basin,"Mary Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,25.0,0.0,,,QLD Gov PWTR
-Oct 2025,Mary Basin,"Lower Mary River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,24.0,0.0,,,QLD Gov PWTR
-Oct 2025,Logan Basin,"Logan River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,24.0,0.0,,,QLD Gov PWTR
-Oct 2025,"Fitzroy
-Basin","Nogoa Mackenzie
-Water Supply
-Scheme",Supplemented,Medium,Permanent,5.0,0.0,,,QLD Gov PWTR
-Oct 2025,"Condamine
-and Balonne","St George Water
-Supply Scheme",Supplemented,Medium,Permanent,210.0,7000.0,,,QLD Gov PWTR
-Sep 2025,Moreton,"Lower Lockyer
-Valley Water
-Supply Scheme",Supplemented,Medium,Permanent,51.0,0.0,,,QLD Gov PWTR
-Sep 2025,"Condamine
-and Balonne","Gowrie Oakey
-Creek Water
-Management Area",Unsupplemented,Class Ga1C,Permanent,240.0,0.0,,,QLD Gov PWTR
-Sep 2025,Logan Basin,"Running Creek
-Water
-Management Area",Unsupplemented,Class 5B,Permanent,102.0,0.0,,,QLD Gov PWTR
-Sep 2025,Barron,"Barron Water
-Management Area",Unsupplemented,Class Cb,Permanent,88.0,1324.0,,,QLD Gov PWTR
-Sep 2025,"Pioneer
-Valley","Pioneer River
-Water Supply
-Scheme",Supplemented,High,Permanent,148.0,0.0,,,QLD Gov PWTR
-Sep 2025,"Pioneer
-Valley","Eton Water
-Supply Scheme",Supplemented,High,Permanent,2.0,0.0,,,QLD Gov PWTR
-Sep 2025,Moreton,"Warrill Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,80.0,0.0,,,QLD Gov PWTR
-Sep 2025,"Condamine
-and Balonne","Condamine
-Balonne Water
-Management Area",Unsupplemented,Class Cd1,Permanent,745.0,0.0,,,QLD Gov PWTR
-Sep 2025,Mary Basin,"Wide Bay Water
-Supply Scheme",Supplemented,Medium,Permanent,3.0,0.0,,,QLD Gov PWTR
-Sep 2025,"Fitzroy
-Basin","Nogoa Mackenzie
-Water Supply
-Scheme",Supplemented,Medium,Permanent,414.0,0.0,,,QLD Gov PWTR
-Sep 2025,"Fitzroy
-Basin","Fitzroy Barrage
-Water Supply
-Scheme",Supplemented,Medium,Permanent,36.0,2000.0,,,QLD Gov PWTR
-Sep 2025,"Burdekin
-Basin","Burdekin
-Haughton Water
-Supply Scheme",Supplemented,Medium,Permanent,1252.0,0.0,,,QLD Gov PWTR
-Sep 2025,Barron,"Mareeba Dimbulah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,444.0,5000.0,,,QLD Gov PWTR
-Sep 2025,"Burnett
-Basin","Bundaberg Water
-Supply Scheme",Supplemented,High,Permanent,3.0,0.0,,,QLD Gov PWTR
-Sep 2025,Mary Basin,"Mary Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,38.0,100.0,,,QLD Gov PWTR
-Sep 2025,"Burnett
-Basin","Barker Barambah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,5.0,0.0,,,QLD Gov PWTR
-Aug 2025,Moreton,"Warrill Valley
-Water Supply
-Scheme",Supplemented,High,Permanent,30.0,6000.0,,,QLD Gov PWTR
-Aug 2025,"Border
-Rivers and Moonie","Stanthorpe
-Water
-Management Area",Unsupplemented,Class Brb,Permanent,15.0,0.0,,,QLD Gov PWTR
-Aug 2025,"Pioneer
-Valley","Eton Water
-Supply Scheme",Supplemented,High,Permanent,158.0,0.0,,,QLD Gov PWTR
-Aug 2025,"Condamine
-and Balonne","Upper Condamine
-Water
-Management Area",Unsupplemented,Class Ct1,Permanent,20.0,0.0,,,QLD Gov PWTR
-Aug 2025,Moreton,"Central Brisbane
-River Water
-Supply Scheme",Supplemented,Medium,Permanent,16.0,0.0,,,QLD Gov PWTR
-Aug 2025,"Fitzroy
-Basin","Dawson Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,516.0,3500.0,,,QLD Gov PWTR
-Aug 2025,"Fitzroy
-Basin","Fitzroy Barrage
-Water Supply
-Scheme",Supplemented,Medium,Permanent,13.0,2000.0,,,QLD Gov PWTR
-Aug 2025,Barron,"Mareeba Dimbulah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,402.0,3195.0,,,QLD Gov PWTR
-Aug 2025,"Burnett
-Basin","Bundaberg Water
-Supply Scheme",Supplemented,Medium,Permanent,516.0,3000.0,,,QLD Gov PWTR
-Aug 2025,"Burnett
-Basin","Upper Burnett
-Water Supply
-Scheme",Supplemented,Medium,Permanent,155.0,2035.0,,,QLD Gov PWTR
-Aug 2025,Mary Basin,"Mary Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,50.0,0.0,,,QLD Gov PWTR
-Jul 2025,"Condamine
-and Balonne","Upper Condamine
-Water Supply
-Scheme",Supplemented,Medium,Permanent,1256.0,5000.0,,,QLD Gov PWTR
-Jul 2025,"Condamine
-and Balonne","Condamine
-Balonne
-Tributaries Water
-Mangt Area",Unsupplemented,Class 5C,Permanent,60.0,0.0,,,QLD Gov PWTR
-Jul 2025,"Condamine
-and Balonne","Lower Balonne
-Water
-Management Area",Unsupplemented,Class Lb1,Permanent,753.0,4000.0,,,QLD Gov PWTR
-Jul 2025,"Condamine
-and Balonne","Upper Condamine
-Water
-Management Area",Unsupplemented,Class Cm2,Permanent,605.0,0.0,,,QLD Gov PWTR
-Jul 2025,"Burnett
-Basin","Upper Burnett
-Water Supply
-Scheme",Supplemented,Medium,Permanent,25.0,0.0,,,QLD Gov PWTR
-Jul 2025,"Border
-Rivers and Moonie","Northern Weir
-River Water
-Management Area",Unsupplemented,Class Nw1,Permanent,250.0,0.0,,,QLD Gov PWTR
-Jul 2025,Logan Basin,"Christmas Creek
-Water
-Management Area",Unsupplemented,Class 6B,Permanent,114.0,0.0,,,QLD Gov PWTR
-Jul 2025,Logan Basin,"Running Creek
-Water
-Management Area",Unsupplemented,Class 5B,Permanent,143.0,0.0,,,QLD Gov PWTR
-Jul 2025,"Burnett
-Basin","Bundaberg Water
-Supply Scheme",Supplemented,Medium,Permanent,582.0,3379.0,,,QLD Gov PWTR
-Jul 2025,"Fitzroy
-Basin","Dawson Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,100.0,3550.0,,,QLD Gov PWTR
-Jul 2025,"Burnett
-Basin","Boyne River And
-Tarong Water
-Supply Scheme",Supplemented,High,Permanent,20.0,0.0,,,QLD Gov PWTR
-Jul 2025,Barron,"Mareeba Dimbulah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,608.0,3460.0,,,QLD Gov PWTR
-Jul 2025,"Burnett
-Basin","Barker Barambah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,24.0,0.0,,,QLD Gov PWTR
-Jul 2025,"Border
-Rivers and Moonie","Macintyre Brook
-Water Supply
-Scheme",Supplemented,Medium,Permanent,200.0,5250.0,,,QLD Gov PWTR
-Jul 2025,"Whitsunday Resource
-Operations Plan","Proserpine River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,5.0,0.0,,,QLD Gov PWTR
-Jul 2025,"Pioneer
-Valley","Pioneer River
-Water Supply
-Scheme",Supplemented,High,Permanent,102.0,0.0,,,QLD Gov PWTR
-Jul 2025,"Pioneer
-Valley","Eton Water
-Supply Scheme",Supplemented,High,Permanent,271.0,0.0,,,QLD Gov PWTR
-Jul 2025,Moreton,"Warrill Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,15.0,0.0,,,QLD Gov PWTR
-Jul 2025,Moreton,"Central Brisbane
-River Water
-Supply Scheme",Supplemented,Medium,Permanent,100.0,3500.0,,,QLD Gov PWTR
-Jul 2025,Mary Basin,"Mary Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,1.0,0.0,,,QLD Gov PWTR
-Jul 2025,Logan Basin,"Logan River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,50.0,0.0,,,QLD Gov PWTR
-Jul 2025,"Fitzroy
-Basin","Nogoa Mackenzie
-Water Supply
-Scheme",Supplemented,Medium,Permanent,308.0,5650.0,,,QLD Gov PWTR
-Jul 2025,"Fitzroy
-Basin","Fitzroy Barrage
-Water Supply
-Scheme",Supplemented,Medium,Permanent,26.0,0.0,,,QLD Gov PWTR
-Jul 2025,"Condamine
-and Balonne","Gowrie Oakey
-Creek Water
-Management Area",Unsupplemented,Class Gt6,Permanent,12.0,0.0,,,QLD Gov PWTR
-Jun 2025,"Border
-Rivers and Moonie","Stanthorpe Water
-Management Area",Unsupplemented,Class Lab,Permanent,24.0,0.0,,,QLD Gov PWTR
-Jun 2025,"Border
-Rivers and Moonie","Macintyre Brook
-Water
-Management Area",Unsupplemented,Class Mb1,Permanent,308.0,4500.0,,,QLD Gov PWTR
-Jun 2025,"Burdekin
-Basin","Upper Burdekin
-Water
-Management Area",Unsupplemented,Class G2,Permanent,96.0,0.0,,,QLD Gov PWTR
-Jun 2025,"Condamine
-and Balonne","Condamine
-Balonne
-Tributaries Water
-Mangt Area",Unsupplemented,Class 2A,Permanent,705.0,5000.0,,,QLD Gov PWTR
-Jun 2025,Gold Coast,"Lower Nerang
-Water
-Management Area",Unsupplemented,Class B,Permanent,4.0,0.0,,,QLD Gov PWTR
-Jun 2025,"Condamine
-and Balonne","Lower Balonne
-Water
-Management Area",Unsupplemented,Class Lb2,Permanent,2318.0,0.0,,,QLD Gov PWTR
-Jun 2025,"Condamine
-and Balonne","Upper Condamine
-Water
-Management Area",Unsupplemented,Class Ck1,Permanent,358.0,0.0,,,QLD Gov PWTR
-Jun 2025,Moreton,"Central Lockyer
-Valley Water
-Supply Scheme",Supplemented,Medium,Permanent,17.0,0.0,,,QLD Gov PWTR
-Jun 2025,"Condamine
-and Balonne","Maranoa River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,30.0,0.0,,,QLD Gov PWTR
-Jun 2025,Moreton,"Warrill Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,46.0,0.0,,,QLD Gov PWTR
-Jun 2025,Moreton,"Central Lockyer
-Valley Water
-Supply Scheme",Supplemented,Medium,Permanent,160.0,0.0,,,QLD Gov PWTR
-Jun 2025,Moreton,"Central Brisbane
-River Water
-Supply Scheme",Supplemented,Medium,Permanent,4.0,1000.0,,,QLD Gov PWTR
-Jun 2025,Mary Basin,"Lower Mary River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,24.0,2600.0,,,QLD Gov PWTR
-Jun 2025,"Fitzroy
-Basin","Rookwood Weir
-Water Supply
-Scheme",Supplemented,Medium,Permanent,7560.0,1800.0,,,QLD Gov PWTR
-Jun 2025,Logan Basin,"Logan River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,10.0,0.0,,,QLD Gov PWTR
-Jun 2025,"Burnett
-Basin","Upper Burnett
-Water Supply
-Scheme",Supplemented,Medium,Permanent,14.0,1000.0,,,QLD Gov PWTR
-Jun 2025,"Burnett
-Basin","Bundaberg Water
-Supply Scheme",Supplemented,Medium,Permanent,395.0,2750.0,,,QLD Gov PWTR
-Jun 2025,"Burnett
-Basin","Boyne River And
-Tarong Water
-Supply Scheme",Supplemented,High,Permanent,1.0,0.0,,,QLD Gov PWTR
-Jun 2025,"Burdekin
-Basin","Burdekin
-Haughton Water
-Supply Scheme",Supplemented,Medium,Permanent,227.0,0.0,,,QLD Gov PWTR
-Jun 2025,"Border
-Rivers and Moonie","Macintyre Brook
-Water Supply
-Scheme",Supplemented,Medium,Permanent,340.0,6000.0,,,QLD Gov PWTR
-Jun 2025,Barron,"Mareeba Dimbulah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,121.0,0.0,,,QLD Gov PWTR
-May 2025,"Border
-Rivers and Moonie","Stanthorpe
-Water
-Management Area",Unsupplemented,Class Laa,Permanent,3.0,6667.0,,,QLD Gov PWTR
-May 2025,"Fitzroy
-Basin","Dawson Valley
-Water
-Management Area",Unsupplemented,Class 10A,Permanent,82.0,0.0,,,QLD Gov PWTR
-May 2025,"Condamine
-and Balonne","Upper Condamine
-Water
-Management Area",Unsupplemented,Class Cs2,Permanent,72.0,3611.0,,,QLD Gov PWTR
-May 2025,"Condamine
-and Balonne","Gowrie Oakey
-Creek Water
-Management Area",Unsupplemented,Class Gt6,Permanent,48.0,0.0,,,QLD Gov PWTR
-May 2025,"Condamine
-and Balonne","Condamine
-Balonne
-Tributaries Water
-Mangt Area",Unsupplemented,Class 5B,Permanent,450.0,0.0,,,QLD Gov PWTR
-May 2025,"Burdekin
-Basin","Upper Burdekin
-Water
-Management Area",Unsupplemented,Class G2,Permanent,38.0,500.0,,,QLD Gov PWTR
-May 2025,"Fitzroy
-Basin","Nogoa Mackenzie
-Water Supply
-Scheme",Supplemented,Medium,Permanent,3046.0,0.0,,,QLD Gov PWTR
-May 2025,Barron,"Barron Water
-Management Area",Unsupplemented,Class Cb,Permanent,54.0,1919.0,,,QLD Gov PWTR
-May 2025,"Burnett
-Basin","Upper Burnett
-Water Supply
-Scheme",Supplemented,Medium,Permanent,100.0,1015.0,,,QLD Gov PWTR
-May 2025,"Burnett
-Basin","Bundaberg Water
-Supply Scheme",Supplemented,Medium,Permanent,312.0,3625.0,,,QLD Gov PWTR
-May 2025,"Burdekin
-Basin","Burdekin
-Haughton Water
-Supply Scheme",Supplemented,Medium,Permanent,240.0,0.0,,,QLD Gov PWTR
-May 2025,Barron,"Mareeba Dimbulah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,216.0,3000.0,,,QLD Gov PWTR
-May 2025,Logan Basin,"Christmas Creek
-Water
-Management Area",Unsupplemented,Class 6B,Permanent,95.0,0.0,,,QLD Gov PWTR
-May 2025,"Fitzroy
-Basin","Nogoa Mackenzie
-Water
-Management Area",Unsupplemented,Class 3A,Permanent,529.0,0.0,,,QLD Gov PWTR
-May 2025,Wet Tropics,"Liverpool Creek
-Water
-Management Area",Unsupplemented,Class B,Permanent,178.0,0.0,,,QLD Gov PWTR
-May 2025,"Fitzroy
-Basin","Rookwood Weir
-Water Supply
-Scheme",Supplemented,High,Permanent,16250.0,0.0,,,QLD Gov PWTR
-May 2025,Mary Basin,"Mary Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,62.0,1650.0,,,QLD Gov PWTR
-May 2025,Moreton,"Warrill Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,223.0,0.0,,,QLD Gov PWTR
-May 2025,"Pioneer
-Valley","Eton Water
-Supply Scheme",Supplemented,High,Permanent,359.0,0.0,,,QLD Gov PWTR
-May 2025,"Fitzroy
-Basin","Dawson Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,54.0,0.0,,,QLD Gov PWTR
-May 2025,"Whitsunday Resource
-Operations Plan","Proserpine River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,5.0,0.0,,,QLD Gov PWTR
-May 2025,"Fitzroy
-Basin","Fitzroy Barrage
-Water Supply
-Scheme",Supplemented,Medium,Permanent,24.0,1500.0,,,QLD Gov PWTR
-Apr 2025,"Condamine
-and Balonne","Upper Condamine
-Water Supply
-Scheme",Supplemented,Medium,Permanent,110.0,4500.0,,,QLD Gov PWTR
-Apr 2025,Barron,"Mareeba Dimbulah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,104.0,0.0,,,QLD Gov PWTR
-Apr 2025,"Border
-Rivers and Moonie","Border Rivers
-Water Supply
-Scheme",Supplemented,Medium,Permanent,24.0,0.0,,,QLD Gov PWTR
-Apr 2025,"Border
-Rivers and Moonie","Macintyre Brook
-Water Supply
-Scheme",Supplemented,Medium,Permanent,50.0,5000.0,,,QLD Gov PWTR
-Apr 2025,"Burnett
-Basin","Barker Barambah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,72.0,0.0,,,QLD Gov PWTR
-Apr 2025,"Burnett
-Basin","Bundaberg Water
-Supply Scheme",Supplemented,Medium,Permanent,561.0,3000.0,,,QLD Gov PWTR
-Apr 2025,"Burnett
-Basin","Upper Burnett
-Water Supply
-Scheme",Supplemented,Medium,Permanent,275.0,1020.0,,,QLD Gov PWTR
-Apr 2025,"Fitzroy
-Basin","Nogoa Mackenzie
-Water Supply
-Scheme",Supplemented,Medium,Permanent,216.0,5750.0,,,QLD Gov PWTR
-Apr 2025,"Border
-Rivers and Moonie","Border Rivers
-Water
-Management Area",Unsupplemented,Class Mac1,Permanent,600.0,0.0,,,QLD Gov PWTR
-Apr 2025,Moreton,"Warrill Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,532.0,2000.0,,,QLD Gov PWTR
-Apr 2025,"Whitsunday Resource
-Operations Plan","Proserpine River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,47.0,0.0,,,QLD Gov PWTR
-Apr 2025,"Fitzroy
-Basin","Nogoa Mackenzie
-Water
-Management Area",Unsupplemented,Class 0A,Permanent,38.0,0.0,,,QLD Gov PWTR
-Apr 2025,"Burnett
-Basin","Barker Barambah
-Creeks Water
-Management Area",Unsupplemented,Class 2H,Permanent,51.0,0.0,,,QLD Gov PWTR
-Apr 2025,"Burdekin
-Basin","Upper Burdekin
-Water
-Management Area",Unsupplemented,Class G3,Permanent,936.0,5929.0,,,QLD Gov PWTR
-Apr 2025,"Border
-Rivers and Moonie","Upper Weir River
-Water
-Management Area",Unsupplemented,Class Uw1A,Permanent,3513.0,0.0,,,QLD Gov PWTR
-Apr 2025,"Border
-Rivers and Moonie","Stanthorpe Water
-Management Area",Unsupplemented,Class Usb,Permanent,12.0,0.0,,,QLD Gov PWTR
-Apr 2025,"Burdekin
-Basin","Burdekin
-Haughton Water
-Supply Scheme",Supplemented,Medium,Permanent,852.0,0.0,,,QLD Gov PWTR
-Mar 2025,Logan Basin,"Logan River
-Water
-Management Area",Unsupplemented,Class 3C,Permanent,150.0,471.0,,,QLD Gov PWTR
-Mar 2025,"Condamine
-and Balonne","Gowrie Oakey
-Creek Water
-Management Area",Unsupplemented,Class Gt7,Permanent,36.0,0.0,,,QLD Gov PWTR
-Mar 2025,"Border
-Rivers and Moonie","Moonie Water
-Management Area",Unsupplemented,Class D,Permanent,3980.0,3500.0,,,QLD Gov PWTR
-Mar 2025,"Border
-Rivers and Moonie","Stanthorpe
-Water
-Management Area",Unsupplemented,Class Lbb,Permanent,50.0,0.0,,,QLD Gov PWTR
-Mar 2025,Moreton,"Central Lockyer
-Valley Water
-Supply Scheme",Supplemented,Medium,Permanent,70.0,1000.0,,,QLD Gov PWTR
-Mar 2025,"Whitsunday Resource
-Operations Plan","Proserpine River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,295.0,0.0,,,QLD Gov PWTR
-Mar 2025,Barron,"Mareeba Dimbulah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,369.0,3228.0,,,QLD Gov PWTR
-Mar 2025,"Burnett
-Basin","Boyne River And
-Tarong Water
-Supply Scheme",Supplemented,High,Permanent,20.0,0.0,,,QLD Gov PWTR
-Mar 2025,"Burnett
-Basin","Bundaberg Water
-Supply Scheme",Supplemented,Medium,Permanent,326.0,3450.0,,,QLD Gov PWTR
-Mar 2025,Logan Basin,"Logan River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,595.0,1022.0,,,QLD Gov PWTR
-Mar 2025,Mary Basin,"Cedar Pocket
-Water Supply
-Scheme",Supplemented,Medium,Permanent,20.0,1000.0,,,QLD Gov PWTR
-Mar 2025,Mary Basin,"Lower Mary River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,280.0,2700.0,,,QLD Gov PWTR
-Mar 2025,"Pioneer
-Valley","Pioneer River
-Water Supply
-Scheme",Supplemented,High,Permanent,350.0,0.0,,,QLD Gov PWTR
-Feb 2025,"Burnett
-Basin","Bundaberg Water
-Supply Scheme",Supplemented,Medium,Permanent,372.0,3478.0,,,QLD Gov PWTR
-Feb 2025,"Pioneer
-Valley","Pioneer River
-Water Supply
-Scheme",Supplemented,High,Permanent,311.0,0.0,,,QLD Gov PWTR
-Feb 2025,Barron,"Mareeba Dimbulah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,356.0,3540.0,,,QLD Gov PWTR
-Feb 2025,"Valley) 2002
-Whitsunday Resource
-Operations Plan","Proserpine River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,300.0,0.0,,,QLD Gov PWTR
-Feb 2025,"Condamine
-and Balonne","Chinchilla Weir
-Water Supply
-Scheme",Supplemented,Medium,Permanent,7.0,3750.0,,,QLD Gov PWTR
-Feb 2025,"Condamine
-and Balonne","St George Water
-Supply Scheme",Supplemented,Medium,Permanent,10.0,0.0,,,QLD Gov PWTR
-Feb 2025,"Fitzroy
-Basin","Fitzroy Barrage
-Water Supply
-Scheme",Supplemented,Medium,Permanent,25.0,0.0,,,QLD Gov PWTR
-Feb 2025,"Fitzroy
-Basin","Nogoa Mackenzie
-Water Supply
-Scheme",Supplemented,High,Permanent,1603.0,7500.0,,,QLD Gov PWTR
-Feb 2025,"Fitzroy
-Basin","Rookwood Weir
-Water Supply
-Scheme",Supplemented,High,Permanent,22100.0,0.0,,,QLD Gov PWTR
-Feb 2025,Mary Basin,"Lower Mary River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,20.0,0.0,,,QLD Gov PWTR
-Feb 2025,Mary Basin,"Wide Bay Water
-Supply Scheme",Supplemented,Medium,Permanent,30.0,1000.0,,,QLD Gov PWTR
-Feb 2025,Moreton,"Warrill Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,16.0,1500.0,,,QLD Gov PWTR
-Feb 2025,"Pioneer
-Valley","Eton Water
-Supply Scheme",Supplemented,High,Permanent,210.0,0.0,,,QLD Gov PWTR
-Jan 2025,Barron,"Barron Water
-Management Area",Unsupplemented,Class Cb,Permanent,55.0,0.0,,,QLD Gov PWTR
-Jan 2025,"Border
-Rivers and Moonie","Moonie Water
-Management Area",Unsupplemented,Class L,Permanent,18.0,5000.0,,,QLD Gov PWTR
-Jan 2025,"Burnett
-Basin","Upper Burnett &
-Nogo Rivers
-Water
-Management Area",Unsupplemented,Class 6O,Permanent,25.0,0.0,,,QLD Gov PWTR
-Jan 2025,"Condamine
-and Balonne","Gowrie Oakey
-Creek Water
-Management Area",Unsupplemented,Class Gt7,Permanent,12.0,0.0,,,QLD Gov PWTR
-Jan 2025,"Condamine
-and Balonne","Lower Balonne
-Water
-Management Area",Unsupplemented,Class Lb3,Permanent,1237.0,0.0,,,QLD Gov PWTR
-Jan 2025,"Fitzroy
-Basin","Nogoa Mackenzie
-Water Supply
-Scheme",Supplemented,High,Permanent,50.0,0.0,,,QLD Gov PWTR
-Jan 2025,Moreton,"Central Brisbane
-River Water
-Supply Scheme",Supplemented,Medium,Permanent,4.0,0.0,,,QLD Gov PWTR
-Jan 2025,Mary Basin,"Lower Mary River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,10.0,0.0,,,QLD Gov PWTR
-Jan 2025,Barron,"Mareeba Dimbulah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,1152.0,4074.0,,,QLD Gov PWTR
-Jan 2025,"Border
-Rivers and Moonie","Macintyre Brook
-Water Supply
-Scheme",Supplemented,Medium,Permanent,68.0,5000.0,,,QLD Gov PWTR
-Jan 2025,"Burdekin
-Basin","Burdekin
-Haughton Water
-Supply Scheme",Supplemented,Medium,Permanent,1636.0,0.0,,,QLD Gov PWTR
-Jan 2025,"Burnett
-Basin","Bundaberg Water
-Supply Scheme",Supplemented,Medium,Permanent,2214.0,0.0,,,QLD Gov PWTR
-Jan 2025,"Burnett
-Basin","Upper Burnett
-Water Supply
-Scheme",Supplemented,Medium,Permanent,305.0,1100.0,,,QLD Gov PWTR
-Jan 2025,"Fitzroy
-Basin","Callide Valley
-Water Supply
-Scheme",Supplemented,Risk,Permanent,80.0,0.0,,,QLD Gov PWTR
-Jan 2025,"Fitzroy
-Basin","Dawson Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,138.0,0.0,,,QLD Gov PWTR
-Jan 2025,"Fitzroy
-Basin","Fitzroy Barrage
-Water Supply
-Scheme",Supplemented,Medium,Permanent,2.0,1250.0,,,QLD Gov PWTR
-Jan 2025,"Pioneer
-Valley","Eton Water
-Supply Scheme",Supplemented,High,Permanent,38.0,0.0,,,QLD Gov PWTR
-Jan 2025,Moreton,"Warrill Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,15.0,0.0,,,QLD Gov PWTR
-Dec 2024,"Burnett
-Basin","Upper Burnett
-Water Supply
-Scheme",Supplemented,Medium,Permanent,220.0,588.0,,,QLD Gov PWTR
-Dec 2024,"Fitzroy
-Basin","Fitzroy Barrage
-Water Supply
-Scheme",Supplemented,Medium,Permanent,10.0,0.0,,,QLD Gov PWTR
-Dec 2024,Moreton,"Lower Lockyer
-Valley Water
-Supply Scheme",Supplemented,Medium,Permanent,184.0,0.0,,,QLD Gov PWTR
-Dec 2024,"Fitzroy
-Basin","Nogoa Mackenzie
-Water Supply
-Scheme",Supplemented,Medium,Permanent,4376.0,5773.0,,,QLD Gov PWTR
-Dec 2024,Logan Basin,"Logan River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,150.0,1100.0,,,QLD Gov PWTR
-Dec 2024,Mary Basin,"Lower Mary River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,150.0,35.0,,,QLD Gov PWTR
-Dec 2024,Moreton,"Central Brisbane
-River Water
-Supply Scheme",Supplemented,Medium,Permanent,4.0,0.0,,,QLD Gov PWTR
-Dec 2024,"Burnett
-Basin","Boyne River And
-Tarong Water
-Supply Scheme",Supplemented,High,Permanent,3.0,0.0,,,QLD Gov PWTR
-Dec 2024,"Burnett
-Basin","Bundaberg Water
-Supply Scheme",Supplemented,Medium,Permanent,70.0,0.0,,,QLD Gov PWTR
-Dec 2024,"Border
-Rivers and Moonie","Border Rivers
-Water Supply
-Scheme",Supplemented,Medium,Permanent,180.0,0.0,,,QLD Gov PWTR
-Dec 2024,"Burnett
-Basin","Barker Barambah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,40.0,0.0,,,QLD Gov PWTR
-Dec 2024,"Border
-Rivers and Moonie","Macintyre Brook
-Water Supply
-Scheme",Supplemented,Medium,Permanent,1.0,0.0,,,QLD Gov PWTR
-Dec 2024,Barron,"Mareeba Dimbulah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,1245.0,3310.0,,,QLD Gov PWTR
-Dec 2024,"Pioneer
-Valley","Eton Water
-Supply Scheme",Supplemented,High,Permanent,171.0,0.0,,,QLD Gov PWTR
-Dec 2024,Barron,"Barron Water
-Management Area",Unsupplemented,Class Cb,Permanent,14.0,0.0,,,QLD Gov PWTR
-Dec 2024,"Border
-Rivers and Moonie","Border Rivers
-Water
-Management Area",Unsupplemented,Class Mac1,Permanent,107.0,0.0,,,QLD Gov PWTR
-Dec 2024,"Border
-Rivers and Moonie","Stanthorpe
-Water
-Management Area",Unsupplemented,Class Uqpa,Permanent,2.0,0.0,,,QLD Gov PWTR
-Dec 2024,"Condamine
-and Balonne","Condamine
-Balonne
-Tributaries Water
-Mangt Area",Unsupplemented,Class 7A,Permanent,2.0,0.0,,,QLD Gov PWTR
-Dec 2024,Wet Tropics,"Liverpool Creek
-Water
-Management Area",Unsupplemented,Class B,Permanent,900.0,0.0,,,QLD Gov PWTR
-Dec 2024,Moreton,"Warrill Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,116.0,0.0,,,QLD Gov PWTR
-Nov 2024,"Border
-Rivers and Moonie","Macintyre Brook
-Water Supply
-Scheme",Supplemented,Medium,Permanent,1.0,0.0,,,QLD Gov PWTR
-Nov 2024,Barron,"Mareeba Dimbulah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,3775.0,3442.0,,,QLD Gov PWTR
-Nov 2024,"Fitzroy
-Basin","Rookwood Weir
-Water Supply
-Scheme",Supplemented,Medium,Permanent,837.0,883.0,,,QLD Gov PWTR
-Nov 2024,"Fitzroy
-Basin","Fitzroy Water
-Management Area",Unsupplemented,Class 5A,Permanent,152.0,0.0,,,QLD Gov PWTR
-Nov 2024,"Condamine
-and Balonne","Condamine
-Balonne
-Tributaries Water
-Mangt Area",Unsupplemented,Class 3A,Permanent,1175.0,0.0,,,QLD Gov PWTR
-Nov 2024,"Pioneer
-Valley","Pioneer River
-Water Supply
-Scheme",Supplemented,High,Permanent,216.0,0.0,,,QLD Gov PWTR
-Nov 2024,"Pioneer
-Valley","Eton Water
-Supply Scheme",Supplemented,High,Permanent,475.0,0.0,,,QLD Gov PWTR
-Nov 2024,"Border
-Rivers and Moonie","Border Rivers
-Water Supply
-Scheme",Supplemented,Medium,Permanent,1485.0,5310.0,,,QLD Gov PWTR
-Nov 2024,Moreton,"Lower Lockyer
-Valley Water
-Supply Scheme",Supplemented,Medium,Permanent,10.0,0.0,,,QLD Gov PWTR
-Nov 2024,Mary Basin,"Lower Mary River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,32.0,2344.0,,,QLD Gov PWTR
-Nov 2024,Moreton,"Warrill Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,270.0,0.0,,,QLD Gov PWTR
-Nov 2024,"Fitzroy
-Basin","Nogoa Mackenzie
-Water Supply
-Scheme",Supplemented,Medium,Permanent,22.0,0.0,,,QLD Gov PWTR
-Nov 2024,"Fitzroy
-Basin","Fitzroy Barrage
-Water Supply
-Scheme",Supplemented,Medium,Permanent,44.0,0.0,,,QLD Gov PWTR
-Nov 2024,"Condamine
-and Balonne","Upper Condamine
-Water Supply
-Scheme",Supplemented,Medium,Permanent,110.0,0.0,,,QLD Gov PWTR
-Nov 2024,"Condamine
-and Balonne","St George Water
-Supply Scheme",Supplemented,Medium,Permanent,2.0,0.0,,,QLD Gov PWTR
-Nov 2024,"Burnett
-Basin","Upper Burnett
-Water Supply
-Scheme",Supplemented,Medium,Permanent,571.0,1385.0,,,QLD Gov PWTR
-Nov 2024,"Burnett
-Basin","Bundaberg Water
-Supply Scheme",Supplemented,Medium,Permanent,196.0,3007.0,,,QLD Gov PWTR
-Nov 2024,"Burnett
-Basin","Boyne River And
-Tarong Water
-Supply Scheme",Supplemented,High,Permanent,15.0,0.0,,,QLD Gov PWTR
-Oct 2024,Wet Tropics,"Tully Water
-Management Area",Unsupplemented,Class B,Permanent,458.0,0.0,,,QLD Gov PWTR
-Oct 2024,"Condamine
-and Balonne","Upper Condamine
-Water
-Management Area",Unsupplemented,Class Cs2,Permanent,12.0,4000.0,,,QLD Gov PWTR
-Oct 2024,Barron,"Barron Water
-Management Area",Unsupplemented,Class Cb,Permanent,630.0,3146.0,,,QLD Gov PWTR
-Oct 2024,"Burdekin
-Basin","Haughton Water
-Management Area",Unsupplemented,Class B1,Permanent,39.0,0.0,,,QLD Gov PWTR
-Oct 2024,Wet Tropics,"Lower Johnstone
-Water
-Management Area",Unsupplemented,Class B,Permanent,3962.0,0.0,,,QLD Gov PWTR
-Oct 2024,"Burnett
-Basin","Barker Barambah
-Creeks Water
-Management Area",Unsupplemented,Class 2H,Permanent,95.0,0.0,,,QLD Gov PWTR
-Oct 2024,"Condamine
-and Balonne","Condamine
-Balonne
-Tributaries Water
-Mangt Area",Unsupplemented,Class 7C,Permanent,120.0,0.0,,,QLD Gov PWTR
-Oct 2024,"Condamine
-and Balonne","Gowrie Oakey
-Creek Water
-Management Area",Unsupplemented,Class Gb1C,Permanent,48.0,8333.0,,,QLD Gov PWTR
-Oct 2024,"Fitzroy
-Basin","Fitzroy Water
-Management Area",Unsupplemented,Class 5A,Permanent,56.0,0.0,,,QLD Gov PWTR
-Oct 2024,"Fitzroy
-Basin","Fitzroy Barrage
-Water Supply
-Scheme",Supplemented,Medium,Permanent,5.0,0.0,,,QLD Gov PWTR
-Oct 2024,"Pioneer
-Valley","Eton Water
-Supply Scheme",Supplemented,High,Permanent,9.0,0.0,,,QLD Gov PWTR
-Oct 2024,"Burdekin
-Basin","Burdekin
-Haughton Water
-Supply Scheme",Supplemented,Medium,Permanent,25783.0,0.0,,,QLD Gov PWTR
-Oct 2024,"Pioneer
-Valley","Pioneer River
-Water Supply
-Scheme",Supplemented,High,Permanent,40.0,0.0,,,QLD Gov PWTR
-Oct 2024,Moreton,"Warrill Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,1.0,0.0,,,QLD Gov PWTR
-Oct 2024,Moreton,"Lower Lockyer
-Valley Water
-Supply Scheme",Supplemented,Medium,Permanent,74.0,0.0,,,QLD Gov PWTR
-Oct 2024,Mary Basin,"Mary Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,42.0,1500.0,,,QLD Gov PWTR
-Oct 2024,Logan Basin,"Logan River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,262.0,0.0,,,QLD Gov PWTR
-Oct 2024,"Fitzroy
-Basin","Nogoa Mackenzie
-Water Supply
-Scheme",Supplemented,Medium,Permanent,1012.0,5900.0,,,QLD Gov PWTR
-Oct 2024,"Condamine
-and Balonne","Chinchilla Weir
-Water Supply
-Scheme",Supplemented,Medium,Permanent,1.0,2800.0,,,QLD Gov PWTR
-Oct 2024,"Burnett
-Basin","Upper Burnett
-Water Supply
-Scheme",Supplemented,Medium,Permanent,300.0,1200.0,,,QLD Gov PWTR
-Oct 2024,"Burnett
-Basin","Barker Barambah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,260.0,0.0,,,QLD Gov PWTR
-Oct 2024,"Condamine
-and Balonne","St George Water
-Supply Scheme",Supplemented,Medium,Permanent,470.0,6640.0,,,QLD Gov PWTR
-Oct 2024,"Border
-Rivers and Moonie","Border Rivers
-Water Supply
-Scheme",Supplemented,Medium,Permanent,53.0,1594.0,,,QLD Gov PWTR
-Oct 2024,Barron,"Mareeba Dimbulah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,192.0,3410.0,,,QLD Gov PWTR
-Sep 2024,Barron,"Mareeba Dimbulah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,450.0,4280.0,,,QLD Gov PWTR
-Sep 2024,"Fitzroy
-Basin","Nogoa Mackenzie
-Water Supply
-Scheme",Supplemented,High,Permanent,50.0,0.0,,,QLD Gov PWTR
-Sep 2024,"Fitzroy
-Basin","Fitzroy Barrage
-Water Supply
-Scheme",Supplemented,Medium,Permanent,2.0,0.0,,,QLD Gov PWTR
-Sep 2024,"Fitzroy
-Basin","Dawson Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,1.0,3000.0,,,QLD Gov PWTR
-Sep 2024,"Burnett
-Basin","Upper Burnett
-Water Supply
-Scheme",Supplemented,Medium,Permanent,1290.0,1218.0,,,QLD Gov PWTR
-Sep 2024,"Burnett
-Basin","Bundaberg Water
-Supply Scheme",Supplemented,Medium,Permanent,305.0,3250.0,,,QLD Gov PWTR
-Sep 2024,"Burnett
-Basin","Barker Barambah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,10.0,1260.0,,,QLD Gov PWTR
-Sep 2024,"Burdekin
-Basin","Burdekin
-Haughton Water
-Supply Scheme",Supplemented,Medium,Permanent,517.0,250.0,,,QLD Gov PWTR
-Sep 2024,Wet Tropics,"Tully Water
-Management Area",Unsupplemented,Class B,Permanent,328.0,0.0,,,QLD Gov PWTR
-Sep 2024,"Warrego,
-Paroo, Bulloo and
-Nebine","Lower Warrego
-Water
-Management Area",Unsupplemented,Class We,Permanent,40.0,1000.0,,,QLD Gov PWTR
-Sep 2024,Logan Basin,"Christmas Creek
-Water
-Management Area",Unsupplemented,Class 6B,Permanent,107.0,0.0,,,QLD Gov PWTR
-Sep 2024,"Condamine
-and Balonne","Lower Balonne
-Water
-Management Area",Unsupplemented,Class Lb1,Permanent,1211.0,8000.0,,,QLD Gov PWTR
-Sep 2024,"Condamine
-and Balonne","Gowrie Oakey
-Creek Water
-Management Area",Unsupplemented,Class Gb1C,Permanent,48.0,0.0,,,QLD Gov PWTR
-Sep 2024,"Border
-Rivers and Moonie","Stanthorpe
-Water
-Management Area",Unsupplemented,Class 15Mb,Permanent,300.0,0.0,,,QLD Gov PWTR
-Sep 2024,Moreton,"Central Lockyer
-Valley Water
-Supply Scheme",Supplemented,Medium,Permanent,110.0,0.0,,,QLD Gov PWTR
-Sep 2024,Barron,"Barron Water
-Management Area",Unsupplemented,Class Hb,Permanent,87.0,0.0,,,QLD Gov PWTR
-Sep 2024,"Fitzroy
-Basin","Rookwood Weir
-Water Supply
-Scheme",Supplemented,Medium,Permanent,500.0,0.0,,,QLD Gov PWTR
-Sep 2024,Moreton,"Central Brisbane
-River Water
-Supply Scheme",Supplemented,Medium,Permanent,5.0,4000.0,,,QLD Gov PWTR
-Sep 2024,"Pioneer
-Valley","Pioneer River
-Water Supply
-Scheme",Supplemented,High,Permanent,218.0,0.0,,,QLD Gov PWTR
-Sep 2024,"Pioneer
-Valley","Eton Water
-Supply Scheme",Supplemented,High,Permanent,316.0,242.0,,,QLD Gov PWTR
-Aug 2024,"Border
-Rivers and Moonie","Moonie Water
-Management Area",Unsupplemented,Class C,Permanent,5866.0,1534.0,,,QLD Gov PWTR
-Aug 2024,Mary Basin,"Lower Mary River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,368.0,0.0,,,QLD Gov PWTR
-Aug 2024,Barron,"Barron Water
-Management Area",Unsupplemented,Class Cb,Permanent,40.0,2500.0,,,QLD Gov PWTR
-Aug 2024,Wet Tropics,"Tully Water
-Management Area",Unsupplemented,Class B,Permanent,1588.0,0.0,,,QLD Gov PWTR
-Aug 2024,Logan Basin,"Running Creek
-Water
-Management Area",Unsupplemented,Class 5B,Permanent,31.0,0.0,,,QLD Gov PWTR
-Aug 2024,Logan Basin,"Logan River
-Water
-Management Area",Unsupplemented,Class 3C,Permanent,34.0,0.0,,,QLD Gov PWTR
-Aug 2024,"Condamine
-and Balonne","Upper Condamine
-Water
-Management Area",Unsupplemented,Class Ct2,Permanent,10.0,2000.0,,,QLD Gov PWTR
-Aug 2024,"Condamine
-and Balonne","Lower Balonne
-Water
-Management Area",Unsupplemented,Class Lb1,Permanent,2640.0,0.0,,,QLD Gov PWTR
-Aug 2024,"Pioneer
-Valley","Pioneer River
-Water Supply
-Scheme",Supplemented,High,Permanent,100.0,0.0,,,QLD Gov PWTR
-Aug 2024,Moreton,"Warrill Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,473.0,3000.0,,,QLD Gov PWTR
-Aug 2024,Mary Basin,"Mary Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,4.0,0.0,,,QLD Gov PWTR
-Aug 2024,Moreton,"Central Brisbane
-River Water
-Supply Scheme",Supplemented,Medium,Permanent,40.0,2000.0,,,QLD Gov PWTR
-Aug 2024,Logan Basin,"Logan River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,10.0,0.0,,,QLD Gov PWTR
-Aug 2024,"Burnett
-Basin","Bundaberg Water
-Supply Scheme",Supplemented,Medium,Permanent,111.0,3250.0,,,QLD Gov PWTR
-Aug 2024,Barron,"Mareeba Dimbulah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,471.0,3756.0,,,QLD Gov PWTR
-Aug 2024,"Fitzroy
-Basin","Rookwood Weir
-Water Supply
-Scheme",Supplemented,Medium,Permanent,266.0,1138.0,,,QLD Gov PWTR
-Aug 2024,"Burdekin
-Basin","Burdekin
-Haughton Water
-Supply Scheme",Supplemented,Medium,Permanent,1701.0,0.0,,,QLD Gov PWTR
-Aug 2024,"Burnett
-Basin","Barker Barambah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,76.0,0.0,,,QLD Gov PWTR
-Aug 2024,"Border
-Rivers and Moonie","Border Rivers
-Water Supply
-Scheme",Supplemented,Medium,Permanent,30.0,0.0,,,QLD Gov PWTR
-Aug 2024,"Burnett
-Basin","Upper Burnett
-Water Supply
-Scheme",Supplemented,Medium,Permanent,10.0,0.0,,,QLD Gov PWTR
-Aug 2024,"Condamine
-and Balonne","St George Water
-Supply Scheme",Supplemented,Medium,Permanent,475.0,0.0,,,QLD Gov PWTR
-Aug 2024,"Fitzroy
-Basin","Nogoa Mackenzie
-Water Supply
-Scheme",Supplemented,Medium,Permanent,1602.0,0.0,,,QLD Gov PWTR
-Aug 2024,"Condamine
-and Balonne","Gowrie Oakey
-Creek Water
-Management Area",Unsupplemented,Class Ga1A,Permanent,114.0,0.0,,,QLD Gov PWTR
-Aug 2024,"Border
-Rivers and Moonie","Border Rivers
-Water
-Management Area",Unsupplemented,Class Dum1,Permanent,3.0,0.0,,,QLD Gov PWTR
-Jul 2024,Barron,"Barron Water
-Management Area",Unsupplemented,Class Cb,Permanent,68.0,2328.0,,,QLD Gov PWTR
-Jul 2024,"Border
-Rivers and Moonie","Stanthorpe
-Water
-Management Area",Unsupplemented,Class Usb,Permanent,36.0,0.0,,,QLD Gov PWTR
-Jul 2024,"Condamine
-and Balonne","Condamine
-Balonne
-Tributaries Water
-Mangt Area",Unsupplemented,Class 7B,Permanent,48.0,0.0,,,QLD Gov PWTR
-Jul 2024,"Fitzroy
-Basin","Nogoa Mackenzie
-Water
-Management Area",Unsupplemented,Class 1A,Permanent,2174.0,0.0,,,QLD Gov PWTR
-Jul 2024,Logan Basin,"Running Creek
-Water
-Management Area",Unsupplemented,Class 5B,Permanent,607.0,0.0,,,QLD Gov PWTR
-Jul 2024,"Warrego,
-Paroo, Bulloo and
-Nebine","Upper Warrego
-Water
-Management Area",Unsupplemented,Class We,Permanent,10.0,0.0,,,QLD Gov PWTR
-Jul 2024,Wet Tropics,"Tully Water
-Management Area",Unsupplemented,Class B,Permanent,418.0,0.0,,,QLD Gov PWTR
-Jul 2024,"Pioneer
-Valley","Pioneer River
-Water Supply
-Scheme",Supplemented,High,Permanent,261.0,0.0,,,QLD Gov PWTR
-Jul 2024,Moreton,"Warrill Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,81.0,0.0,,,QLD Gov PWTR
-Jul 2024,"Fitzroy
-Basin","Nogoa Mackenzie
-Water Supply
-Scheme",Supplemented,High,Permanent,20.0,6625.0,,,QLD Gov PWTR
-Jul 2024,Moreton,"Central Lockyer
-Valley Water
-Supply Scheme",Supplemented,Medium,Permanent,20.0,560.0,,,QLD Gov PWTR
-Jul 2024,Mary Basin,"Lower Mary River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,10.0,2300.0,,,QLD Gov PWTR
-Jul 2024,Barron,"Mareeba Dimbulah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,591.0,2731.0,,,QLD Gov PWTR
-Jul 2024,Logan Basin,"Logan River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,825.0,1000.0,,,QLD Gov PWTR
-Jul 2024,"Fitzroy
-Basin","Rookwood Weir
-Water Supply
-Scheme",Supplemented,Medium,Permanent,11789.0,1459.0,,,QLD Gov PWTR
-Jul 2024,Mary Basin,"Cedar Pocket
-Water Supply
-Scheme",Supplemented,Medium,Permanent,35.0,0.0,,,QLD Gov PWTR
-Jul 2024,"Fitzroy
-Basin","Fitzroy Barrage
-Water Supply
-Scheme",Supplemented,Medium,Permanent,5.0,0.0,,,QLD Gov PWTR
-Jul 2024,"Condamine
-and Balonne","St George Water
-Supply Scheme",Supplemented,Medium,Permanent,71.0,6950.0,,,QLD Gov PWTR
-Jul 2024,"Burnett
-Basin","Upper Burnett
-Water Supply
-Scheme",Supplemented,Medium,Permanent,10.0,1100.0,,,QLD Gov PWTR
-Jul 2024,"Burnett
-Basin","Bundaberg Water
-Supply Scheme",Supplemented,Medium,Permanent,1111.0,3022.0,,,QLD Gov PWTR
-Jul 2024,"Burdekin
-Basin","Burdekin
-Haughton Water
-Supply Scheme",Supplemented,Medium,Permanent,1014.0,25.0,,,QLD Gov PWTR
-Jun 2024,Barron,"Barron Water
-Management Area",Unsupplemented,Class Cb,Permanent,91.0,0.0,,,QLD Gov PWTR
-Jun 2024,"Border
-Rivers and Moonie","Macintyre Brook
-Water
-Management Area",Unsupplemented,Class Mb2,Permanent,32.0,0.0,,,QLD Gov PWTR
-Jun 2024,"Burdekin
-Basin","Haughton Water
-Management Area",Unsupplemented,Class B1,Permanent,39.0,0.0,,,QLD Gov PWTR
-Jun 2024,"Condamine
-and Balonne","Condamine
-Balonne
-Tributaries Water
-Mangt Area",Unsupplemented,Class 7B,Permanent,10.0,0.0,,,QLD Gov PWTR
-Jun 2024,Logan Basin,"Logan River
-Water
-Management Area",Unsupplemented,Class 3C,Permanent,17.0,0.0,,,QLD Gov PWTR
-Jun 2024,"Pioneer
-Valley","Pioneer River
-Water
-Management Area",Unsupplemented,Class 1B,Permanent,507.0,0.0,,,QLD Gov PWTR
-Jun 2024,Wet Tropics,"Tully Water
-Management Area",Unsupplemented,Class B,Permanent,1015.0,0.0,,,QLD Gov PWTR
-Jun 2024,"Whitsunday Resource
-Operations Plan","Proserpine River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,1.0,1.0,,,QLD Gov PWTR
-Jun 2024,"Fitzroy
-Basin","Rookwood Weir
-Water Supply
-Scheme",Supplemented,Medium,Permanent,22100.0,0.0,,,QLD Gov PWTR
-Jun 2024,"Fitzroy
-Basin","Nogoa Mackenzie
-Water Supply
-Scheme",Supplemented,Medium,Permanent,36.0,4412.0,,,QLD Gov PWTR
-Jun 2024,"Pioneer
-Valley","Pioneer River
-Water Supply
-Scheme",Supplemented,High,Permanent,798.0,0.0,,,QLD Gov PWTR
-Jun 2024,"Pioneer
-Valley","Eton Water
-Supply Scheme",Supplemented,High,Permanent,222.0,0.0,,,QLD Gov PWTR
-Jun 2024,Moreton,"Warrill Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,228.0,0.0,,,QLD Gov PWTR
-Jun 2024,Moreton,"Lower Lockyer
-Valley Water
-Supply Scheme",Supplemented,Medium,Permanent,26.0,0.0,,,QLD Gov PWTR
-Jun 2024,Mary Basin,"Wide Bay Water
-Supply Scheme",Supplemented,Medium,Permanent,9.0,0.0,,,QLD Gov PWTR
-Jun 2024,Mary Basin,"Mary Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,24.0,1000.0,,,QLD Gov PWTR
-Jun 2024,Mary Basin,"Lower Mary River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,15.0,0.0,,,QLD Gov PWTR
-Jun 2024,Logan Basin,"Logan River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,40.0,0.0,,,QLD Gov PWTR
-Jun 2024,Moreton,"Central Lockyer
-Valley Water
-Supply Scheme",Supplemented,Medium,Permanent,210.0,0.0,,,QLD Gov PWTR
-Jun 2024,"Fitzroy
-Basin","Dawson Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,230.0,0.0,,,QLD Gov PWTR
-Jun 2024,"Burnett
-Basin","Upper Burnett
-Water Supply
-Scheme",Supplemented,Medium,Permanent,100.0,1105.0,,,QLD Gov PWTR
-Jun 2024,"Burnett
-Basin","Bundaberg Water
-Supply Scheme",Supplemented,Medium,Permanent,660.0,3234.0,,,QLD Gov PWTR
-Jun 2024,"Burnett
-Basin","Boyne River And
-Tarong Water
-Supply Scheme",Supplemented,High,Permanent,1.0,4400.0,,,QLD Gov PWTR
-Jun 2024,"Burnett
-Basin","Barker Barambah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,40.0,2725.0,,,QLD Gov PWTR
-Jun 2024,"Burdekin
-Basin","Burdekin
-Haughton Water
-Supply Scheme",Supplemented,Medium,Permanent,1582.0,250.0,,,QLD Gov PWTR
-Jun 2024,Barron,"Mareeba Dimbulah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,8.0,3750.0,,,QLD Gov PWTR
-Jun 2024,"Condamine
-and Balonne","Upper Condamine
-Water Supply
-Scheme",Supplemented,Medium,Permanent,35.0,0.0,,,QLD Gov PWTR
-May 2024,"Fitzroy
-Basin","Nogoa Mackenzie
-Water Supply
-Scheme",Supplemented,Medium,Permanent,2362.0,0.0,,,QLD Gov PWTR
-May 2024,"Condamine
-and Balonne","Condamine
-Balonne
-Tributaries Water
-Mangt Area",Unsupplemented,Class 9B,Permanent,30.0,2000.0,,,QLD Gov PWTR
-May 2024,"Border
-Rivers and Moonie","Stanthorpe
-Water
-Management Area",Unsupplemented,Class Lqptb,Permanent,24.0,0.0,,,QLD Gov PWTR
-May 2024,"Border
-Rivers and Moonie","Macintyre Brook
-Water
-Management Area",Unsupplemented,Class Mb2,Permanent,16.0,0.0,,,QLD Gov PWTR
-May 2024,Barron,"Barron Water
-Management Area",Unsupplemented,Class Cb,Permanent,36.0,0.0,,,QLD Gov PWTR
-May 2024,"Pioneer
-Valley","Eton Water
-Supply Scheme",Supplemented,High,Permanent,389.0,0.0,,,QLD Gov PWTR
-May 2024,Mary Basin,"Lower Mary River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,24.0,417.0,,,QLD Gov PWTR
-May 2024,Mary Basin,"Mary Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,2.0,1100.0,,,QLD Gov PWTR
-May 2024,Mary Basin,"Teddington Weir
-Water Supply
-Scheme",Supplemented,Medium,Permanent,36.0,0.0,,,QLD Gov PWTR
-May 2024,"Fitzroy
-Basin","Dawson Valley
-Water
-Management Area",Unsupplemented,Class 11A,Permanent,642.0,0.0,,,QLD Gov PWTR
-May 2024,"Condamine
-and Balonne","Upper Condamine
-Water
-Management Area",Unsupplemented,Class Ct2,Permanent,50.0,3500.0,,,QLD Gov PWTR
-May 2024,Wet Tropics,"Tully Water
-Management Area",Unsupplemented,Class B,Permanent,4106.0,0.0,,,QLD Gov PWTR
-May 2024,"Burnett
-Basin","Bundaberg Water
-Supply Scheme",Supplemented,Medium,Permanent,433.0,1730.0,,,QLD Gov PWTR
-May 2024,"Burdekin
-Basin","Burdekin
-Haughton Water
-Supply Scheme",Supplemented,Medium,Permanent,1458.0,500.0,,,QLD Gov PWTR
-May 2024,"Condamine
-and Balonne","St George Water
-Supply Scheme",Supplemented,Medium,Permanent,85.0,6882.0,,,QLD Gov PWTR
-May 2024,"Condamine
-and Balonne","Upper Condamine
-Water Supply
-Scheme",Supplemented,Medium,Permanent,110.0,0.0,,,QLD Gov PWTR
-May 2024,"Fitzroy
-Basin","Dawson Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,400.0,0.0,,,QLD Gov PWTR
-May 2024,Barron,"Mareeba Dimbulah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,5.0,3800.0,,,QLD Gov PWTR
-May 2024,"Burnett
-Basin","Upper Burnett
-Water Supply
-Scheme",Supplemented,Medium,Permanent,70.0,1400.0,,,QLD Gov PWTR
-Apr 2024,"Burnett
-Basin","Upper Burnett
-Water Supply
-Scheme",Supplemented,Medium,Permanent,851.0,1071.0,,,QLD Gov PWTR
-Apr 2024,"Burnett
-Basin","Bundaberg Water
-Supply Scheme",Supplemented,Medium,Permanent,279.0,3400.0,,,QLD Gov PWTR
-Apr 2024,Logan Basin,"Logan River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,20.0,1000.0,,,QLD Gov PWTR
-Apr 2024,"Burdekin
-Basin","Burdekin
-Haughton Water
-Supply Scheme",Supplemented,Medium,Permanent,2322.0,654.0,,,QLD Gov PWTR
-Apr 2024,"Border
-Rivers and Moonie","Border Rivers
-Water Supply
-Scheme",Supplemented,Medium,Permanent,1150.0,4500.0,,,QLD Gov PWTR
-Apr 2024,Barron,"Mareeba Dimbulah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,125.0,3750.0,,,QLD Gov PWTR
-Apr 2024,Moreton,"Central Brisbane
-River Water
-Supply Scheme",Supplemented,Medium,Permanent,100.0,5500.0,,,QLD Gov PWTR
-Apr 2024,Moreton,"Lower Lockyer
-Valley Water
-Supply Scheme",Supplemented,Medium,Permanent,12.0,0.0,,,QLD Gov PWTR
-Apr 2024,Moreton,"Warrill Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,63.0,0.0,,,QLD Gov PWTR
-Apr 2024,"Pioneer
-Valley","Eton Water
-Supply Scheme",Supplemented,High,Permanent,197.0,0.0,,,QLD Gov PWTR
-Apr 2024,"Burnett
-Basin","Barker Barambah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,138.0,1957.0,,,QLD Gov PWTR
-Apr 2024,"Burnett
-Basin","Boyne River And
-Tarong Water
-Supply Scheme",Supplemented,High,Permanent,1.0,0.0,,,QLD Gov PWTR
-Apr 2024,"Burnett
-Basin","Barker Barambah
-Creeks Water
-Management Area",Unsupplemented,Class 2H,Permanent,150.0,0.0,,,QLD Gov PWTR
-Apr 2024,"Burnett
-Basin","Boyne And Stuart
-Rivers Water
-Management Area",Unsupplemented,Class 1K,Permanent,48.0,1375.0,,,QLD Gov PWTR
-Apr 2024,Wet Tropics,"Tully Water
-Management Area",Unsupplemented,Class B,Permanent,245.0,0.0,,,QLD Gov PWTR
-Apr 2024,"Fitzroy
-Basin","Dawson Valley
-Water
-Management Area",Unsupplemented,Class 13C,Permanent,29.0,3500.0,,,QLD Gov PWTR
-Apr 2024,"Border
-Rivers and Moonie","Border Rivers
-Water
-Management Area",Unsupplemented,Class Mac1,Permanent,1029.0,4800.0,,,QLD Gov PWTR
-Apr 2024,"Border
-Rivers and Moonie","Stanthorpe
-Water
-Management Area",Unsupplemented,Class Usb,Permanent,30.0,3333.0,,,QLD Gov PWTR
-Apr 2024,"Condamine
-and Balonne","Condamine
-Balonne
-Tributaries Water
-Mangt Area",Unsupplemented,Class 9C,Permanent,8.0,2000.0,,,QLD Gov PWTR
-Mar 2024,"Fitzroy
-Basin","Dawson Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,3.0,0.0,,,QLD Gov PWTR
-Mar 2024,"Fitzroy
-Basin","Fitzroy Barrage
-Water Supply
-Scheme",Supplemented,Medium,Permanent,13.0,1.0,,,QLD Gov PWTR
-Mar 2024,"Fitzroy
-Basin","Nogoa Mackenzie
-Water Supply
-Scheme",Supplemented,Medium,Permanent,538.0,0.0,,,QLD Gov PWTR
-Mar 2024,"Burnett
-Basin","Upper Burnett
-Water Supply
-Scheme",Supplemented,Medium,Permanent,72.0,1645.0,,,QLD Gov PWTR
-Mar 2024,Mary Basin,"Lower Mary River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,30.0,2500.0,,,QLD Gov PWTR
-Mar 2024,Logan Basin,"Logan River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,45.0,0.0,,,QLD Gov PWTR
-Mar 2024,Moreton,"Lower Lockyer
-Valley Water
-Supply Scheme",Supplemented,Medium,Permanent,12.0,0.0,,,QLD Gov PWTR
-Mar 2024,Moreton,"Warrill Valley
-Water Supply
-Scheme",Supplemented,High,Permanent,4.0,0.0,,,QLD Gov PWTR
-Mar 2024,"Pioneer
-Valley","Eton Water
-Supply Scheme",Supplemented,High,Permanent,166.0,0.0,,,QLD Gov PWTR
-Mar 2024,"Pioneer
-Valley","Pioneer River
-Water Supply
-Scheme",Supplemented,High,Permanent,374.0,0.0,,,QLD Gov PWTR
-Mar 2024,"Condamine
-and Balonne","St George Water
-Supply Scheme",Supplemented,Medium,Permanent,130.0,7000.0,,,QLD Gov PWTR
-Mar 2024,"Border
-Rivers and Moonie","Border Rivers
-Water
-Management Area",Unsupplemented,Class Bar1,Permanent,2200.0,0.0,,,QLD Gov PWTR
-Mar 2024,"Burnett
-Basin","Bundaberg Water
-Supply Scheme",Supplemented,Medium,Permanent,5.0,0.0,,,QLD Gov PWTR
-Mar 2024,"Burnett
-Basin","Boyne River And
-Tarong Water
-Supply Scheme",Supplemented,High,Permanent,15.0,0.0,,,QLD Gov PWTR
-Mar 2024,"Burdekin
-Basin","Burdekin
-Haughton Water
-Supply Scheme",Supplemented,Medium,Permanent,400.0,0.0,,,QLD Gov PWTR
-Mar 2024,"Border
-Rivers and Moonie","Border Rivers
-Water Supply
-Scheme",Supplemented,Medium,Permanent,1485.0,4755.0,,,QLD Gov PWTR
-Mar 2024,Barron,"Mareeba Dimbulah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,235.0,3936.0,,,QLD Gov PWTR
-Mar 2024,Barron,"Barron Water
-Management Area",Unsupplemented,Class Cb,Permanent,2.0,0.0,,,QLD Gov PWTR
-Mar 2024,"Fitzroy
-Basin","Dawson Valley
-Water
-Management Area",Unsupplemented,Class 11A,Permanent,209.0,0.0,,,QLD Gov PWTR
-Mar 2024,"Condamine
-and Balonne","Upper Condamine
-Water
-Management Area",Unsupplemented,Class Cg1,Permanent,85.0,0.0,,,QLD Gov PWTR
-Mar 2024,"Condamine
-and Balonne","Gowrie Oakey
-Creek Water
-Management Area",Unsupplemented,Class Gb1C,Permanent,48.0,0.0,,,QLD Gov PWTR
-Mar 2024,"Border
-Rivers and Moonie","Stanthorpe
-Water
-Management Area",Unsupplemented,Class Lbtb,Permanent,48.0,4000.0,,,QLD Gov PWTR
-Mar 2024,Mary Basin,"Mary Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,50.0,0.0,,,QLD Gov PWTR
-Mar 2024,Moreton,"Central Brisbane
-River Water
-Supply Scheme",Supplemented,Medium,Permanent,28.0,0.0,,,QLD Gov PWTR
-Feb 2024,"Fitzroy
-Basin","Nogoa Mackenzie
-Water Supply
-Scheme",Supplemented,Medium,Permanent,700.0,5744.0,,,QLD Gov PWTR
-Feb 2024,Barron,"Mareeba Dimbulah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,85.0,4000.0,,,QLD Gov PWTR
-Feb 2024,Logan Basin,"Logan River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,4.0,0.0,,,QLD Gov PWTR
-Feb 2024,"Condamine
-and Balonne","Lower Balonne
-Water
-Management Area",Unsupplemented,Class Lb1,Permanent,2640.0,0.0,,,QLD Gov PWTR
-Feb 2024,Logan Basin,"Running Creek
-Water
-Management Area",Unsupplemented,Class 5B,Permanent,87.0,0.0,,,QLD Gov PWTR
-Feb 2024,"Pioneer
-Valley","Eton Water
-Supply Scheme",Supplemented,High,Permanent,1023.0,0.0,,,QLD Gov PWTR
-Feb 2024,"Border
-Rivers and Moonie","Macintyre Brook
-Water Supply
-Scheme",Supplemented,Medium,Permanent,432.0,6000.0,,,QLD Gov PWTR
-Feb 2024,Moreton,"Central Brisbane
-River Water
-Supply Scheme",Supplemented,Medium,Permanent,93.0,1750.0,,,QLD Gov PWTR
-Feb 2024,Mary Basin,"Lower Mary River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,33.0,2300.0,,,QLD Gov PWTR
-Feb 2024,Moreton,"Warrill Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,402.0,3000.0,,,QLD Gov PWTR
-Feb 2024,"Fitzroy
-Basin","Callide Valley
-Water Supply
-Scheme",Supplemented,Risk,Permanent,64.0,0.0,,,QLD Gov PWTR
-Feb 2024,"Condamine
-and Balonne","Upper Condamine
-Water Supply
-Scheme",Supplemented,Medium,Permanent,47.0,0.0,,,QLD Gov PWTR
-Feb 2024,"Condamine
-and Balonne","St George Water
-Supply Scheme",Supplemented,Medium,Permanent,480.0,0.0,,,QLD Gov PWTR
-Feb 2024,"Burnett
-Basin","Bundaberg Water
-Supply Scheme",Supplemented,Medium,Permanent,1553.0,3095.0,,,QLD Gov PWTR
-Feb 2024,"Burdekin
-Basin","Burdekin
-Haughton Water
-Supply Scheme",Supplemented,Medium,Permanent,47.0,250.0,,,QLD Gov PWTR
-Feb 2024,"Condamine
-and Balonne","Condamine
-Balonne
-Tributaries Water
-Mangt Area",Unsupplemented,Class 6A,Permanent,235.0,851.0,,,QLD Gov PWTR
-Jan 2024,Logan Basin,"Running Creek
-Water
-Management Area",Unsupplemented,Class 5B,Permanent,33.0,0.0,,,QLD Gov PWTR
-Jan 2024,"Condamine
-and Balonne","Upper Condamine
-Water
-Management Area",Unsupplemented,Class Cg2,Permanent,36.0,2000.0,,,QLD Gov PWTR
-Jan 2024,"Condamine
-and Balonne","Lower Balonne
-Water
-Management Area",Unsupplemented,Class Lb1,Permanent,755.0,4100.0,,,QLD Gov PWTR
-Jan 2024,"Condamine
-and Balonne","Condamine
-Balonne
-Tributaries Water
-Mangt Area",Unsupplemented,Class 9B,Permanent,24.0,2500.0,,,QLD Gov PWTR
-Jan 2024,"Border
-Rivers and Moonie","Upper Weir River
-Water
-Management Area",Unsupplemented,Class Bri1,Permanent,270.0,0.0,,,QLD Gov PWTR
-Jan 2024,"Border
-Rivers and Moonie","Border Rivers
-Water
-Management Area",Unsupplemented,Class Mac1,Permanent,1767.0,0.0,,,QLD Gov PWTR
-Jan 2024,Barron,"Barron Water
-Management Area",Unsupplemented,Class Cb,Permanent,355.0,0.0,,,QLD Gov PWTR
-Jan 2024,Moreton,"Central Lockyer
-Valley Water
-Supply Scheme",Supplemented,Medium,Permanent,40.0,450.0,,,QLD Gov PWTR
-Jan 2024,Logan Basin,"Logan River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,25.0,0.0,,,QLD Gov PWTR
-Jan 2024,"Fitzroy
-Basin","Nogoa Mackenzie
-Water Supply
-Scheme",Supplemented,Medium,Permanent,108.0,5807.0,,,QLD Gov PWTR
-Jan 2024,Barron,"Mareeba Dimbulah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,221.0,3610.0,,,QLD Gov PWTR
-Jan 2024,"Border
-Rivers and Moonie","Border Rivers
-Water Supply
-Scheme",Supplemented,Medium,Permanent,1000.0,0.0,,,QLD Gov PWTR
-Jan 2024,"Burnett
-Basin","Bundaberg Water
-Supply Scheme",Supplemented,Medium,Permanent,1153.0,3982.0,,,QLD Gov PWTR
-Jan 2024,"Condamine
-and Balonne","St George Water
-Supply Scheme",Supplemented,Medium,Permanent,203.0,8394.0,,,QLD Gov PWTR
-Jan 2024,"Fitzroy
-Basin","Dawson Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,290.0,0.0,,,QLD Gov PWTR
-Jan 2024,"Warrego,
-Paroo, Bulloo and
-Nebine","Upper Warrego
-Water
-Management Area",Unsupplemented,Class We,Permanent,10.0,0.0,,,QLD Gov PWTR
-Jan 2024,"Pioneer
-Valley","Pioneer River
-Water Supply
-Scheme",Supplemented,High,Permanent,168.0,0.0,,,QLD Gov PWTR
-Jan 2024,"Warrego,
-Paroo, Bulloo and
-Nebine","Cunnamulla
-Water Supply
-Scheme",Supplemented,Medium,Permanent,4.0,0.0,,,QLD Gov PWTR
-Dec 2023,Wet Tropics,"Tully Water
-Management Area",Unsupplemented,Class B,Permanent,106.0,450.0,,,QLD Gov PWTR
-Dec 2023,"Border
-Rivers and Moonie","Macintyre Brook
-Water
-Management Area",Unsupplemented,Class Mb2,Permanent,36.0,2778.0,,,QLD Gov PWTR
-Dec 2023,"Fitzroy
-Basin","Dawson Valley
-Water
-Management Area",Unsupplemented,Class 11A,Permanent,209.0,0.0,,,QLD Gov PWTR
-Dec 2023,Logan Basin,"Christmas Creek
-Water
-Management Area",Unsupplemented,Class 6B,Permanent,178.0,281.0,,,QLD Gov PWTR
-Dec 2023,"Pioneer
-Valley","Pioneer River
-Water
-Management Area",Unsupplemented,Class 1B,Permanent,507.0,0.0,,,QLD Gov PWTR
-Dec 2023,Moreton,"Warrill Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,3.0,3300.0,,,QLD Gov PWTR
-Dec 2023,"Fitzroy
-Basin","Fitzroy Barrage
-Water Supply
-Scheme",Supplemented,Medium,Permanent,24.0,0.0,,,QLD Gov PWTR
-Dec 2023,"Burnett
-Basin","Bundaberg Water
-Supply Scheme",Supplemented,Medium,Permanent,99.0,4000.0,,,QLD Gov PWTR
-Dec 2023,"Fitzroy
-Basin","Dawson Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,700.0,0.0,,,QLD Gov PWTR
-Dec 2023,"Burdekin
-Basin","Burdekin
-Haughton Water
-Supply Scheme",Supplemented,Medium,Permanent,432.0,480.0,,,QLD Gov PWTR
-Dec 2023,"Border
-Rivers and Moonie","Macintyre Brook
-Water Supply
-Scheme",Supplemented,Medium,Permanent,300.0,0.0,,,QLD Gov PWTR
-Dec 2023,"Border
-Rivers and Moonie","Border Rivers
-Water Supply
-Scheme",Supplemented,Medium,Permanent,650.0,0.0,,,QLD Gov PWTR
-Dec 2023,Barron,"Mareeba Dimbulah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,94.0,2700.0,,,QLD Gov PWTR
-Dec 2023,Mary Basin,"Mary Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,5.0,600.0,,,QLD Gov PWTR
-Dec 2023,"Fitzroy
-Basin","Nogoa Mackenzie
-Water Supply
-Scheme",Supplemented,Medium,Permanent,45.0,0.0,,,QLD Gov PWTR
-Nov 2023,"Border
-Rivers and Moonie","Border Rivers
-Water
-Management Area",Unsupplemented,Class Bar1,Permanent,7334.0,0.0,,,QLD Gov PWTR
-Nov 2023,"Border
-Rivers and Moonie","Lower Weir River
-Water
-Management Area",Unsupplemented,Class Lw1,Permanent,2933.0,0.0,,,QLD Gov PWTR
-Nov 2023,"Border
-Rivers and Moonie","Stanthorpe
-Water
-Management Area",Unsupplemented,Class Laa,Permanent,17.0,3500.0,,,QLD Gov PWTR
-Nov 2023,"Condamine
-and Balonne","Condamine
-Balonne
-Tributaries Water
-Mangt Area",Unsupplemented,Class 7B,Permanent,24.0,1250.0,,,QLD Gov PWTR
-Nov 2023,"Condamine
-and Balonne","Condamine
-Balonne Water
-Management Area",Unsupplemented,Class B2,Permanent,10.0,3333.0,,,QLD Gov PWTR
-Nov 2023,"Condamine
-and Balonne","Gowrie Oakey
-Creek Water
-Management Area",Unsupplemented,Class Gb1C,Permanent,48.0,0.0,,,QLD Gov PWTR
-Nov 2023,"Condamine
-and Balonne","Upper Condamine
-Water
-Management Area",Unsupplemented,Class Ct2,Permanent,58.0,1042.0,,,QLD Gov PWTR
-Nov 2023,"Fitzroy
-Basin","Dawson Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,400.0,0.0,,,QLD Gov PWTR
-Nov 2023,"Border
-Rivers and Moonie","Macintyre Brook
-Water Supply
-Scheme",Supplemented,Medium,Permanent,41.0,0.0,,,QLD Gov PWTR
-Nov 2023,"Pioneer
-Valley","Eton Water
-Supply Scheme",Supplemented,High,Permanent,58.0,0.0,,,QLD Gov PWTR
-Nov 2023,"Border
-Rivers and Moonie","Border Rivers
-Water Supply
-Scheme",Supplemented,Medium,Permanent,3691.0,0.0,,,QLD Gov PWTR
-Nov 2023,"Burdekin
-Basin","Burdekin
-Haughton Water
-Supply Scheme",Supplemented,Medium,Permanent,220.0,250.0,,,QLD Gov PWTR
-Nov 2023,"Burnett
-Basin","Boyne River And
-Tarong Water
-Supply Scheme",Supplemented,High,Permanent,2.0,1.0,,,QLD Gov PWTR
-Nov 2023,"Burnett
-Basin","Bundaberg Water
-Supply Scheme",Supplemented,High,Permanent,3.0,0.0,,,QLD Gov PWTR
-Nov 2023,"Fitzroy
-Basin","Nogoa Mackenzie
-Water Supply
-Scheme",Supplemented,Medium,Permanent,202.0,6000.0,,,QLD Gov PWTR
-Nov 2023,Logan Basin,"Logan River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,73.0,1000.0,,,QLD Gov PWTR
-Nov 2023,Mary Basin,"Mary Valley
-Water Supply
-Scheme",Supplemented,High,Permanent,110.0,0.0,,,QLD Gov PWTR
-Nov 2023,Moreton,"Central Brisbane
-River Water
-Supply Scheme",Supplemented,Medium,Permanent,16.0,0.0,,,QLD Gov PWTR
-Nov 2023,Moreton,"Warrill Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,52.0,0.0,,,QLD Gov PWTR
-Nov 2023,"Pioneer
-Valley","Pioneer River
-Water Supply
-Scheme",Supplemented,High,Permanent,539.0,0.0,,,QLD Gov PWTR
-Nov 2023,"Whitsunday Resource
-Operations Plan","Proserpine River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,381.0,0.0,,,QLD Gov PWTR
-Nov 2023,Barron,"Mareeba Dimbulah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,132.0,4000.0,,,QLD Gov PWTR
-Oct 2023,"Burdekin
-Basin","Upper Burdekin
-Water
-Management Area",Unsupplemented,Class G2,Permanent,216.0,0.0,,,QLD Gov PWTR
-Oct 2023,"Burnett
-Basin","Barker Barambah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,25.0,0.0,,,QLD Gov PWTR
-Oct 2023,"Burnett
-Basin","Bundaberg Water
-Supply Scheme",Supplemented,Medium,Permanent,255.0,2750.0,,,QLD Gov PWTR
-Oct 2023,"Burnett
-Basin","Upper Burnett
-Water Supply
-Scheme",Supplemented,Medium,Permanent,189.0,0.0,,,QLD Gov PWTR
-Oct 2023,"Fitzroy
-Basin","Nogoa Mackenzie
-Water Supply
-Scheme",Supplemented,High,Permanent,1.0,0.0,,,QLD Gov PWTR
-Oct 2023,Logan Basin,"Logan River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,18.0,1000.0,,,QLD Gov PWTR
-Oct 2023,Mary Basin,"Mary Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,2.0,0.0,,,QLD Gov PWTR
-Oct 2023,Mary Basin,"Teddington Weir
-Water Supply
-Scheme",Supplemented,Medium,Permanent,80.0,2250.0,,,QLD Gov PWTR
-Oct 2023,"Pioneer
-Valley","Pioneer River
-Water Supply
-Scheme",Supplemented,High,Permanent,75.0,0.0,,,QLD Gov PWTR
-Oct 2023,Barron,"Mareeba Dimbulah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,244.0,1814.0,,,QLD Gov PWTR
-Oct 2023,"Burnett
-Basin","Barker Barambah
-Creeks Water
-Management Area",Unsupplemented,Class 2J,Permanent,11.0,0.0,,,QLD Gov PWTR
-Oct 2023,"Condamine
-and Balonne","Upper Condamine
-Water
-Management Area",Unsupplemented,Class Cg1,Permanent,755.0,5500.0,,,QLD Gov PWTR
-Sep 2023,Mary Basin,"Mary Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,76.0,167.0,,,QLD Gov PWTR
-Sep 2023,"Burnett
-Basin","Upper Burnett
-Water Supply
-Scheme",Supplemented,Medium,Permanent,200.0,1730.0,,,QLD Gov PWTR
-Sep 2023,"Burnett
-Basin","Bundaberg Water
-Supply Scheme",Supplemented,Medium,Permanent,104.0,0.0,,,QLD Gov PWTR
-Sep 2023,"Burnett
-Basin","Barker Barambah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,625.0,2618.0,,,QLD Gov PWTR
-Sep 2023,"Border
-Rivers and Moonie","Border Rivers
-Water Supply
-Scheme",Supplemented,Medium,Permanent,3691.0,0.0,,,QLD Gov PWTR
-Sep 2023,Barron,"Mareeba Dimbulah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,15.0,3800.0,,,QLD Gov PWTR
-Sep 2023,"Pioneer
-Valley","Pioneer River
-Water Supply
-Scheme",Supplemented,High,Permanent,118.0,0.0,,,QLD Gov PWTR
-Sep 2023,"Pioneer
-Valley","Eton Water
-Supply Scheme",Supplemented,High,Permanent,19.0,0.0,,,QLD Gov PWTR
-Sep 2023,Moreton,"Central Brisbane
-River Water
-Supply Scheme",Supplemented,Medium,Permanent,44.0,3500.0,,,QLD Gov PWTR
-Sep 2023,"Fitzroy
-Basin","Nogoa Mackenzie
-Water Supply
-Scheme",Supplemented,Medium,Permanent,5.0,3750.0,,,QLD Gov PWTR
-Sep 2023,Logan Basin,"Logan River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,45.0,0.0,,,QLD Gov PWTR
-Sep 2023,Gold Coast,"Lower Nerang
-Water
-Management Area",Unsupplemented,Class A,Permanent,14.0,0.0,,,QLD Gov PWTR
-Sep 2023,"Fitzroy
-Basin","Lower Fitzroy
-Water Supply
-Scheme",Supplemented,High,Permanent,3.0,0.0,,,QLD Gov PWTR
-Sep 2023,"Border
-Rivers and Moonie","Border Rivers
-Water
-Management Area",Unsupplemented,Class Bar1,Permanent,7334.0,0.0,,,QLD Gov PWTR
-Sep 2023,"Border
-Rivers and Moonie","Lower Weir River
-Water
-Management Area",Unsupplemented,Class Lw1,Permanent,2933.0,0.0,,,QLD Gov PWTR
-Sep 2023,"Border
-Rivers and Moonie","Stanthorpe
-Water
-Management Area",Unsupplemented,Class Fmc,Permanent,12.0,0.0,,,QLD Gov PWTR
-Sep 2023,Cape York,"Endeavour Water
-Management Area",Unsupplemented,Class 2,Permanent,20.0,0.0,,,QLD Gov PWTR
-Sep 2023,"Fitzroy
-Basin","Fitzroy Barrage
-Water Supply
-Scheme",Supplemented,Medium,Permanent,1.0,1.0,,,QLD Gov PWTR
-Sep 2023,"Condamine
-and Balonne","Condamine
-Balonne Water
-Management Area",Unsupplemented,Class Cca1,Permanent,510.0,4500.0,,,QLD Gov PWTR
-Sep 2023,"Condamine
-and Balonne","Gowrie Oakey
-Creek Water
-Management Area",Unsupplemented,Class Ga1C,Permanent,48.0,0.0,,,QLD Gov PWTR
-Aug 2023,"Fitzroy
-Basin","Nogoa Mackenzie
-Water Supply
-Scheme",Supplemented,High,Permanent,10.0,6000.0,,,QLD Gov PWTR
-Aug 2023,Moreton,"Central Lockyer
-Valley Water
-Supply Scheme",Supplemented,Medium,Permanent,54.0,250.0,,,QLD Gov PWTR
-Aug 2023,"Pioneer
-Valley","Eton Water
-Supply Scheme",Supplemented,High,Permanent,257.0,0.0,,,QLD Gov PWTR
-Aug 2023,"Burnett
-Basin","Upper Burnett
-Water Supply
-Scheme",Supplemented,Medium,Permanent,300.0,1940.0,,,QLD Gov PWTR
-Aug 2023,"Border
-Rivers and Moonie","Border Rivers
-Water Supply
-Scheme",Supplemented,Medium,Permanent,120.0,0.0,,,QLD Gov PWTR
-Aug 2023,Barron,"Mareeba Dimbulah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,107.0,3810.0,,,QLD Gov PWTR
-Aug 2023,Mary Basin,"Mary Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,250.0,0.0,,,QLD Gov PWTR
-Aug 2023,Mary Basin,"Lower Mary River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,87.0,1960.0,,,QLD Gov PWTR
-Aug 2023,"Border
-Rivers and Moonie","Stanthorpe
-Water
-Management Area",Unsupplemented,Class Lbtb,Permanent,84.0,4000.0,,,QLD Gov PWTR
-Aug 2023,"Burdekin
-Basin","Upper Burdekin
-Water
-Management Area",Unsupplemented,Class G2,Permanent,148.0,0.0,,,QLD Gov PWTR
-Aug 2023,"Condamine
-and Balonne","Condamine
-Balonne Water
-Management Area",Unsupplemented,Class Cb2,Permanent,240.0,1250.0,,,QLD Gov PWTR
-Aug 2023,"Condamine
-and Balonne","Gowrie Oakey
-Creek Water
-Management Area",Unsupplemented,Class Ga1A,Permanent,72.0,0.0,,,QLD Gov PWTR
-Aug 2023,"Condamine
-and Balonne","Upper Condamine
-Water
-Management Area",Unsupplemented,Class Ci2,Permanent,120.0,3500.0,,,QLD Gov PWTR
-Aug 2023,Barron,"Barron Water
-Management Area",Unsupplemented,Class Cb,Permanent,116.0,0.0,,,QLD Gov PWTR
-Jul 2023,Moreton,"Warrill Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,59.0,3000.0,,,QLD Gov PWTR
-Jul 2023,"Burnett
-Basin","Bundaberg Water
-Supply Scheme",Supplemented,Medium,Permanent,319.0,3295.0,,,QLD Gov PWTR
-Jul 2023,Mary Basin,"Lower Mary River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,32.0,2100.0,,,QLD Gov PWTR
-Jul 2023,Logan Basin,"Logan River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,87.0,426.0,,,QLD Gov PWTR
-Jul 2023,"Fitzroy
-Basin","Nogoa Mackenzie
-Water Supply
-Scheme",Supplemented,Medium,Permanent,1125.0,2252.0,,,QLD Gov PWTR
-Jul 2023,"Fitzroy
-Basin","Fitzroy Barrage
-Water Supply
-Scheme",Supplemented,Medium,Permanent,147.0,833.0,,,QLD Gov PWTR
-Jul 2023,"Condamine
-and Balonne","St George Water
-Supply Scheme",Supplemented,Medium,Permanent,3.0,0.0,,,QLD Gov PWTR
-Jul 2023,"Burnett
-Basin","Upper Burnett
-Water Supply
-Scheme",Supplemented,Medium,Permanent,20.0,2000.0,,,QLD Gov PWTR
-Jul 2023,"Condamine
-and Balonne","Upper Condamine
-Water
-Management Area",Unsupplemented,Class Ct3,Permanent,48.0,1042.0,,,QLD Gov PWTR
-Jul 2023,"Burdekin
-Basin","Burdekin
-Haughton Water
-Supply Scheme",Supplemented,Medium,Permanent,240.0,0.0,,,QLD Gov PWTR
-Jul 2023,Barron,"Mareeba Dimbulah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,57.0,3850.0,,,QLD Gov PWTR
-Jul 2023,"Fitzroy
-Basin","Fitzroy Water
-Management Area",Unsupplemented,Class 5A,Permanent,303.0,0.0,,,QLD Gov PWTR
-Jul 2023,"Condamine
-and Balonne","Gowrie Oakey
-Creek Water
-Management Area",Unsupplemented,Class Gb4,Permanent,48.0,0.0,,,QLD Gov PWTR
-Jul 2023,"Condamine
-and Balonne","Condamine
-Balonne Water
-Management Area",Unsupplemented,Class Cb2,Permanent,126.0,0.0,,,QLD Gov PWTR
-Jul 2023,"Border
-Rivers and Moonie","Border Rivers
-Water
-Management Area",Unsupplemented,Class Bar1,Permanent,2600.0,2085.0,,,QLD Gov PWTR
-Jul 2023,Barron,"Barron Water
-Management Area",Unsupplemented,Class Cb,Permanent,82.0,1700.0,,,QLD Gov PWTR
-Jul 2023,Mary Basin,"Wide Bay Water
-Supply Scheme",Supplemented,Medium,Permanent,9.0,0.0,,,QLD Gov PWTR
-Jul 2023,"Burnett
-Basin","Boyne River And
-Tarong Water
-Supply Scheme",Supplemented,High,Permanent,1.0,1.0,,,QLD Gov PWTR
-Jul 2023,"Pioneer
-Valley","Pioneer River
-Water Supply
-Scheme",Supplemented,High,Permanent,85.0,0.0,,,QLD Gov PWTR
-Jun 2023,Moreton,"Lower Lockyer
-Valley Water
-Supply Scheme",Supplemented,Medium,Permanent,82.0,1402.0,,,QLD Gov PWTR
-Jun 2023,Barron,"Mareeba Dimbulah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,12.0,0.0,,,QLD Gov PWTR
-Jun 2023,"Condamine
-and Balonne","Gowrie Oakey
-Creek Water
-Management Area",Unsupplemented,Class Wm1,Permanent,420.0,0.0,,,QLD Gov PWTR
-Jun 2023,"Condamine
-and Balonne","Lower Balonne
-Water
-Management Area",Unsupplemented,Class Lb1,Permanent,5705.0,0.0,,,QLD Gov PWTR
-Jun 2023,Gold Coast,"Lower Nerang
-Water
-Management Area",Unsupplemented,Class B,Permanent,4.0,0.0,,,QLD Gov PWTR
-Jun 2023,Logan Basin,"Running Creek
-Water
-Management Area",Unsupplemented,Class 5B,Permanent,204.0,0.0,,,QLD Gov PWTR
-Jun 2023,"Border
-Rivers and Moonie","Moonie Water
-Management Area",Unsupplemented,Class K,Permanent,784.0,2551.0,,,QLD Gov PWTR
-Jun 2023,"Whitsunday Resource
-Operations Plan","Proserpine River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,94.0,0.0,,,QLD Gov PWTR
-Jun 2023,Moreton,"Warrill Valley
-Water Supply
-Scheme",Supplemented,High,Permanent,25.0,3700.0,,,QLD Gov PWTR
-Jun 2023,"Condamine
-and Balonne","Condamine
-Balonne
-Tributaries Water
-Mangt Area",Unsupplemented,Class 5B,Permanent,24.0,0.0,,,QLD Gov PWTR
-Jun 2023,Moreton,"Central Brisbane
-River Water
-Supply Scheme",Supplemented,Medium,Permanent,72.0,0.0,,,QLD Gov PWTR
-Jun 2023,Mary Basin,"Mary Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,90.0,771.0,,,QLD Gov PWTR
-Jun 2023,"Burdekin
-Basin","Burdekin
-Haughton Water
-Supply Scheme",Supplemented,Medium,Permanent,568.0,250.0,,,QLD Gov PWTR
-Jun 2023,"Burnett
-Basin","Bundaberg Water
-Supply Scheme",Supplemented,Medium,Permanent,700.0,272.0,,,QLD Gov PWTR
-Jun 2023,"Condamine
-and Balonne","St George Water
-Supply Scheme",Supplemented,Medium,Permanent,3375.0,8400.0,,,QLD Gov PWTR
-Jun 2023,"Fitzroy
-Basin","Nogoa Mackenzie
-Water Supply
-Scheme",Supplemented,Medium,Permanent,1.0,0.0,,,QLD Gov PWTR
-Jun 2023,Mary Basin,"Lower Mary River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,60.0,0.0,,,QLD Gov PWTR
-May 2023,"Border
-Rivers and Moonie","Border Rivers
-Water
-Management Area",Unsupplemented,Class Bar1,Permanent,936.0,0.0,,,QLD Gov PWTR
-May 2023,"Border
-Rivers and Moonie","Stanthorpe
-Water
-Management Area",Unsupplemented,Class Ms1A,Permanent,13.0,0.0,,,QLD Gov PWTR
-May 2023,"Burdekin
-Basin","Upper Burdekin
-Water
-Management Area",Unsupplemented,Class G1,Permanent,12.0,0.0,,,QLD Gov PWTR
-May 2023,"Condamine
-and Balonne","Condamine
-Balonne
-Tributaries Water
-Mangt Area",Unsupplemented,Class 7B,Permanent,108.0,0.0,,,QLD Gov PWTR
-May 2023,Moreton,"Warrill Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,5.0,1000.0,,,QLD Gov PWTR
-May 2023,Moreton,"Lower Lockyer
-Valley Water
-Supply Scheme",Supplemented,Medium,Permanent,95.0,1200.0,,,QLD Gov PWTR
-May 2023,Mary Basin,"Mary Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,209.0,0.0,,,QLD Gov PWTR
-May 2023,Mary Basin,"Lower Mary River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,30.0,2100.0,,,QLD Gov PWTR
-May 2023,"Fitzroy
-Basin","Nogoa Mackenzie
-Water Supply
-Scheme",Supplemented,Medium,Permanent,10.0,3400.0,,,QLD Gov PWTR
-May 2023,Barron,"Mareeba Dimbulah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,182.0,3900.0,,,QLD Gov PWTR
-May 2023,"Border
-Rivers and Moonie","Border Rivers
-Water Supply
-Scheme",Supplemented,Medium,Permanent,683.0,0.0,,,QLD Gov PWTR
-May 2023,"Burdekin
-Basin","Burdekin
-Haughton Water
-Supply Scheme",Supplemented,Medium,Permanent,161.0,300.0,,,QLD Gov PWTR
-May 2023,"Burnett
-Basin","Barker Barambah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,100.0,1250.0,,,QLD Gov PWTR
-May 2023,"Burnett
-Basin","Bundaberg Water
-Supply Scheme",Supplemented,Medium,Permanent,259.0,0.0,,,QLD Gov PWTR
-May 2023,"Burnett
-Basin","Upper Burnett
-Water Supply
-Scheme",Supplemented,Medium,Permanent,5.0,0.0,,,QLD Gov PWTR
-May 2023,"Condamine
-and Balonne","St George Water
-Supply Scheme",Supplemented,Medium,Permanent,13.0,0.0,,,QLD Gov PWTR
-May 2023,"Fitzroy
-Basin","Dawson Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,63.0,2979.0,,,QLD Gov PWTR
-Apr 2023,"Condamine
-and Balonne","Condamine
-Balonne
-Tributaries Water
-Mangt Area",Unsupplemented,Class 4A,Permanent,11.0,0.0,,,QLD Gov PWTR
-Apr 2023,"Burnett
-Basin","Bundaberg Water
-Supply Scheme",Supplemented,Medium,Permanent,20.0,0.0,,,QLD Gov PWTR
-Apr 2023,Moreton,"Warrill Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,57.0,0.0,,,QLD Gov PWTR
-Apr 2023,Mary Basin,"Wide Bay Water
-Supply Scheme",Supplemented,Medium,Permanent,48.0,1042.0,,,QLD Gov PWTR
-Apr 2023,Mary Basin,"Mary Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,25.0,0.0,,,QLD Gov PWTR
-Apr 2023,Logan Basin,"Logan River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,24.0,0.0,,,QLD Gov PWTR
-Apr 2023,"Condamine
-and Balonne","St George Water
-Supply Scheme",Supplemented,Medium,Permanent,5.0,4000.0,,,QLD Gov PWTR
-Apr 2023,"Burnett
-Basin","Upper Burnett
-Water Supply
-Scheme",Supplemented,Medium,Permanent,175.0,1692.0,,,QLD Gov PWTR
-Apr 2023,"Burnett
-Basin","Barker Barambah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,100.0,2500.0,,,QLD Gov PWTR
-Apr 2023,"Burdekin
-Basin","Burdekin
-Haughton Water
-Supply Scheme",Supplemented,Medium,Permanent,4.0,0.0,,,QLD Gov PWTR
-Apr 2023,Barron,"Mareeba Dimbulah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,15.0,5000.0,,,QLD Gov PWTR
-Mar 2023,"Fitzroy
-Basin","Fitzroy Water
-Management Area",Unsupplemented,Class 5A,Permanent,140.0,0.0,,,QLD Gov PWTR
-Mar 2023,"Condamine
-and Balonne","Upper Condamine
-Water
-Management Area",Unsupplemented,Class Cg1,Permanent,780.0,3000.0,,,QLD Gov PWTR
-Mar 2023,"Condamine
-and Balonne","Condamine
-Balonne
-Tributaries Water
-Mangt Area",Unsupplemented,Class 4A,Permanent,99.0,3500.0,,,QLD Gov PWTR
-Mar 2023,Moreton,"Central Brisbane
-River Water
-Supply Scheme",Supplemented,Medium,Permanent,100.0,3960.0,,,QLD Gov PWTR
-Mar 2023,"Burnett
-Basin","Bundaberg Water
-Supply Scheme",Supplemented,Medium,Permanent,13.0,0.0,,,QLD Gov PWTR
-Mar 2023,"Burnett
-Basin","Upper Burnett
-Water Supply
-Scheme",Supplemented,Medium,Permanent,1995.0,1709.0,,,QLD Gov PWTR
-Mar 2023,Moreton,"Central Lockyer
-Valley Water
-Supply Scheme",Supplemented,Medium,Permanent,51.0,0.0,,,QLD Gov PWTR
-Mar 2023,Mary Basin,"Wide Bay Water
-Supply Scheme",Supplemented,Medium,Permanent,52.0,625.0,,,QLD Gov PWTR
-Mar 2023,Mary Basin,"Mary Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,33.0,0.0,,,QLD Gov PWTR
-Mar 2023,"Fitzroy
-Basin","Nogoa Mackenzie
-Water Supply
-Scheme",Supplemented,Medium,Permanent,1550.0,4000.0,,,QLD Gov PWTR
-Mar 2023,"Fitzroy
-Basin","Fitzroy Barrage
-Water Supply
-Scheme",Supplemented,Medium,Permanent,31.0,1.0,,,QLD Gov PWTR
-Mar 2023,"Fitzroy
-Basin","Dawson Valley
-Water Supply
-Scheme",Supplemented,High,Permanent,50.0,0.0,,,QLD Gov PWTR
-Mar 2023,"Condamine
-and Balonne","St George Water
-Supply Scheme",Supplemented,Medium,Permanent,1.0,2500.0,,,QLD Gov PWTR
-Mar 2023,"Whitsunday Resource
-Operations Plan","Proserpine River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,381.0,0.0,,,QLD Gov PWTR
-Mar 2023,"Border
-Rivers and Moonie","Border Rivers
-Water Supply
-Scheme",Supplemented,Medium,Permanent,40.0,3200.0,,,QLD Gov PWTR
-Mar 2023,Barron,"Mareeba Dimbulah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,2.0,0.0,,,QLD Gov PWTR
-Feb 2023,"Burdekin
-Basin","Burdekin
-Haughton Water
-Supply Scheme",Supplemented,Medium,Permanent,868.0,0.0,,,QLD Gov PWTR
-Feb 2023,Logan Basin,"Christmas Creek
-Water
-Management Area",Unsupplemented,Class 6B,Permanent,107.0,607.0,,,QLD Gov PWTR
-Feb 2023,"Fitzroy
-Basin","Fitzroy Water
-Management Area",Unsupplemented,Class 5A,Permanent,56.0,0.0,,,QLD Gov PWTR
-Feb 2023,Barron,"Barron Water
-Management Area",Unsupplemented,Class Cb,Permanent,206.0,0.0,,,QLD Gov PWTR
-Feb 2023,"Border
-Rivers and Moonie","Stanthorpe
-Water
-Management Area",Unsupplemented,Class Mqpb,Permanent,24.0,0.0,,,QLD Gov PWTR
-Feb 2023,"Condamine
-and Balonne","Condamine
-Balonne
-Tributaries Water
-Mangt Area",Unsupplemented,Class 9A,Permanent,50.0,0.0,,,QLD Gov PWTR
-Feb 2023,Barron,"Mareeba Dimbulah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,255.0,3435.0,,,QLD Gov PWTR
-Feb 2023,"Condamine
-and Balonne","Condamine
-Balonne Water
-Management Area",Unsupplemented,Class B2,Permanent,90.0,3333.0,,,QLD Gov PWTR
-Feb 2023,"Burnett
-Basin","Barker Barambah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,82.0,0.0,,,QLD Gov PWTR
-Feb 2023,"Burnett
-Basin","Bundaberg Water
-Supply Scheme",Supplemented,Medium,Permanent,2954.0,1594.0,,,QLD Gov PWTR
-Feb 2023,"Fitzroy
-Basin","Fitzroy Barrage
-Water Supply
-Scheme",Supplemented,Medium,Permanent,43.0,0.0,,,QLD Gov PWTR
-Feb 2023,"Fitzroy
-Basin","Nogoa Mackenzie
-Water Supply
-Scheme",Supplemented,Medium,Permanent,4282.0,4037.0,,,QLD Gov PWTR
-Feb 2023,Logan Basin,"Logan River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,30.0,0.0,,,QLD Gov PWTR
-Feb 2023,Mary Basin,"Wide Bay Water
-Supply Scheme",Supplemented,Medium,Permanent,48.0,0.0,,,QLD Gov PWTR
-Feb 2023,Moreton,"Lower Lockyer
-Valley Water
-Supply Scheme",Supplemented,Medium,Permanent,120.0,0.0,,,QLD Gov PWTR
-Feb 2023,Moreton,"Warrill Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,50.0,2000.0,,,QLD Gov PWTR
-Feb 2023,"Pioneer
-Valley","Eton Water
-Supply Scheme",Supplemented,High,Permanent,252.0,0.0,,,QLD Gov PWTR
-Feb 2023,"Whitsunday Resource
-Operations Plan","Proserpine River
-Water Supply
-Scheme",Supplemented,Medium,Permanent,831.0,0.0,,,QLD Gov PWTR
-Jan 2023,"Fitzroy
-Basin","Nogoa Mackenzie
-Water
-Management Area",Unsupplemented,Class 0A,Permanent,16.0,0.0,,,QLD Gov PWTR
-Jan 2023,Barron,"Mareeba Dimbulah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,8.0,0.0,,,QLD Gov PWTR
-Jan 2023,"Burdekin
-Basin","Burdekin
-Haughton Water
-Supply Scheme",Supplemented,Medium,Permanent,1525.0,0.0,,,QLD Gov PWTR
-Jan 2023,Logan Basin,"Running Creek
-Water
-Management Area",Unsupplemented,Class 5B,Permanent,56.0,0.0,,,QLD Gov PWTR
-Jan 2023,"Burnett
-Basin","Bundaberg Water
-Supply Scheme",Supplemented,Medium,Permanent,744.0,4171.0,,,QLD Gov PWTR
-Jan 2023,"Fitzroy
-Basin","Fitzroy Barrage
-Water Supply
-Scheme",Supplemented,Medium,Permanent,50.0,0.0,,,QLD Gov PWTR
-Jan 2023,"Fitzroy
-Basin","Nogoa Mackenzie
-Water Supply
-Scheme",Supplemented,High,Permanent,382.0,0.0,,,QLD Gov PWTR
-Jan 2023,Moreton,"Central Brisbane
-River Water
-Supply Scheme",Supplemented,Medium,Permanent,14.0,0.0,,,QLD Gov PWTR
-Jan 2023,"Pioneer
-Valley","Eton Water
-Supply Scheme",Supplemented,High,Permanent,112.0,0.0,,,QLD Gov PWTR
-Jan 2023,"Border
-Rivers and Moonie","Stanthorpe
-Water
-Management Area",Unsupplemented,Class Lbta,Permanent,4.0,0.0,,,QLD Gov PWTR
-Dec 2022,"Fitzroy
-Basin","Nogoa Mackenzie
-Water
-Management Area",Unsupplemented,Class 3A,Permanent,741.0,0.0,,,QLD Gov PWTR
-Dec 2022,"Condamine
-and Balonne","Upper Condamine
-Water
-Management Area",Unsupplemented,Class Cj2,Permanent,720.0,2850.0,,,QLD Gov PWTR
-Dec 2022,"Condamine
-and Balonne","Condamine
-Balonne Water
-Management Area",Unsupplemented,Class Cb1,Permanent,180.0,4000.0,,,QLD Gov PWTR
-Dec 2022,"Condamine
-and Balonne","Condamine
-Balonne
-Tributaries Water
-Mangt Area",Unsupplemented,Class 2B,Permanent,600.0,500.0,,,QLD Gov PWTR
-Dec 2022,"Border
-Rivers and Moonie","Stanthorpe Water
-Management Area",Unsupplemented,Class Fma,Permanent,5.0,0.0,,,QLD Gov PWTR
-Dec 2022,"Pioneer
-Valley","Pioneer River
-Water Supply
-Scheme",Supplemented,High,Permanent,135.0,0.0,,,QLD Gov PWTR
-Dec 2022,Moreton,"Warrill Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,164.0,0.0,,,QLD Gov PWTR
-Dec 2022,Barron,"Mareeba Dimbulah
-Water Supply
-Scheme",Supplemented,Medium,Permanent,133.0,0.0,,,QLD Gov PWTR
-Dec 2022,"Burnett
-Basin","Boyne River And
-Tarong Water
-Supply Scheme",Supplemented,High,Permanent,3.0,500.0,,,QLD Gov PWTR
-Dec 2022,"Burnett
-Basin","Bundaberg Water
-Supply Scheme",Supplemented,Medium,Permanent,154.0,3000.0,,,QLD Gov PWTR
-Dec 2022,"Burnett
-Basin","Upper Burnett
-Water Supply
-Scheme",Supplemented,Medium,Permanent,289.0,3000.0,,,QLD Gov PWTR
-Dec 2022,"Condamine
-and Balonne","St George Water
-Supply Scheme",Supplemented,Medium,Permanent,2.0,0.0,,,QLD Gov PWTR
-Dec 2022,"Fitzroy
-Basin","Nogoa Mackenzie
-Water Supply
-Scheme",Supplemented,Medium,Permanent,1828.0,0.0,,,QLD Gov PWTR
-Dec 2022,Mary Basin,"Mary Valley
-Water Supply
-Scheme",Supplemented,Medium,Permanent,40.0,0.0,,,QLD Gov PWTR
-Dec 2022,Moreton,"Central Brisbane
-River Water
-Supply Scheme",Supplemented,Medium,Permanent,64.0,0.0,,,QLD Gov PWTR
-Dec 2022,Wet Tropics,"Tully Water
-Management Area",Unsupplemented,Class B,Permanent,655.0,0.0,,,QLD Gov PWTR
+Oct 2025,Barron,Mareeba Dimbulah Water Supply Scheme,Supplemented,Medium,Permanent,662.0,0.0,,,QLD Gov PWTR
+Oct 2025,Moreton,Central Brisbane River Water Supply Scheme,Supplemented,Medium,Permanent,149.0,0.0,,,QLD Gov PWTR
+Oct 2025,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,300.0,0.0,,,QLD Gov PWTR
+Oct 2025,Whitsunday Resource Operations Plan,Proserpine River Water Supply Scheme,Supplemented,Medium,Permanent,45.0,0.0,,,QLD Gov PWTR
+Oct 2025,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,High,Permanent,276.0,0.0,,,QLD Gov PWTR
+Oct 2025,Moreton,Warrill Valley Water Supply Scheme,Supplemented,Medium,Permanent,321.0,0.0,,,QLD Gov PWTR
+Oct 2025,Moreton,Lower Lockyer Valley Water Supply Scheme,Supplemented,Medium,Permanent,37.0,0.0,,,QLD Gov PWTR
+Oct 2025,Pioneer Valley,Eton Water Supply Scheme,Supplemented,High,Permanent,121.0,0.0,,,QLD Gov PWTR
+Oct 2025,Mary Basin,Mary Valley Water Supply Scheme,Supplemented,Medium,Permanent,25.0,0.0,,,QLD Gov PWTR
+Oct 2025,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,Medium,Permanent,24.0,0.0,,,QLD Gov PWTR
+Oct 2025,Logan Basin,Logan River Water Supply Scheme,Supplemented,Medium,Permanent,24.0,0.0,,,QLD Gov PWTR
+Oct 2025,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,5.0,0.0,,,QLD Gov PWTR
+Oct 2025,Condamine and Balonne,St George Water Supply Scheme,Supplemented,Medium,Permanent,210.0,7000.0,,,QLD Gov PWTR
+Sep 2025,Moreton,Lower Lockyer Valley Water Supply Scheme,Supplemented,Medium,Permanent,51.0,0.0,,,QLD Gov PWTR
+Sep 2025,Condamine and Balonne,Gowrie Oakey Creek Water Management Area,Unsupplemented,Class Ga1C,Permanent,240.0,0.0,,,QLD Gov PWTR
+Sep 2025,Logan Basin,Running Creek Water Management Area,Unsupplemented,Class 5B,Permanent,102.0,0.0,,,QLD Gov PWTR
+Sep 2025,Barron,Barron Water Management Area,Unsupplemented,Class Cb,Permanent,88.0,1324.0,,,QLD Gov PWTR
+Sep 2025,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,High,Permanent,148.0,0.0,,,QLD Gov PWTR
+Sep 2025,Pioneer Valley,Eton Water Supply Scheme,Supplemented,High,Permanent,2.0,0.0,,,QLD Gov PWTR
+Sep 2025,Moreton,Warrill Valley Water Supply Scheme,Supplemented,Medium,Permanent,80.0,0.0,,,QLD Gov PWTR
+Sep 2025,Condamine and Balonne,Condamine Balonne Water Management Area,Unsupplemented,Class Cd1,Permanent,745.0,0.0,,,QLD Gov PWTR
+Sep 2025,Mary Basin,Wide Bay Water Supply Scheme,Supplemented,Medium,Permanent,3.0,0.0,,,QLD Gov PWTR
+Sep 2025,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,414.0,0.0,,,QLD Gov PWTR
+Sep 2025,Fitzroy Basin,Fitzroy Barrage Water Supply Scheme,Supplemented,Medium,Permanent,36.0,2000.0,,,QLD Gov PWTR
+Sep 2025,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,Medium,Permanent,1252.0,0.0,,,QLD Gov PWTR
+Sep 2025,Barron,Mareeba Dimbulah Water Supply Scheme,Supplemented,Medium,Permanent,444.0,5000.0,,,QLD Gov PWTR
+Sep 2025,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,3.0,0.0,,,QLD Gov PWTR
+Sep 2025,Mary Basin,Mary Valley Water Supply Scheme,Supplemented,Medium,Permanent,38.0,100.0,,,QLD Gov PWTR
+Sep 2025,Burnett Basin,Barker Barambah Water Supply Scheme,Supplemented,Medium,Permanent,5.0,0.0,,,QLD Gov PWTR
+Aug 2025,Moreton,Warrill Valley Water Supply Scheme,Supplemented,High,Permanent,30.0,6000.0,,,QLD Gov PWTR
+Aug 2025,Border Rivers and Moonie,Stanthorpe Water Management Area,Unsupplemented,Class Brb,Permanent,15.0,0.0,,,QLD Gov PWTR
+Aug 2025,Pioneer Valley,Eton Water Supply Scheme,Supplemented,High,Permanent,158.0,0.0,,,QLD Gov PWTR
+Aug 2025,Condamine and Balonne,Upper Condamine Water Management Area,Unsupplemented,Class Ct1,Permanent,20.0,0.0,,,QLD Gov PWTR
+Aug 2025,Moreton,Central Brisbane River Water Supply Scheme,Supplemented,Medium,Permanent,16.0,0.0,,,QLD Gov PWTR
+Aug 2025,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,Medium,Permanent,516.0,3500.0,,,QLD Gov PWTR
+Aug 2025,Fitzroy Basin,Fitzroy Barrage Water Supply Scheme,Supplemented,Medium,Permanent,13.0,2000.0,,,QLD Gov PWTR
+Aug 2025,Barron,Mareeba Dimbulah Water Supply Scheme,Supplemented,Medium,Permanent,402.0,3195.0,,,QLD Gov PWTR
+Aug 2025,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,516.0,3000.0,,,QLD Gov PWTR
+Aug 2025,Burnett Basin,Upper Burnett Water Supply Scheme,Supplemented,Medium,Permanent,155.0,2035.0,,,QLD Gov PWTR
+Aug 2025,Mary Basin,Mary Valley Water Supply Scheme,Supplemented,Medium,Permanent,50.0,0.0,,,QLD Gov PWTR
+Jul 2025,Condamine and Balonne,Upper Condamine Water Supply Scheme,Supplemented,Medium,Permanent,1256.0,5000.0,,,QLD Gov PWTR
+Jul 2025,Condamine and Balonne,Condamine Balonne Tributaries Water Mangt Area,Unsupplemented,Class 5C,Permanent,60.0,0.0,,,QLD Gov PWTR
+Jul 2025,Condamine and Balonne,Lower Balonne Water Management Area,Unsupplemented,Class Lb1,Permanent,753.0,4000.0,,,QLD Gov PWTR
+Jul 2025,Condamine and Balonne,Upper Condamine Water Management Area,Unsupplemented,Class Cm2,Permanent,605.0,0.0,,,QLD Gov PWTR
+Jul 2025,Burnett Basin,Upper Burnett Water Supply Scheme,Supplemented,Medium,Permanent,25.0,0.0,,,QLD Gov PWTR
+Jul 2025,Border Rivers and Moonie,Northern Weir River Water Management Area,Unsupplemented,Class Nw1,Permanent,250.0,0.0,,,QLD Gov PWTR
+Jul 2025,Logan Basin,Christmas Creek Water Management Area,Unsupplemented,Class 6B,Permanent,114.0,0.0,,,QLD Gov PWTR
+Jul 2025,Logan Basin,Running Creek Water Management Area,Unsupplemented,Class 5B,Permanent,143.0,0.0,,,QLD Gov PWTR
+Jul 2025,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,582.0,3379.0,,,QLD Gov PWTR
+Jul 2025,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,Medium,Permanent,100.0,3550.0,,,QLD Gov PWTR
+Jul 2025,Burnett Basin,Boyne River And Tarong Water Supply Scheme,Supplemented,High,Permanent,20.0,0.0,,,QLD Gov PWTR
+Jul 2025,Barron,Mareeba Dimbulah Water Supply Scheme,Supplemented,Medium,Permanent,608.0,3460.0,,,QLD Gov PWTR
+Jul 2025,Burnett Basin,Barker Barambah Water Supply Scheme,Supplemented,Medium,Permanent,24.0,0.0,,,QLD Gov PWTR
+Jul 2025,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,Medium,Permanent,200.0,5250.0,,,QLD Gov PWTR
+Jul 2025,Whitsunday Resource Operations Plan,Proserpine River Water Supply Scheme,Supplemented,Medium,Permanent,5.0,0.0,,,QLD Gov PWTR
+Jul 2025,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,High,Permanent,102.0,0.0,,,QLD Gov PWTR
+Jul 2025,Pioneer Valley,Eton Water Supply Scheme,Supplemented,High,Permanent,271.0,0.0,,,QLD Gov PWTR
+Jul 2025,Moreton,Warrill Valley Water Supply Scheme,Supplemented,Medium,Permanent,15.0,0.0,,,QLD Gov PWTR
+Jul 2025,Moreton,Central Brisbane River Water Supply Scheme,Supplemented,Medium,Permanent,100.0,3500.0,,,QLD Gov PWTR
+Jul 2025,Mary Basin,Mary Valley Water Supply Scheme,Supplemented,Medium,Permanent,1.0,0.0,,,QLD Gov PWTR
+Jul 2025,Logan Basin,Logan River Water Supply Scheme,Supplemented,Medium,Permanent,50.0,0.0,,,QLD Gov PWTR
+Jul 2025,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,308.0,5650.0,,,QLD Gov PWTR
+Jul 2025,Fitzroy Basin,Fitzroy Barrage Water Supply Scheme,Supplemented,Medium,Permanent,26.0,0.0,,,QLD Gov PWTR
+Jul 2025,Condamine and Balonne,Gowrie Oakey Creek Water Management Area,Unsupplemented,Class Gt6,Permanent,12.0,0.0,,,QLD Gov PWTR
+Jun 2025,Border Rivers and Moonie,Stanthorpe Water Management Area,Unsupplemented,Class Lab,Permanent,24.0,0.0,,,QLD Gov PWTR
+Jun 2025,Border Rivers and Moonie,Macintyre Brook Water Management Area,Unsupplemented,Class Mb1,Permanent,308.0,4500.0,,,QLD Gov PWTR
+Jun 2025,Burdekin Basin,Upper Burdekin Water Management Area,Unsupplemented,Class G2,Permanent,96.0,0.0,,,QLD Gov PWTR
+Jun 2025,Condamine and Balonne,Condamine Balonne Tributaries Water Mangt Area,Unsupplemented,Class 2A,Permanent,705.0,5000.0,,,QLD Gov PWTR
+Jun 2025,Gold Coast,Lower Nerang Water Management Area,Unsupplemented,Class B,Permanent,4.0,0.0,,,QLD Gov PWTR
+Jun 2025,Condamine and Balonne,Lower Balonne Water Management Area,Unsupplemented,Class Lb2,Permanent,2318.0,0.0,,,QLD Gov PWTR
+Jun 2025,Condamine and Balonne,Upper Condamine Water Management Area,Unsupplemented,Class Ck1,Permanent,358.0,0.0,,,QLD Gov PWTR
+Jun 2025,Moreton,Central Lockyer Valley Water Supply Scheme,Supplemented,Medium,Permanent,17.0,0.0,,,QLD Gov PWTR
+Jun 2025,Condamine and Balonne,Maranoa River Water Supply Scheme,Supplemented,Medium,Permanent,30.0,0.0,,,QLD Gov PWTR
+Jun 2025,Moreton,Warrill Valley Water Supply Scheme,Supplemented,Medium,Permanent,46.0,0.0,,,QLD Gov PWTR
+Jun 2025,Moreton,Central Lockyer Valley Water Supply Scheme,Supplemented,Medium,Permanent,160.0,0.0,,,QLD Gov PWTR
+Jun 2025,Moreton,Central Brisbane River Water Supply Scheme,Supplemented,Medium,Permanent,4.0,1000.0,,,QLD Gov PWTR
+Jun 2025,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,Medium,Permanent,24.0,2600.0,,,QLD Gov PWTR
+Jun 2025,Fitzroy Basin,Rookwood Weir Water Supply Scheme,Supplemented,Medium,Permanent,7560.0,1800.0,,,QLD Gov PWTR
+Jun 2025,Logan Basin,Logan River Water Supply Scheme,Supplemented,Medium,Permanent,10.0,0.0,,,QLD Gov PWTR
+Jun 2025,Burnett Basin,Upper Burnett Water Supply Scheme,Supplemented,Medium,Permanent,14.0,1000.0,,,QLD Gov PWTR
+Jun 2025,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,395.0,2750.0,,,QLD Gov PWTR
+Jun 2025,Burnett Basin,Boyne River And Tarong Water Supply Scheme,Supplemented,High,Permanent,1.0,0.0,,,QLD Gov PWTR
+Jun 2025,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,Medium,Permanent,227.0,0.0,,,QLD Gov PWTR
+Jun 2025,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,Medium,Permanent,340.0,6000.0,,,QLD Gov PWTR
+Jun 2025,Barron,Mareeba Dimbulah Water Supply Scheme,Supplemented,Medium,Permanent,121.0,0.0,,,QLD Gov PWTR
+May 2025,Border Rivers and Moonie,Stanthorpe Water Management Area,Unsupplemented,Class Laa,Permanent,3.0,6667.0,,,QLD Gov PWTR
+May 2025,Fitzroy Basin,Dawson Valley Water Management Area,Unsupplemented,Class 10A,Permanent,82.0,0.0,,,QLD Gov PWTR
+May 2025,Condamine and Balonne,Upper Condamine Water Management Area,Unsupplemented,Class Cs2,Permanent,72.0,3611.0,,,QLD Gov PWTR
+May 2025,Condamine and Balonne,Gowrie Oakey Creek Water Management Area,Unsupplemented,Class Gt6,Permanent,48.0,0.0,,,QLD Gov PWTR
+May 2025,Condamine and Balonne,Condamine Balonne Tributaries Water Mangt Area,Unsupplemented,Class 5B,Permanent,450.0,0.0,,,QLD Gov PWTR
+May 2025,Burdekin Basin,Upper Burdekin Water Management Area,Unsupplemented,Class G2,Permanent,38.0,500.0,,,QLD Gov PWTR
+May 2025,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,3046.0,0.0,,,QLD Gov PWTR
+May 2025,Barron,Barron Water Management Area,Unsupplemented,Class Cb,Permanent,54.0,1919.0,,,QLD Gov PWTR
+May 2025,Burnett Basin,Upper Burnett Water Supply Scheme,Supplemented,Medium,Permanent,100.0,1015.0,,,QLD Gov PWTR
+May 2025,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,312.0,3625.0,,,QLD Gov PWTR
+May 2025,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,Medium,Permanent,240.0,0.0,,,QLD Gov PWTR
+May 2025,Barron,Mareeba Dimbulah Water Supply Scheme,Supplemented,Medium,Permanent,216.0,3000.0,,,QLD Gov PWTR
+May 2025,Logan Basin,Christmas Creek Water Management Area,Unsupplemented,Class 6B,Permanent,95.0,0.0,,,QLD Gov PWTR
+May 2025,Fitzroy Basin,Nogoa Mackenzie Water Management Area,Unsupplemented,Class 3A,Permanent,529.0,0.0,,,QLD Gov PWTR
+May 2025,Wet Tropics,Liverpool Creek Water Management Area,Unsupplemented,Class B,Permanent,178.0,0.0,,,QLD Gov PWTR
+May 2025,Fitzroy Basin,Rookwood Weir Water Supply Scheme,Supplemented,High,Permanent,16250.0,0.0,,,QLD Gov PWTR
+May 2025,Mary Basin,Mary Valley Water Supply Scheme,Supplemented,Medium,Permanent,62.0,1650.0,,,QLD Gov PWTR
+May 2025,Moreton,Warrill Valley Water Supply Scheme,Supplemented,Medium,Permanent,223.0,0.0,,,QLD Gov PWTR
+May 2025,Pioneer Valley,Eton Water Supply Scheme,Supplemented,High,Permanent,359.0,0.0,,,QLD Gov PWTR
+May 2025,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,Medium,Permanent,54.0,0.0,,,QLD Gov PWTR
+May 2025,Whitsunday Resource Operations Plan,Proserpine River Water Supply Scheme,Supplemented,Medium,Permanent,5.0,0.0,,,QLD Gov PWTR
+May 2025,Fitzroy Basin,Fitzroy Barrage Water Supply Scheme,Supplemented,Medium,Permanent,24.0,1500.0,,,QLD Gov PWTR
+Apr 2025,Condamine and Balonne,Upper Condamine Water Supply Scheme,Supplemented,Medium,Permanent,110.0,4500.0,,,QLD Gov PWTR
+Apr 2025,Barron,Mareeba Dimbulah Water Supply Scheme,Supplemented,Medium,Permanent,104.0,0.0,,,QLD Gov PWTR
+Apr 2025,Border Rivers and Moonie,Border Rivers Water Supply Scheme,Supplemented,Medium,Permanent,24.0,0.0,,,QLD Gov PWTR
+Apr 2025,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,Medium,Permanent,50.0,5000.0,,,QLD Gov PWTR
+Apr 2025,Burnett Basin,Barker Barambah Water Supply Scheme,Supplemented,Medium,Permanent,72.0,0.0,,,QLD Gov PWTR
+Apr 2025,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,561.0,3000.0,,,QLD Gov PWTR
+Apr 2025,Burnett Basin,Upper Burnett Water Supply Scheme,Supplemented,Medium,Permanent,275.0,1020.0,,,QLD Gov PWTR
+Apr 2025,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,216.0,5750.0,,,QLD Gov PWTR
+Apr 2025,Border Rivers and Moonie,Border Rivers Water Management Area,Unsupplemented,Class Mac1,Permanent,600.0,0.0,,,QLD Gov PWTR
+Apr 2025,Moreton,Warrill Valley Water Supply Scheme,Supplemented,Medium,Permanent,532.0,2000.0,,,QLD Gov PWTR
+Apr 2025,Whitsunday Resource Operations Plan,Proserpine River Water Supply Scheme,Supplemented,Medium,Permanent,47.0,0.0,,,QLD Gov PWTR
+Apr 2025,Fitzroy Basin,Nogoa Mackenzie Water Management Area,Unsupplemented,Class 0A,Permanent,38.0,0.0,,,QLD Gov PWTR
+Apr 2025,Burnett Basin,Barker Barambah Creeks Water Management Area,Unsupplemented,Class 2H,Permanent,51.0,0.0,,,QLD Gov PWTR
+Apr 2025,Burdekin Basin,Upper Burdekin Water Management Area,Unsupplemented,Class G3,Permanent,936.0,5929.0,,,QLD Gov PWTR
+Apr 2025,Border Rivers and Moonie,Upper Weir River Water Management Area,Unsupplemented,Class Uw1A,Permanent,3513.0,0.0,,,QLD Gov PWTR
+Apr 2025,Border Rivers and Moonie,Stanthorpe Water Management Area,Unsupplemented,Class Usb,Permanent,12.0,0.0,,,QLD Gov PWTR
+Apr 2025,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,Medium,Permanent,852.0,0.0,,,QLD Gov PWTR
+Mar 2025,Logan Basin,Logan River Water Management Area,Unsupplemented,Class 3C,Permanent,150.0,471.0,,,QLD Gov PWTR
+Mar 2025,Condamine and Balonne,Gowrie Oakey Creek Water Management Area,Unsupplemented,Class Gt7,Permanent,36.0,0.0,,,QLD Gov PWTR
+Mar 2025,Border Rivers and Moonie,Moonie Water Management Area,Unsupplemented,Class D,Permanent,3980.0,3500.0,,,QLD Gov PWTR
+Mar 2025,Border Rivers and Moonie,Stanthorpe Water Management Area,Unsupplemented,Class Lbb,Permanent,50.0,0.0,,,QLD Gov PWTR
+Mar 2025,Moreton,Central Lockyer Valley Water Supply Scheme,Supplemented,Medium,Permanent,70.0,1000.0,,,QLD Gov PWTR
+Mar 2025,Whitsunday Resource Operations Plan,Proserpine River Water Supply Scheme,Supplemented,Medium,Permanent,295.0,0.0,,,QLD Gov PWTR
+Mar 2025,Barron,Mareeba Dimbulah Water Supply Scheme,Supplemented,Medium,Permanent,369.0,3228.0,,,QLD Gov PWTR
+Mar 2025,Burnett Basin,Boyne River And Tarong Water Supply Scheme,Supplemented,High,Permanent,20.0,0.0,,,QLD Gov PWTR
+Mar 2025,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,326.0,3450.0,,,QLD Gov PWTR
+Mar 2025,Logan Basin,Logan River Water Supply Scheme,Supplemented,Medium,Permanent,595.0,1022.0,,,QLD Gov PWTR
+Mar 2025,Mary Basin,Cedar Pocket Water Supply Scheme,Supplemented,Medium,Permanent,20.0,1000.0,,,QLD Gov PWTR
+Mar 2025,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,Medium,Permanent,280.0,2700.0,,,QLD Gov PWTR
+Mar 2025,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,High,Permanent,350.0,0.0,,,QLD Gov PWTR
+Feb 2025,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,372.0,3478.0,,,QLD Gov PWTR
+Feb 2025,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,High,Permanent,311.0,0.0,,,QLD Gov PWTR
+Feb 2025,Barron,Mareeba Dimbulah Water Supply Scheme,Supplemented,Medium,Permanent,356.0,3540.0,,,QLD Gov PWTR
+Feb 2025,Valley) 2002 Whitsunday Resource Operations Plan,Proserpine River Water Supply Scheme,Supplemented,Medium,Permanent,300.0,0.0,,,QLD Gov PWTR
+Feb 2025,Condamine and Balonne,Chinchilla Weir Water Supply Scheme,Supplemented,Medium,Permanent,7.0,3750.0,,,QLD Gov PWTR
+Feb 2025,Condamine and Balonne,St George Water Supply Scheme,Supplemented,Medium,Permanent,10.0,0.0,,,QLD Gov PWTR
+Feb 2025,Fitzroy Basin,Fitzroy Barrage Water Supply Scheme,Supplemented,Medium,Permanent,25.0,0.0,,,QLD Gov PWTR
+Feb 2025,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,High,Permanent,1603.0,7500.0,,,QLD Gov PWTR
+Feb 2025,Fitzroy Basin,Rookwood Weir Water Supply Scheme,Supplemented,High,Permanent,22100.0,0.0,,,QLD Gov PWTR
+Feb 2025,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,Medium,Permanent,20.0,0.0,,,QLD Gov PWTR
+Feb 2025,Mary Basin,Wide Bay Water Supply Scheme,Supplemented,Medium,Permanent,30.0,1000.0,,,QLD Gov PWTR
+Feb 2025,Moreton,Warrill Valley Water Supply Scheme,Supplemented,Medium,Permanent,16.0,1500.0,,,QLD Gov PWTR
+Feb 2025,Pioneer Valley,Eton Water Supply Scheme,Supplemented,High,Permanent,210.0,0.0,,,QLD Gov PWTR
+Jan 2025,Barron,Barron Water Management Area,Unsupplemented,Class Cb,Permanent,55.0,0.0,,,QLD Gov PWTR
+Jan 2025,Border Rivers and Moonie,Moonie Water Management Area,Unsupplemented,Class L,Permanent,18.0,5000.0,,,QLD Gov PWTR
+Jan 2025,Burnett Basin,Upper Burnett & Nogo Rivers Water Management Area,Unsupplemented,Class 6O,Permanent,25.0,0.0,,,QLD Gov PWTR
+Jan 2025,Condamine and Balonne,Gowrie Oakey Creek Water Management Area,Unsupplemented,Class Gt7,Permanent,12.0,0.0,,,QLD Gov PWTR
+Jan 2025,Condamine and Balonne,Lower Balonne Water Management Area,Unsupplemented,Class Lb3,Permanent,1237.0,0.0,,,QLD Gov PWTR
+Jan 2025,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,High,Permanent,50.0,0.0,,,QLD Gov PWTR
+Jan 2025,Moreton,Central Brisbane River Water Supply Scheme,Supplemented,Medium,Permanent,4.0,0.0,,,QLD Gov PWTR
+Jan 2025,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,Medium,Permanent,10.0,0.0,,,QLD Gov PWTR
+Jan 2025,Barron,Mareeba Dimbulah Water Supply Scheme,Supplemented,Medium,Permanent,1152.0,4074.0,,,QLD Gov PWTR
+Jan 2025,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,Medium,Permanent,68.0,5000.0,,,QLD Gov PWTR
+Jan 2025,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,Medium,Permanent,1636.0,0.0,,,QLD Gov PWTR
+Jan 2025,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,2214.0,0.0,,,QLD Gov PWTR
+Jan 2025,Burnett Basin,Upper Burnett Water Supply Scheme,Supplemented,Medium,Permanent,305.0,1100.0,,,QLD Gov PWTR
+Jan 2025,Fitzroy Basin,Callide Valley Water Supply Scheme,Supplemented,Risk,Permanent,80.0,0.0,,,QLD Gov PWTR
+Jan 2025,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,Medium,Permanent,138.0,0.0,,,QLD Gov PWTR
+Jan 2025,Fitzroy Basin,Fitzroy Barrage Water Supply Scheme,Supplemented,Medium,Permanent,2.0,1250.0,,,QLD Gov PWTR
+Jan 2025,Pioneer Valley,Eton Water Supply Scheme,Supplemented,High,Permanent,38.0,0.0,,,QLD Gov PWTR
+Jan 2025,Moreton,Warrill Valley Water Supply Scheme,Supplemented,Medium,Permanent,15.0,0.0,,,QLD Gov PWTR
+Dec 2024,Burnett Basin,Upper Burnett Water Supply Scheme,Supplemented,Medium,Permanent,220.0,588.0,,,QLD Gov PWTR
+Dec 2024,Fitzroy Basin,Fitzroy Barrage Water Supply Scheme,Supplemented,Medium,Permanent,10.0,0.0,,,QLD Gov PWTR
+Dec 2024,Moreton,Lower Lockyer Valley Water Supply Scheme,Supplemented,Medium,Permanent,184.0,0.0,,,QLD Gov PWTR
+Dec 2024,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,4376.0,5773.0,,,QLD Gov PWTR
+Dec 2024,Logan Basin,Logan River Water Supply Scheme,Supplemented,Medium,Permanent,150.0,1100.0,,,QLD Gov PWTR
+Dec 2024,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,Medium,Permanent,150.0,35.0,,,QLD Gov PWTR
+Dec 2024,Moreton,Central Brisbane River Water Supply Scheme,Supplemented,Medium,Permanent,4.0,0.0,,,QLD Gov PWTR
+Dec 2024,Burnett Basin,Boyne River And Tarong Water Supply Scheme,Supplemented,High,Permanent,3.0,0.0,,,QLD Gov PWTR
+Dec 2024,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,70.0,0.0,,,QLD Gov PWTR
+Dec 2024,Border Rivers and Moonie,Border Rivers Water Supply Scheme,Supplemented,Medium,Permanent,180.0,0.0,,,QLD Gov PWTR
+Dec 2024,Burnett Basin,Barker Barambah Water Supply Scheme,Supplemented,Medium,Permanent,40.0,0.0,,,QLD Gov PWTR
+Dec 2024,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,Medium,Permanent,1.0,0.0,,,QLD Gov PWTR
+Dec 2024,Barron,Mareeba Dimbulah Water Supply Scheme,Supplemented,Medium,Permanent,1245.0,3310.0,,,QLD Gov PWTR
+Dec 2024,Pioneer Valley,Eton Water Supply Scheme,Supplemented,High,Permanent,171.0,0.0,,,QLD Gov PWTR
+Dec 2024,Barron,Barron Water Management Area,Unsupplemented,Class Cb,Permanent,14.0,0.0,,,QLD Gov PWTR
+Dec 2024,Border Rivers and Moonie,Border Rivers Water Management Area,Unsupplemented,Class Mac1,Permanent,107.0,0.0,,,QLD Gov PWTR
+Dec 2024,Border Rivers and Moonie,Stanthorpe Water Management Area,Unsupplemented,Class Uqpa,Permanent,2.0,0.0,,,QLD Gov PWTR
+Dec 2024,Condamine and Balonne,Condamine Balonne Tributaries Water Mangt Area,Unsupplemented,Class 7A,Permanent,2.0,0.0,,,QLD Gov PWTR
+Dec 2024,Wet Tropics,Liverpool Creek Water Management Area,Unsupplemented,Class B,Permanent,900.0,0.0,,,QLD Gov PWTR
+Dec 2024,Moreton,Warrill Valley Water Supply Scheme,Supplemented,Medium,Permanent,116.0,0.0,,,QLD Gov PWTR
+Nov 2024,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,Medium,Permanent,1.0,0.0,,,QLD Gov PWTR
+Nov 2024,Barron,Mareeba Dimbulah Water Supply Scheme,Supplemented,Medium,Permanent,3775.0,3442.0,,,QLD Gov PWTR
+Nov 2024,Fitzroy Basin,Rookwood Weir Water Supply Scheme,Supplemented,Medium,Permanent,837.0,883.0,,,QLD Gov PWTR
+Nov 2024,Fitzroy Basin,Fitzroy Water Management Area,Unsupplemented,Class 5A,Permanent,152.0,0.0,,,QLD Gov PWTR
+Nov 2024,Condamine and Balonne,Condamine Balonne Tributaries Water Mangt Area,Unsupplemented,Class 3A,Permanent,1175.0,0.0,,,QLD Gov PWTR
+Nov 2024,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,High,Permanent,216.0,0.0,,,QLD Gov PWTR
+Nov 2024,Pioneer Valley,Eton Water Supply Scheme,Supplemented,High,Permanent,475.0,0.0,,,QLD Gov PWTR
+Nov 2024,Border Rivers and Moonie,Border Rivers Water Supply Scheme,Supplemented,Medium,Permanent,1485.0,5310.0,,,QLD Gov PWTR
+Nov 2024,Moreton,Lower Lockyer Valley Water Supply Scheme,Supplemented,Medium,Permanent,10.0,0.0,,,QLD Gov PWTR
+Nov 2024,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,Medium,Permanent,32.0,2344.0,,,QLD Gov PWTR
+Nov 2024,Moreton,Warrill Valley Water Supply Scheme,Supplemented,Medium,Permanent,270.0,0.0,,,QLD Gov PWTR
+Nov 2024,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,22.0,0.0,,,QLD Gov PWTR
+Nov 2024,Fitzroy Basin,Fitzroy Barrage Water Supply Scheme,Supplemented,Medium,Permanent,44.0,0.0,,,QLD Gov PWTR
+Nov 2024,Condamine and Balonne,Upper Condamine Water Supply Scheme,Supplemented,Medium,Permanent,110.0,0.0,,,QLD Gov PWTR
+Nov 2024,Condamine and Balonne,St George Water Supply Scheme,Supplemented,Medium,Permanent,2.0,0.0,,,QLD Gov PWTR
+Nov 2024,Burnett Basin,Upper Burnett Water Supply Scheme,Supplemented,Medium,Permanent,571.0,1385.0,,,QLD Gov PWTR
+Nov 2024,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,196.0,3007.0,,,QLD Gov PWTR
+Nov 2024,Burnett Basin,Boyne River And Tarong Water Supply Scheme,Supplemented,High,Permanent,15.0,0.0,,,QLD Gov PWTR
+Oct 2024,Wet Tropics,Tully Water Management Area,Unsupplemented,Class B,Permanent,458.0,0.0,,,QLD Gov PWTR
+Oct 2024,Condamine and Balonne,Upper Condamine Water Management Area,Unsupplemented,Class Cs2,Permanent,12.0,4000.0,,,QLD Gov PWTR
+Oct 2024,Barron,Barron Water Management Area,Unsupplemented,Class Cb,Permanent,630.0,3146.0,,,QLD Gov PWTR
+Oct 2024,Burdekin Basin,Haughton Water Management Area,Unsupplemented,Class B1,Permanent,39.0,0.0,,,QLD Gov PWTR
+Oct 2024,Wet Tropics,Lower Johnstone Water Management Area,Unsupplemented,Class B,Permanent,3962.0,0.0,,,QLD Gov PWTR
+Oct 2024,Burnett Basin,Barker Barambah Creeks Water Management Area,Unsupplemented,Class 2H,Permanent,95.0,0.0,,,QLD Gov PWTR
+Oct 2024,Condamine and Balonne,Condamine Balonne Tributaries Water Mangt Area,Unsupplemented,Class 7C,Permanent,120.0,0.0,,,QLD Gov PWTR
+Oct 2024,Condamine and Balonne,Gowrie Oakey Creek Water Management Area,Unsupplemented,Class Gb1C,Permanent,48.0,8333.0,,,QLD Gov PWTR
+Oct 2024,Fitzroy Basin,Fitzroy Water Management Area,Unsupplemented,Class 5A,Permanent,56.0,0.0,,,QLD Gov PWTR
+Oct 2024,Fitzroy Basin,Fitzroy Barrage Water Supply Scheme,Supplemented,Medium,Permanent,5.0,0.0,,,QLD Gov PWTR
+Oct 2024,Pioneer Valley,Eton Water Supply Scheme,Supplemented,High,Permanent,9.0,0.0,,,QLD Gov PWTR
+Oct 2024,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,Medium,Permanent,25783.0,0.0,,,QLD Gov PWTR
+Oct 2024,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,High,Permanent,40.0,0.0,,,QLD Gov PWTR
+Oct 2024,Moreton,Warrill Valley Water Supply Scheme,Supplemented,Medium,Permanent,1.0,0.0,,,QLD Gov PWTR
+Oct 2024,Moreton,Lower Lockyer Valley Water Supply Scheme,Supplemented,Medium,Permanent,74.0,0.0,,,QLD Gov PWTR
+Oct 2024,Mary Basin,Mary Valley Water Supply Scheme,Supplemented,Medium,Permanent,42.0,1500.0,,,QLD Gov PWTR
+Oct 2024,Logan Basin,Logan River Water Supply Scheme,Supplemented,Medium,Permanent,262.0,0.0,,,QLD Gov PWTR
+Oct 2024,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,1012.0,5900.0,,,QLD Gov PWTR
+Oct 2024,Condamine and Balonne,Chinchilla Weir Water Supply Scheme,Supplemented,Medium,Permanent,1.0,2800.0,,,QLD Gov PWTR
+Oct 2024,Burnett Basin,Upper Burnett Water Supply Scheme,Supplemented,Medium,Permanent,300.0,1200.0,,,QLD Gov PWTR
+Oct 2024,Burnett Basin,Barker Barambah Water Supply Scheme,Supplemented,Medium,Permanent,260.0,0.0,,,QLD Gov PWTR
+Oct 2024,Condamine and Balonne,St George Water Supply Scheme,Supplemented,Medium,Permanent,470.0,6640.0,,,QLD Gov PWTR
+Oct 2024,Border Rivers and Moonie,Border Rivers Water Supply Scheme,Supplemented,Medium,Permanent,53.0,1594.0,,,QLD Gov PWTR
+Oct 2024,Barron,Mareeba Dimbulah Water Supply Scheme,Supplemented,Medium,Permanent,192.0,3410.0,,,QLD Gov PWTR
+Sep 2024,Barron,Mareeba Dimbulah Water Supply Scheme,Supplemented,Medium,Permanent,450.0,4280.0,,,QLD Gov PWTR
+Sep 2024,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,High,Permanent,50.0,0.0,,,QLD Gov PWTR
+Sep 2024,Fitzroy Basin,Fitzroy Barrage Water Supply Scheme,Supplemented,Medium,Permanent,2.0,0.0,,,QLD Gov PWTR
+Sep 2024,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,Medium,Permanent,1.0,3000.0,,,QLD Gov PWTR
+Sep 2024,Burnett Basin,Upper Burnett Water Supply Scheme,Supplemented,Medium,Permanent,1290.0,1218.0,,,QLD Gov PWTR
+Sep 2024,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,305.0,3250.0,,,QLD Gov PWTR
+Sep 2024,Burnett Basin,Barker Barambah Water Supply Scheme,Supplemented,Medium,Permanent,10.0,1260.0,,,QLD Gov PWTR
+Sep 2024,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,Medium,Permanent,517.0,250.0,,,QLD Gov PWTR
+Sep 2024,Wet Tropics,Tully Water Management Area,Unsupplemented,Class B,Permanent,328.0,0.0,,,QLD Gov PWTR
+Sep 2024,"Warrego, Paroo, Bulloo and Nebine",Lower Warrego Water Management Area,Unsupplemented,Class We,Permanent,40.0,1000.0,,,QLD Gov PWTR
+Sep 2024,Logan Basin,Christmas Creek Water Management Area,Unsupplemented,Class 6B,Permanent,107.0,0.0,,,QLD Gov PWTR
+Sep 2024,Condamine and Balonne,Lower Balonne Water Management Area,Unsupplemented,Class Lb1,Permanent,1211.0,8000.0,,,QLD Gov PWTR
+Sep 2024,Condamine and Balonne,Gowrie Oakey Creek Water Management Area,Unsupplemented,Class Gb1C,Permanent,48.0,0.0,,,QLD Gov PWTR
+Sep 2024,Border Rivers and Moonie,Stanthorpe Water Management Area,Unsupplemented,Class 15Mb,Permanent,300.0,0.0,,,QLD Gov PWTR
+Sep 2024,Moreton,Central Lockyer Valley Water Supply Scheme,Supplemented,Medium,Permanent,110.0,0.0,,,QLD Gov PWTR
+Sep 2024,Barron,Barron Water Management Area,Unsupplemented,Class Hb,Permanent,87.0,0.0,,,QLD Gov PWTR
+Sep 2024,Fitzroy Basin,Rookwood Weir Water Supply Scheme,Supplemented,Medium,Permanent,500.0,0.0,,,QLD Gov PWTR
+Sep 2024,Moreton,Central Brisbane River Water Supply Scheme,Supplemented,Medium,Permanent,5.0,4000.0,,,QLD Gov PWTR
+Sep 2024,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,High,Permanent,218.0,0.0,,,QLD Gov PWTR
+Sep 2024,Pioneer Valley,Eton Water Supply Scheme,Supplemented,High,Permanent,316.0,242.0,,,QLD Gov PWTR
+Aug 2024,Border Rivers and Moonie,Moonie Water Management Area,Unsupplemented,Class C,Permanent,5866.0,1534.0,,,QLD Gov PWTR
+Aug 2024,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,Medium,Permanent,368.0,0.0,,,QLD Gov PWTR
+Aug 2024,Barron,Barron Water Management Area,Unsupplemented,Class Cb,Permanent,40.0,2500.0,,,QLD Gov PWTR
+Aug 2024,Wet Tropics,Tully Water Management Area,Unsupplemented,Class B,Permanent,1588.0,0.0,,,QLD Gov PWTR
+Aug 2024,Logan Basin,Running Creek Water Management Area,Unsupplemented,Class 5B,Permanent,31.0,0.0,,,QLD Gov PWTR
+Aug 2024,Logan Basin,Logan River Water Management Area,Unsupplemented,Class 3C,Permanent,34.0,0.0,,,QLD Gov PWTR
+Aug 2024,Condamine and Balonne,Upper Condamine Water Management Area,Unsupplemented,Class Ct2,Permanent,10.0,2000.0,,,QLD Gov PWTR
+Aug 2024,Condamine and Balonne,Lower Balonne Water Management Area,Unsupplemented,Class Lb1,Permanent,2640.0,0.0,,,QLD Gov PWTR
+Aug 2024,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,High,Permanent,100.0,0.0,,,QLD Gov PWTR
+Aug 2024,Moreton,Warrill Valley Water Supply Scheme,Supplemented,Medium,Permanent,473.0,3000.0,,,QLD Gov PWTR
+Aug 2024,Mary Basin,Mary Valley Water Supply Scheme,Supplemented,Medium,Permanent,4.0,0.0,,,QLD Gov PWTR
+Aug 2024,Moreton,Central Brisbane River Water Supply Scheme,Supplemented,Medium,Permanent,40.0,2000.0,,,QLD Gov PWTR
+Aug 2024,Logan Basin,Logan River Water Supply Scheme,Supplemented,Medium,Permanent,10.0,0.0,,,QLD Gov PWTR
+Aug 2024,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,111.0,3250.0,,,QLD Gov PWTR
+Aug 2024,Barron,Mareeba Dimbulah Water Supply Scheme,Supplemented,Medium,Permanent,471.0,3756.0,,,QLD Gov PWTR
+Aug 2024,Fitzroy Basin,Rookwood Weir Water Supply Scheme,Supplemented,Medium,Permanent,266.0,1138.0,,,QLD Gov PWTR
+Aug 2024,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,Medium,Permanent,1701.0,0.0,,,QLD Gov PWTR
+Aug 2024,Burnett Basin,Barker Barambah Water Supply Scheme,Supplemented,Medium,Permanent,76.0,0.0,,,QLD Gov PWTR
+Aug 2024,Border Rivers and Moonie,Border Rivers Water Supply Scheme,Supplemented,Medium,Permanent,30.0,0.0,,,QLD Gov PWTR
+Aug 2024,Burnett Basin,Upper Burnett Water Supply Scheme,Supplemented,Medium,Permanent,10.0,0.0,,,QLD Gov PWTR
+Aug 2024,Condamine and Balonne,St George Water Supply Scheme,Supplemented,Medium,Permanent,475.0,0.0,,,QLD Gov PWTR
+Aug 2024,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,1602.0,0.0,,,QLD Gov PWTR
+Aug 2024,Condamine and Balonne,Gowrie Oakey Creek Water Management Area,Unsupplemented,Class Ga1A,Permanent,114.0,0.0,,,QLD Gov PWTR
+Aug 2024,Border Rivers and Moonie,Border Rivers Water Management Area,Unsupplemented,Class Dum1,Permanent,3.0,0.0,,,QLD Gov PWTR
+Jul 2024,Barron,Barron Water Management Area,Unsupplemented,Class Cb,Permanent,68.0,2328.0,,,QLD Gov PWTR
+Jul 2024,Border Rivers and Moonie,Stanthorpe Water Management Area,Unsupplemented,Class Usb,Permanent,36.0,0.0,,,QLD Gov PWTR
+Jul 2024,Condamine and Balonne,Condamine Balonne Tributaries Water Mangt Area,Unsupplemented,Class 7B,Permanent,48.0,0.0,,,QLD Gov PWTR
+Jul 2024,Fitzroy Basin,Nogoa Mackenzie Water Management Area,Unsupplemented,Class 1A,Permanent,2174.0,0.0,,,QLD Gov PWTR
+Jul 2024,Logan Basin,Running Creek Water Management Area,Unsupplemented,Class 5B,Permanent,607.0,0.0,,,QLD Gov PWTR
+Jul 2024,"Warrego, Paroo, Bulloo and Nebine",Upper Warrego Water Management Area,Unsupplemented,Class We,Permanent,10.0,0.0,,,QLD Gov PWTR
+Jul 2024,Wet Tropics,Tully Water Management Area,Unsupplemented,Class B,Permanent,418.0,0.0,,,QLD Gov PWTR
+Jul 2024,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,High,Permanent,261.0,0.0,,,QLD Gov PWTR
+Jul 2024,Moreton,Warrill Valley Water Supply Scheme,Supplemented,Medium,Permanent,81.0,0.0,,,QLD Gov PWTR
+Jul 2024,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,High,Permanent,20.0,6625.0,,,QLD Gov PWTR
+Jul 2024,Moreton,Central Lockyer Valley Water Supply Scheme,Supplemented,Medium,Permanent,20.0,560.0,,,QLD Gov PWTR
+Jul 2024,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,Medium,Permanent,10.0,2300.0,,,QLD Gov PWTR
+Jul 2024,Barron,Mareeba Dimbulah Water Supply Scheme,Supplemented,Medium,Permanent,591.0,2731.0,,,QLD Gov PWTR
+Jul 2024,Logan Basin,Logan River Water Supply Scheme,Supplemented,Medium,Permanent,825.0,1000.0,,,QLD Gov PWTR
+Jul 2024,Fitzroy Basin,Rookwood Weir Water Supply Scheme,Supplemented,Medium,Permanent,11789.0,1459.0,,,QLD Gov PWTR
+Jul 2024,Mary Basin,Cedar Pocket Water Supply Scheme,Supplemented,Medium,Permanent,35.0,0.0,,,QLD Gov PWTR
+Jul 2024,Fitzroy Basin,Fitzroy Barrage Water Supply Scheme,Supplemented,Medium,Permanent,5.0,0.0,,,QLD Gov PWTR
+Jul 2024,Condamine and Balonne,St George Water Supply Scheme,Supplemented,Medium,Permanent,71.0,6950.0,,,QLD Gov PWTR
+Jul 2024,Burnett Basin,Upper Burnett Water Supply Scheme,Supplemented,Medium,Permanent,10.0,1100.0,,,QLD Gov PWTR
+Jul 2024,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,1111.0,3022.0,,,QLD Gov PWTR
+Jul 2024,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,Medium,Permanent,1014.0,25.0,,,QLD Gov PWTR
+Jun 2024,Barron,Barron Water Management Area,Unsupplemented,Class Cb,Permanent,91.0,0.0,,,QLD Gov PWTR
+Jun 2024,Border Rivers and Moonie,Macintyre Brook Water Management Area,Unsupplemented,Class Mb2,Permanent,32.0,0.0,,,QLD Gov PWTR
+Jun 2024,Burdekin Basin,Haughton Water Management Area,Unsupplemented,Class B1,Permanent,39.0,0.0,,,QLD Gov PWTR
+Jun 2024,Condamine and Balonne,Condamine Balonne Tributaries Water Mangt Area,Unsupplemented,Class 7B,Permanent,10.0,0.0,,,QLD Gov PWTR
+Jun 2024,Logan Basin,Logan River Water Management Area,Unsupplemented,Class 3C,Permanent,17.0,0.0,,,QLD Gov PWTR
+Jun 2024,Pioneer Valley,Pioneer River Water Management Area,Unsupplemented,Class 1B,Permanent,507.0,0.0,,,QLD Gov PWTR
+Jun 2024,Wet Tropics,Tully Water Management Area,Unsupplemented,Class B,Permanent,1015.0,0.0,,,QLD Gov PWTR
+Jun 2024,Whitsunday Resource Operations Plan,Proserpine River Water Supply Scheme,Supplemented,Medium,Permanent,1.0,1.0,,,QLD Gov PWTR
+Jun 2024,Fitzroy Basin,Rookwood Weir Water Supply Scheme,Supplemented,Medium,Permanent,22100.0,0.0,,,QLD Gov PWTR
+Jun 2024,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,36.0,4412.0,,,QLD Gov PWTR
+Jun 2024,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,High,Permanent,798.0,0.0,,,QLD Gov PWTR
+Jun 2024,Pioneer Valley,Eton Water Supply Scheme,Supplemented,High,Permanent,222.0,0.0,,,QLD Gov PWTR
+Jun 2024,Moreton,Warrill Valley Water Supply Scheme,Supplemented,Medium,Permanent,228.0,0.0,,,QLD Gov PWTR
+Jun 2024,Moreton,Lower Lockyer Valley Water Supply Scheme,Supplemented,Medium,Permanent,26.0,0.0,,,QLD Gov PWTR
+Jun 2024,Mary Basin,Wide Bay Water Supply Scheme,Supplemented,Medium,Permanent,9.0,0.0,,,QLD Gov PWTR
+Jun 2024,Mary Basin,Mary Valley Water Supply Scheme,Supplemented,Medium,Permanent,24.0,1000.0,,,QLD Gov PWTR
+Jun 2024,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,Medium,Permanent,15.0,0.0,,,QLD Gov PWTR
+Jun 2024,Logan Basin,Logan River Water Supply Scheme,Supplemented,Medium,Permanent,40.0,0.0,,,QLD Gov PWTR
+Jun 2024,Moreton,Central Lockyer Valley Water Supply Scheme,Supplemented,Medium,Permanent,210.0,0.0,,,QLD Gov PWTR
+Jun 2024,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,Medium,Permanent,230.0,0.0,,,QLD Gov PWTR
+Jun 2024,Burnett Basin,Upper Burnett Water Supply Scheme,Supplemented,Medium,Permanent,100.0,1105.0,,,QLD Gov PWTR
+Jun 2024,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,660.0,3234.0,,,QLD Gov PWTR
+Jun 2024,Burnett Basin,Boyne River And Tarong Water Supply Scheme,Supplemented,High,Permanent,1.0,4400.0,,,QLD Gov PWTR
+Jun 2024,Burnett Basin,Barker Barambah Water Supply Scheme,Supplemented,Medium,Permanent,40.0,2725.0,,,QLD Gov PWTR
+Jun 2024,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,Medium,Permanent,1582.0,250.0,,,QLD Gov PWTR
+Jun 2024,Barron,Mareeba Dimbulah Water Supply Scheme,Supplemented,Medium,Permanent,8.0,3750.0,,,QLD Gov PWTR
+Jun 2024,Condamine and Balonne,Upper Condamine Water Supply Scheme,Supplemented,Medium,Permanent,35.0,0.0,,,QLD Gov PWTR
+May 2024,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,2362.0,0.0,,,QLD Gov PWTR
+May 2024,Condamine and Balonne,Condamine Balonne Tributaries Water Mangt Area,Unsupplemented,Class 9B,Permanent,30.0,2000.0,,,QLD Gov PWTR
+May 2024,Border Rivers and Moonie,Stanthorpe Water Management Area,Unsupplemented,Class Lqptb,Permanent,24.0,0.0,,,QLD Gov PWTR
+May 2024,Border Rivers and Moonie,Macintyre Brook Water Management Area,Unsupplemented,Class Mb2,Permanent,16.0,0.0,,,QLD Gov PWTR
+May 2024,Barron,Barron Water Management Area,Unsupplemented,Class Cb,Permanent,36.0,0.0,,,QLD Gov PWTR
+May 2024,Pioneer Valley,Eton Water Supply Scheme,Supplemented,High,Permanent,389.0,0.0,,,QLD Gov PWTR
+May 2024,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,Medium,Permanent,24.0,417.0,,,QLD Gov PWTR
+May 2024,Mary Basin,Mary Valley Water Supply Scheme,Supplemented,Medium,Permanent,2.0,1100.0,,,QLD Gov PWTR
+May 2024,Mary Basin,Teddington Weir Water Supply Scheme,Supplemented,Medium,Permanent,36.0,0.0,,,QLD Gov PWTR
+May 2024,Fitzroy Basin,Dawson Valley Water Management Area,Unsupplemented,Class 11A,Permanent,642.0,0.0,,,QLD Gov PWTR
+May 2024,Condamine and Balonne,Upper Condamine Water Management Area,Unsupplemented,Class Ct2,Permanent,50.0,3500.0,,,QLD Gov PWTR
+May 2024,Wet Tropics,Tully Water Management Area,Unsupplemented,Class B,Permanent,4106.0,0.0,,,QLD Gov PWTR
+May 2024,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,433.0,1730.0,,,QLD Gov PWTR
+May 2024,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,Medium,Permanent,1458.0,500.0,,,QLD Gov PWTR
+May 2024,Condamine and Balonne,St George Water Supply Scheme,Supplemented,Medium,Permanent,85.0,6882.0,,,QLD Gov PWTR
+May 2024,Condamine and Balonne,Upper Condamine Water Supply Scheme,Supplemented,Medium,Permanent,110.0,0.0,,,QLD Gov PWTR
+May 2024,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,Medium,Permanent,400.0,0.0,,,QLD Gov PWTR
+May 2024,Barron,Mareeba Dimbulah Water Supply Scheme,Supplemented,Medium,Permanent,5.0,3800.0,,,QLD Gov PWTR
+May 2024,Burnett Basin,Upper Burnett Water Supply Scheme,Supplemented,Medium,Permanent,70.0,1400.0,,,QLD Gov PWTR
+Apr 2024,Burnett Basin,Upper Burnett Water Supply Scheme,Supplemented,Medium,Permanent,851.0,1071.0,,,QLD Gov PWTR
+Apr 2024,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,279.0,3400.0,,,QLD Gov PWTR
+Apr 2024,Logan Basin,Logan River Water Supply Scheme,Supplemented,Medium,Permanent,20.0,1000.0,,,QLD Gov PWTR
+Apr 2024,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,Medium,Permanent,2322.0,654.0,,,QLD Gov PWTR
+Apr 2024,Border Rivers and Moonie,Border Rivers Water Supply Scheme,Supplemented,Medium,Permanent,1150.0,4500.0,,,QLD Gov PWTR
+Apr 2024,Barron,Mareeba Dimbulah Water Supply Scheme,Supplemented,Medium,Permanent,125.0,3750.0,,,QLD Gov PWTR
+Apr 2024,Moreton,Central Brisbane River Water Supply Scheme,Supplemented,Medium,Permanent,100.0,5500.0,,,QLD Gov PWTR
+Apr 2024,Moreton,Lower Lockyer Valley Water Supply Scheme,Supplemented,Medium,Permanent,12.0,0.0,,,QLD Gov PWTR
+Apr 2024,Moreton,Warrill Valley Water Supply Scheme,Supplemented,Medium,Permanent,63.0,0.0,,,QLD Gov PWTR
+Apr 2024,Pioneer Valley,Eton Water Supply Scheme,Supplemented,High,Permanent,197.0,0.0,,,QLD Gov PWTR
+Apr 2024,Burnett Basin,Barker Barambah Water Supply Scheme,Supplemented,Medium,Permanent,138.0,1957.0,,,QLD Gov PWTR
+Apr 2024,Burnett Basin,Boyne River And Tarong Water Supply Scheme,Supplemented,High,Permanent,1.0,0.0,,,QLD Gov PWTR
+Apr 2024,Burnett Basin,Barker Barambah Creeks Water Management Area,Unsupplemented,Class 2H,Permanent,150.0,0.0,,,QLD Gov PWTR
+Apr 2024,Burnett Basin,Boyne And Stuart Rivers Water Management Area,Unsupplemented,Class 1K,Permanent,48.0,1375.0,,,QLD Gov PWTR
+Apr 2024,Wet Tropics,Tully Water Management Area,Unsupplemented,Class B,Permanent,245.0,0.0,,,QLD Gov PWTR
+Apr 2024,Fitzroy Basin,Dawson Valley Water Management Area,Unsupplemented,Class 13C,Permanent,29.0,3500.0,,,QLD Gov PWTR
+Apr 2024,Border Rivers and Moonie,Border Rivers Water Management Area,Unsupplemented,Class Mac1,Permanent,1029.0,4800.0,,,QLD Gov PWTR
+Apr 2024,Border Rivers and Moonie,Stanthorpe Water Management Area,Unsupplemented,Class Usb,Permanent,30.0,3333.0,,,QLD Gov PWTR
+Apr 2024,Condamine and Balonne,Condamine Balonne Tributaries Water Mangt Area,Unsupplemented,Class 9C,Permanent,8.0,2000.0,,,QLD Gov PWTR
+Mar 2024,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,Medium,Permanent,3.0,0.0,,,QLD Gov PWTR
+Mar 2024,Fitzroy Basin,Fitzroy Barrage Water Supply Scheme,Supplemented,Medium,Permanent,13.0,1.0,,,QLD Gov PWTR
+Mar 2024,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,538.0,0.0,,,QLD Gov PWTR
+Mar 2024,Burnett Basin,Upper Burnett Water Supply Scheme,Supplemented,Medium,Permanent,72.0,1645.0,,,QLD Gov PWTR
+Mar 2024,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,Medium,Permanent,30.0,2500.0,,,QLD Gov PWTR
+Mar 2024,Logan Basin,Logan River Water Supply Scheme,Supplemented,Medium,Permanent,45.0,0.0,,,QLD Gov PWTR
+Mar 2024,Moreton,Lower Lockyer Valley Water Supply Scheme,Supplemented,Medium,Permanent,12.0,0.0,,,QLD Gov PWTR
+Mar 2024,Moreton,Warrill Valley Water Supply Scheme,Supplemented,High,Permanent,4.0,0.0,,,QLD Gov PWTR
+Mar 2024,Pioneer Valley,Eton Water Supply Scheme,Supplemented,High,Permanent,166.0,0.0,,,QLD Gov PWTR
+Mar 2024,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,High,Permanent,374.0,0.0,,,QLD Gov PWTR
+Mar 2024,Condamine and Balonne,St George Water Supply Scheme,Supplemented,Medium,Permanent,130.0,7000.0,,,QLD Gov PWTR
+Mar 2024,Border Rivers and Moonie,Border Rivers Water Management Area,Unsupplemented,Class Bar1,Permanent,2200.0,0.0,,,QLD Gov PWTR
+Mar 2024,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,5.0,0.0,,,QLD Gov PWTR
+Mar 2024,Burnett Basin,Boyne River And Tarong Water Supply Scheme,Supplemented,High,Permanent,15.0,0.0,,,QLD Gov PWTR
+Mar 2024,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,Medium,Permanent,400.0,0.0,,,QLD Gov PWTR
+Mar 2024,Border Rivers and Moonie,Border Rivers Water Supply Scheme,Supplemented,Medium,Permanent,1485.0,4755.0,,,QLD Gov PWTR
+Mar 2024,Barron,Mareeba Dimbulah Water Supply Scheme,Supplemented,Medium,Permanent,235.0,3936.0,,,QLD Gov PWTR
+Mar 2024,Barron,Barron Water Management Area,Unsupplemented,Class Cb,Permanent,2.0,0.0,,,QLD Gov PWTR
+Mar 2024,Fitzroy Basin,Dawson Valley Water Management Area,Unsupplemented,Class 11A,Permanent,209.0,0.0,,,QLD Gov PWTR
+Mar 2024,Condamine and Balonne,Upper Condamine Water Management Area,Unsupplemented,Class Cg1,Permanent,85.0,0.0,,,QLD Gov PWTR
+Mar 2024,Condamine and Balonne,Gowrie Oakey Creek Water Management Area,Unsupplemented,Class Gb1C,Permanent,48.0,0.0,,,QLD Gov PWTR
+Mar 2024,Border Rivers and Moonie,Stanthorpe Water Management Area,Unsupplemented,Class Lbtb,Permanent,48.0,4000.0,,,QLD Gov PWTR
+Mar 2024,Mary Basin,Mary Valley Water Supply Scheme,Supplemented,Medium,Permanent,50.0,0.0,,,QLD Gov PWTR
+Mar 2024,Moreton,Central Brisbane River Water Supply Scheme,Supplemented,Medium,Permanent,28.0,0.0,,,QLD Gov PWTR
+Feb 2024,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,700.0,5744.0,,,QLD Gov PWTR
+Feb 2024,Barron,Mareeba Dimbulah Water Supply Scheme,Supplemented,Medium,Permanent,85.0,4000.0,,,QLD Gov PWTR
+Feb 2024,Logan Basin,Logan River Water Supply Scheme,Supplemented,Medium,Permanent,4.0,0.0,,,QLD Gov PWTR
+Feb 2024,Condamine and Balonne,Lower Balonne Water Management Area,Unsupplemented,Class Lb1,Permanent,2640.0,0.0,,,QLD Gov PWTR
+Feb 2024,Logan Basin,Running Creek Water Management Area,Unsupplemented,Class 5B,Permanent,87.0,0.0,,,QLD Gov PWTR
+Feb 2024,Pioneer Valley,Eton Water Supply Scheme,Supplemented,High,Permanent,1023.0,0.0,,,QLD Gov PWTR
+Feb 2024,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,Medium,Permanent,432.0,6000.0,,,QLD Gov PWTR
+Feb 2024,Moreton,Central Brisbane River Water Supply Scheme,Supplemented,Medium,Permanent,93.0,1750.0,,,QLD Gov PWTR
+Feb 2024,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,Medium,Permanent,33.0,2300.0,,,QLD Gov PWTR
+Feb 2024,Moreton,Warrill Valley Water Supply Scheme,Supplemented,Medium,Permanent,402.0,3000.0,,,QLD Gov PWTR
+Feb 2024,Fitzroy Basin,Callide Valley Water Supply Scheme,Supplemented,Risk,Permanent,64.0,0.0,,,QLD Gov PWTR
+Feb 2024,Condamine and Balonne,Upper Condamine Water Supply Scheme,Supplemented,Medium,Permanent,47.0,0.0,,,QLD Gov PWTR
+Feb 2024,Condamine and Balonne,St George Water Supply Scheme,Supplemented,Medium,Permanent,480.0,0.0,,,QLD Gov PWTR
+Feb 2024,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,1553.0,3095.0,,,QLD Gov PWTR
+Feb 2024,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,Medium,Permanent,47.0,250.0,,,QLD Gov PWTR
+Feb 2024,Condamine and Balonne,Condamine Balonne Tributaries Water Mangt Area,Unsupplemented,Class 6A,Permanent,235.0,851.0,,,QLD Gov PWTR
+Jan 2024,Logan Basin,Running Creek Water Management Area,Unsupplemented,Class 5B,Permanent,33.0,0.0,,,QLD Gov PWTR
+Jan 2024,Condamine and Balonne,Upper Condamine Water Management Area,Unsupplemented,Class Cg2,Permanent,36.0,2000.0,,,QLD Gov PWTR
+Jan 2024,Condamine and Balonne,Lower Balonne Water Management Area,Unsupplemented,Class Lb1,Permanent,755.0,4100.0,,,QLD Gov PWTR
+Jan 2024,Condamine and Balonne,Condamine Balonne Tributaries Water Mangt Area,Unsupplemented,Class 9B,Permanent,24.0,2500.0,,,QLD Gov PWTR
+Jan 2024,Border Rivers and Moonie,Upper Weir River Water Management Area,Unsupplemented,Class Bri1,Permanent,270.0,0.0,,,QLD Gov PWTR
+Jan 2024,Border Rivers and Moonie,Border Rivers Water Management Area,Unsupplemented,Class Mac1,Permanent,1767.0,0.0,,,QLD Gov PWTR
+Jan 2024,Barron,Barron Water Management Area,Unsupplemented,Class Cb,Permanent,355.0,0.0,,,QLD Gov PWTR
+Jan 2024,Moreton,Central Lockyer Valley Water Supply Scheme,Supplemented,Medium,Permanent,40.0,450.0,,,QLD Gov PWTR
+Jan 2024,Logan Basin,Logan River Water Supply Scheme,Supplemented,Medium,Permanent,25.0,0.0,,,QLD Gov PWTR
+Jan 2024,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,108.0,5807.0,,,QLD Gov PWTR
+Jan 2024,Barron,Mareeba Dimbulah Water Supply Scheme,Supplemented,Medium,Permanent,221.0,3610.0,,,QLD Gov PWTR
+Jan 2024,Border Rivers and Moonie,Border Rivers Water Supply Scheme,Supplemented,Medium,Permanent,1000.0,0.0,,,QLD Gov PWTR
+Jan 2024,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,1153.0,3982.0,,,QLD Gov PWTR
+Jan 2024,Condamine and Balonne,St George Water Supply Scheme,Supplemented,Medium,Permanent,203.0,8394.0,,,QLD Gov PWTR
+Jan 2024,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,Medium,Permanent,290.0,0.0,,,QLD Gov PWTR
+Jan 2024,"Warrego, Paroo, Bulloo and Nebine",Upper Warrego Water Management Area,Unsupplemented,Class We,Permanent,10.0,0.0,,,QLD Gov PWTR
+Jan 2024,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,High,Permanent,168.0,0.0,,,QLD Gov PWTR
+Jan 2024,"Warrego, Paroo, Bulloo and Nebine",Cunnamulla Water Supply Scheme,Supplemented,Medium,Permanent,4.0,0.0,,,QLD Gov PWTR
+Dec 2023,Wet Tropics,Tully Water Management Area,Unsupplemented,Class B,Permanent,106.0,450.0,,,QLD Gov PWTR
+Dec 2023,Border Rivers and Moonie,Macintyre Brook Water Management Area,Unsupplemented,Class Mb2,Permanent,36.0,2778.0,,,QLD Gov PWTR
+Dec 2023,Fitzroy Basin,Dawson Valley Water Management Area,Unsupplemented,Class 11A,Permanent,209.0,0.0,,,QLD Gov PWTR
+Dec 2023,Logan Basin,Christmas Creek Water Management Area,Unsupplemented,Class 6B,Permanent,178.0,281.0,,,QLD Gov PWTR
+Dec 2023,Pioneer Valley,Pioneer River Water Management Area,Unsupplemented,Class 1B,Permanent,507.0,0.0,,,QLD Gov PWTR
+Dec 2023,Moreton,Warrill Valley Water Supply Scheme,Supplemented,Medium,Permanent,3.0,3300.0,,,QLD Gov PWTR
+Dec 2023,Fitzroy Basin,Fitzroy Barrage Water Supply Scheme,Supplemented,Medium,Permanent,24.0,0.0,,,QLD Gov PWTR
+Dec 2023,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,99.0,4000.0,,,QLD Gov PWTR
+Dec 2023,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,Medium,Permanent,700.0,0.0,,,QLD Gov PWTR
+Dec 2023,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,Medium,Permanent,432.0,480.0,,,QLD Gov PWTR
+Dec 2023,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,Medium,Permanent,300.0,0.0,,,QLD Gov PWTR
+Dec 2023,Border Rivers and Moonie,Border Rivers Water Supply Scheme,Supplemented,Medium,Permanent,650.0,0.0,,,QLD Gov PWTR
+Dec 2023,Barron,Mareeba Dimbulah Water Supply Scheme,Supplemented,Medium,Permanent,94.0,2700.0,,,QLD Gov PWTR
+Dec 2023,Mary Basin,Mary Valley Water Supply Scheme,Supplemented,Medium,Permanent,5.0,600.0,,,QLD Gov PWTR
+Dec 2023,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,45.0,0.0,,,QLD Gov PWTR
+Nov 2023,Border Rivers and Moonie,Border Rivers Water Management Area,Unsupplemented,Class Bar1,Permanent,7334.0,0.0,,,QLD Gov PWTR
+Nov 2023,Border Rivers and Moonie,Lower Weir River Water Management Area,Unsupplemented,Class Lw1,Permanent,2933.0,0.0,,,QLD Gov PWTR
+Nov 2023,Border Rivers and Moonie,Stanthorpe Water Management Area,Unsupplemented,Class Laa,Permanent,17.0,3500.0,,,QLD Gov PWTR
+Nov 2023,Condamine and Balonne,Condamine Balonne Tributaries Water Mangt Area,Unsupplemented,Class 7B,Permanent,24.0,1250.0,,,QLD Gov PWTR
+Nov 2023,Condamine and Balonne,Condamine Balonne Water Management Area,Unsupplemented,Class B2,Permanent,10.0,3333.0,,,QLD Gov PWTR
+Nov 2023,Condamine and Balonne,Gowrie Oakey Creek Water Management Area,Unsupplemented,Class Gb1C,Permanent,48.0,0.0,,,QLD Gov PWTR
+Nov 2023,Condamine and Balonne,Upper Condamine Water Management Area,Unsupplemented,Class Ct2,Permanent,58.0,1042.0,,,QLD Gov PWTR
+Nov 2023,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,Medium,Permanent,400.0,0.0,,,QLD Gov PWTR
+Nov 2023,Border Rivers and Moonie,Macintyre Brook Water Supply Scheme,Supplemented,Medium,Permanent,41.0,0.0,,,QLD Gov PWTR
+Nov 2023,Pioneer Valley,Eton Water Supply Scheme,Supplemented,High,Permanent,58.0,0.0,,,QLD Gov PWTR
+Nov 2023,Border Rivers and Moonie,Border Rivers Water Supply Scheme,Supplemented,Medium,Permanent,3691.0,0.0,,,QLD Gov PWTR
+Nov 2023,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,Medium,Permanent,220.0,250.0,,,QLD Gov PWTR
+Nov 2023,Burnett Basin,Boyne River And Tarong Water Supply Scheme,Supplemented,High,Permanent,2.0,1.0,,,QLD Gov PWTR
+Nov 2023,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,High,Permanent,3.0,0.0,,,QLD Gov PWTR
+Nov 2023,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,202.0,6000.0,,,QLD Gov PWTR
+Nov 2023,Logan Basin,Logan River Water Supply Scheme,Supplemented,Medium,Permanent,73.0,1000.0,,,QLD Gov PWTR
+Nov 2023,Mary Basin,Mary Valley Water Supply Scheme,Supplemented,High,Permanent,110.0,0.0,,,QLD Gov PWTR
+Nov 2023,Moreton,Central Brisbane River Water Supply Scheme,Supplemented,Medium,Permanent,16.0,0.0,,,QLD Gov PWTR
+Nov 2023,Moreton,Warrill Valley Water Supply Scheme,Supplemented,Medium,Permanent,52.0,0.0,,,QLD Gov PWTR
+Nov 2023,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,High,Permanent,539.0,0.0,,,QLD Gov PWTR
+Nov 2023,Whitsunday Resource Operations Plan,Proserpine River Water Supply Scheme,Supplemented,Medium,Permanent,381.0,0.0,,,QLD Gov PWTR
+Nov 2023,Barron,Mareeba Dimbulah Water Supply Scheme,Supplemented,Medium,Permanent,132.0,4000.0,,,QLD Gov PWTR
+Oct 2023,Burdekin Basin,Upper Burdekin Water Management Area,Unsupplemented,Class G2,Permanent,216.0,0.0,,,QLD Gov PWTR
+Oct 2023,Burnett Basin,Barker Barambah Water Supply Scheme,Supplemented,Medium,Permanent,25.0,0.0,,,QLD Gov PWTR
+Oct 2023,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,255.0,2750.0,,,QLD Gov PWTR
+Oct 2023,Burnett Basin,Upper Burnett Water Supply Scheme,Supplemented,Medium,Permanent,189.0,0.0,,,QLD Gov PWTR
+Oct 2023,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,High,Permanent,1.0,0.0,,,QLD Gov PWTR
+Oct 2023,Logan Basin,Logan River Water Supply Scheme,Supplemented,Medium,Permanent,18.0,1000.0,,,QLD Gov PWTR
+Oct 2023,Mary Basin,Mary Valley Water Supply Scheme,Supplemented,Medium,Permanent,2.0,0.0,,,QLD Gov PWTR
+Oct 2023,Mary Basin,Teddington Weir Water Supply Scheme,Supplemented,Medium,Permanent,80.0,2250.0,,,QLD Gov PWTR
+Oct 2023,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,High,Permanent,75.0,0.0,,,QLD Gov PWTR
+Oct 2023,Barron,Mareeba Dimbulah Water Supply Scheme,Supplemented,Medium,Permanent,244.0,1814.0,,,QLD Gov PWTR
+Oct 2023,Burnett Basin,Barker Barambah Creeks Water Management Area,Unsupplemented,Class 2J,Permanent,11.0,0.0,,,QLD Gov PWTR
+Oct 2023,Condamine and Balonne,Upper Condamine Water Management Area,Unsupplemented,Class Cg1,Permanent,755.0,5500.0,,,QLD Gov PWTR
+Sep 2023,Mary Basin,Mary Valley Water Supply Scheme,Supplemented,Medium,Permanent,76.0,167.0,,,QLD Gov PWTR
+Sep 2023,Burnett Basin,Upper Burnett Water Supply Scheme,Supplemented,Medium,Permanent,200.0,1730.0,,,QLD Gov PWTR
+Sep 2023,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,104.0,0.0,,,QLD Gov PWTR
+Sep 2023,Burnett Basin,Barker Barambah Water Supply Scheme,Supplemented,Medium,Permanent,625.0,2618.0,,,QLD Gov PWTR
+Sep 2023,Border Rivers and Moonie,Border Rivers Water Supply Scheme,Supplemented,Medium,Permanent,3691.0,0.0,,,QLD Gov PWTR
+Sep 2023,Barron,Mareeba Dimbulah Water Supply Scheme,Supplemented,Medium,Permanent,15.0,3800.0,,,QLD Gov PWTR
+Sep 2023,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,High,Permanent,118.0,0.0,,,QLD Gov PWTR
+Sep 2023,Pioneer Valley,Eton Water Supply Scheme,Supplemented,High,Permanent,19.0,0.0,,,QLD Gov PWTR
+Sep 2023,Moreton,Central Brisbane River Water Supply Scheme,Supplemented,Medium,Permanent,44.0,3500.0,,,QLD Gov PWTR
+Sep 2023,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,5.0,3750.0,,,QLD Gov PWTR
+Sep 2023,Logan Basin,Logan River Water Supply Scheme,Supplemented,Medium,Permanent,45.0,0.0,,,QLD Gov PWTR
+Sep 2023,Gold Coast,Lower Nerang Water Management Area,Unsupplemented,Class A,Permanent,14.0,0.0,,,QLD Gov PWTR
+Sep 2023,Fitzroy Basin,Lower Fitzroy Water Supply Scheme,Supplemented,High,Permanent,3.0,0.0,,,QLD Gov PWTR
+Sep 2023,Border Rivers and Moonie,Border Rivers Water Management Area,Unsupplemented,Class Bar1,Permanent,7334.0,0.0,,,QLD Gov PWTR
+Sep 2023,Border Rivers and Moonie,Lower Weir River Water Management Area,Unsupplemented,Class Lw1,Permanent,2933.0,0.0,,,QLD Gov PWTR
+Sep 2023,Border Rivers and Moonie,Stanthorpe Water Management Area,Unsupplemented,Class Fmc,Permanent,12.0,0.0,,,QLD Gov PWTR
+Sep 2023,Cape York,Endeavour Water Management Area,Unsupplemented,Class 2,Permanent,20.0,0.0,,,QLD Gov PWTR
+Sep 2023,Fitzroy Basin,Fitzroy Barrage Water Supply Scheme,Supplemented,Medium,Permanent,1.0,1.0,,,QLD Gov PWTR
+Sep 2023,Condamine and Balonne,Condamine Balonne Water Management Area,Unsupplemented,Class Cca1,Permanent,510.0,4500.0,,,QLD Gov PWTR
+Sep 2023,Condamine and Balonne,Gowrie Oakey Creek Water Management Area,Unsupplemented,Class Ga1C,Permanent,48.0,0.0,,,QLD Gov PWTR
+Aug 2023,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,High,Permanent,10.0,6000.0,,,QLD Gov PWTR
+Aug 2023,Moreton,Central Lockyer Valley Water Supply Scheme,Supplemented,Medium,Permanent,54.0,250.0,,,QLD Gov PWTR
+Aug 2023,Pioneer Valley,Eton Water Supply Scheme,Supplemented,High,Permanent,257.0,0.0,,,QLD Gov PWTR
+Aug 2023,Burnett Basin,Upper Burnett Water Supply Scheme,Supplemented,Medium,Permanent,300.0,1940.0,,,QLD Gov PWTR
+Aug 2023,Border Rivers and Moonie,Border Rivers Water Supply Scheme,Supplemented,Medium,Permanent,120.0,0.0,,,QLD Gov PWTR
+Aug 2023,Barron,Mareeba Dimbulah Water Supply Scheme,Supplemented,Medium,Permanent,107.0,3810.0,,,QLD Gov PWTR
+Aug 2023,Mary Basin,Mary Valley Water Supply Scheme,Supplemented,Medium,Permanent,250.0,0.0,,,QLD Gov PWTR
+Aug 2023,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,Medium,Permanent,87.0,1960.0,,,QLD Gov PWTR
+Aug 2023,Border Rivers and Moonie,Stanthorpe Water Management Area,Unsupplemented,Class Lbtb,Permanent,84.0,4000.0,,,QLD Gov PWTR
+Aug 2023,Burdekin Basin,Upper Burdekin Water Management Area,Unsupplemented,Class G2,Permanent,148.0,0.0,,,QLD Gov PWTR
+Aug 2023,Condamine and Balonne,Condamine Balonne Water Management Area,Unsupplemented,Class Cb2,Permanent,240.0,1250.0,,,QLD Gov PWTR
+Aug 2023,Condamine and Balonne,Gowrie Oakey Creek Water Management Area,Unsupplemented,Class Ga1A,Permanent,72.0,0.0,,,QLD Gov PWTR
+Aug 2023,Condamine and Balonne,Upper Condamine Water Management Area,Unsupplemented,Class Ci2,Permanent,120.0,3500.0,,,QLD Gov PWTR
+Aug 2023,Barron,Barron Water Management Area,Unsupplemented,Class Cb,Permanent,116.0,0.0,,,QLD Gov PWTR
+Jul 2023,Moreton,Warrill Valley Water Supply Scheme,Supplemented,Medium,Permanent,59.0,3000.0,,,QLD Gov PWTR
+Jul 2023,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,319.0,3295.0,,,QLD Gov PWTR
+Jul 2023,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,Medium,Permanent,32.0,2100.0,,,QLD Gov PWTR
+Jul 2023,Logan Basin,Logan River Water Supply Scheme,Supplemented,Medium,Permanent,87.0,426.0,,,QLD Gov PWTR
+Jul 2023,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,1125.0,2252.0,,,QLD Gov PWTR
+Jul 2023,Fitzroy Basin,Fitzroy Barrage Water Supply Scheme,Supplemented,Medium,Permanent,147.0,833.0,,,QLD Gov PWTR
+Jul 2023,Condamine and Balonne,St George Water Supply Scheme,Supplemented,Medium,Permanent,3.0,0.0,,,QLD Gov PWTR
+Jul 2023,Burnett Basin,Upper Burnett Water Supply Scheme,Supplemented,Medium,Permanent,20.0,2000.0,,,QLD Gov PWTR
+Jul 2023,Condamine and Balonne,Upper Condamine Water Management Area,Unsupplemented,Class Ct3,Permanent,48.0,1042.0,,,QLD Gov PWTR
+Jul 2023,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,Medium,Permanent,240.0,0.0,,,QLD Gov PWTR
+Jul 2023,Barron,Mareeba Dimbulah Water Supply Scheme,Supplemented,Medium,Permanent,57.0,3850.0,,,QLD Gov PWTR
+Jul 2023,Fitzroy Basin,Fitzroy Water Management Area,Unsupplemented,Class 5A,Permanent,303.0,0.0,,,QLD Gov PWTR
+Jul 2023,Condamine and Balonne,Gowrie Oakey Creek Water Management Area,Unsupplemented,Class Gb4,Permanent,48.0,0.0,,,QLD Gov PWTR
+Jul 2023,Condamine and Balonne,Condamine Balonne Water Management Area,Unsupplemented,Class Cb2,Permanent,126.0,0.0,,,QLD Gov PWTR
+Jul 2023,Border Rivers and Moonie,Border Rivers Water Management Area,Unsupplemented,Class Bar1,Permanent,2600.0,2085.0,,,QLD Gov PWTR
+Jul 2023,Barron,Barron Water Management Area,Unsupplemented,Class Cb,Permanent,82.0,1700.0,,,QLD Gov PWTR
+Jul 2023,Mary Basin,Wide Bay Water Supply Scheme,Supplemented,Medium,Permanent,9.0,0.0,,,QLD Gov PWTR
+Jul 2023,Burnett Basin,Boyne River And Tarong Water Supply Scheme,Supplemented,High,Permanent,1.0,1.0,,,QLD Gov PWTR
+Jul 2023,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,High,Permanent,85.0,0.0,,,QLD Gov PWTR
+Jun 2023,Moreton,Lower Lockyer Valley Water Supply Scheme,Supplemented,Medium,Permanent,82.0,1402.0,,,QLD Gov PWTR
+Jun 2023,Barron,Mareeba Dimbulah Water Supply Scheme,Supplemented,Medium,Permanent,12.0,0.0,,,QLD Gov PWTR
+Jun 2023,Condamine and Balonne,Gowrie Oakey Creek Water Management Area,Unsupplemented,Class Wm1,Permanent,420.0,0.0,,,QLD Gov PWTR
+Jun 2023,Condamine and Balonne,Lower Balonne Water Management Area,Unsupplemented,Class Lb1,Permanent,5705.0,0.0,,,QLD Gov PWTR
+Jun 2023,Gold Coast,Lower Nerang Water Management Area,Unsupplemented,Class B,Permanent,4.0,0.0,,,QLD Gov PWTR
+Jun 2023,Logan Basin,Running Creek Water Management Area,Unsupplemented,Class 5B,Permanent,204.0,0.0,,,QLD Gov PWTR
+Jun 2023,Border Rivers and Moonie,Moonie Water Management Area,Unsupplemented,Class K,Permanent,784.0,2551.0,,,QLD Gov PWTR
+Jun 2023,Whitsunday Resource Operations Plan,Proserpine River Water Supply Scheme,Supplemented,Medium,Permanent,94.0,0.0,,,QLD Gov PWTR
+Jun 2023,Moreton,Warrill Valley Water Supply Scheme,Supplemented,High,Permanent,25.0,3700.0,,,QLD Gov PWTR
+Jun 2023,Condamine and Balonne,Condamine Balonne Tributaries Water Mangt Area,Unsupplemented,Class 5B,Permanent,24.0,0.0,,,QLD Gov PWTR
+Jun 2023,Moreton,Central Brisbane River Water Supply Scheme,Supplemented,Medium,Permanent,72.0,0.0,,,QLD Gov PWTR
+Jun 2023,Mary Basin,Mary Valley Water Supply Scheme,Supplemented,Medium,Permanent,90.0,771.0,,,QLD Gov PWTR
+Jun 2023,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,Medium,Permanent,568.0,250.0,,,QLD Gov PWTR
+Jun 2023,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,700.0,272.0,,,QLD Gov PWTR
+Jun 2023,Condamine and Balonne,St George Water Supply Scheme,Supplemented,Medium,Permanent,3375.0,8400.0,,,QLD Gov PWTR
+Jun 2023,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,1.0,0.0,,,QLD Gov PWTR
+Jun 2023,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,Medium,Permanent,60.0,0.0,,,QLD Gov PWTR
+May 2023,Border Rivers and Moonie,Border Rivers Water Management Area,Unsupplemented,Class Bar1,Permanent,936.0,0.0,,,QLD Gov PWTR
+May 2023,Border Rivers and Moonie,Stanthorpe Water Management Area,Unsupplemented,Class Ms1A,Permanent,13.0,0.0,,,QLD Gov PWTR
+May 2023,Burdekin Basin,Upper Burdekin Water Management Area,Unsupplemented,Class G1,Permanent,12.0,0.0,,,QLD Gov PWTR
+May 2023,Condamine and Balonne,Condamine Balonne Tributaries Water Mangt Area,Unsupplemented,Class 7B,Permanent,108.0,0.0,,,QLD Gov PWTR
+May 2023,Moreton,Warrill Valley Water Supply Scheme,Supplemented,Medium,Permanent,5.0,1000.0,,,QLD Gov PWTR
+May 2023,Moreton,Lower Lockyer Valley Water Supply Scheme,Supplemented,Medium,Permanent,95.0,1200.0,,,QLD Gov PWTR
+May 2023,Mary Basin,Mary Valley Water Supply Scheme,Supplemented,Medium,Permanent,209.0,0.0,,,QLD Gov PWTR
+May 2023,Mary Basin,Lower Mary River Water Supply Scheme,Supplemented,Medium,Permanent,30.0,2100.0,,,QLD Gov PWTR
+May 2023,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,10.0,3400.0,,,QLD Gov PWTR
+May 2023,Barron,Mareeba Dimbulah Water Supply Scheme,Supplemented,Medium,Permanent,182.0,3900.0,,,QLD Gov PWTR
+May 2023,Border Rivers and Moonie,Border Rivers Water Supply Scheme,Supplemented,Medium,Permanent,683.0,0.0,,,QLD Gov PWTR
+May 2023,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,Medium,Permanent,161.0,300.0,,,QLD Gov PWTR
+May 2023,Burnett Basin,Barker Barambah Water Supply Scheme,Supplemented,Medium,Permanent,100.0,1250.0,,,QLD Gov PWTR
+May 2023,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,259.0,0.0,,,QLD Gov PWTR
+May 2023,Burnett Basin,Upper Burnett Water Supply Scheme,Supplemented,Medium,Permanent,5.0,0.0,,,QLD Gov PWTR
+May 2023,Condamine and Balonne,St George Water Supply Scheme,Supplemented,Medium,Permanent,13.0,0.0,,,QLD Gov PWTR
+May 2023,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,Medium,Permanent,63.0,2979.0,,,QLD Gov PWTR
+Apr 2023,Condamine and Balonne,Condamine Balonne Tributaries Water Mangt Area,Unsupplemented,Class 4A,Permanent,11.0,0.0,,,QLD Gov PWTR
+Apr 2023,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,20.0,0.0,,,QLD Gov PWTR
+Apr 2023,Moreton,Warrill Valley Water Supply Scheme,Supplemented,Medium,Permanent,57.0,0.0,,,QLD Gov PWTR
+Apr 2023,Mary Basin,Wide Bay Water Supply Scheme,Supplemented,Medium,Permanent,48.0,1042.0,,,QLD Gov PWTR
+Apr 2023,Mary Basin,Mary Valley Water Supply Scheme,Supplemented,Medium,Permanent,25.0,0.0,,,QLD Gov PWTR
+Apr 2023,Logan Basin,Logan River Water Supply Scheme,Supplemented,Medium,Permanent,24.0,0.0,,,QLD Gov PWTR
+Apr 2023,Condamine and Balonne,St George Water Supply Scheme,Supplemented,Medium,Permanent,5.0,4000.0,,,QLD Gov PWTR
+Apr 2023,Burnett Basin,Upper Burnett Water Supply Scheme,Supplemented,Medium,Permanent,175.0,1692.0,,,QLD Gov PWTR
+Apr 2023,Burnett Basin,Barker Barambah Water Supply Scheme,Supplemented,Medium,Permanent,100.0,2500.0,,,QLD Gov PWTR
+Apr 2023,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,Medium,Permanent,4.0,0.0,,,QLD Gov PWTR
+Apr 2023,Barron,Mareeba Dimbulah Water Supply Scheme,Supplemented,Medium,Permanent,15.0,5000.0,,,QLD Gov PWTR
+Mar 2023,Fitzroy Basin,Fitzroy Water Management Area,Unsupplemented,Class 5A,Permanent,140.0,0.0,,,QLD Gov PWTR
+Mar 2023,Condamine and Balonne,Upper Condamine Water Management Area,Unsupplemented,Class Cg1,Permanent,780.0,3000.0,,,QLD Gov PWTR
+Mar 2023,Condamine and Balonne,Condamine Balonne Tributaries Water Mangt Area,Unsupplemented,Class 4A,Permanent,99.0,3500.0,,,QLD Gov PWTR
+Mar 2023,Moreton,Central Brisbane River Water Supply Scheme,Supplemented,Medium,Permanent,100.0,3960.0,,,QLD Gov PWTR
+Mar 2023,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,13.0,0.0,,,QLD Gov PWTR
+Mar 2023,Burnett Basin,Upper Burnett Water Supply Scheme,Supplemented,Medium,Permanent,1995.0,1709.0,,,QLD Gov PWTR
+Mar 2023,Moreton,Central Lockyer Valley Water Supply Scheme,Supplemented,Medium,Permanent,51.0,0.0,,,QLD Gov PWTR
+Mar 2023,Mary Basin,Wide Bay Water Supply Scheme,Supplemented,Medium,Permanent,52.0,625.0,,,QLD Gov PWTR
+Mar 2023,Mary Basin,Mary Valley Water Supply Scheme,Supplemented,Medium,Permanent,33.0,0.0,,,QLD Gov PWTR
+Mar 2023,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,1550.0,4000.0,,,QLD Gov PWTR
+Mar 2023,Fitzroy Basin,Fitzroy Barrage Water Supply Scheme,Supplemented,Medium,Permanent,31.0,1.0,,,QLD Gov PWTR
+Mar 2023,Fitzroy Basin,Dawson Valley Water Supply Scheme,Supplemented,High,Permanent,50.0,0.0,,,QLD Gov PWTR
+Mar 2023,Condamine and Balonne,St George Water Supply Scheme,Supplemented,Medium,Permanent,1.0,2500.0,,,QLD Gov PWTR
+Mar 2023,Whitsunday Resource Operations Plan,Proserpine River Water Supply Scheme,Supplemented,Medium,Permanent,381.0,0.0,,,QLD Gov PWTR
+Mar 2023,Border Rivers and Moonie,Border Rivers Water Supply Scheme,Supplemented,Medium,Permanent,40.0,3200.0,,,QLD Gov PWTR
+Mar 2023,Barron,Mareeba Dimbulah Water Supply Scheme,Supplemented,Medium,Permanent,2.0,0.0,,,QLD Gov PWTR
+Feb 2023,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,Medium,Permanent,868.0,0.0,,,QLD Gov PWTR
+Feb 2023,Logan Basin,Christmas Creek Water Management Area,Unsupplemented,Class 6B,Permanent,107.0,607.0,,,QLD Gov PWTR
+Feb 2023,Fitzroy Basin,Fitzroy Water Management Area,Unsupplemented,Class 5A,Permanent,56.0,0.0,,,QLD Gov PWTR
+Feb 2023,Barron,Barron Water Management Area,Unsupplemented,Class Cb,Permanent,206.0,0.0,,,QLD Gov PWTR
+Feb 2023,Border Rivers and Moonie,Stanthorpe Water Management Area,Unsupplemented,Class Mqpb,Permanent,24.0,0.0,,,QLD Gov PWTR
+Feb 2023,Condamine and Balonne,Condamine Balonne Tributaries Water Mangt Area,Unsupplemented,Class 9A,Permanent,50.0,0.0,,,QLD Gov PWTR
+Feb 2023,Barron,Mareeba Dimbulah Water Supply Scheme,Supplemented,Medium,Permanent,255.0,3435.0,,,QLD Gov PWTR
+Feb 2023,Condamine and Balonne,Condamine Balonne Water Management Area,Unsupplemented,Class B2,Permanent,90.0,3333.0,,,QLD Gov PWTR
+Feb 2023,Burnett Basin,Barker Barambah Water Supply Scheme,Supplemented,Medium,Permanent,82.0,0.0,,,QLD Gov PWTR
+Feb 2023,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,2954.0,1594.0,,,QLD Gov PWTR
+Feb 2023,Fitzroy Basin,Fitzroy Barrage Water Supply Scheme,Supplemented,Medium,Permanent,43.0,0.0,,,QLD Gov PWTR
+Feb 2023,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,4282.0,4037.0,,,QLD Gov PWTR
+Feb 2023,Logan Basin,Logan River Water Supply Scheme,Supplemented,Medium,Permanent,30.0,0.0,,,QLD Gov PWTR
+Feb 2023,Mary Basin,Wide Bay Water Supply Scheme,Supplemented,Medium,Permanent,48.0,0.0,,,QLD Gov PWTR
+Feb 2023,Moreton,Lower Lockyer Valley Water Supply Scheme,Supplemented,Medium,Permanent,120.0,0.0,,,QLD Gov PWTR
+Feb 2023,Moreton,Warrill Valley Water Supply Scheme,Supplemented,Medium,Permanent,50.0,2000.0,,,QLD Gov PWTR
+Feb 2023,Pioneer Valley,Eton Water Supply Scheme,Supplemented,High,Permanent,252.0,0.0,,,QLD Gov PWTR
+Feb 2023,Whitsunday Resource Operations Plan,Proserpine River Water Supply Scheme,Supplemented,Medium,Permanent,831.0,0.0,,,QLD Gov PWTR
+Jan 2023,Fitzroy Basin,Nogoa Mackenzie Water Management Area,Unsupplemented,Class 0A,Permanent,16.0,0.0,,,QLD Gov PWTR
+Jan 2023,Barron,Mareeba Dimbulah Water Supply Scheme,Supplemented,Medium,Permanent,8.0,0.0,,,QLD Gov PWTR
+Jan 2023,Burdekin Basin,Burdekin Haughton Water Supply Scheme,Supplemented,Medium,Permanent,1525.0,0.0,,,QLD Gov PWTR
+Jan 2023,Logan Basin,Running Creek Water Management Area,Unsupplemented,Class 5B,Permanent,56.0,0.0,,,QLD Gov PWTR
+Jan 2023,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,744.0,4171.0,,,QLD Gov PWTR
+Jan 2023,Fitzroy Basin,Fitzroy Barrage Water Supply Scheme,Supplemented,Medium,Permanent,50.0,0.0,,,QLD Gov PWTR
+Jan 2023,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,High,Permanent,382.0,0.0,,,QLD Gov PWTR
+Jan 2023,Moreton,Central Brisbane River Water Supply Scheme,Supplemented,Medium,Permanent,14.0,0.0,,,QLD Gov PWTR
+Jan 2023,Pioneer Valley,Eton Water Supply Scheme,Supplemented,High,Permanent,112.0,0.0,,,QLD Gov PWTR
+Jan 2023,Border Rivers and Moonie,Stanthorpe Water Management Area,Unsupplemented,Class Lbta,Permanent,4.0,0.0,,,QLD Gov PWTR
+Dec 2022,Fitzroy Basin,Nogoa Mackenzie Water Management Area,Unsupplemented,Class 3A,Permanent,741.0,0.0,,,QLD Gov PWTR
+Dec 2022,Condamine and Balonne,Upper Condamine Water Management Area,Unsupplemented,Class Cj2,Permanent,720.0,2850.0,,,QLD Gov PWTR
+Dec 2022,Condamine and Balonne,Condamine Balonne Water Management Area,Unsupplemented,Class Cb1,Permanent,180.0,4000.0,,,QLD Gov PWTR
+Dec 2022,Condamine and Balonne,Condamine Balonne Tributaries Water Mangt Area,Unsupplemented,Class 2B,Permanent,600.0,500.0,,,QLD Gov PWTR
+Dec 2022,Border Rivers and Moonie,Stanthorpe Water Management Area,Unsupplemented,Class Fma,Permanent,5.0,0.0,,,QLD Gov PWTR
+Dec 2022,Pioneer Valley,Pioneer River Water Supply Scheme,Supplemented,High,Permanent,135.0,0.0,,,QLD Gov PWTR
+Dec 2022,Moreton,Warrill Valley Water Supply Scheme,Supplemented,Medium,Permanent,164.0,0.0,,,QLD Gov PWTR
+Dec 2022,Barron,Mareeba Dimbulah Water Supply Scheme,Supplemented,Medium,Permanent,133.0,0.0,,,QLD Gov PWTR
+Dec 2022,Burnett Basin,Boyne River And Tarong Water Supply Scheme,Supplemented,High,Permanent,3.0,500.0,,,QLD Gov PWTR
+Dec 2022,Burnett Basin,Bundaberg Water Supply Scheme,Supplemented,Medium,Permanent,154.0,3000.0,,,QLD Gov PWTR
+Dec 2022,Burnett Basin,Upper Burnett Water Supply Scheme,Supplemented,Medium,Permanent,289.0,3000.0,,,QLD Gov PWTR
+Dec 2022,Condamine and Balonne,St George Water Supply Scheme,Supplemented,Medium,Permanent,2.0,0.0,,,QLD Gov PWTR
+Dec 2022,Fitzroy Basin,Nogoa Mackenzie Water Supply Scheme,Supplemented,Medium,Permanent,1828.0,0.0,,,QLD Gov PWTR
+Dec 2022,Mary Basin,Mary Valley Water Supply Scheme,Supplemented,Medium,Permanent,40.0,0.0,,,QLD Gov PWTR
+Dec 2022,Moreton,Central Brisbane River Water Supply Scheme,Supplemented,Medium,Permanent,64.0,0.0,,,QLD Gov PWTR
+Dec 2022,Wet Tropics,Tully Water Management Area,Unsupplemented,Class B,Permanent,655.0,0.0,,,QLD Gov PWTR

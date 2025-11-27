@@ -1,0 +1,13 @@
+{
+  "is_synthetic": false,
+  "scrape_date": "2025-11-27T03:38:49.270930",
+  "record_count": 625,
+  "schemes_count": 65,
+  "water_plan_areas_count": 16,
+  "date_range": {
+    "earliest": "Dec 2022",
+    "latest": "Oct 2025"
+  },
+  "source": "QLD Gov PWTR (Live Scraped)",
+  "data_quality_note": "41.4% of records have valid prices"
+}

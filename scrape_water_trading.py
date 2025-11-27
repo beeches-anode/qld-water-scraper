@@ -1073,19 +1073,24 @@ def extract_pdf_data_pdfplumber(pdf_content, period, report_type):
                     print(f"          No header found in table, first row: {table[0][:4] if table[0] else 'empty'}...")
                     continue
 
-                # Map column indices
-                headers = [str(c).lower() if c else '' for c in table[header_idx]]
+                # Map column indices - normalize headers by replacing newlines with spaces
+                headers = [' '.join(str(c).lower().split()) if c else '' for c in table[header_idx]]
+                print(f"          Headers (normalized): {headers}")
 
                 water_plan_col = next((i for i, h in enumerate(headers) if 'water plan' in h), 0)
                 scheme_col = next((i for i, h in enumerate(headers) if 'scheme' in h and 'water plan' not in h), 1)
                 priority_col = next((i for i, h in enumerate(headers) if 'priority' in h or 'group' in h), 2)
                 transfers_col = next((i for i, h in enumerate(headers) if 'number' in h or 'transfer' in h), 3)
-                volume_col = next((i for i, h in enumerate(headers) if 'volume' in h and 'turnover' not in h), 4)
-                price_col = next((i for i, h in enumerate(headers) if 'price' in h or 'weighted' in h), -1)
+                # Volume column - look for "volume transferred" or "volume" but not "turnover"
+                volume_col = next((i for i, h in enumerate(headers) if ('volume' in h and 'turnover' not in h) or 'transferred' in h), 4)
+                # Price column - look for "price" or "weighted" or "average"
+                price_col = next((i for i, h in enumerate(headers) if 'price' in h or 'weighted' in h or '$/ml' in h), -1)
 
                 # If price column not found by name, assume it's the last column
                 if price_col == -1:
                     price_col = len(headers) - 1
+
+                print(f"          Column mapping: water_plan={water_plan_col}, scheme={scheme_col}, priority={priority_col}, volume={volume_col}, price={price_col}")
 
                 # Process data rows
                 current_water_plan = "Unknown"
@@ -1100,8 +1105,14 @@ def extract_pdf_data_pdfplumber(pdf_content, period, report_type):
                     if any(skip in row_text for skip in ['period total', 'financial ytd', 'all water plans']):
                         continue
 
+                    # Helper to clean cell text (remove newlines, normalize whitespace)
+                    def clean_cell(cell):
+                        if cell is None:
+                            return ''
+                        return ' '.join(str(cell).split()).strip()
+
                     # Extract water plan (basin name)
-                    water_plan_cell = str(row[water_plan_col]) if row[water_plan_col] else ''
+                    water_plan_cell = clean_cell(row[water_plan_col]) if row[water_plan_col] else ''
 
                     # Parse "Water Plan (Burnett Basin) 2014" -> "Burnett Basin"
                     basin_match = re.search(r'Water Plan\s*\(([^)]+)\)', water_plan_cell, re.IGNORECASE)
@@ -1111,15 +1122,15 @@ def extract_pdf_data_pdfplumber(pdf_content, period, report_type):
                         # Some rows may just have the basin name
                         current_water_plan = water_plan_cell.strip()
 
-                    # Extract scheme name
-                    scheme = str(row[scheme_col]).strip() if len(row) > scheme_col and row[scheme_col] else ''
+                    # Extract scheme name - clean up newlines
+                    scheme = clean_cell(row[scheme_col]) if len(row) > scheme_col and row[scheme_col] else ''
 
                     # Skip if no scheme name or it's a header/summary
                     if not scheme or scheme.lower() in ['', 'water supply scheme', 'period total', 'financial ytd']:
                         continue
 
-                    # Extract priority
-                    priority = str(row[priority_col]).strip() if len(row) > priority_col and row[priority_col] else 'Medium'
+                    # Extract priority - clean up newlines
+                    priority = clean_cell(row[priority_col]) if len(row) > priority_col and row[priority_col] else 'Medium'
 
                     # Normalize priority values
                     priority_upper = priority.upper()
@@ -1134,22 +1145,26 @@ def extract_pdf_data_pdfplumber(pdf_content, period, report_type):
 
                     # Extract volume
                     try:
-                        volume_str = str(row[volume_col]) if len(row) > volume_col and row[volume_col] else '0'
+                        volume_str = clean_cell(row[volume_col]) if len(row) > volume_col and row[volume_col] else '0'
                         volume = float(re.sub(r'[^\d.]', '', volume_str) or 0)
                     except (ValueError, IndexError):
                         volume = 0
 
                     # Extract weighted average price
                     try:
-                        price_str = str(row[price_col]) if len(row) > price_col and row[price_col] else '0'
-                        price = float(re.sub(r'[^\d.]', '', price_str) or 0)
+                        price_str = clean_cell(row[price_col]) if len(row) > price_col and row[price_col] else '0'
+                        # Handle special cases: "-" or "N/A" means no price data
+                        if price_str in ['-', 'n/a', 'na', '']:
+                            price = 0
+                        else:
+                            price = float(re.sub(r'[^\d.]', '', price_str) or 0)
                     except (ValueError, IndexError):
                         price = 0
 
                     # Include all scheme/priority rows - even those with zero trades
                     # A record showing "0 ML traded" is still valid data indicating no activity
-                    # Normalize scheme name
-                    scheme_normalized = scheme.title().replace('Water Supply Scheme', 'Water Supply Scheme')
+                    # Normalize scheme name - ensure no embedded newlines remain
+                    scheme_normalized = ' '.join(scheme.title().split())
 
                     rows_processed += 1
                     results.append({
@@ -1316,6 +1331,11 @@ def main():
     # Save results
     if all_results:
         df = pd.DataFrame(all_results)
+
+        # Clean up embedded newlines in text fields
+        for col in ['Scheme', 'Water Plan Area', 'Type', 'Priority', 'Location From', 'Location To']:
+            if col in df.columns:
+                df[col] = df[col].apply(lambda x: ' '.join(str(x).split()) if pd.notna(x) else '')
 
         # Clean up
         df = df.drop_duplicates()

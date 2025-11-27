@@ -21,6 +21,31 @@ export interface WaterTradeWithParsedDate extends WaterTrade {
 }
 
 const DATA_URL = 'https://raw.githubusercontent.com/beeches-anode/qld-water-scraper/main/qld_water_trading.csv';
+const METADATA_URL = 'https://raw.githubusercontent.com/beeches-anode/qld-water-scraper/main/qld_water_trading_metadata.json';
+
+export interface TradingMetadata {
+  is_synthetic: boolean;
+  scrape_date: string;
+  record_count: number;
+  schemes_count: number;
+  water_plan_areas_count: number;
+  date_range: {
+    earliest: string | null;
+    latest: string | null;
+  };
+  source: string;
+}
+
+export async function fetchTradingMetadata(): Promise<TradingMetadata | null> {
+  try {
+    const response = await fetch(METADATA_URL, { next: { revalidate: 3600 } });
+    if (!response.ok) return null;
+    return await response.json();
+  } catch (error) {
+    console.error("Failed to fetch trading metadata:", error);
+    return null;
+  }
+}
 
 export async function fetchWaterTrading(): Promise<WaterTradeWithParsedDate[]> {
   try {

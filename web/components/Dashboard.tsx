@@ -6,7 +6,7 @@ import { ScanData } from '@/lib/scans';
 import { ArticleData } from '@/lib/articles';
 import { ProjectData } from '@/lib/projects';
 import { UnallocatedWater } from '@/lib/unallocated';
-import { WaterTradeWithParsedDate, aggregateByMonth, aggregateByScheme } from '@/lib/trading';
+import { WaterTradeWithParsedDate, TradingMetadata, aggregateByMonth, aggregateByScheme } from '@/lib/trading';
 import { useTheme } from '@/lib/ThemeContext';
 import { ThemeColors } from '@/lib/themes';
 import {
@@ -32,6 +32,7 @@ interface DashboardProps {
   initialPlans: WaterPlan[];
   unallocatedWater: UnallocatedWater[];
   tradingData: WaterTradeWithParsedDate[];
+  tradingMetadata: TradingMetadata | null;
   scans?: ScanData[]; // Optional - scans tab temporarily removed
   articles: ArticleData[];
   projects: ProjectData[];
@@ -40,7 +41,7 @@ interface DashboardProps {
 type Tab = 'allocations' | 'unallocated' | 'trading' | 'plans' | 'articles' | 'projects';
 // 'scans' removed temporarily - can be re-added later
 
-export default function Dashboard({ initialAllocations, initialPlans, unallocatedWater, tradingData, scans, articles, projects }: DashboardProps) {
+export default function Dashboard({ initialAllocations, initialPlans, unallocatedWater, tradingData, tradingMetadata, scans, articles, projects }: DashboardProps) {
   const [activeTab, setActiveTab] = useState<Tab>('allocations');
   const { theme } = useTheme();
 
@@ -94,7 +95,7 @@ export default function Dashboard({ initialAllocations, initialPlans, unallocate
       ) : activeTab === 'unallocated' ? (
         <UnallocatedWaterView data={unallocatedWater} theme={theme} />
       ) : activeTab === 'trading' ? (
-        <TradingView data={tradingData} theme={theme} />
+        <TradingView data={tradingData} metadata={tradingMetadata} theme={theme} />
       ) : activeTab === 'plans' ? (
         <PlansView data={initialPlans} theme={theme} />
       ) : activeTab === 'articles' ? (
@@ -409,7 +410,7 @@ function AllocationsView({ data, theme }: { data: WaterAllocation[]; theme: Them
   );
 }
 
-function TradingView({ data, theme }: { data: WaterTradeWithParsedDate[]; theme: ThemeColors }) {
+function TradingView({ data, metadata, theme }: { data: WaterTradeWithParsedDate[]; metadata: TradingMetadata | null; theme: ThemeColors }) {
   const [selectedArea, setSelectedArea] = useState<string>("All");
   const [selectedScheme, setSelectedScheme] = useState<string>("All");
   const [selectedPriority, setSelectedPriority] = useState<string>("All");
@@ -471,8 +472,64 @@ function TradingView({ data, theme }: { data: WaterTradeWithParsedDate[]; theme:
   // Chart colors
   const COLORS = ['#10b981', '#3b82f6', '#8b5cf6', '#f59e0b', '#ef4444', '#06b6d4'];
 
+  // Format the scrape date for display
+  const formatScrapeDate = (isoDate: string) => {
+    try {
+      const date = new Date(isoDate);
+      return date.toLocaleDateString('en-AU', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+    } catch {
+      return isoDate;
+    }
+  };
+
   return (
     <div className="space-y-6 md:space-y-8">
+      {/* Data Source Status Banner */}
+      {metadata ? (
+        metadata.is_synthetic ? (
+          <div className="bg-gradient-to-br from-amber-50 to-orange-50 p-4 rounded-2xl shadow-lg border border-amber-300">
+            <div className="flex items-center gap-3">
+              <div className="p-2 bg-amber-100 rounded-xl">
+                <Info className="w-5 h-5 text-amber-600" />
+              </div>
+              <div>
+                <span className="font-bold text-amber-800">Synthetic Reference Data</span>
+                <p className="text-sm text-amber-700 mt-1">
+                  This data is generated from historical benchmarks, not live scraped data.
+                  The scraper may have encountered issues fetching live government reports.
+                </p>
+                <p className="text-xs text-amber-600 mt-1">
+                  Generated: {formatScrapeDate(metadata.scrape_date)}
+                </p>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className="bg-gradient-to-br from-emerald-50 to-green-50 p-4 rounded-2xl shadow-lg border border-emerald-300">
+            <div className="flex items-center gap-3">
+              <div className="p-2 bg-emerald-100 rounded-xl">
+                <Calendar className="w-5 h-5 text-emerald-600" />
+              </div>
+              <div>
+                <span className="font-bold text-emerald-800">Live Government Data</span>
+                <p className="text-sm text-emerald-700 mt-1">
+                  Scraped from QLD Government PWTR reports • {metadata.record_count} records • {metadata.date_range.earliest} to {metadata.date_range.latest}
+                </p>
+                <p className="text-xs text-emerald-600 mt-1">
+                  Last updated: {formatScrapeDate(metadata.scrape_date)}
+                </p>
+              </div>
+            </div>
+          </div>
+        )
+      ) : null}
+
       {/* Data Source Information */}
       <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-4 md:p-6 rounded-2xl shadow-lg border border-blue-200/50">
         <button

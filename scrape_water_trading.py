@@ -1036,13 +1036,21 @@ def extract_pdf_data_pdfplumber(pdf_content, period, report_type):
     results = []
 
     with pdfplumber.open(pdf_content) as pdf:
-        for page in pdf.pages:
+        print(f"        PDF has {len(pdf.pages)} pages")
+        tables_found = 0
+        rows_processed = 0
+
+        for page_num, page in enumerate(pdf.pages):
             # Extract tables from page
             tables = page.extract_tables()
+            print(f"        Page {page_num + 1}: found {len(tables)} tables")
 
-            for table in tables:
+            for table_idx, table in enumerate(tables):
                 if not table or len(table) < 2:
                     continue
+
+                tables_found += 1
+                print(f"          Table {table_idx + 1}: {len(table)} rows")
 
                 # Find header row by looking for key column names
                 header_idx = None
@@ -1053,12 +1061,15 @@ def extract_pdf_data_pdfplumber(pdf_content, period, report_type):
                     # Look for PWTR-specific headers
                     if 'water plan' in row_text and ('scheme' in row_text or 'priority' in row_text):
                         header_idx = idx
+                        print(f"          Found header at row {idx}: {row[:4]}...")
                         break
                     if 'weighted' in row_text and 'average' in row_text and 'price' in row_text:
                         header_idx = idx
+                        print(f"          Found header at row {idx}: {row[:4]}...")
                         break
 
                 if header_idx is None:
+                    print(f"          No header found in table, first row: {table[0][:4] if table[0] else 'empty'}...")
                     continue
 
                 # Map column indices
@@ -1139,6 +1150,7 @@ def extract_pdf_data_pdfplumber(pdf_content, period, report_type):
                     # Normalize scheme name
                     scheme_normalized = scheme.title().replace('Water Supply Scheme', 'Water Supply Scheme')
 
+                    rows_processed += 1
                     results.append({
                         'Date': period,
                         'Water Plan Area': current_water_plan,
@@ -1153,6 +1165,7 @@ def extract_pdf_data_pdfplumber(pdf_content, period, report_type):
                         'Source': 'QLD Gov PWTR'
                     })
 
+        print(f"        Extraction summary: {tables_found} tables processed, {rows_processed} data rows, {len(results)} records")
     return results
 
 

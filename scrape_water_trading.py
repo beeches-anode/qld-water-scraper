@@ -1330,6 +1330,26 @@ def main():
         output_file = 'qld_water_trading.csv'
         df.to_csv(output_file, index=False)
 
+        # Save metadata about the data source
+        metadata = {
+            'is_synthetic': use_reference_data,
+            'scrape_date': datetime.now().isoformat(),
+            'record_count': len(df),
+            'schemes_count': df['Scheme'].nunique(),
+            'water_plan_areas_count': df['Water Plan Area'].nunique(),
+            'date_range': {
+                'earliest': df['Date'].min() if len(df) > 0 else None,
+                'latest': df['Date'].max() if len(df) > 0 else None,
+            },
+            'source': 'QLD Gov PWTR (Reference Data)' if use_reference_data else 'QLD Gov PWTR (Live Scraped)',
+        }
+
+        with open('qld_water_trading_metadata.json', 'w') as f:
+            json.dump(metadata, f, indent=2)
+
+        print(f"  Metadata saved to qld_water_trading_metadata.json")
+        print(f"  Data type: {'SYNTHETIC (Reference)' if use_reference_data else 'REAL (Scraped from PDFs)'}")
+
         print(f"\n{'=' * 60}")
         print(f"SUCCESS! Saved {len(df)} records to {output_file}")
         print(f"{'=' * 60}")
@@ -1365,6 +1385,25 @@ def main():
         df = pd.DataFrame(reference_data)
         df.to_csv('qld_water_trading.csv', index=False)
         print(f"Created qld_water_trading.csv with {len(df)} reference records")
+
+        # Save metadata for fallback case
+        metadata = {
+            'is_synthetic': True,
+            'scrape_date': datetime.now().isoformat(),
+            'record_count': len(df),
+            'schemes_count': df['Scheme'].nunique(),
+            'water_plan_areas_count': df['Water Plan Area'].nunique(),
+            'date_range': {
+                'earliest': df['Date'].min() if len(df) > 0 else None,
+                'latest': df['Date'].max() if len(df) > 0 else None,
+            },
+            'source': 'QLD Gov PWTR (Reference Data)',
+        }
+
+        with open('qld_water_trading_metadata.json', 'w') as f:
+            json.dump(metadata, f, indent=2)
+
+        print(f"  Metadata saved (synthetic data)")
 
     print(f"\nFinished: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 

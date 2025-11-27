@@ -4,16 +4,17 @@ import { fetchWaterAllocations, fetchWaterPlans } from '@/lib/data';
 import { getSortedArticlesData, getArticleData } from '@/lib/articles';
 import { getSortedProjectsData, getProjectData } from '@/lib/projects';
 import { getUnallocatedWater } from '@/lib/unallocated';
-import { fetchWaterTrading } from '@/lib/trading';
+import { fetchWaterTrading, fetchTradingMetadata } from '@/lib/trading';
 import Dashboard from '@/components/Dashboard';
 import Header from '@/components/Header';
 
 export default async function Home() {
-  const [allocations, plans, unallocatedWater, tradingData] = await Promise.all([
+  const [allocations, plans, unallocatedWater, tradingData, tradingMetadata] = await Promise.all([
     fetchWaterAllocations(),
     fetchWaterPlans(),
     getUnallocatedWater(),
-    fetchWaterTrading()
+    fetchWaterTrading(),
+    fetchTradingMetadata()
   ]);
 
   // Scans temporarily disabled - can be re-enabled later
@@ -49,6 +50,7 @@ export default async function Home() {
           initialPlans={plans}
           unallocatedWater={unallocatedWater}
           tradingData={tradingData}
+          tradingMetadata={tradingMetadata}
           // scans={scansWithContent} // Temporarily disabled
           articles={articlesWithContent}
           projects={projectsWithContent}

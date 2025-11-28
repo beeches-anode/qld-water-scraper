@@ -16,3 +16,4 @@ The project has generated substantial local economic benefits, with more than 85
 Cairns Regional Council Mayor Amy Eden described this as "the largest project ever undertaken by Cairns Regional Council" and emphasized that it addresses growing pressure on the city's water system from population growth and tourism. Federal Member for Leichhardt Matt Smith noted the project was a priority during the last Federal Election, while State Member for Barron River Bree James highlighted that Cairns' thriving population and booming tourism sector have put strain on water supplies, making this work vital to ensure reliable water access. The project represents a significant example of three levels of government working in partnership to deliver water security infrastructure for regional Queensland.
 
 
+

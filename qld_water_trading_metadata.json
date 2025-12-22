@@ -1,12 +1,12 @@
 {
-  "is_synthetic": true,
-  "scrape_date": "2025-12-22T23:32:39.945182",
-  "record_count": 352,
-  "schemes_count": 14,
-  "water_plan_areas_count": 7,
+  "is_synthetic": false,
+  "scrape_date": "2025-12-23T09:45:34.952567",
+  "record_count": 68,
+  "schemes_count": 40,
+  "water_plan_areas_count": 11,
   "date_range": {
-    "earliest": "Apr 2024",
-    "latest": "Sep 2025"
+    "earliest": "Apr 2025",
+    "latest": "Sep 2023"
   },
-  "source": "QLD Gov PWTR (Reference Data)"
+  "source": "QLD Gov PWTR (Live Scraped)"
 }

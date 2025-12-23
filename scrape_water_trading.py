@@ -1269,6 +1269,24 @@ def extract_pdf_data_pypdf2(pdf_content, period, report_type):
     return results
 
 
+def check_existing_real_data():
+    """
+    Check if existing data is real (not synthetic).
+    Returns (is_real, metadata) tuple.
+    If real data exists, we should not overwrite it with synthetic data.
+    """
+    metadata_file = 'qld_water_trading_metadata.json'
+    if os.path.exists(metadata_file):
+        try:
+            with open(metadata_file, 'r') as f:
+                existing_metadata = json.load(f)
+            is_real = existing_metadata.get('is_synthetic') == False
+            return is_real, existing_metadata
+        except (json.JSONDecodeError, IOError):
+            return False, None
+    return False, None
+
+
 def main():
     print("=" * 60)
     print("QLD Water Trading Data Scraper")
@@ -1320,7 +1338,27 @@ def main():
             print("    real market conditions rather than data errors. Using scraped data as-is.")
 
     # Generate reference data ONLY if scraping yielded zero records
+    # BUT protect existing real data from being overwritten with synthetic
     if use_reference_data:
+        has_real_data, existing_metadata = check_existing_real_data()
+        if has_real_data:
+            print("\n" + "=" * 60)
+            print("PROTECTED: Existing real data will NOT be overwritten")
+            print("=" * 60)
+            print(f"  Existing data: {existing_metadata.get('record_count')} real records")
+            scrape_date = existing_metadata.get('scrape_date', '')
+            if scrape_date:
+                try:
+                    date_str = datetime.fromisoformat(scrape_date).strftime('%Y-%m-%d')
+                    print(f"  Last scraped: {date_str}")
+                except ValueError:
+                    print(f"  Last scraped: {scrape_date}")
+            print("  Reason: Scrape failed but real data exists - preserving it")
+            print("  Action: No changes made to CSV or metadata files")
+            print("=" * 60)
+            print(f"\nFinished: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+            return  # Exit without overwriting real data
+
         reference_data = generate_reference_trading_data()
         all_results.extend(reference_data)
 
@@ -1399,31 +1437,50 @@ def main():
                 print(f"  Total Volume: {bundaberg_perm['Volume (ML)'].sum():,.0f} ML")
     else:
         print("\nNo data extracted from any source")
-        # Generate reference data as fallback
-        print("Generating reference trading data...")
-        reference_data = generate_reference_trading_data()
-        df = pd.DataFrame(reference_data)
-        df.to_csv('qld_water_trading.csv', index=False)
-        print(f"Created qld_water_trading.csv with {len(df)} reference records")
 
-        # Save metadata for fallback case
-        metadata = {
-            'is_synthetic': True,
-            'scrape_date': datetime.now().isoformat(),
-            'record_count': len(df),
-            'schemes_count': df['Scheme'].nunique(),
-            'water_plan_areas_count': df['Water Plan Area'].nunique(),
-            'date_range': {
-                'earliest': df['Date'].min() if len(df) > 0 else None,
-                'latest': df['Date'].max() if len(df) > 0 else None,
-            },
-            'source': 'QLD Gov PWTR (Reference Data)',
-        }
+        # Check if we have existing real data to protect
+        has_real_data, existing_metadata = check_existing_real_data()
+        if has_real_data:
+            print("\n" + "=" * 60)
+            print("PROTECTED: Existing real data will NOT be overwritten")
+            print("=" * 60)
+            print(f"  Existing data: {existing_metadata.get('record_count')} real records")
+            scrape_date = existing_metadata.get('scrape_date', '')
+            if scrape_date:
+                try:
+                    date_str = datetime.fromisoformat(scrape_date).strftime('%Y-%m-%d')
+                    print(f"  Last scraped: {date_str}")
+                except ValueError:
+                    print(f"  Last scraped: {scrape_date}")
+            print("  Reason: Complete scrape failure but real data exists - preserving it")
+            print("  Action: No changes made to CSV or metadata files")
+            print("=" * 60)
+        else:
+            # No existing real data, generate synthetic as fallback
+            print("Generating reference trading data...")
+            reference_data = generate_reference_trading_data()
+            df = pd.DataFrame(reference_data)
+            df.to_csv('qld_water_trading.csv', index=False)
+            print(f"Created qld_water_trading.csv with {len(df)} reference records")
 
-        with open('qld_water_trading_metadata.json', 'w') as f:
-            json.dump(metadata, f, indent=2)
+            # Save metadata for fallback case
+            metadata = {
+                'is_synthetic': True,
+                'scrape_date': datetime.now().isoformat(),
+                'record_count': len(df),
+                'schemes_count': df['Scheme'].nunique(),
+                'water_plan_areas_count': df['Water Plan Area'].nunique(),
+                'date_range': {
+                    'earliest': df['Date'].min() if len(df) > 0 else None,
+                    'latest': df['Date'].max() if len(df) > 0 else None,
+                },
+                'source': 'QLD Gov PWTR (Reference Data)',
+            }
 
-        print(f"  Metadata saved (synthetic data)")
+            with open('qld_water_trading_metadata.json', 'w') as f:
+                json.dump(metadata, f, indent=2)
+
+            print(f"  Metadata saved (synthetic data)")
 
     print(f"\nFinished: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 

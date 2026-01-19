@@ -44,6 +44,9 @@ HEADERS = {
     "Accept-Language": "en-US,en;q=0.5",
 }
 
+# Local PDF archive directory
+LOCAL_PDF_DIR = "data/pdfs/permanent-water-trading/supplemented-surface-water"
+
 # Sunwater schemes and their water plan areas
 SUNWATER_SCHEMES = {
     "Barker Barambah": "Burnett Basin",
@@ -786,6 +789,80 @@ def transform_open_data_record(record, source_name):
     }
 
 
+def get_local_pdf_paths():
+    """
+    Scan local PDF archive and return list of PDF files with metadata.
+
+    Returns: List of (filepath, period, report_type) tuples sorted by date (newest first)
+    """
+    pdf_files = []
+
+    if not os.path.exists(LOCAL_PDF_DIR):
+        print(f"    Local PDF directory not found: {LOCAL_PDF_DIR}")
+        return []
+
+    for filename in os.listdir(LOCAL_PDF_DIR):
+        if not filename.endswith('.pdf'):
+            continue
+
+        # Skip duplicate files (e.g., "file (1).pdf")
+        if '(' in filename and ')' in filename:
+            print(f"    Skipping duplicate: {filename}")
+            continue
+
+        # Extract period from filename
+        # Handles both abbreviated (jan, feb) and full (january, february) month names
+        # Examples: pwtr-supplemented-surface-water-feb-2025.pdf
+        #           pwtr-supplemented-surface-water-february-2024.pdf
+        #           pwtr-supplemented-july-2022.pdf
+        period_match = re.search(
+            r'(january|february|march|april|may|june|july|august|september|october|november|december|'
+            r'jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[-_]?(\d{4})',
+            filename, re.IGNORECASE
+        )
+
+        if period_match:
+            month_str = period_match.group(1).lower()
+            year = period_match.group(2)
+
+            # Normalize month names to 3-letter abbreviations
+            month_map = {
+                'january': 'Jan', 'jan': 'Jan',
+                'february': 'Feb', 'feb': 'Feb',
+                'march': 'Mar', 'mar': 'Mar',
+                'april': 'Apr', 'apr': 'Apr',
+                'may': 'May',
+                'june': 'Jun', 'jun': 'Jun',
+                'july': 'Jul', 'jul': 'Jul',
+                'august': 'Aug', 'aug': 'Aug',
+                'september': 'Sep', 'sept': 'Sep', 'sep': 'Sep',
+                'october': 'Oct', 'oct': 'Oct',
+                'november': 'Nov', 'nov': 'Nov',
+                'december': 'Dec', 'dec': 'Dec',
+            }
+            month = month_map.get(month_str, month_str.capitalize())
+            period = f"{month} {year}"
+
+            # Create a sortable date for ordering
+            month_num = {
+                'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr': 4, 'May': 5, 'Jun': 6,
+                'Jul': 7, 'Aug': 8, 'Sep': 9, 'Oct': 10, 'Nov': 11, 'Dec': 12
+            }
+            sort_key = int(year) * 100 + month_num.get(month, 0)
+        else:
+            period = "Unknown"
+            sort_key = 0
+            print(f"    Warning: Could not parse date from filename: {filename}")
+
+        report_type = 'Unsupplemented' if 'unsupplemented' in filename.lower() else 'Supplemented'
+        filepath = os.path.join(LOCAL_PDF_DIR, filename)
+        pdf_files.append((filepath, period, report_type, sort_key))
+
+    # Sort by date (newest first) and remove sort key from tuples
+    pdf_files.sort(key=lambda x: x[3], reverse=True)
+    return [(f[0], f[1], f[2]) for f in pdf_files]
+
+
 def discover_pwtr_pdf_urls():
     """
     Discover PWTR PDF URLs by scraping the official government pages.
@@ -915,6 +992,82 @@ def discover_pwtr_pdf_urls():
     return unique_urls
 
 
+def scrape_permanent_trading_pdfs_local():
+    """
+    Read PWTR PDFs from the local archive instead of downloading from web.
+
+    This function processes PDFs stored in LOCAL_PDF_DIR, extracting trading data
+    using the same parsing logic as the web scraper.
+
+    Returns: List of trading record dictionaries
+    """
+    print("\n--- Reading QLD Gov Permanent Trading PDFs from Local Archive ---")
+    print(f"    Directory: {LOCAL_PDF_DIR}")
+    results = []
+
+    # Get list of local PDFs
+    local_pdfs = get_local_pdf_paths()
+    if not local_pdfs:
+        print("    No local PDFs found")
+        return results
+
+    print(f"    Found {len(local_pdfs)} local PDF files")
+
+    # Try to import PDF library
+    try:
+        import pdfplumber
+        pdf_available = 'pdfplumber'
+        print("    Using pdfplumber for PDF extraction")
+    except ImportError:
+        try:
+            import PyPDF2
+            pdf_available = 'pypdf2'
+            print("    Using PyPDF2 for PDF extraction")
+        except ImportError:
+            pdf_available = False
+            print("    ERROR: No PDF libraries available (need pdfplumber or PyPDF2)")
+            return results
+
+    successful_pdfs = 0
+    failed_pdfs = 0
+
+    for filepath, period, report_type in local_pdfs:
+        filename = os.path.basename(filepath)
+        try:
+            print(f"    Reading: {filename} ({period})")
+
+            from io import BytesIO
+            with open(filepath, 'rb') as f:
+                pdf_content = BytesIO(f.read())
+
+            # Extract data based on available library
+            if pdf_available == 'pdfplumber':
+                extracted = extract_pdf_data_pdfplumber(pdf_content, period, report_type)
+            else:  # PyPDF2
+                extracted = extract_pdf_data_pypdf2(pdf_content, period, report_type)
+
+            if extracted:
+                print(f"      → Extracted {len(extracted)} records for {period}")
+                results.extend(extracted)
+                successful_pdfs += 1
+            else:
+                print(f"      → No data extracted from PDF")
+                failed_pdfs += 1
+
+        except FileNotFoundError:
+            print(f"      → File not found: {filepath}")
+            failed_pdfs += 1
+            continue
+        except Exception as e:
+            print(f"      → PDF parsing error: {type(e).__name__}: {e}")
+            failed_pdfs += 1
+            continue
+
+    print(f"\n    Summary: {successful_pdfs} PDFs processed, {failed_pdfs} failed")
+    print(f"    Total records extracted: {len(results)}")
+    return results
+
+
 def scrape_permanent_trading_pdfs():
     """
     Scrape QLD Government Permanent Water Trading Reports (PDFs).
@@ -931,12 +1084,23 @@ def scrape_permanent_trading_pdfs():
 
     Important: This data represents aggregated monthly statistics, where each row
     is a monthly summary for a scheme/priority combination, not individual trades.
+
+    This function first checks for local PDFs and uses those if available,
+    falling back to web scraping only if the local archive is empty.
     """
     print("\n--- Scraping QLD Gov Permanent Trading PDFs ---")
     print("    Source: DLGWV Permanent Water Trading Interim Reports")
     print("    Scope: MONTHLY SUPPLEMENTED SURFACE WATER ONLY")
     print("    Data type: Monthly weighted average prices (not individual trades)")
     results = []
+
+    # Check for local PDFs first
+    local_pdfs = get_local_pdf_paths()
+    if local_pdfs:
+        print(f"    Found {len(local_pdfs)} PDFs in local archive - using local files")
+        return scrape_permanent_trading_pdfs_local()
+
+    print("    No local PDFs found - falling back to web scraping")
 
     # Discover actual PDF URLs from government pages
     # (Each PDF has a unique asset ID that cannot be predicted)

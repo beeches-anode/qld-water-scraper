@@ -1,9 +1,9 @@
 {
   "is_synthetic": false,
-  "scrape_date": "2026-01-20T09:30:40.441716",
-  "record_count": 496,
-  "schemes_count": 32,
-  "water_plan_areas_count": 13,
+  "scrape_date": "2026-02-01T08:20:50.863650",
+  "record_count": 651,
+  "schemes_count": 64,
+  "water_plan_areas_count": 16,
   "date_range": {
     "earliest": "Apr 2023",
     "latest": "Sep 2025"
